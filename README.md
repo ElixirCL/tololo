@@ -8,6 +8,9 @@
 
 **Tololo** is an open-source package that brings the power of modern headless e-commerce functionality to Elixir's [Phoenix Framework](https://phoenixframework.org/).
 
+> [!CAUTION]
+> Version 1.x is currently in alpha release. We recommend this version for new projects, however, it is not feature-complete and therefore may not be deemed production-ready.
+
 ## Features
 
 Tololo E-commerce is mainly inspired by [Lunar PHP](https://github.com/lunarphp/lunar) and aims to be similar in scope and features.
