@@ -12,6 +12,9 @@
 > [!CAUTION]
 > Version 1.x is currently in alpha release. We recommend this version for new projects, however, it is not feature-complete and therefore may not be deemed production-ready.
 
+> [!IMPORTANT]
+> Tololo is mainly targeted to Chilean's market needs.
+
 ## Features
 
 Tololo E-commerce is mainly inspired by [Lunar PHP](https://github.com/lunarphp/lunar) and aims to be similar in scope and features.
