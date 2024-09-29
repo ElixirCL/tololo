@@ -6,7 +6,8 @@
 
 ![By CTIO/NOIRLab/NSF/AURA/R. Sparks - https://noirlab.edu/public/images/iotw2103a/, CC BY 4.0, https://commons.wikimedia.org/w/index.php?curid=99545008](https://github.com/user-attachments/assets/f4a09c2b-7469-4637-b6d6-760e89a8d8a1)
 
-**Tololo** is an open-source package that brings the power of modern headless e-commerce functionality to Elixir's [Phoenix Framework](https://phoenixframework.org/).
+**Tololo** is a set of _Elixir_ components that bring functionality akin to Shopify and other e-commerce platforms to 
+[Phoenix Framework](https://phoenixframework.org/). You have complete freedom to create your own storefront(s), but we've already done the hard work for you in  the backend.
 
 > [!CAUTION]
 > Version 1.x is currently in alpha release. We recommend this version for new projects, however, it is not feature-complete and therefore may not be deemed production-ready.
