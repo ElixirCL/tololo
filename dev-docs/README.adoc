@@ -37,6 +37,8 @@ include::adr/0000-use-adr.adoc[]
 
 include::adr/0001-use-asciidoc-adr.adoc[]
 
+include::adr/0002-use-personas-adr.adoc[]
+
 == Database
 
 include::database/database.adoc[]
