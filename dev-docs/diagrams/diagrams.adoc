@@ -1,0 +1,3 @@
+=== C4 Diagrams
+
+The following C4 will be used with mermaid.

@@ -1,0 +1,17 @@
+// short title, representative of solved problem and found solution
+=== Title
+
+==== Context and Problem Statement
+
+
+
+==== Considered Options
+
+
+
+==== Decision Outcome
+
+
+
+==== Consequences
+

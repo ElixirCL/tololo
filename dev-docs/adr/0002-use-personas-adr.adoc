@@ -1,0 +1,21 @@
+=== Use Personas and User Journey
+
+- Status: accepted
+- Date: 2024-09-30
+
+==== Context and Problem Statement
+
+Personas give us a person to connect with, someone who has goals for using the product, ensuring human centered design.
+Ideally they are used after interviews and before journey mapping. That said, they are useful tools to refer to at any given point in the creation process. A persona can be a positive persona or a negative persona. A negative persona is a semi-fictional rendition of your less than ideal customers. A collection of behaviours, demographics and real life scenarios that disqualify them from your pool of happy, paying customers. Identifying a negative persona early on ensures you aren’t wasting your precious time building solutions for the wrong audience.
+
+User journey mapping is an exercise for determining a list of requirements for our project as well as uncovering hidden issues. It also encourages the team to empathize with users. Journey maps are created after the personas are made for the project.
+
+- http://opendesignkit.org/methods/personas/[Personas].
+- http://opendesignkit.org/methods/journey-maps/[Journey Maps].
+- https://buildux.com/blog/personas-stories-scenarios-storyboard-definitions-and-best-practices[Personas Best Practices].
+
+==== Consequences
+
+It is critical to prioritize user demands throughout the design process. Research techniques such as user personas, user stories, scenarios, and storyboards are crucial for achieving this. These methods provide a structured framework for prioritizing the user in the design and development processes. 
+
+

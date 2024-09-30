@@ -1,0 +1,50 @@
+= Developer Documentation
+:toc: macro
+:toclevels: 3
+:toc: left
+:ext-relative:
+:doctype: book
+:encoding: utf-8
+:source-highlighter: highlight.js
+:highlightjs-languages: javascript, elixir, bash, txt, postgresql
+:highlightjs-theme: srcery
+:stem: latexmath
+:numbered:
+:source-linenums-option:
+:source: https://github.com/elixircl/tololo
+:producer: Ninjas.cl
+:copyright: CC-BY-NC-SA 4.0
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:outfilesuffix: .adoc
+:!toc-title:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+
+== Architectural Decision Records
+
+An Architectural Decision (AD) is a justified software design choice that addresses a functional or non-functional requirement of architectural significance. This decision is documented in an Architectural Decision Record (ADR), which details a single AD and its underlying rationale. To capture these records in a lean way.
+
+See more at https://adr.github.io/madr/[MADR].
+
+include::adr/0000-use-adr.adoc[]
+
+include::adr/0001-use-asciidoc-adr.adoc[]
+
+== Database
+
+include::database/database.adoc[]
+
+== Personas
+
+include::personas/personas.adoc[]
+
+== Diagrams
+
+include::diagrams/diagrams.adoc[]

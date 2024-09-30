@@ -1,0 +1,24 @@
+=== Record Architecture Decisions
+
+- Status: accepted
+- Date: 2024-09-30
+
+==== Context
+
+We need to record the architectural decisions made on Opinionated
+Digital Center.
+
+==== Decision
+
+We will use Architecture Decision Records, as
+http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions[described
+by Michael Nygard].
+
+Examples:
+
+- https://github.com/opinionated-digital-center/architecture-decision-records/
+- https://adr.github.io/madr/
+
+==== Consequences
+
+See Michael Nygard’s article, linked above.

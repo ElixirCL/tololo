@@ -1,6 +1,7 @@
+/* 
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
-/* Base fields
+// Base fields
   id text [primary key, note: 'uuidv7']
   inserted_at timestamp [not null, default: `now()`]
   updated_at timestamp [not null, default: `now()`]
@@ -29,7 +30,9 @@ Table role_permissions {
 Ref: role_permissions.role_id > roles.id
 Ref: role_permissions.permission_id > permissions.id
 
+/* 
 // A table for storing user and password
+*/
 Table users {
   id text [primary key, note: 'uuidv7']
   name text [not null]
@@ -49,8 +52,10 @@ Table users_roles {
 Ref: users_roles.user_id > users.id
 Ref: users_roles.role_id > roles.id
 
+/* 
 // A customer is someone that made an order
 // Can be associated with an user or not
+*/
 Table customers {
   id text [primary key, note: 'uuidv7']
   user_id text [null]
@@ -58,6 +63,7 @@ Table customers {
   updated_at timestamp [not null, default: `now()`]
 }
 
+/* 
 // Add table for a customer to have many contacts
 // and a primary contact
 
@@ -67,11 +73,14 @@ Table customers {
 // maybe using a special token?
 
 // Add table to have
+*/
 Ref: customers.user_id > users.id
 Ref: users.contact_id < contacts.id
 
+/* 
 // Check Apple Docs for proper names for contact fields
 // https://developer.apple.com/documentation/contacts/cncontact
+*/
 Table contacts {
   id text [primary key, note: 'uuidv7']
   type_id text [not null]
@@ -88,11 +97,13 @@ Table contacts_types {
 
 Ref: contacts.type_id > contacts_types.id
 
+/* 
 // A Table to register any activity done
 // Useful for trails
 // register any insert, update or delete activity
 // so we do not need soft deletes in tables, if you want to recover some info
 // just check the activity_logs table
+*/
 Table activity_logs {
   id text [primary key, note: 'uuidv7']
   origin text [not null, note: 'where the event was generated']
