@@ -1,0 +1,4 @@
+$ cat .gitattributes
+* text=auto
+*.dbml linguist-language=JavaScript
+*.dbml linguist-vendored
