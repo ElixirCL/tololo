@@ -23,3 +23,20 @@ Tololo E-commerce is mainly inspired by [Lunar PHP](https://github.com/lunarphp/
 - **Backoffice**: Manage your catalogue, customers and orders in our modern and extendable admin area, built in _Phoenix LiveView_.
 - **API**: Power your storefront or mobile app via Tololo's API.
 
+### Learning
+
+This project is not only a product that can be used in the Real World™, but is meant to be used as an example to learn how to make an professional _Elixir_ artifact.
+So we take great care in documentation for developers.
+
+## Software Stack
+
+- [ ] Use Ash Framework (API DSL)
+- [ ] Use [SurfaceUI](https://surface-ui.org/) (LiveView Framework similar to React.js)
+- [ ] Use Prometheus (For Grafana Integration)
+- [ ] Use Grafana (Add a Special Dashboard)
+- [ ] Use Kafka (For Sending Events)
+- [ ] Use OpenTelemetry (For Low Level Stats)
+- [ ] Use Mermaid (For Diagrams)
+- [ ] Use DbML (For Database Diagrams)
+- [ ] Use C4 (For Architecture Diagrams)
+- [ ] Use Hexdocs (For project Documentation)
