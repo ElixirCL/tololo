@@ -1,6 +1,9 @@
 // short title, representative of solved problem and found solution
 === Title
 
+- Status: [proposed | rejected | accepted | deprecated | … | superseded by [ADR-0005](0005-example.md)]
+- Date: [YYYY-MM-DD when the decision was last updated]
+
 ==== Context and Problem Statement
 
 

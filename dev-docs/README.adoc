@@ -27,26 +27,10 @@ endif::[]
 
 toc::[]
 
-== Architectural Decision Records
-
-An Architectural Decision (AD) is a justified software design choice that addresses a functional or non-functional requirement of architectural significance. This decision is documented in an Architectural Decision Record (ADR), which details a single AD and its underlying rationale. To capture these records in a lean way.
-
-See more at https://adr.github.io/madr/[MADR].
-
-include::adr/0000-use-adr.adoc[]
-
-include::adr/0001-use-asciidoc-adr.adoc[]
-
-include::adr/0002-use-personas-adr.adoc[]
-
-== Database
+include::decisions/decisions.adoc[]
 
 include::database/database.adoc[]
 
-== Personas
-
 include::personas/personas.adoc[]
-
-== Diagrams
 
 include::diagrams/diagrams.adoc[]

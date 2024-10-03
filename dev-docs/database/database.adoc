@@ -1,3 +1,5 @@
+== Database
+
 The following code was made using https://dbml.dbdiagram.io/docs[DBML].
 
 [source,postgresql]

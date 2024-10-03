@@ -12,30 +12,30 @@ structure should these records follow?
 
 ==== Considered Options
 
-* https://adr.github.io/madr/[MADR] 4.0.0 – The Markdown Architectural
+- https://adr.github.io/madr/[MADR] 4.0.0 – The Markdown Architectural
 Decision Records
-* http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions[Michael
+- http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions[Michael
 Nygard’s template] – The first incarnation of the term "`ADR`"
-* https://www.infoq.com/articles/sustainable-architectural-design-decisions[Sustainable
+- https://www.infoq.com/articles/sustainable-architectural-design-decisions[Sustainable
 Architectural Decisions] – The Y-Statements
-* Other templates listed at
+- Other templates listed at
 https://github.com/joelparkerhenderson/architecture_decision_record
-* Formless – No conventions for file format and structure
+- Formless – No conventions for file format and structure
 
 ==== Decision Outcome
 
 Chosen option: "`MADR 4.0.0`", because
 
-* Implicit assumptions should be made explicit. Design documentation is
+- Implicit assumptions should be made explicit. Design documentation is
 important to enable people understanding the decisions later on. See
 also https://doi.org/10.1109/TSE.1986.6312940["`A rational design
 process: How and why to fake it`"].
-* MADR allows for structured capturing of any decision.
-* The MADR format is lean and fits our development style.
-* The MADR structure is comprehensible and facilitates usage &
+- MADR allows for structured capturing of any decision.
+- The MADR format is lean and fits our development style.
+- The MADR structure is comprehensible and facilitates usage &
 maintenance.
-* The MADR project is vivid.
-* Can transpile it to ASCIIDoc with https://pandoc.org/try/[Pandoc]
+- The MADR project is vivid.
+- Can transpile it to ASCIIDoc with https://pandoc.org/try/[Pandoc]
 
 ==== Consequences
 

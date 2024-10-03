@@ -1,0 +1,29 @@
+=== Use AGPLv3 as License
+
+- Status: accepted
+- Date: 2024-19-03
+
+==== Context
+
+Everything needs to be licensed, otherwise the default copyright laws
+apply. For more information see https://help.github.com/articles/licensing-a-repository/.
+
+The GNU Affero General Public License version 3 (AGPLv3) is the most protective of computer user freedom.
+The AGPLv3 was created to solve a very specific problem: how to protect a user’s rights when the program in question is being utilized over a network. Simply put, the AGPLv3 is effectively the GPLv3, but with an additional licensing term that ensures that users who interact over a network with modified versions of the program can receive the source code for that program.
+
+When confronted with a choice between the AGPLv3 and GPLv3, a developer may think that their program doesn’t need the extra protection afforded by the AGPLv3. By choosing the AGPLv3 (or any later version) in these situations, the developer can future-proof their program in case someone takes the project in that direction.
+
+- https://www.gnu.org/licenses/why-affero-gpl.html
+- https://www.fsf.org/bulletin/2021/fall/the-fundamentals-of-the-agplv3
+
+If required in the future may evaluate dual license using another one like MPLv2,
+see https://en.wikipedia.org/wiki/Multi-licensing
+
+==== Considered Options
+
+- https://www.mozilla.org/en-US/MPL/2.0/[MPLv2].
+- Other open source licenses.
+
+==== Decision Outcome
+
+Chosen option: "`AGPLv3`", because this license enables protecting the user rights.
