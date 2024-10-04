@@ -1,8 +1,21 @@
+:dbml-renderer: /usr/local/bin/dbml-renderer
+
 == Database
 
 The following code was made using https://dbml.dbdiagram.io/docs[DBML].
+https://docs.asciidoctor.org/diagram-extension/latest/
+
+[source,js]
+----
+include::database.dbml[]
+----
+
+[dbml]
+----
+include::database.dbml[]
+----
 
 [source,postgresql]
 ----
-include::database.dbml[]
+include::database.sql[]
 ----

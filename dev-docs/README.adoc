@@ -1,4 +1,3 @@
-= Developer Documentation
 :toc: macro
 :toclevels: 3
 :toc: left
@@ -6,8 +5,9 @@
 :doctype: book
 :encoding: utf-8
 :source-highlighter: highlight.js
-:highlightjs-languages: javascript, elixir, bash, txt, postgresql
+:highlightjs-languages: javascript, elixir, bash, txt, postgresql, sql
 :highlightjs-theme: srcery
+:highlightjsdir: resources/highlight
 :stem: latexmath
 :numbered:
 :source-linenums-option:
@@ -24,6 +24,8 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :warning-caption: :warning:
 endif::[]
+
+= Developer Documentation
 
 toc::[]
 
