@@ -1,6 +1,6 @@
 -- SQL dump generated using DBML (dbml.dbdiagram.io)
 -- Database: PostgreSQL
--- Generated at: 2024-10-03T21:18:36.571Z
+-- Generated at: 2024-10-04T22:17:08.323Z
 
 CREATE TABLE "roles" (
   "id" text PRIMARY KEY,

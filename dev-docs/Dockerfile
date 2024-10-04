@@ -1,9 +1,9 @@
 FROM asciidoctor/docker-asciidoctor:latest
 
-RUN apk add --update nodejs npm
+RUN apk add --update neovim nodejs npm
 RUN npm install -g @dbml/cli
 RUN npm install -g @softwaretechnik/dbml-renderer
-RUN npm install -g @mermaid-js/mermaid-cli
+
 
 WORKDIR /documents
 VOLUME /documents

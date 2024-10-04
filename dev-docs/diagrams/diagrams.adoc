@@ -1,12 +1,40 @@
-:mmdc: /usr/local/bin/mmdc
-
 == Diagrams
+Check https://github.com/plantuml-stdlib/C4-PlantUML
 
-[mermaid]
+[plantuml]
 ----
-sequenceDiagram
-    Alice->>+John: Hello John, how are you?
-    Alice->>+John: John, can you hear me?
-    John-->>-Alice: Hi Alice, I can hear you!
-    John-->>-Alice: I feel great!
+@startuml C4_Elements
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(personAlias, "Label", "Optional Description")
+Container(containerAlias, "Label", "Technology", "Optional Description")
+System(systemAlias, "Label", "Optional Description")
+
+Rel(personAlias, containerAlias, "Label", "Optional Technology")
+@enduml
+----
+
+[plantuml]
+----
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+!include DEVICONS/msql_server.puml
+!include FONTAWESOME/users.puml
+
+Person(user, "Customer", "People that need products", $sprite="users")
+Container(spa, "SPA", "angular", "The main interface that the customer interacts with", $sprite="angular")
+Container(api, "API", "java", "Handles all business logic", $sprite="java")
+ContainerDb(db, "Database", "Microsoft SQL", "Holds product, order and invoice information", $sprite="msql_server")
+
+Rel(user, spa, "Uses")
+Rel(spa, api, "Uses")
+Rel_R(api, db, "Reads/Writes")
+
+SHOW_FLOATING_LEGEND()
+Lay_Distance(LEGEND(), db, 1)
+@enduml
 ----
