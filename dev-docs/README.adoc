@@ -23,7 +23,6 @@ ifdef::env-github[]
 :note-caption: :paperclip:
 :tip-caption: :bulb:
 :warning-caption: :warning:
-//:dbml-renderer: /usr/local/bin/dbml-renderer
 
 endif::[]
 

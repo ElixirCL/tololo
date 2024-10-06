@@ -473,6 +473,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_decision_outcome_2">1.4.3. Decision Outcome</a></li>
 </ul>
 </li>
+<li><a href="#_use_plantuml_dbml_and_other_diagram_tools">1.5. Use PlantUML, DBML and Other Diagram Tools</a>
+<ul class="sectlevel3">
+<li><a href="#_context_3">1.5.1. Context</a></li>
+<li><a href="#_considered_options_3">1.5.2. Considered Options</a></li>
+<li><a href="#_decision_outcome_3">1.5.3. Decision Outcome</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_database">2. Database</a></li>
@@ -680,7 +687,7 @@ Ideally they are used after interviews and before journey mapping. That said, th
 <p>Status: accepted</p>
 </li>
 <li>
-<p>Date: 2024-19-03</p>
+<p>Date: 2024-10-03</p>
 </li>
 </ul>
 </div>
@@ -729,6 +736,61 @@ see <a href="https://en.wikipedia.org/wiki/Multi-licensing" class="bare">https:/
 <h4 id="_decision_outcome_2">1.4.3. Decision Outcome</h4>
 <div class="paragraph">
 <p>Chosen option: &#8220;AGPLv3&#8221;, because this license enables protecting the user rights.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_plantuml_dbml_and_other_diagram_tools">1.5. Use PlantUML, DBML and Other Diagram Tools</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Status: accepted</p>
+</li>
+<li>
+<p>Date: 2024-10-06</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_context_3">1.5.1. Context</h4>
+<div class="paragraph">
+<p>Diagrams using <a href="https://docs.asciidoctor.org/diagram-extension/latest/">Asciidoctor Diagram Extension</a>
+will enable better documentation of components and business requirements.</p>
+</div>
+<div class="paragraph">
+<p>The selected options will enable a vast amount of use cases.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/plantuml/">PlantUML + C4</a>: Vast amount of UML diagrams and C4 (arquitecture) diagrams support.</p>
+</li>
+<li>
+<p><a href="https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/dbml/">DBML</a>: Useful for modeling ERD (database) diagrams.</p>
+</li>
+<li>
+<p><a href="https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/bpmn/">BPMN</a>: Useful for modeling business processes.</p>
+</li>
+<li>
+<p><a href="https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/graphviz/">Graphviz</a>: Generic language for diagrams.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_considered_options_3">1.5.2. Considered Options</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/mermaid/">Mermaid</a>: It was considered but since it requires a browser engine to render, it proved complicated to configure in <em>Docker</em> environment. It is useful for documenting in Github issues and other places outside these dev docs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_decision_outcome_3">1.5.3. Decision Outcome</h4>
+<div class="paragraph">
+<p>Use PlantUML, DBML, BPMN and Graphviz for developer docs, use Mermaid in Github issues and other relevant places if required.</p>
 </div>
 </div>
 </div>
@@ -1006,7 +1068,7 @@ ALTER TABLE "contacts" ADD FOREIGN KEY ("type_id") REFERENCES "contacts_types" (
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-04 23:16:02 UTC
+Last updated 2024-10-06 17:03:27 UTC
 </div>
 </div>
 <script src="resources/highlight/highlight.min.js"></script>

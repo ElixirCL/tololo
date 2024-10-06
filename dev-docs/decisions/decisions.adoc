@@ -11,3 +11,5 @@ include::0001-use-asciidoc-adr.adoc[]
 include::0002-use-personas-adr.adoc[]
 
 include::0003-use-agplv3-license-adr.adoc[]
+
+include::0004-use-plantuml.adoc[]

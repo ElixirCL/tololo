@@ -6,7 +6,7 @@
 
 ![By CTIO/NOIRLab/NSF/AURA/R. Sparks - https://noirlab.edu/public/images/iotw2103a/, CC BY 4.0, https://commons.wikimedia.org/w/index.php?curid=99545008](https://github.com/user-attachments/assets/f4a09c2b-7469-4637-b6d6-760e89a8d8a1)
 
-**Tololo** is a set of _Elixir_ components that bring functionality akin to Shopify and other e-commerce platforms to 
+**Tololo** is a set of _Elixir_ components that bring functionality akin to Shopify and other e-commerce platforms to
 [Phoenix Framework](https://phoenixframework.org/). You have complete freedom to create your own storefront(s), but we've already done the hard work for you in  the backend.
 
 > [!CAUTION]
@@ -19,7 +19,7 @@
 
 Tololo E-commerce is mainly inspired by [Lunar PHP](https://github.com/lunarphp/lunar) and aims to be similar in scope and features.
 
-- **Ecommerce Engine**: Based around [Ash Framework](https://ash-hq.org/) models, the e-commerce core provides all the functionality you need to create an online store. 
+- **Ecommerce Engine**: Based around [Ash Framework](https://ash-hq.org/) models, the e-commerce core provides all the functionality you need to create an online store.
 - **Backoffice**: Manage your catalogue, customers and orders in our modern and extendable admin area, built in _Phoenix LiveView_.
 - **API**: Power your storefront or mobile app via Tololo's API.
 
@@ -27,16 +27,3 @@ Tololo E-commerce is mainly inspired by [Lunar PHP](https://github.com/lunarphp/
 
 This project is not only a product that can be used in the Real World™, but is meant to be used as an example to learn how to make an professional _Elixir_ artifact.
 So we take great care in documentation for developers.
-
-## Software Stack
-
-- [ ] Use Ash Framework (API DSL)
-- [ ] Use [SurfaceUI](https://surface-ui.org/) (LiveView Framework similar to React.js)
-- [ ] Use Prometheus (For Grafana Integration)
-- [ ] Use Grafana (Add a Special Dashboard)
-- [ ] Use Kafka (For Sending Events)
-- [ ] Use OpenTelemetry (For Low Level Stats)
-- [ ] Use Mermaid (For Diagrams)
-- [ ] Use DbML (For Database Diagrams)
-- [ ] Use C4 (For Architecture Diagrams)
-- [ ] Use Hexdocs (For project Documentation)

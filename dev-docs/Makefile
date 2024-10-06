@@ -3,7 +3,6 @@
 html h:
 	@docker run -it -u $(id -u):$(id -g) -v .:/documents/ tololo-dev-docs asciidoctor -r asciidoctor-diagram README.adoc -o docs/index.html --verbose
 
-
 server s:
 	@cd docs && echo "http://localhost:8000" && python3 -m http.server
 
@@ -14,5 +13,4 @@ bash:
 	@docker run -it -u $(id -u):$(id -g) -v .:/documents/ tololo-dev-docs /bin/bash
 
 install i:
-#docker pull schemacrawler/schemacrawler
 	@docker build -t tololo-dev-docs .

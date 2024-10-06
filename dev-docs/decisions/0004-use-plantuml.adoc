@@ -1,0 +1,24 @@
+=== Use PlantUML, DBML and Other Diagram Tools
+
+- Status: accepted
+- Date: 2024-10-06
+
+==== Context
+
+Diagrams using https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor Diagram Extension]
+will enable better documentation of components and business requirements.
+
+The selected options will enable a vast amount of use cases.
+
+- https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/plantuml/[PlantUML + C4]: Vast amount of UML diagrams and C4 (arquitecture) diagrams support.
+- https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/dbml/[DBML]: Useful for modeling ERD (database) diagrams.
+- https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/bpmn/[BPMN]: Useful for modeling business processes.
+- https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/graphviz/[Graphviz]: Generic language for diagrams.
+
+==== Considered Options
+
+- https://docs.asciidoctor.org/diagram-extension/latest/diagram_types/mermaid/[Mermaid]: It was considered but since it requires a browser engine to render, it proved complicated to configure in _Docker_ environment. It is useful for documenting in Github issues and other places outside these dev docs.
+
+==== Decision Outcome
+
+Use PlantUML, DBML, BPMN and Graphviz for developer docs, use Mermaid in Github issues and other relevant places if required.
