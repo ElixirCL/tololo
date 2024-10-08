@@ -1,0 +1,31 @@
+=== Use Elixir
+
+- Status: accepted
+- Date: 2024-10-08
+
+==== Context
+
+The techniques for distributed streaming applications has been convering the old
+_Actor Model_. The Actor Model is a mathematical model for concurrent computation, introduced by Carl Hewitt in the 1970s. It views computation as a collection of independent entities called “actors” that communicate with each other by sending messages. Each actor has its own state, behavior, and a mailbox for receiving messages.
+
+_Erlang_ has 30+ years of experience. It's lighter, simpler and more appropiate than Java/Scala/Clojure
+for this kind of job. _Elixir_ is a nice language implemented over _Erlang OTP_ with a big ecosystem
+of frameworks and tools such as _Phoenix Framework_ which would greatly improve developer hapiness and
+robustness of the application.
+
+Please see:
+
+- https://www.youtube.com/watch?v=mkGq1WoEvI4[Idioms for Building Fault-tolerant Applications with Elixir • José Valim • YOW! 2021]
+
+- https://www.youtube.com/watch?v=JvBT4XBdoUE[The Soul of Erlang and Elixir • Sasa Juric • GOTO 2019]
+
+- https://aaronrenner.io/2019/09/18/application-layering-a-pattern-for-extensible-elixir-application-design.html[Application Layering - A Pattern for Extensible Elixir Application Design]
+
+==== Considered Options
+
+- https://flink.apache.org/
+
+==== Decision Outcome
+
+Using https://elixir-lang.org/[Elixir] with https://phoenixframework.org/[Phoenix Framework] will enable future proof the application and have better data consistency and project quality with modern technology and tools.
+
