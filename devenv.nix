@@ -5,7 +5,6 @@
   packages = [
     pkgs.inotify-tools
     pkgs.docker_25
-    pkgs.elixir-ls
     pkgs.gnumake
   ];
 

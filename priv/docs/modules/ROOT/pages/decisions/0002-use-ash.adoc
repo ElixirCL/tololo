@@ -1,0 +1,22 @@
+=== Use Ash
+
+- Status: draft
+- Date: 2025-01-06
+
+==== Context and Problem Statement
+
+- Model domain
+- Generate both REST and GraphQL API endpoints
+
+==== Considered Options
+
+- Ash:
+- Use https://hexdocs.pm/ecto/Ecto.html[Ecto] with https://phoenixframework.org/[Phoenix] directly: Better integration with the current Phoenix ecosystem, since most libraries are built around Ecto.
+
+
+==== Decision Outcome
+
+
+
+==== Consequences
+

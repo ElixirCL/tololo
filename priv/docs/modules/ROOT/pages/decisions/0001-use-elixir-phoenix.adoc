@@ -1,0 +1,17 @@
+=== Use Elixir with Phoenix
+
+- Status: draft
+- Date: 2025-01-06
+
+==== Context and Problem Statement
+
+
+==== Considered Options
+
+==== Decision Outcome
+
+Chosen option: "`Elixir with Phoenix`", because
+
+
+==== Consequences
+
