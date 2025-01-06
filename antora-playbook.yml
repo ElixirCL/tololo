@@ -1,0 +1,31 @@
+site:
+  title: Tololo Docs
+  url: https://elixircl.github.io/tololo
+  start_page: "tololo::index.adoc"
+
+content:
+  sources:
+  - url: .
+    branches: HEAD
+    start_path: priv/docs
+
+asciidoc:
+  extensions:
+    - asciidoctor-emoji
+    - asciidoctor-plantuml
+    - asciidoctor-kroki
+  attributes:
+    plantuml-server-url: "http://www.plantuml.com/plantuml"
+    plantuml-fetch-diagram: true
+    experimental: ''
+    idprefix: ''
+    idseparator: '-'
+    page-pagination: ''
+    
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+
+output:
+  dir: docs

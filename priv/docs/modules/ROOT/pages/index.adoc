@@ -1,0 +1,26 @@
+= Welcome!
+:navtitle: Welcome
+
+Example using _UML_ and _Emoji_.
+
+emoji:bear[5x]
+
+
+[plantuml]
+----
+@startuml
+	Class01 <|-- Class02
+	Class03 *-- Class04
+	Class05 o-- Class06
+	Class07 .. Class08
+	Class09 -- Class10
+@enduml
+----
+
+[source, js]
+----
+// File: app.js
+const User = ({
+    username:'clsource'
+});
+----
