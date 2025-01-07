@@ -1,10 +1,11 @@
 { pkgs, ... }: 
 
 { 
+  devcontainer.enable = true;
+
   languages.elixir.enable = true;
   packages = [
     pkgs.inotify-tools
-    pkgs.docker_25
     pkgs.gnumake
   ];
 
