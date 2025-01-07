@@ -4,6 +4,7 @@ docker.build db:
 	@docker build -t local/antora:tololo priv/docs/.
 
 antora.build ab:
+	@cp priv/docs/modules/ROOT/pages/index.adoc README.adoc
 	@rm -rf docs/
 	@docker run -u $(id -u):$(id -g) -v .:/antora:Z --rm -t local/antora:tololo antora-playbook.yml
 	

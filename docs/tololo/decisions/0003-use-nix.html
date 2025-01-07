@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: Tololo Docs</title>
+    <title>Use Nix with Devenv for dev environments :: Tololo Docs</title>
     <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0003-use-nix.html">
     <meta name="generator" content="Antora 3.1.10">
     <link rel="stylesheet" href="../../_/css/site.css">
@@ -92,6 +92,10 @@
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Tololo Ecommerce</a></li>
+    <li><a href="0003-use-nix.html">Use Nix with Devenv for dev environments</a></li>
+  </ul>
 </nav>
 <div class="edit-this-page"><a href="file:///antora/priv/docs/modules/decisions/pages/0003-use-nix.adoc">Edit this Page</a></div>
 </div>
@@ -100,8 +104,9 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<div class="sect2">
-<h3 id="use-nix-with-devenv-for-dev-environments"><a class="anchor" href="#use-nix-with-devenv-for-dev-environments"></a>Use Nix with Devenv for dev environments</h3>
+<h1 class="page">Use Nix with Devenv for dev environments</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -112,14 +117,19 @@
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h4>
+</div>
+</div>
+<div class="sect1">
+<h2 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>We want to declaratively define system dependencies (such as Elixir) and services (such as Postgres) to improve developer experience by streamlining setup and ensuring consistency.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h4>
+</div>
+<div class="sect1">
+<h2 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -137,8 +147,21 @@
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h4>
+</div>
+<div class="sect1">
+<h2 id="questions"><a class="anchor" href="#questions"></a>Questions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="can-we-use-devcontainers"><a class="anchor" href="#can-we-use-devcontainers"></a>Can we use Devcontainers?</h3>
+<div class="paragraph">
+<p>A <a href="https://code.visualstudio.com/docs/devcontainers/containers">devcontainer.json file</a> can be used as well?. Maybe we can support both <strong>Nix</strong> and <strong>Docker Dev Container</strong>, so Windows devs can have a dev environment too without <em>WSL</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Chosen option: &#8220;Nix with Devenv&#8221;, because</p>
 </div>
@@ -159,8 +182,10 @@
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h4>
+</div>
+<div class="sect1">
+<h2 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>All system dependencies will be handled in the devenv.nix file at the root of the project. Contributors will need to install Nix and Devenv, but this upfront effort will reduce issues with setting up the environment in the future and ensure reproducibility.</p>
 </div>

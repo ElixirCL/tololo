@@ -1,20 +1,26 @@
-=== Use Nix with Devenv for dev environments
+= Use Nix with Devenv for dev environments
 
 - Status: proposed
 - Date: 2025-01-06
 
-==== Context and Problem Statement
+== Context and Problem Statement
 
 We want to declaratively define system dependencies (such as Elixir) and services (such as Postgres) to improve developer experience by streamlining setup and ensuring consistency.
 
-==== Considered Options
+== Considered Options
 
 - https://devenv.sh/[Nix with Devenv]: Tool based on the Nix package manager that allows declaratively defining system dependencies and services.
 - https://nix.dev/concepts/flakes.html[Nix Flakes]: Lower level abstraction over Nix that allows creating dev shells with the system dependencies necessary to run the project. It lacks higher-level abstractions for managing services like Postgres.
 - https://www.docker.com/[Docker]: Tool that allows running development containers locally. Heavier in resource usage.
 - https://github.com/features/codespaces[Github Codespaces]: Cloud hosted dev environment that runs an instance of Visual Studio Code in a browser. Relies on Github's cloud services.
 
-==== Decision Outcome
+== Questions
+
+=== Can we use Devcontainers?
+
+A https://code.visualstudio.com/docs/devcontainers/containers[devcontainer.json file] can be used as well?. Maybe we can support both *Nix* and *Docker Dev Container*, so Windows devs can have a dev environment too without _WSL_.
+
+== Decision Outcome
 
 Chosen option: "`Nix with Devenv`", because
 
@@ -23,7 +29,7 @@ Chosen option: "`Nix with Devenv`", because
 - More lightweight than containers.
 - Doesn't depend on external services such as Github.
 
-==== Consequences
+== Consequences
 
 All system dependencies will be handled in the devenv.nix file at the root of the project. Contributors will need to install Nix and Devenv, but this upfront effort will reduce issues with setting up the environment in the future and ensure reproducibility.
 
