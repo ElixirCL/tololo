@@ -1,0 +1,23 @@
+=== Name: Cristian Paz
+
+* Age: 27 years old
+
+* Profession: Frontend Software Developer
+
+* Goals:
+--
+** Developing ecommerce solutions for his clients, focusing on frontend design and integration with backend APIs.
+--
+
+* Behavior:
+--
+** Avoids directly dealing with business logic.
+** Relies on examples for common use cases in the documentation to save development time.
+--
+
+* Motivations:
+--
+** Delivering a great user experience for customers, enhancing their satisfaction and engagement.
+** Reducing time spent on backend related issues to focus on client-facing features.
+--
+
