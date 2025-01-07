@@ -1,0 +1,75 @@
+= 🔭 Setting Up a Development Environment
+
+We recommend using __Devenv__ to manage system dependencies and services. After cloning the repository, the `devenv.nix` file at the root of the project creates a reproducible development environment.
+
+== Options to Run Devenv
+
+1. Installing *Nix* https://devenv.sh/getting-started/[Follow the steps on this page.] and *Devenv*.
+
+2. Using a Dev Container: https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container[Follow the steps on this page.] This repository includes a `devcontainer.json` file with *Devenv*.
+
+[NOTE]
+====
+Tested with 'devenv-1.3.1'
+====
+
+== After Setting Up Devenv
+
+- Enter a shell:  
+
+[source, bash]
+----
+$ devenv shell
+----
+
+- Start services (for example, Postgres):  
+
+[source, bash]
+----
+$ devenv up
+----
+
+- Set up the project (after entering shell):
+
+[source, bash]
+----
+$ mix setup
+----
+
+[NOTE]
+====
+These commands are available in the project *Makefile*
+====
+
+== Troubleshoot
+
+=== Error: You're not a trusted user of the Nix store.
+
+This means that the file `/etc/nix/nix.conf` lacks the trusted users configuration.
+
+- 1. Open the file with write privileges. 
+
+[source, bash]
+----
+$ sudo vim /etc/nix/nix.conf
+----
+
+- 2. Add the trusted users.
+
+[source, text]
+----
+trusted-users = root camilowser
+----
+
+- 3. Reboot nix service
+
+[source, bash]
+----
+sudo launchctl kickstart -k system/org.nixos.nix-daemon
+----
+
+== Environment Variables
+
+When using commands like `devenv shell` the `--impure` flag must be used.
+
+- `NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1`: Will allow install unsupported packages. For example `inotify-tools` is not supported in _MacOS_ (darwin). Compilation is not garanteed though.

@@ -1,5 +1,6 @@
-.PHONY: antora.build antora.server antora.docker.build antora.bash
+.PHONY: antora.build antora.server antora.docker.build antora.shell dev.build dev.shell dev.services mix.deps mix.setup
 
+# Documentation Commands
 antora.docker.build adb:
 	@docker build -t local/antora:tololo priv/docs/.
 
@@ -12,5 +13,22 @@ antora.server as:
 	@make antora.build
 	@cd docs && python3 -m http.server
 
-antora.bash ash:
+antora.shell ash:
 	@docker run -u $(id -u):$(id -g) -v .:/antora:Z --rm -it local/antora:tololo ash
+
+# Devenv Commands
+dev.build db:
+	@devenv build
+
+dev.shell dsh:
+	@devenv shell
+
+dev.services ds:
+	@devenv up
+
+# Mix commands
+mix.deps md:
+	@mix deps.get
+
+mix.setup ms:
+	@mix setup
