@@ -16,9 +16,13 @@ We want to declaratively define system dependencies (such as Elixir) and service
 
 == Questions
 
-=== Can we use Devcontainers?
+=== Can we use Dev Containers?
 
 A https://code.visualstudio.com/docs/devcontainers/containers[devcontainer.json file] can be used as well?. Maybe we can support both *Nix* and *Docker Dev Container*, so Windows devs can have a dev environment too without _WSL_.
+
+==== Answer
+
+TODO
 
 == Decision Outcome
 

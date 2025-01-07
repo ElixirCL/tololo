@@ -1,6 +1,6 @@
-.PHONY: antora.build antora.server bash deploy docker.build
+.PHONY: antora.build antora.server antora.docker.build antora.bash
 
-docker.build db:
+antora.docker.build adb:
 	@docker build -t local/antora:tololo priv/docs/.
 
 antora.build ab:
@@ -12,5 +12,5 @@ antora.server as:
 	@make antora.build
 	@cd docs && python3 -m http.server
 
-bash sh:
+antora.bash ash:
 	@docker run -u $(id -u):$(id -g) -v .:/antora:Z --rm -it local/antora:tololo ash
