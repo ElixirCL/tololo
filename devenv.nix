@@ -1,11 +1,14 @@
-{ pkgs, lib, ... }: 
+{ pkgs, lib, inputs, ... }: 
 
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
+in
 { 
   devcontainer.enable = true;
 
   languages.elixir = {
     enable = true;
-    package = pkgs.elixir;
+    package = pkgs-unstable.beamMinimal26Packages.elixir;
   };
   enterShell = ''
     export PATH="$HOME/.mix/escripts:$PATH"
