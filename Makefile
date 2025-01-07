@@ -1,4 +1,4 @@
-.PHONY: antora.build antora.server antora.shell dev.build dev.shell dev.services mix.deps mix.setup
+.PHONY: antora.build antora.server dev.shell dev.services mix.deps mix.setup
 
 # Documentation Commands
 antora.build ab:
@@ -11,9 +11,6 @@ antora.server as:
 	@cd docs && python3 -m http.server
 
 # Devenv Commands
-dev.build db:
-	@devenv build
-
 dev.shell dsh:
 	@devenv shell
 
