@@ -1,4 +1,4 @@
-.PHONY: antora.build antora.server antora.docker.build antora.shell dev.build dev.shell dev.services mix.deps mix.setup
+.PHONY: antora.build antora.server antora.docker.build antora.shell dev.shell dev.services mix.deps mix.setup
 
 # Documentation Commands
 antora.docker.build adb:
@@ -17,9 +17,6 @@ antora.shell ash:
 	@docker run -u $(id -u):$(id -g) -v .:/antora:Z --rm -it local/antora:tololo ash
 
 # Devenv Commands
-dev.build db:
-	@devenv build
-
 dev.shell dsh:
 	@devenv shell
 

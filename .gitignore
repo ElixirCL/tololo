@@ -6,4 +6,3 @@ dbml-error.log
 build/
 .devenv/
 .devenv.flake.nix
-.devcontainer.json
