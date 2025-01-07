@@ -1,4 +1,4 @@
-= Use Elixir with Phoenix
+= Use Elixir with Phoenix and PostgreSQL
 
 - Status: accepted
 - Date: 2025-01-06
@@ -19,7 +19,20 @@ Please see:
 
 - https://www.youtube.com/watch?v=JvBT4XBdoUE[The Soul of Erlang and Elixir • Sasa Juric • GOTO 2019]
 
-- https://aaronrenner.io/2019/09/18/application-layering-a-pattern-for-extensible-elixir-application-design.html[Application Layering - A Pattern for Extensible Elixir Application Design]
+- https://aaronrenner.io/2019/09/18/application-layering-a-pattern-for-extensible-elixir-application-design.html[Application Layering - A Pattern for Extensible Elixir Application Design].
+
+
+=== Why PostgreSQL?
+
+PostgreSQL is a relational database server. Phoenix configures applications to use it by default.
+
+Please see:
+
+- https://www.enterprisedb.com/postgres-tutorials/why-more-and-more-enterprises-are-choosing-postgresql-their-go-database[Why more and more enterprises are choosing PostgreSQL as their go-to database!].
+
+- https://www.amazingcto.com/postgres-for-everything/[Just Use Postgres for Everything - How to reduce complexity and move faster].
+
+- https://www.brightball.com/articles/insanity-with-elixir-phoenix-postgresql[Insanity with Elixir + Phoenix + PostgreSQL].
 
 == Considered Options
 
@@ -27,5 +40,5 @@ Please see:
 
 == Decision Outcome
 
-Using https://elixir-lang.org/[Elixir] with https://phoenixframework.org/[Phoenix Framework] will enable future proof the application and have better data consistency and project quality with modern technology and tools.
+Using https://elixir-lang.org/[Elixir] with https://phoenixframework.org/[Phoenix Framework] and https://www.postgresql.org/[PostgreSQL] will enable future proof the application and have better data consistency and project quality with modern technology and tools.
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Use Elixir with Phoenix :: Tololo Docs</title>
+    <title>Use Elixir with Phoenix and PostgreSQL :: Tololo Docs</title>
     <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0001-use-elixir-phoenix.html">
     <link rel="prev" href="0000-use-adr.html">
     <meta name="generator" content="Antora 3.1.10">
@@ -67,7 +67,7 @@
     <a class="nav-link" href="0000-use-adr.html">Record Architecture Decisions</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix</a>
+    <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
   </li>
 </ul>
   </li>
@@ -96,7 +96,7 @@
   <ul>
     <li><a href="../index.html">Tololo Ecommerce</a></li>
     <li>Architecture Decisions</li>
-    <li><a href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix</a></li>
+    <li><a href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a></li>
   </ul>
 </nav>
 <div class="edit-this-page"><a href="file:///antora/priv/docs/modules/decisions/pages/0001-use-elixir-phoenix.adoc">Edit this Page</a></div>
@@ -106,7 +106,7 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Use Elixir with Phoenix</h1>
+<h1 class="page">Use Elixir with Phoenix and PostgreSQL</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="ulist">
@@ -146,9 +146,31 @@ robustness of the application.</p>
 <p><a href="https://www.youtube.com/watch?v=JvBT4XBdoUE">The Soul of Erlang and Elixir • Sasa Juric • GOTO 2019</a></p>
 </li>
 <li>
-<p><a href="https://aaronrenner.io/2019/09/18/application-layering-a-pattern-for-extensible-elixir-application-design.html">Application Layering - A Pattern for Extensible Elixir Application Design</a></p>
+<p><a href="https://aaronrenner.io/2019/09/18/application-layering-a-pattern-for-extensible-elixir-application-design.html">Application Layering - A Pattern for Extensible Elixir Application Design</a>.</p>
 </li>
 </ul>
+</div>
+<div class="sect2">
+<h3 id="why-postgresql"><a class="anchor" href="#why-postgresql"></a>Why PostgreSQL?</h3>
+<div class="paragraph">
+<p>PostgreSQL is a relational database server. Phoenix configures applications to use it by default.</p>
+</div>
+<div class="paragraph">
+<p>Please see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.enterprisedb.com/postgres-tutorials/why-more-and-more-enterprises-are-choosing-postgresql-their-go-database">Why more and more enterprises are choosing PostgreSQL as their go-to database!</a>.</p>
+</li>
+<li>
+<p><a href="https://www.amazingcto.com/postgres-for-everything/">Just Use Postgres for Everything - How to reduce complexity and move faster</a>.</p>
+</li>
+<li>
+<p><a href="https://www.brightball.com/articles/insanity-with-elixir-phoenix-postgresql">Insanity with Elixir + Phoenix + PostgreSQL</a>.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -168,7 +190,7 @@ robustness of the application.</p>
 <h2 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Using <a href="https://elixir-lang.org/">Elixir</a> with <a href="https://phoenixframework.org/">Phoenix Framework</a> will enable future proof the application and have better data consistency and project quality with modern technology and tools.</p>
+<p>Using <a href="https://elixir-lang.org/">Elixir</a> with <a href="https://phoenixframework.org/">Phoenix Framework</a> and <a href="https://www.postgresql.org/">PostgreSQL</a> will enable future proof the application and have better data consistency and project quality with modern technology and tools.</p>
 </div>
 </div>
 </div>
