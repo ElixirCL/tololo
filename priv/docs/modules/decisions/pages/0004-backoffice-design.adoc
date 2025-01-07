@@ -11,7 +11,7 @@ We want to leverage existing UI libraries to quickly iterate over the admin pane
 
 - https://github.com/naymspace/backpex[Backpex]: Highly customizable administration panel for Phoenix LiveView applications. Doesn't support Ash currently.
 - https://github.com/tfwright/live_admin[live_admin]: Low-config admin UI for Phoenix apps, built on LiveView and Ecto.
-- https://hexdocs.pm/ash_admin/getting-started-with-ash-admin.html[AshAdmin]: A super-admin UI dashboard for Ash Framework applications, built with Phoenix LiveView. {It's not suitable for being distributed to end-users}[https://elixirforum.com/t/an-exploration-of-the-the-future-of-pyro-and-ashadmin/60827/2].
+- https://hexdocs.pm/ash_admin/getting-started-with-ash-admin.html[AshAdmin]: A super-admin UI dashboard for Ash Framework applications, built with Phoenix LiveView. https://elixirforum.com/t/an-exploration-of-the-the-future-of-pyro-and-ashadmin/60827/2[It's not suitable for being distributed to end-users].
 - Tailwind admin dashboard template such as https://tailadmin.com/[TailAdmin]: Templates built with Tailwind, mostly just designs.
 
 ==== Decision Outcome
