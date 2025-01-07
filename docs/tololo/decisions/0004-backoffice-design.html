@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Tololo Docs</title>
+    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0004-backoffice-design.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/tololo">Tololo Docs</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="tololo" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Tololo Ecommerce</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Architecture Decisions</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="0000-use-adr.html">Record Architecture Decisions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Tololo Ecommerce</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Tololo Ecommerce</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+<div class="edit-this-page"><a href="file:///antora/priv/docs/modules/decisions/pages/0004-backoffice-design.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect2">
+<h3 id="design-for-backoffice"><a class="anchor" href="#design-for-backoffice"></a>Design for backoffice</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Status: accepted</p>
+</li>
+<li>
+<p>Date: 2025-01-06</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h4>
+<div class="paragraph">
+<p>We want to leverage existing UI libraries to quickly iterate over the admin panel of the solution while focusing on functionality over design.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/naymspace/backpex">Backpex</a>: Highly customizable administration panel for Phoenix LiveView applications. Doesn&#8217;t support Ash currently.</p>
+</li>
+<li>
+<p><a href="https://github.com/tfwright/live_admin">live_admin</a>: Low-config admin UI for Phoenix apps, built on LiveView and Ecto.</p>
+</li>
+<li>
+<p><a href="https://hexdocs.pm/ash_admin/getting-started-with-ash-admin.html">AshAdmin</a>: A super-admin UI dashboard for Ash Framework applications, built with Phoenix LiveView. {It&#8217;s not suitable for being distributed to end-users}[<a href="https://elixirforum.com/t/an-exploration-of-the-the-future-of-pyro-and-ashadmin/60827/2" class="bare">https://elixirforum.com/t/an-exploration-of-the-the-future-of-pyro-and-ashadmin/60827/2</a>].</p>
+</li>
+<li>
+<p>Tailwind admin dashboard template such as <a href="https://tailadmin.com/">TailAdmin</a>: Templates built with Tailwind, mostly just designs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h4>
+<div class="paragraph">
+<p>Chosen option: &#8220;Tailwind admin dashboard template&#8221;, because</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows for deep customization.</p>
+</li>
+<li>
+<p>Has no integration issues with the planned stack.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="positive-consequences"><a class="anchor" href="#positive-consequences"></a>Positive Consequences</h4>
+<div class="paragraph">
+<p>Using already built Tailwind components will allow contributors focus on the functionalities rather than the design.</p>
+</div>
+<div class="sect4">
+<h5 id="negative-consequences"><a class="anchor" href="#negative-consequences"></a>Negative Consequences</h5>
+<div class="paragraph">
+<p>Integration with the rest of the solution will need to be implemented from scratch.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

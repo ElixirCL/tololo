@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Use Elixir with Phoenix :: Tololo Docs</title>
+    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0001-use-elixir-phoenix.html">
+    <link rel="prev" href="0000-use-adr.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/tololo">Tololo Docs</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="tololo" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Tololo Ecommerce</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Architecture Decisions</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="0000-use-adr.html">Record Architecture Decisions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Tololo Ecommerce</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Tololo Ecommerce</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Tololo Ecommerce</a></li>
+    <li>Architecture Decisions</li>
+    <li><a href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/priv/docs/modules/decisions/pages/0001-use-elixir-phoenix.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Use Elixir with Phoenix</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Status: accepted</p>
+</li>
+<li>
+<p>Date: 2025-01-06</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="context"><a class="anchor" href="#context"></a>Context</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The techniques for distributed streaming applications has been convering the old
+<em>Actor Model</em>. The Actor Model is a mathematical model for concurrent computation, introduced by Carl Hewitt in the 1970s. It views computation as a collection of independent entities called “actors” that communicate with each other by sending messages. Each actor has its own state, behavior, and a mailbox for receiving messages.</p>
+</div>
+<div class="paragraph">
+<p><em>Erlang</em> has 30+ years of experience. It&#8217;s lighter, simpler and more appropiate than Java/Scala/Clojure
+for this kind of job. <em>Elixir</em> is a nice language implemented over <em>Erlang OTP</em> with a big ecosystem
+of frameworks and tools such as <em>Phoenix Framework</em> which would greatly improve developer hapiness and
+robustness of the application.</p>
+</div>
+<div class="paragraph">
+<p>Please see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=mkGq1WoEvI4">Idioms for Building Fault-tolerant Applications with Elixir • José Valim • YOW! 2021</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=JvBT4XBdoUE">The Soul of Erlang and Elixir • Sasa Juric • GOTO 2019</a></p>
+</li>
+<li>
+<p><a href="https://aaronrenner.io/2019/09/18/application-layering-a-pattern-for-extensible-elixir-application-design.html">Application Layering - A Pattern for Extensible Elixir Application Design</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://flink.apache.org/" class="bare">https://flink.apache.org/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using <a href="https://elixir-lang.org/">Elixir</a> with <a href="https://phoenixframework.org/">Phoenix Framework</a> will enable future proof the application and have better data consistency and project quality with modern technology and tools.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="0000-use-adr.html">Record Architecture Decisions</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

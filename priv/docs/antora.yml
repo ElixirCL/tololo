@@ -3,3 +3,4 @@ version: ~
 title: Tololo Ecommerce
 nav:
   - modules/ROOT/nav.adoc
+  - modules/decisions/nav.adoc

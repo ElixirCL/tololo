@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome! :: Tololo Docs</title>
+    <title>🔭 Tololo E-commerce :: Tololo Docs</title>
     <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/index.html">
-    <link rel="next" href="new-page.html">
+    <link rel="next" href="decisions/0000-use-adr.html">
     <meta name="generator" content="Antora 3.1.10">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -20,6 +20,7 @@
         <span></span>
       </button>
     </div>
+    <!--
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
         <a class="navbar-item" href="#">Home</a>
@@ -46,6 +47,7 @@
         </div>
       </div>
     </div>
+    -->
   </nav>
 </header>
 <div class="body">
@@ -58,9 +60,14 @@
     <h3 class="title"><a href="index.html">Tololo Ecommerce</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Architecture Decisions</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="new-page.html">Antora Demo Site and Playbook Project</a>
+    <a class="nav-link" href="decisions/0000-use-adr.html">Record Architecture Decisions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="decisions/0001-use-elixir-phoenix.html">Use Elixir with Phoenix</a>
   </li>
 </ul>
   </li>
@@ -88,7 +95,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Tololo Ecommerce</a></li>
-    <li><a href="index.html">Welcome</a></li>
+    <li><a href="index.html">🔭 Tololo E-commerce</a></li>
   </ul>
 </nav>
 <div class="edit-this-page"><a href="file:///antora/priv/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
@@ -98,28 +105,104 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Welcome!</h1>
+<h1 class="page">🔭 Tololo E-commerce</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Example using <em>UML</em> and <em>Emoji</em>.</p>
+<p>High in the mountains of the Coquimbo region of Chile lies a peak called
+Cerro Tololo, whose name means &#8220;on the edge of the abyss,&#8221; a
+description given to the mountain by the ancient Diaguita people, in
+reference to its rugged geography on its northeastern side.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Cerro_Tololo_Inter-American_Observatory">Wikipedia</a></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://github.com/user-attachments/assets/e0908d44-0905-4240-b5ab-52e844ad7e6d" alt="By CTIO/NOIRLab/NSF/AURA/R. Sparks - https://noirlab.edu/public/images/iotw2103a/" width="CC BY 4.0" height="https://commons.wikimedia.org/w/index.php?curid=99545008">
+</div>
 </div>
 <div class="paragraph">
-<p><span class="emoji"><img src="https://cdn.jsdelivr.net/npm/twemoji@latest/2/svg/1f43b.svg" alt="bear" width="85px" height="85px"></span></p>
+<p><strong>Tololo</strong> is a set of <em>Elixir</em> components that bring functionality akin
+to Shopify and other e-commerce platforms to
+<a href="https://phoenixframework.org/">Phoenix Framework</a>. You have complete
+freedom to create your own storefront(s), but we’ve already done the
+hard work for you in the backend.</p>
 </div>
-<div class="imageblock kroki">
-<div class="content">
-<img src="https://kroki.io/plantuml/svg/eNrjdM5JLC42MFSwqdHVVYBwjLg4IQxjBS24oAlM0FQhHy5oBhM0V9DTg4pZwMQsFWDqDA24ANSXHD8=" alt="Diagram">
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Version 1.x is currently in alpha release. We recommend this
+version for new projects, however, it is not feature-complete and
+therefore may not be deemed production-ready.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Tololo is mainly targeted to Chilean’s market needs.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// File: app.js
-const User = ({
-    username:'clsource'
-});</code></pre>
+</div>
+<div class="sect1">
+<h2 id="features"><a class="anchor" href="#features"></a>Features</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tololo E-commerce is mainly inspired by
+<a href="https://github.com/lunarphp/lunar">Lunar PHP</a> and <a href="https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api">Shopify Storefront API</a> and aims to be similar in scope and features.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Ecommerce Engine</strong>: Based around <a href="https://ash-hq.org/">Ash Framework</a>
+models, the e-commerce core provides all the functionality you need to
+create an online store.</p>
+</li>
+<li>
+<p><strong>Backoffice</strong>: Manage your catalogue, customers and orders in our
+modern and extendable admin area, built in <em>Phoenix LiveView</em>.</p>
+</li>
+<li>
+<p><strong>API</strong>: Power your storefront or mobile app via <em>Tololo’s</em> API.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="learning"><a class="anchor" href="#learning"></a>Learning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project is not only a product that can be used in the Real World™,
+but is meant to be used as an example to learn how to make an
+professional <em>Elixir</em> artifact. So we take great care in documentation
+for developers.</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="new-page.html">Antora Demo Site and Playbook Project</a></span>
+  <span class="next"><a href="decisions/0000-use-adr.html">Record Architecture Decisions</a></span>
 </nav>
 </article>
   </div>

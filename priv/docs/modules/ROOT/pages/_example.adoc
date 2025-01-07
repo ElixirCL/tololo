@@ -1,4 +1,59 @@
-= Antora Demo Site and Playbook Project
+= Welcome!
+:navtitle: Welcome
+
+Example using _UML_ and _Emoji_.
+
+emoji:bear[5x]
+
+
+[plantuml]
+----
+@startuml
+	Class01 <|-- Class02
+	Class03 *-- Class04
+	Class05 o-- Class06
+	Class07 .. Class08
+	Class09 -- Class10
+@enduml
+----
+
+[source, js]
+----
+// File: app.js
+const User = ({
+    username:'clsource'
+});
+----
+
+[dbml]
+----
+Table users {
+  id integer
+  username varchar
+  role varchar
+  created_at timestamp
+}
+
+Table posts {
+  id integer [primary key]
+  title varchar
+  body text [note: 'Content of the post']
+  user_id integer
+  status post_status
+  created_at timestamp
+}
+
+Enum post_status {
+  draft
+  published
+  private [note: 'visible via URL only']
+}
+
+Ref: posts.user_id > users.id // many-to-one
+----
+
+
+== Antora Demo Site and Playbook Project
 :url-project: https://antora.org
 :url-org: https://gitlab.com/antora
 :url-group: {url-org}/demo

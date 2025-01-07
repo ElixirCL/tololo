@@ -12,20 +12,22 @@ content:
 asciidoc:
   extensions:
     - asciidoctor-emoji
-    - asciidoctor-plantuml
     - asciidoctor-kroki
   attributes:
-    plantuml-server-url: "http://www.plantuml.com/plantuml"
-    plantuml-fetch-diagram: true
+    kroki-fetch-diagram: true
     experimental: ''
     idprefix: ''
     idseparator: '-'
     page-pagination: ''
+    highlightjs-theme: monokai
+    highlightjs-languages: js, elixir, sql, yaml
     
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
+  # https://gitlab.com/antora/antora-ui-default/-/tree/master/src/partials
+  supplemental_files: priv/docs/supplemental-ui/
 
 output:
   dir: docs

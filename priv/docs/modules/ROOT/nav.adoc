@@ -1,2 +1,0 @@
-
-* xref:new-page.adoc[]

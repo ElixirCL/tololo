@@ -9,7 +9,7 @@ antora.build ab:
 	
 antora.server as:
 	@make antora.build
-	@cd priv/docs/build/site && python3 -m http.server
+	@cd docs && python3 -m http.server
 
 bash sh:
 	@docker run -u $(id -u):$(id -g) -v .:/antora:Z --rm -it local/antora:tololo ash

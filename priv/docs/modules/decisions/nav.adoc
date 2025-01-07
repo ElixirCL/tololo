@@ -1,0 +1,3 @@
+.Architecture Decisions
+* xref:0000-use-adr.adoc[]
+* xref:0001-use-elixir-phoenix.adoc[]
