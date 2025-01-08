@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: Tololo Docs</title>
-    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0006-use-golden-signals.html">
+    <title>Use Antora Docs :: Tololo Docs</title>
+    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/use-antora-docs.html">
+    <link rel="prev" href="use-nix.html">
+    <link rel="next" href="../developer/dev_environment.html">
     <meta name="generator" content="Antora 3.1.9">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -66,13 +68,16 @@
     <a class="nav-link" href="0000-use-adr.html">Record Architecture Decisions</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
+    <a class="nav-link" href="use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0002-use-ash.html">Use Ash</a>
+    <a class="nav-link" href="use-ash.html">Use Ash</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0003-use-nix.html">Use Nix with Devenv for dev environments</a>
+    <a class="nav-link" href="use-nix.html">Use Nix with Devenv for dev environments</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="use-antora-docs.html">Use Antora Docs</a>
   </li>
 </ul>
   </li>
@@ -116,43 +121,101 @@
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Tololo Ecommerce</a></li>
+    <li>Architecture Decisions</li>
+    <li><a href="use-antora-docs.html">Use Antora Docs</a></li>
+  </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/0006-use-golden-signals.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/use-antora-docs.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<div class="sect2">
-<h3 id="use-golden-signals"><a class="anchor" href="#use-golden-signals"></a>Use golden signals</h3>
+<h1 class="page">Use Antora Docs</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>Status: draft</p>
+<p>Status: accepted</p>
 </li>
 <li>
-<p>Date: 2025-01-06</p>
+<p>Date: 2025-01-08</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h4>
-
-</div>
-<div class="sect3">
-<h4 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h4>
-
-</div>
-<div class="sect3">
-<h4 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h4>
-
-</div>
-<div class="sect3">
-<h4 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h4>
-
 </div>
 </div>
+<div class="sect1">
+<h2 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We need to create all the documents for project decisions, tutorials, articles and developer documentation.
+A single place and tool to keep all the relevant information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://rust-lang.github.io/mdBook/">Mdbook</a>: Official tool for documentation creation within the <em>Rust</em> community. A simple but powerful tool that works with <em>Markdown</em>.</p>
+</li>
+<li>
+<p><a href="https://docusaurus.io/">Docusaurus</a>: A documentation tool that uses <em>React.js</em> and <em>Markdown</em>.</p>
+</li>
+<li>
+<p><a href="https://docs.antora.org/antora/latest/">Antora Docs</a>: A documentation tool using <a href="https://docs.asciidoctor.org">Asciidoc</a> as the main markup language.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Chosen option: &#8220;Antora Docs&#8221;, because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Asciidoc</em> have a standarized markup, where <em>Markdown</em> have different "flavours".</p>
+</li>
+<li>
+<p><em>Antora Docs</em> creates great looking and customizable websites.</p>
+</li>
+<li>
+<p><em>Asciidoc</em> is easily integrated with many diagramming tools (PlantUML, DBML) using <a href="https://github.com/asciidoctor/asciidoctor-kroki">Kroki</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><em>Antora Docs</em> will be used as the main documentation tool for business logic and user related documents.</p>
+</li>
+<li>
+<p>Low level developer <em>API</em> documentation will be created with <a href="https://hexdocs.pm/elixir/main/writing-documentation.html">Elixir Hex Docs</a>. And referenced by a link to <em>Hexdocs</em> in <em>Antora Docs</em> generated documentation.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="use-nix.html">Use Nix with Devenv for dev environments</a></span>
+  <span class="next"><a href="../developer/dev_environment.html">🔭 Setting Up a Development Environment</a></span>
+</nav>
 </article>
   </div>
 </main>

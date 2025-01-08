@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Untitled :: Tololo Docs</title>
-    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0004-backoffice-design.html">
+    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/use-golden-signals.html">
     <meta name="generator" content="Antora 3.1.9">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -66,13 +66,16 @@
     <a class="nav-link" href="0000-use-adr.html">Record Architecture Decisions</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
+    <a class="nav-link" href="use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0002-use-ash.html">Use Ash</a>
+    <a class="nav-link" href="use-ash.html">Use Ash</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0003-use-nix.html">Use Nix with Devenv for dev environments</a>
+    <a class="nav-link" href="use-nix.html">Use Nix with Devenv for dev environments</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-antora-docs.html">Use Antora Docs</a>
   </li>
 </ul>
   </li>
@@ -117,7 +120,7 @@
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
-<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/0004-backoffice-design.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/use-golden-signals.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -125,11 +128,11 @@
 </aside>
 <article class="doc">
 <div class="sect2">
-<h3 id="design-for-backoffice"><a class="anchor" href="#design-for-backoffice"></a>Design for backoffice</h3>
+<h3 id="use-golden-signals"><a class="anchor" href="#use-golden-signals"></a>Use golden signals</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Status: accepted</p>
+<p>Status: draft</p>
 </li>
 <li>
 <p>Date: 2025-01-06</p>
@@ -138,56 +141,19 @@
 </div>
 <div class="sect3">
 <h4 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h4>
-<div class="paragraph">
-<p>We want to leverage existing UI libraries to quickly iterate over the admin panel of the solution while focusing on functionality over design.</p>
-</div>
+
 </div>
 <div class="sect3">
 <h4 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h4>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/naymspace/backpex">Backpex</a>: Highly customizable administration panel for Phoenix LiveView applications. Doesn&#8217;t support Ash currently.</p>
-</li>
-<li>
-<p><a href="https://github.com/tfwright/live_admin">live_admin</a>: Low-config admin UI for Phoenix apps, built on LiveView and Ecto.</p>
-</li>
-<li>
-<p><a href="https://hexdocs.pm/ash_admin/getting-started-with-ash-admin.html">AshAdmin</a>: A super-admin UI dashboard for Ash Framework applications, built with Phoenix LiveView. <a href="https://elixirforum.com/t/an-exploration-of-the-the-future-of-pyro-and-ashadmin/60827/2">It&#8217;s not suitable for being distributed to end-users</a>.</p>
-</li>
-<li>
-<p>Tailwind admin dashboard template such as <a href="https://tailadmin.com/">TailAdmin</a>: Templates built with Tailwind, mostly just designs.</p>
-</li>
-</ul>
-</div>
+
 </div>
 <div class="sect3">
 <h4 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h4>
-<div class="paragraph">
-<p>Chosen option: &#8220;Tailwind admin dashboard template&#8221;, because</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Allows for deep customization.</p>
-</li>
-<li>
-<p>Has no integration issues with the planned stack.</p>
-</li>
-</ul>
-</div>
+
 </div>
 <div class="sect3">
-<h4 id="positive-consequences"><a class="anchor" href="#positive-consequences"></a>Positive Consequences</h4>
-<div class="paragraph">
-<p>Using already built Tailwind components will allow contributors focus on the functionalities rather than the design.</p>
-</div>
-<div class="sect4">
-<h5 id="negative-consequences"><a class="anchor" href="#negative-consequences"></a>Negative Consequences</h5>
-<div class="paragraph">
-<p>Integration with the rest of the solution will need to be implemented from scratch.</p>
-</div>
-</div>
+<h4 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h4>
+
 </div>
 </div>
 </article>

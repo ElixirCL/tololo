@@ -1,5 +1,6 @@
 .Architecture Decisions
 * xref:0000-use-adr.adoc[]
-* xref:0001-use-elixir-phoenix.adoc[]
-* xref:0002-use-ash.adoc[]
-* xref:0003-use-nix.adoc[]
+* xref:use-elixir-phoenix.adoc[]
+* xref:use-ash.adoc[]
+* xref:use-nix.adoc[]
+* xref:use-antora-docs.adoc[]

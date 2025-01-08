@@ -3,10 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Use Ash :: Tololo Docs</title>
-    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0002-use-ash.html">
-    <link rel="prev" href="0001-use-elixir-phoenix.html">
-    <link rel="next" href="0003-use-nix.html">
+    <title>Untitled :: Tololo Docs</title>
+    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/use-grafana-prometheus.html">
     <meta name="generator" content="Antora 3.1.9">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -68,13 +66,16 @@
     <a class="nav-link" href="0000-use-adr.html">Record Architecture Decisions</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
-  </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="0002-use-ash.html">Use Ash</a>
+    <a class="nav-link" href="use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="0003-use-nix.html">Use Nix with Devenv for dev environments</a>
+    <a class="nav-link" href="use-ash.html">Use Ash</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-nix.html">Use Nix with Devenv for dev environments</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-antora-docs.html">Use Antora Docs</a>
   </li>
 </ul>
   </li>
@@ -118,22 +119,16 @@
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="../index.html">Tololo Ecommerce</a></li>
-    <li>Architecture Decisions</li>
-    <li><a href="0002-use-ash.html">Use Ash</a></li>
-  </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/0002-use-ash.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/use-grafana-prometheus.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Use Ash</h1>
-<div id="preamble">
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="use-grafana-prometheus"><a class="anchor" href="#use-grafana-prometheus"></a>Use Grafana + Prometheus</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -144,77 +139,74 @@
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h4>
 <div class="paragraph">
-<p>We need a backend framework that simplifies domain modeling while providing built-in support for generating both REST and GraphQL APIs, providing the flexibility needed for web/mobile users. The solution should reduce boilerplate and ensure consistency. Additionally, it should support advanced features like authorization and validation out of the box.</p>
+<p>A monitoring system that stores and visualizes system metrics will be needed to ensure the reliability and performance of the application.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h4>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://ash-hq.org/">Ash Framework</a>: A declarative, extensible framework for building Elixir applications.</p>
+<p><a href="https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/">Grafana + Prometheus</a>: Grafana provides visualization and Prometheus provides metrics collection.</p>
 </li>
 <li>
-<p>Use <a href="https://hexdocs.pm/ecto/Ecto.html">Ecto</a> with <a href="https://phoenixframework.org/">Phoenix</a> directly: Better integration with the current Phoenix ecosystem, since most libraries are built around Ecto. Implementing both REST and GraphQL would greatly increase development time.</p>
-</li>
-<li>
-<p><a href="https://hexdocs.pm/sleeky/api-reference.html">Sleeky</a>: Lightweight alternative to Ash that&#8217;s tightly coupled to Ecto. Not mature enough for use.</p>
+<p><a href="https://hexdocs.pm/telemetry/">Telemetry</a> library with <a href="https://hexdocs.pm/phoenix_live_dashboard/Phoenix.LiveDashboard.html">Phoenix LiveDashboard</a>: LiveDashboard lacks customizability and Telemetry doesn&#8217;t persist metrics by itself.</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h4>
 <div class="paragraph">
-<p>Chosen option: &#8220;Ash Framework&#8221;, because</p>
+<p>Chosen option: &#8220;Grafana + Prometheus&#8221;, because</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Derives API endpoints from modeled resources, reducing development time.</p>
+<p>Provides full control over metrics and monitoring infrastructure.</p>
 </li>
 <li>
-<p>Supports both GraphQL and REST.</p>
+<p>Grafana integrates well with Prometheus.</p>
 </li>
 <li>
-<p>Offers features like authorization and data validation without additional dependencies.</p>
+<p>Elixir supports Prometheus through libraries such as <a href="https://github.com/deadtrickster/prometheus.ex">prometheus.ex</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Grafana will be used to build and maintain dashboards.</p>
+</li>
+<li>
+<p>Infrastructure might require additional resources for deploying Prometheus and Grafana instances.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="links"><a class="anchor" href="#links"></a>Links</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://hexdocs.pm/telemetry_metrics_prometheus/TelemetryMetricsPrometheus.html" class="bare">https://hexdocs.pm/telemetry_metrics_prometheus/TelemetryMetricsPrometheus.html</a></p>
+</li>
+<li>
+<p><a href="https://github.com/deadtrickster/prometheus-plugs" class="bare">https://github.com/deadtrickster/prometheus-plugs</a></p>
+</li>
+<li>
+<p><a href="https://github.com/deadtrickster/prometheus.ex" class="bare">https://github.com/deadtrickster/prometheus.ex</a></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Ash resources will be used as a source of truth to model the domain</p>
-</li>
-<li>
-<p>Ash simplifies the initial development phase but might introduce challenges when integrating with some libraries.</p>
-</li>
-<li>
-<p>Contributors will need to learn the Ash DSL.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<nav class="pagination">
-  <span class="prev"><a href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a></span>
-  <span class="next"><a href="0003-use-nix.html">Use Nix with Devenv for dev environments</a></span>
-</nav>
 </article>
   </div>
 </main>
