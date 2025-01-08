@@ -1,0 +1,111 @@
+= Personas
+
+If you're creating a website, service, app or product, understanding your users or customers is essential to launching a successful business. Though it's not possible to know what your real-life customers will think of your product before it's released, you can create a fictional target audience to give you an idea of what features or improvements will help their user experience. This can be done by creating various user personas.
+
+A persona is a fictional representation or character of your ideal customer or user. Using personas can help you better understand the needs, behaviors and expectations of your target audience. They also help create solutions at a quicker pace that can result in overall user experience benefit. Whether you're creating a website or developing an app, creating a persona is a useful means of improving your product before it's released to the public.
+
+While a (Positive) Persona is the fictional representation of your ideal user, a _Negative Persona_, also known as an "Exclusionary Persona," is a representation of those you don't want not as a user.
+
+- https://www.indeed.com/career-advice/career-development/what-is-a-persona[Indeed].
+- https://inbound.lasuperagence.com/en/blog-agency/negative-persona-inbound-recruiting[Lasuperagence].
+
+== Technical Administrator
+
+The technical administrator role has the following responsabilities:
+
+- Install _Tololo_ and administrate the servers.
+- Monitor systems and ensure they are operational (Golden Signals).
+- Ensure good security practices.
+- Allocate resources for servers and databases.
+
+=== Persona (+)
+
+=== Persona (-)
+
+== Business Administrator
+
+The business administrator role has the following responsabilities:
+
+- Administer the products, prices and general site configuration.
+- See comercial reports.
+- Post marketing content and promotions.
+- Contact customers and resolve customer problems.
+
+=== Persona (+)
+
+=== Persona (-)
+
+== Backend Developer
+
+The backend developer role has the following responsabilities:
+
+- Extend Tololo API.
+- Implement custom business logic.
+- Integrate Tololo with payment systems.
+
+=== Persona (+)
+
+=== Persona (-)
+
+== Mobile Developer
+
+The mobile developer role has the following responsabilities:
+
+- Use Tololo API.
+- Implement native frontend in iOS and Android systems.
+
+=== Persona (+)
+
+=== José Pérez 
+
+- Age: 35
+- Profession: Native Mobile Developer (iOS, Swift)
+
+=== Persona (-)
+
+== Web Frontend Developer
+
+The web frontend developer role has the following responsabilities:
+
+- Use Tololo API.
+- Implement native frontend in Web systems (Chrome, Firefox, Safari, Edge).
+
+=== Persona (+)
+
+==== Cristian Paz
+
+- Age: 27 years old
+- Profession: Frontend Software Developer (JavaScript, Tailwind, React.js)
+
+- Goals:
+
+** Developing ecommerce solutions for his clients, focusing on frontend design and integration with backend APIs.
+
+
+- Behavior:
+
+** Avoids directly dealing with business logic.
+** Relies on examples for common use cases in the documentation to save development time.
+
+
+- Motivations:
+
+** Delivering a great user experience for customers, enhancing their satisfaction and engagement.
+** Reducing time spent on backend related issues to focus on client-facing features.
+
+
+- Expectations:
+
+** A backend ecommerce solution that works well out of the box.
+** A well-documented API that's easy to navigate.
+
+=== Persona (-)
+
+== Store Customer
+
+The store customer will interact and use directly the frontends. We need to define
+it so teams from UX can make decisions about usability and features.
+
+=== Persona (+)
+
+=== Persona (-)

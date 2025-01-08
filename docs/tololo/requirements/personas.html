@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Personas :: Tololo Docs</title>
+    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/requirements/personas.html">
+    <link rel="prev" href="../developer/dev_environment.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/tololo">Tololo Docs</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="tololo" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Tololo Ecommerce</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Architecture Decisions</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../decisions/0000-use-adr.html">Record Architecture Decisions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../decisions/0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Docs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../developer/dev_environment.html">🔭 Setting Up a Development Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">System Requirements</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="personas.html">Personas</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Tololo Ecommerce</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Tololo Ecommerce</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Tololo Ecommerce</a></li>
+    <li>System Requirements</li>
+    <li><a href="personas.html">Personas</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/requirements/pages/personas.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Personas</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you&#8217;re creating a website, service, app or product, understanding your users or customers is essential to launching a successful business. Though it&#8217;s not possible to know what your real-life customers will think of your product before it&#8217;s released, you can create a fictional target audience to give you an idea of what features or improvements will help their user experience. This can be done by creating various user personas.</p>
+</div>
+<div class="paragraph">
+<p>A persona is a fictional representation or character of your ideal customer or user. Using personas can help you better understand the needs, behaviors and expectations of your target audience. They also help create solutions at a quicker pace that can result in overall user experience benefit. Whether you&#8217;re creating a website or developing an app, creating a persona is a useful means of improving your product before it&#8217;s released to the public.</p>
+</div>
+<div class="paragraph">
+<p>While a (Positive) Persona is the fictional representation of your ideal user, a <em>Negative Persona</em>, also known as an "Exclusionary Persona," is a representation of those you don&#8217;t want not as a user.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.indeed.com/career-advice/career-development/what-is-a-persona">Indeed</a>.</p>
+</li>
+<li>
+<p><a href="https://inbound.lasuperagence.com/en/blog-agency/negative-persona-inbound-recruiting">Lasuperagence</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="technical-administrator"><a class="anchor" href="#technical-administrator"></a>Technical Administrator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The technical administrator role has the following responsabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install <em>Tololo</em> and administrate the servers.</p>
+</li>
+<li>
+<p>Monitor systems and ensure they are operational (Golden Signals).</p>
+</li>
+<li>
+<p>Ensure good security practices.</p>
+</li>
+<li>
+<p>Allocate resources for servers and databases.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="persona"><a class="anchor" href="#persona"></a>Persona (+)</h3>
+
+</div>
+<div class="sect2">
+<h3 id="persona-2"><a class="anchor" href="#persona-2"></a>Persona (-)</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="business-administrator"><a class="anchor" href="#business-administrator"></a>Business Administrator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The business administrator role has the following responsabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Administer the products, prices and general site configuration.</p>
+</li>
+<li>
+<p>See comercial reports.</p>
+</li>
+<li>
+<p>Post marketing content and promotions.</p>
+</li>
+<li>
+<p>Contact customers and resolve customer problems.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="persona-3"><a class="anchor" href="#persona-3"></a>Persona (+)</h3>
+
+</div>
+<div class="sect2">
+<h3 id="persona-4"><a class="anchor" href="#persona-4"></a>Persona (-)</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="backend-developer"><a class="anchor" href="#backend-developer"></a>Backend Developer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The backend developer role has the following responsabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Extend Tololo API.</p>
+</li>
+<li>
+<p>Implement custom business logic.</p>
+</li>
+<li>
+<p>Integrate Tololo with payment systems.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="persona-5"><a class="anchor" href="#persona-5"></a>Persona (+)</h3>
+
+</div>
+<div class="sect2">
+<h3 id="persona-6"><a class="anchor" href="#persona-6"></a>Persona (-)</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mobile-developer"><a class="anchor" href="#mobile-developer"></a>Mobile Developer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The mobile developer role has the following responsabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use Tololo API.</p>
+</li>
+<li>
+<p>Implement native frontend in iOS and Android systems.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="persona-7"><a class="anchor" href="#persona-7"></a>Persona (+)</h3>
+
+</div>
+<div class="sect2">
+<h3 id="josé-pérez"><a class="anchor" href="#josé-pérez"></a>José Pérez</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 35</p>
+</li>
+<li>
+<p>Profession: Native Mobile Developer (iOS, Swift)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persona-8"><a class="anchor" href="#persona-8"></a>Persona (-)</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="web-frontend-developer"><a class="anchor" href="#web-frontend-developer"></a>Web Frontend Developer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The web frontend developer role has the following responsabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use Tololo API.</p>
+</li>
+<li>
+<p>Implement native frontend in Web systems (Chrome, Firefox, Safari, Edge).</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="persona-9"><a class="anchor" href="#persona-9"></a>Persona (+)</h3>
+<div class="sect3">
+<h4 id="cristian-paz"><a class="anchor" href="#cristian-paz"></a>Cristian Paz</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 27 years old</p>
+</li>
+<li>
+<p>Profession: Frontend Software Developer (JavaScript, Tailwind, React.js)</p>
+</li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Developing ecommerce solutions for his clients, focusing on frontend design and integration with backend APIs.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Behavior:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoids directly dealing with business logic.</p>
+</li>
+<li>
+<p>Relies on examples for common use cases in the documentation to save development time.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Motivations:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Delivering a great user experience for customers, enhancing their satisfaction and engagement.</p>
+</li>
+<li>
+<p>Reducing time spent on backend related issues to focus on client-facing features.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Expectations:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A backend ecommerce solution that works well out of the box.</p>
+</li>
+<li>
+<p>A well-documented API that&#8217;s easy to navigate.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persona-10"><a class="anchor" href="#persona-10"></a>Persona (-)</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="store-customer"><a class="anchor" href="#store-customer"></a>Store Customer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The store customer will interact and use directly the frontends. We need to define
+it so teams from UX can make decisions about usability and features.</p>
+</div>
+<div class="sect2">
+<h3 id="persona-11"><a class="anchor" href="#persona-11"></a>Persona (+)</h3>
+
+</div>
+<div class="sect2">
+<h3 id="persona-12"><a class="anchor" href="#persona-12"></a>Persona (-)</h3>
+
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../developer/dev_environment.html">🔭 Setting Up a Development Environment</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

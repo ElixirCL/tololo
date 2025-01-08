@@ -1,3 +1,0 @@
-.Developer Docs
-* xref:positivas.adoc[]
-* xref:negativas.adoc[]
