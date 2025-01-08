@@ -34,6 +34,7 @@ The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. 
 - If the delivery option is selected, a realtime map can be viewed inside a public URL.
 - The business owner can have a "backoffice" with product and prices.
 - The business owner can see sales reports and other relevant statistics (Based on Grafana and Prometheus).
+- The solution must integrate with at least 1 chilean payment option (besides direct deposit). (Flow or Mercadopago).
 
 ==== Non Functional Requirements
 
