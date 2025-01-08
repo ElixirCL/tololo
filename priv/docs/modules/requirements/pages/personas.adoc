@@ -33,7 +33,7 @@ The business administrator role has the following responsabilities:
 
 === Persona (+)
 
-== Claudia Martínez
+==== Claudia Martínez
 
 - Age: 33 years old
 - Profession: Small Business Owner
@@ -83,7 +83,7 @@ The mobile developer role has the following responsabilities:
 
 === Persona (+)
 
-=== José Pérez 
+==== José Pérez 
 
 - Age: 35
 - Profession: Native Mobile Developer (iOS, Swift)
