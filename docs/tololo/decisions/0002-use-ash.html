@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: Tololo Docs</title>
+    <title>Use Ash :: Tololo Docs</title>
     <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/0002-use-ash.html">
+    <link rel="prev" href="0001-use-elixir-phoenix.html">
+    <link rel="next" href="0003-use-nix.html">
     <meta name="generator" content="Antora 3.1.9">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -68,6 +70,12 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
   </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="0002-use-ash.html">Use Ash</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="0003-use-nix.html">Use Nix with Devenv for dev environments</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -110,6 +118,11 @@
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Tololo Ecommerce</a></li>
+    <li>Architecture Decisions</li>
+    <li><a href="0002-use-ash.html">Use Ash</a></li>
+  </ul>
 </nav>
 <div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/0002-use-ash.adoc">Edit this Page</a></div>
 </div>
@@ -118,8 +131,9 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<div class="sect2">
-<h3 id="use-ash"><a class="anchor" href="#use-ash"></a>Use Ash</h3>
+<h1 class="page">Use Ash</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -130,14 +144,19 @@
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h4>
+</div>
+</div>
+<div class="sect1">
+<h2 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>We need a backend framework that simplifies domain modeling while providing built-in support for generating both REST and GraphQL APIs, providing the flexibility needed for web/mobile users. The solution should reduce boilerplate and ensure consistency. Additionally, it should support advanced features like authorization and validation out of the box.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h4>
+</div>
+<div class="sect1">
+<h2 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -152,8 +171,10 @@
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h4>
+</div>
+<div class="sect1">
+<h2 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Chosen option: &#8220;Ash Framework&#8221;, because</p>
 </div>
@@ -171,8 +192,10 @@
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h4>
+</div>
+<div class="sect1">
+<h2 id="consequences"><a class="anchor" href="#consequences"></a>Consequences</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -188,6 +211,10 @@
 </div>
 </div>
 </div>
+<nav class="pagination">
+  <span class="prev"><a href="0001-use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a></span>
+  <span class="next"><a href="0003-use-nix.html">Use Nix with Devenv for dev environments</a></span>
+</nav>
 </article>
   </div>
 </main>

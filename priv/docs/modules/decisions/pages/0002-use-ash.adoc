@@ -1,20 +1,19 @@
-=== Use Ash
+= Use Ash
 
 - Status: accepted
 - Date: 2025-01-07
 
-==== Context and Problem Statement
+== Context and Problem Statement
 
 We need a backend framework that simplifies domain modeling while providing built-in support for generating both REST and GraphQL APIs, providing the flexibility needed for web/mobile users. The solution should reduce boilerplate and ensure consistency. Additionally, it should support advanced features like authorization and validation out of the box.
 
-==== Considered Options
+== Considered Options
 
 - https://ash-hq.org/[Ash Framework]: A declarative, extensible framework for building Elixir applications.
 - Use https://hexdocs.pm/ecto/Ecto.html[Ecto] with https://phoenixframework.org/[Phoenix] directly: Better integration with the current Phoenix ecosystem, since most libraries are built around Ecto. Implementing both REST and GraphQL would greatly increase development time.
 - https://hexdocs.pm/sleeky/api-reference.html[Sleeky]: Lightweight alternative to Ash that's tightly coupled to Ecto. Not mature enough for use.
 
-
-==== Decision Outcome
+== Decision Outcome
 
 Chosen option: "`Ash Framework`", because
 
@@ -22,7 +21,7 @@ Chosen option: "`Ash Framework`", because
 - Supports both GraphQL and REST.
 - Offers features like authorization and data validation without additional dependencies.
 
-==== Consequences
+== Consequences
 
 - Ash resources will be used as a source of truth to model the domain
 - Ash simplifies the initial development phase but might introduce challenges when integrating with some libraries.
