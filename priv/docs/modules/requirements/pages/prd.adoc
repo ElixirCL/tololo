@@ -1,0 +1,41 @@
+= Product Requirements Document
+
+The product requirements document (PRD) is a living document that can help you align a variety
+of stakeholders a set the project up for success. The main objective is to develop a compelling
+plan that team members and stake holders are excited about and support.
+
+The intended audience for this document are developers that want to understand the main
+objectives for this project.
+
+== Context
+
+It is needed an ecommerce solution for small businesses, specially restaurants with delivery. That do not require
+monthly payments or additional expenses (outside server and payment gateway costs). A solution that is Libre (AGPLv3), Free, made with modern tools, well documented and can be used by small stores and restaurants.
+
+=== State of the Art
+
+eCommerce has experienced positive growth in Chile over the last decade due to Chile’s rapid and continuing technological infrastructure development, the launch of 5G service in December 2021, and the popularity of eCommerce since the beginning of the COVID-19 pandemic. According to Statista, 64.8 percent of Chileans bought online during 2022, and this percent will continue to grow each year, reaching 69.4 percent by 2027, driven by a high internet penetration of 91 percent in 2022. The Santiago Chamber of Commerce has a Manual of Best Practices for eCommerce. This code serves as a guide to ethical behavior for eCommerce providers and operators for the benefit of consumers and users.
+
+- https://www.trade.gov/country-commercial-guides/chile-ecommerce[Trade.gov]
+- https://www.ecommerceccs.cl/codigo-de-buenas-practicas-para-el-comercio-electronico-2/[Manual of Best Practices for eCommerce].
+
+Platforms such as https://www.getjusto.com/ecommerce[Justo Ecommerce] and https://www.pedidosya.cl/[PedidosYa] are available 
+for restaurants and take away delivery. These are closed source Software as a Service and Markeplaces that require monthly payments or a percentage of the each sold item.
+
+=== Solution
+
+The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. Will focus on the use case "Small Restaurant with Take Away". 
+
+==== Functional Requirements
+
+- The customer can adquire food items using an API or frontend app.
+- The customer can modify the ingredients and other available customization options.
+- The customer can request delivery or pick items on site.
+- If the delivery option is selected, a realtime map can be viewed inside a public URL.
+- The business owner can have a "backoffice" with product and prices.
+- The business owner can see sales reports and other relevant statistics (Based on Grafana and Prometheus).
+
+==== Non Functional Requirements
+
+- The system must be similar to Justo in UX and features.
+
