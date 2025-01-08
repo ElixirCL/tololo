@@ -62,6 +62,29 @@ The business administrator role has the following responsabilities:
 
 === Persona (-)
 
+==== Ana Pérez
+
+- Age: 41 years old
+- Profession: Retail Manager
+
+
+- Goals:
+
+** Manage inventory across multiple warehouses.
+** Handle thousands of products at once in bulk operations.
+
+
+- Motivations:
+
+** Streamlining operations across multiple locations.
+
+
+- Expectations:
+
+** Ability to seamlessly integrate with specialized enterprise software.
+** Dedicated support and maintanance.
+** Global support, such as allowing multiple currencies.
+
 == Backend Developer
 
 The backend developer role has the following responsabilities:
@@ -85,7 +108,7 @@ The mobile developer role has the following responsabilities:
 
 ==== José Pérez 
 
-- Age: 35
+- Age: 35 years old
 - Profession: Native iOS Mobile Developer (iOS, Swift)
 
 === Persona (-)
@@ -134,5 +157,26 @@ The store customer will interact and use directly the frontends. We need to defi
 it so teams from UX can make decisions about usability and features.
 
 === Persona (+)
+
+==== Laura Fernández
+
+- Age: 32 years old
+- Profession: Office Manager
+
+- Goals:
+
+** Quickly find the products she wants.
+** Be able to buy the products with minimal delays.
+
+- Behavior:
+
+** Regularly shops online and uses delivery services for convenience and time-saving.
+** Uses filters and search bar to quickly find what she needs.
+
+- Expectations:
+
+** Low response times when browsing a store.
+** Real-time notifications about order status.
+** Clear error messages when something goes wrong.
 
 === Persona (-)
