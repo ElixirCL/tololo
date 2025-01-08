@@ -86,7 +86,7 @@ The mobile developer role has the following responsabilities:
 ==== José Pérez 
 
 - Age: 35
-- Profession: Native Mobile Developer (iOS, Swift)
+- Profession: Native iOS Mobile Developer (iOS, Swift)
 
 === Persona (-)
 
@@ -95,7 +95,7 @@ The mobile developer role has the following responsabilities:
 The web frontend developer role has the following responsabilities:
 
 - Use Tololo API.
-- Implement native frontend in Web systems (Chrome, Firefox, Safari, Edge).
+- Implement frontend in Web systems (Chrome, Firefox, Safari, Edge).
 
 === Persona (+)
 
