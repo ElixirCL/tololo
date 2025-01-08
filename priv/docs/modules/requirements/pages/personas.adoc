@@ -135,4 +135,25 @@ it so teams from UX can make decisions about usability and features.
 
 === Persona (+)
 
+==== Laura Fernández
+
+- Age: 32
+- Profession: Office Manager
+
+- Goals:
+
+** Quickly find the products she wants.
+** Be able to buy the products with minimal delays.
+
+- Behavior:
+
+** Regularly shops online and uses delivery services for convenience and time-saving.
+** Uses filters and search bar to quickly find what she needs.
+
+- Expectations:
+
+** Low response times when browsing a store.
+** Real-time notifications about order status.
+** Clear error messages when something goes wrong.
+
 === Persona (-)
