@@ -34,3 +34,45 @@
 ** A well-documented API that's easy to navigate.
 --
 +
+
+== Claudia Martínez
+
+* Age: 33 years old
+
+* Profession: Small Business Owner
+
+
+* Goals:
++
+--
+** Growing her business by providing a good shopping experience to customers.
+** Managing inventory, orders, and customer data .
+** Having the ability to expand her store to more platforms (such as mobile apps) while mantaining her current system.
+--
++
+
+* Behavior:
++
+--
+** Manages inventory and orders on her own.
+** Not technical, appreciates intuitive interfaces.
+--
++
+
+* Motivations:
++
+--
+** Maintaining ownership over their platform, by not relying on an external service to manage it.
+** Ensuring the platform can grow with their business, handling increased traffic and inventory as sales expand.
+--
++
+
+* Expectations:
++
+--
+** Being able to manage her store without needing constant technical support.
+** A stable system that will keep working even when errors occur.
+** Easy-to-follow guides for common backoffice operations.
+--
++
+
