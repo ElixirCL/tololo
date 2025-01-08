@@ -24,7 +24,7 @@ for restaurants and take away delivery. These are closed source Software as a Se
 
 === Solution
 
-The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. Will focus on the use case "Small Restaurant with Take Away". 
+The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. Will focus on the use case "Small Restaurant with Take Away". Other inspirations can be pizza deliveries such as https://www.meltpizzas.com/[Melt Pizza], https://www.papajohns.cl/[Papa Johns], and https://www.underpizza.com/[Underpizza].
 
 ==== Functional Requirements
 
