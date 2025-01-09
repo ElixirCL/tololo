@@ -28,7 +28,7 @@ For the API and architectural decisions, we considered LunarPHP and MedusaJS, bo
 
 1. TODO
 
-=== Solution
+== Solution
 
 The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. Will focus on the use case "Small Restaurant with Take Away". Other inspirations can be pizza deliveries such as https://www.meltpizzas.com/[Melt Pizza], https://www.papajohns.cl/[Papa Johns], and https://www.underpizza.com/[Underpizza].
 
@@ -38,7 +38,7 @@ The solution will also allow live tracking of deliveries, by connecting an app t
 
 Live tracking allows customers to monitor their orders in real-time, improving trust and reducing inquiries about delivery status.
 
-==== Dependencies
+=== Dependencies
 
 * Frontend:
 ** The solution is purely headless, so a separate frontend must be provided for customers to interact with the backend API.
@@ -55,7 +55,7 @@ Live tracking allows customers to monitor their orders in real-time, improving t
 * Prometheus & Grafana (Optional):
 ** Prometheus and Grafana instances are necessary for system monitoring and reporting, enabling performance metrics and real-time analytics dashboards.
 
-==== Functional Requirements
+=== Functional Requirements
 
 - The customer can adquire food items using an API or frontend app.
 - The customer can modify the ingredients and other available customization options.
@@ -66,13 +66,13 @@ Live tracking allows customers to monitor their orders in real-time, improving t
 - The solution must integrate with at least 1 chilean payment option (besides direct deposit). (Flow or Mercadopago).
 - The solution must send events relevant to inventory, sales, delivery and order status to Kafka, if configured.
 
-==== Non Functional Requirements
+=== Non Functional Requirements
 
 - The system must be similar to Justo in UX and features.
 - The system should include clear installation instructions and require minimal configuration to get started.
 - The system should handle dependencies seamlessly, avoiding manual intervention for typical use cases.
 
-=== Diagrams
+== Diagrams
 
 - System Architecture
 
@@ -97,7 +97,7 @@ graph TD
     Backend -- "Sends events" --> Kafka
 ....
 
-==== Acceptance Criteria
+=== Acceptance Criteria
 
 * Product Browsing
 
@@ -150,7 +150,7 @@ graph TD
 ** The Kafka event system should function properly and allow easy extensions or integrations (e.g., for inventory management).
 
 
-=== References
+== References
 
 ==== https://www.frescofud.com/features/admin-panel[Backoffice Orders (Frescofud)]
 image::admin_ref.png[]
