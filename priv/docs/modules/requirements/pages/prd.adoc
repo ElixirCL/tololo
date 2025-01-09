@@ -34,6 +34,23 @@ The solution will also allow live tracking of deliveries, by connecting an app t
 
 Live tracking allows customers to monitor their orders in real-time, improving trust and reducing inquiries about delivery status.
 
+==== Dependencies
+
+* Frontend:
+** The solution is purely headless, so a separate frontend must be provided for customers to interact with the backend API.
+
+* Cloud Hosting Solution:
+** A cloud hosting platform (e.g., AWS, Google Cloud, DigitalOcean) that supports running a Docker image for deployment.
+
+* PostgreSQL Database:
+** A PostgreSQL database instance is required for storing the application's data (e.g., orders, products, user data).
+
+* Kafka (Optional):
+** A Kafka instance is needed if event-driven functionality is required, allowing for the handling of asynchronous events (e.g., order processing, inventory updates).
+
+* Prometheus & Grafana (Optional):
+** Prometheus and Grafana instances are necessary for system monitoring and reporting, enabling performance metrics and real-time analytics dashboards.
+
 ==== Functional Requirements
 
 - The customer can adquire food items using an API or frontend app.
