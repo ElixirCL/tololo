@@ -124,9 +124,17 @@ TODO
 ** Events should be published and consumed successfully.
 ** The Kafka event system should function properly and allow easy extensions or integrations (e.g., for inventory management).
 
-==== Technical Details
 
-TODO
+=== References
 
-- API Structure
-- Routes in REST and GraphQL
+==== Backoffice Orders
+image::admin_ref.png[]
+
+==== Backoffice Inventory
+image::inventory_ref.png[]
+
+==== Checkout
+image::checkout_ref.png[]
+
+==== Graphs
+image::graph_ref.png[]
