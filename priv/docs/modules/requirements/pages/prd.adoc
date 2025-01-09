@@ -60,8 +60,10 @@ Live tracking allows customers to monitor their orders in real-time, improving t
 - The business owner can have a "backoffice" with product and prices.
 - The business owner can see sales reports and other relevant statistics (Based on Grafana and Prometheus).
 - The solution must integrate with at least 1 chilean payment option (besides direct deposit). (Flow or Mercadopago).
+- The solution must send events relevant to inventory, sales, delivery and order status to Kafka, if configured.
 
 ==== Non Functional Requirements
 
 - The system must be similar to Justo in UX and features.
-
+- The system should include clear installation instructions and require minimal configuration to get started.
+- The system should handle dependencies seamlessly, avoiding manual intervention for typical use cases.
