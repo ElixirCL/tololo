@@ -24,6 +24,10 @@ for restaurants and take away delivery. These are closed source Software as a Se
 
 For the API and architectural decisions, we considered LunarPHP and MedusaJS, both open-source headless ecommerce solutions.
 
+==== Checkout Workflow Example (used by PedidosYa)
+
+1. TODO
+
 === Solution
 
 The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. Will focus on the use case "Small Restaurant with Take Away". Other inspirations can be pizza deliveries such as https://www.meltpizzas.com/[Melt Pizza], https://www.papajohns.cl/[Papa Johns], and https://www.underpizza.com/[Underpizza].
@@ -148,14 +152,14 @@ graph TD
 
 === References
 
-==== Backoffice Orders
+==== https://www.frescofud.com/features/admin-panel[Backoffice Orders (Frescofud)]
 image::admin_ref.png[]
 
-==== Backoffice Inventory
+==== https://www.shopify.com/[Backoffice Inventory (Shopify)]
 image::inventory_ref.png[]
 
-==== Checkout
+==== https://www.shopify.com/[Checkout (Shopify)]
 image::checkout_ref.png[]
 
-==== Graphs
+==== https://www.shopify.com/[Graphs (Shopify)]
 image::graph_ref.png[]
