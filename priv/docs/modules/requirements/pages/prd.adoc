@@ -22,9 +22,13 @@ eCommerce has experienced positive growth in Chile over the last decade due to C
 Platforms such as https://www.getjusto.com/ecommerce[Justo Ecommerce] and https://www.pedidosya.cl/[PedidosYa] are available 
 for restaurants and take away delivery. These are closed source Software as a Service and Markeplaces that require monthly payments or a percentage of the each sold item.
 
+For the API and architectural decisions, we considered LunarPHP and MedusaJS, both open-source headless ecommerce solutions.
+
 === Solution
 
 The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. Will focus on the use case "Small Restaurant with Take Away". Other inspirations can be pizza deliveries such as https://www.meltpizzas.com/[Melt Pizza], https://www.papajohns.cl/[Papa Johns], and https://www.underpizza.com/[Underpizza].
+
+Our plan is to make an API as simple as https://docs.lunarphp.io/core/overview.html[LunarPHP's], while leveraging the https://docs.medusajs.com/v1/development/events/[events system of MedusaJS] with Kafka, to allow extending the system with an existing one. This event-driven architecture would enable seamless system extensions and integrations with other tools, such as inventory management.
 
 ==== Functional Requirements
 
