@@ -28,7 +28,11 @@ For the API and architectural decisions, we considered LunarPHP and MedusaJS, bo
 
 The solution will be oriented as a libre/free alternative to _Justo Ecommerce_. Will focus on the use case "Small Restaurant with Take Away". Other inspirations can be pizza deliveries such as https://www.meltpizzas.com/[Melt Pizza], https://www.papajohns.cl/[Papa Johns], and https://www.underpizza.com/[Underpizza].
 
-Our plan is to make an API as simple as https://docs.lunarphp.io/core/overview.html[LunarPHP's], while leveraging the https://docs.medusajs.com/v1/development/events/[events system of MedusaJS] with Kafka, to allow extending the system with an existing one. This event-driven architecture would enable seamless system extensions and integrations with other tools, such as inventory management.
+Our plan is to make an API as simple as https://docs.lunarphp.io/core/overview.html[LunarPHP's], while leveraging the https://docs.medusajs.com/v1/development/events/[events system of MedusaJS] with Kafka, to allow extending the system with an existing one. This event-driven architecture would enable seamless system extensions and integrations with other tools, such as inventory management. Kafka ensures reliable event processing and allows the system to scale as demand grows, while also providing durability for critical data like order status updates or inventory changes.
+
+The solution will also allow live tracking of deliveries, by connecting an app to an endpoint exposed by the backend. The endpoint will handle periodic location updates from the delivery app, providing customers access to real-time delivery tracking via a public URL.
+
+Live tracking allows customers to monitor their orders in real-time, improving trust and reducing inquiries about delivery status.
 
 ==== Functional Requirements
 
