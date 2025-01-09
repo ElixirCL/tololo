@@ -68,9 +68,30 @@ Live tracking allows customers to monitor their orders in real-time, improving t
 - The system should include clear installation instructions and require minimal configuration to get started.
 - The system should handle dependencies seamlessly, avoiding manual intervention for typical use cases.
 
-==== Diagrams
+=== Diagrams
 
-TODO
+- System Architecture
+
+[mermaid,abcd-flowchart,svg]
+....
+graph TD
+    Frontend[Frontend]
+    subgraph Backend[Backend]
+        Backoffice
+        PaymentProcessorModule[Payments Module]
+    end
+    PaymentProcessors[Payment Processors]
+    Prometheus
+    Grafana
+    Kafka
+
+    Backend -- "Exports metrics" -->  Prometheus
+    Prometheus -- "Visualizes metrics" --> Grafana
+
+    Frontend <-- "Communicates through REST/GraphQL endpoints" --> Backend
+    PaymentProcessorModule <-- "Communicates with external service" --> PaymentProcessors
+    Backend -- "Sends events" --> Kafka
+....
 
 ==== Acceptance Criteria
 
