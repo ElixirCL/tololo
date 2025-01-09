@@ -148,7 +148,7 @@ The backend developer role has the following responsabilities:
 - Goals:
 
 ** Extending the core of the backend with complex features.
-** Using a custom database solution.
+** Using a custom database solution that might not be compatible with Ash.
 
 == Mobile Developer
 
@@ -178,7 +178,7 @@ The mobile developer role has the following responsabilities:
 
 - Goals:
 
-** TODO
+** Develop an app with extensive offline capabilities, to order a delivery in zones that might not always have an internet connection (through phone calls).
 
 == Web Frontend Developer
 
@@ -255,4 +255,7 @@ it so teams from UX can make decisions about usability and features.
 
 - Goals:
 
-** TODO
+** Getting detailed nutritional information and ingredient sourcing for products.
+** Finding hyper-personalized product recommendations.
+** Expecting instant, human-like customer support.
+
