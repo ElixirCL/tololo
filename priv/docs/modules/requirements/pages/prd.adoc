@@ -67,3 +67,66 @@ Live tracking allows customers to monitor their orders in real-time, improving t
 - The system must be similar to Justo in UX and features.
 - The system should include clear installation instructions and require minimal configuration to get started.
 - The system should handle dependencies seamlessly, avoiding manual intervention for typical use cases.
+
+==== Diagrams
+
+TODO
+
+==== Acceptance Criteria
+
+* Product Browsing
+
+** The customer can access the full list of products through the exposed endpoints.
+** The product data includes relevant details (name, description, price, and customization options).
+** Search functionality returns relevant products based on customer queries.
+
+
+* Product Customization
+
+** The customer can modify product options (e.g., choose pizza toppings, product size, color, etc.).
+** The system reflects changes immediately in the total price.
+
+* Shopping Cart
+
+** The customer can add items to the cart through the exposed endpoints.
+** The cart displays updated totals, including taxes and delivery fees.
+** The customer can remove items from the cart or change quantities.
+
+* Checkout Process
+
+** The customer can complete the checkout process.
+** The system accepts at least one payment method (e.g., Flow, MercadoPago, etc.).
+** The system confirms payment success/failure, and sends confirmations and status updates as notifications.
+
+
+* Delivery Tracking
+
+** The system provides live tracking of deliveries through a public URL.
+** The customer can view the location of their delivery in real-time (via a map).
+** Location events can be received through the exposed endpoint.
+
+
+* Backoffice
+
+** The business owner can manage product listings and inventory (add, update, delete).
+** The business owner can set product prices and customize available options.
+** The business owner can view sales reports and statistics (via Grafana/Prometheus integration).
+
+
+* Headless Compatibility
+
+** The system must be fully headless, and a frontend can be integrated without requiring code changes to the backend.
+** The solution should support multiple frontend apps (e.g., mobile apps, PWAs).
+
+
+* Event-driven Architecture
+
+** Events should be published and consumed successfully.
+** The Kafka event system should function properly and allow easy extensions or integrations (e.g., for inventory management).
+
+==== Technical Details
+
+TODO
+
+- API Structure
+- Routes in REST and GraphQL
