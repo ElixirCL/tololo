@@ -20,7 +20,40 @@ The technical administrator role has the following responsabilities:
 
 === Persona (+)
 
+==== Marco Godoy
+
+- Age: 23 years old
+- Profession: Devops Engineer
+
+- Goals:
+
+** Ensure overall system reliability by integrating metrics, logs and errors in a single place.
+** Monitor resource usage to scale infrastructure accordingly.
+
+- Behavior:
+
+** Regularly checks Grafana dashboard to monitor resource usage, logs and errors.
+** Reviews logs when debugging or optimizing system performance.
+
+- Motivations:
+
+** Keeping the system healthy to avoid downtime and ensure user satisfaction.
+
+- Expectations:
+
+** The backend stores data that can be processed and displayed by Grafana.
+** Failures should trigger alerts with enough context to address the issue.
+** The backend should be simple to set up, with clear documentation for integrating with the existing infrastructure.
+
 === Persona (-)
+
+==== Ivan Rojo
+
+- Age: 27 years old
+
+- Goals:
+** Ensure the system runs on highly specialized hardware or infrastructure.
+** Deploy and manage the system using proprietary or unconventional monitoring tools.
 
 == Business Administrator
 
@@ -95,7 +128,27 @@ The backend developer role has the following responsabilities:
 
 === Persona (+)
 
+==== Victoria Vera
+
+- Age: 31 years old
+- Profession: Backend developer
+
+- Goals:
+
+** Implementing a custom payment processor module.
+** Integrating the backend with the current system, using Kafka to handle events.
+
 === Persona (-)
+
+==== Silvia Arancibia
+
+- Age: 27 years old
+- Profession: Backend developer
+
+- Goals:
+
+** Extending the core of the backend with complex features.
+** Using a custom database solution.
 
 == Mobile Developer
 
@@ -111,7 +164,21 @@ The mobile developer role has the following responsabilities:
 - Age: 35 years old
 - Profession: Native iOS Mobile Developer (iOS, Swift)
 
+- Goals:
+
+** Consuming the backend's API through a mobile app to enable real-time tracking of deliveries.
+** Allowing users to browse through the available products through the app.
+
 === Persona (-)
+
+==== Carlos Castillo
+
+- Age: 34 years old
+- Profession: Multi-platform Mobile Developer (Android, iOS, Flutter)
+
+- Goals:
+
+** TODO
 
 == Web Frontend Developer
 
@@ -180,3 +247,12 @@ it so teams from UX can make decisions about usability and features.
 ** Clear error messages when something goes wrong.
 
 === Persona (-)
+
+==== Kaylee Smith
+
+- Age: 20 years old
+- Profession: Sandwich shop service worker
+
+- Goals:
+
+** TODO
