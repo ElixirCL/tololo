@@ -24,9 +24,6 @@ for restaurants and take away delivery. These are closed source Software as a Se
 
 For the API and architectural decisions, we considered LunarPHP and MedusaJS, both open-source headless ecommerce solutions.
 
-==== Checkout Workflow Example (used by PedidosYa)
-
-1. TODO
 
 == Solution
 
@@ -152,14 +149,65 @@ graph TD
 
 == References
 
-==== https://www.frescofud.com/features/admin-panel[Backoffice Orders (Frescofud)]
+=== https://www.frescofud.com/features/admin-panel[Backoffice Orders (Frescofud)]
 image::admin_ref.png[]
 
-==== https://www.shopify.com/[Backoffice Inventory (Shopify)]
+=== https://www.shopify.com/[Backoffice Inventory (Shopify)]
 image::inventory_ref.png[]
 
-==== https://www.shopify.com/[Checkout (Shopify)]
+=== https://www.shopify.com/[Checkout (Shopify)]
 image::checkout_ref.png[]
 
-==== https://www.shopify.com/[Graphs (Shopify)]
+=== https://www.shopify.com/[Graphs (Shopify)]
 image::graph_ref.png[]
+
+=== Checkout Workflow Example (used by PedidosYa)
+
+1. User is asked to sign up.
+
++
+image::step_1.png[]
++
+
+2. User reviews order and selects options.
+
++
+image::step_2.png[]
++
+
+3. User edits option.
+
++
+image::step_3.png[]
++
+
+4. User adds note to order (optional).
+
++
+image::step_4.png[]
++
+
+5. User adds a delivery address.
+
++
+image::step_5.png[]
++
+
+6. User checks the order overview.
+
++
+image::step_6.png[]
++
+
+7. User adds payment method, then confirms the order.
+
++
+image::step_7.png[]
++
+
+Email notification received after confirmation:
+
++
+image::workflow_notification.png[]
++
+
