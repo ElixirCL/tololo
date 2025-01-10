@@ -12,6 +12,11 @@ in
   };
   enterShell = ''
     export PATH="$HOME/.mix/escripts:$PATH"
+
+    if [ ! -d ".devenv/state/grafana" ]; then
+      cp -rL .devenv/profile/share/grafana .devenv/state/grafana
+      chmod 777 -R .devenv/state/grafana
+    fi
   '';
   
   # https://devenv.sh/common-patterns/#configure-the-shell-based-on-the-current-machine
@@ -19,6 +24,8 @@ in
     pkgs.gnumake
     pkgs.antora
     pkgs.python314
+    pkgs.grafana
+    pkgs.prometheus
   ] ++ 
   # Linux only
   lib.optionals pkgs.stdenv.isLinux [
@@ -45,10 +52,16 @@ in
     install.enable = true;
   };
 
+  processes = {
+    grafana.exec = "grafana server --homepath .devenv/state/grafana";
+  };
+
   services.postgres = {
     enable = true;
     initialScript = ''
       CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'postgres';
     '';
   };
+
+  services.kafka.enable = true;
 }
