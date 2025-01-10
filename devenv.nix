@@ -54,6 +54,7 @@ in
 
   processes = {
     grafana.exec = "grafana server --homepath .devenv/state/grafana";
+    prometheus.exec = "prometheus";
   };
 
   services.postgres = {
