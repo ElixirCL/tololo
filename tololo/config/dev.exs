@@ -29,6 +29,9 @@ config :tololo, TololoWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:tololo, ~w(--watch)]}
   ]
 
+config :tololo, :kafka_driver,
+      driver: Tololo.Kafka.Driver
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
