@@ -32,6 +32,12 @@ in
       # runs before entering shell and before testing
       before = [ "devenv:enterShell" "devenv:enterTest" ];
     };
+    "mix:format" = {
+      exec = ''
+        cd tololo
+        mix format
+      '';
+    };
   };
   
   enterTest = ''
