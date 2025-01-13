@@ -16,8 +16,9 @@ config :swoosh, local: false
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :tololo, :kafka_driver,
-      driver: Tololo.Kafka.Noop
+config :tololo, :kafka_driver, driver: Tololo.Kafka.Noop
+
+config :tololo, Tololo.Prometheus, disabled: true
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
