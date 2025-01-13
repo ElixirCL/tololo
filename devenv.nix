@@ -22,7 +22,25 @@ in
       mkdir .devenv/state/prometheus
     fi
   '';
+
+  tasks = {
+    "mix:deps" = {
+      exec = ''
+        cd tololo
+        mix deps.get
+      '';
+      # runs before entering shell and before testing
+      before = [ "devenv:enterShell" "devenv:enterTest" ];
+    };
+  };
   
+  enterTest = ''
+    cd tololo
+
+    mix test
+    mix credo
+  '';
+
   # https://devenv.sh/common-patterns/#configure-the-shell-based-on-the-current-machine
   packages = [
     pkgs.gnumake
