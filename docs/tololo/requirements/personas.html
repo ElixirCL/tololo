@@ -78,6 +78,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../decisions/use-antora-docs.html">Use Antora Docs</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../decisions/use-tbd-and-cc.html">Use Trunk Based Development and Conventional Commits</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -184,11 +187,97 @@
 </div>
 <div class="sect2">
 <h3 id="persona"><a class="anchor" href="#persona"></a>Persona (+)</h3>
-
+<div class="sect3">
+<h4 id="marco-godoy"><a class="anchor" href="#marco-godoy"></a>Marco Godoy</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 23 years old</p>
+</li>
+<li>
+<p>Profession: Devops Engineer</p>
+</li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure overall system reliability by integrating metrics, logs and errors in a single place.</p>
+</li>
+<li>
+<p>Monitor resource usage to scale infrastructure accordingly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Behavior:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Regularly checks Grafana dashboard to monitor resource usage, logs and errors.</p>
+</li>
+<li>
+<p>Reviews logs when debugging or optimizing system performance.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Motivations:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Keeping the system healthy to avoid downtime and ensure user satisfaction.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Expectations:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The backend stores data that can be processed and displayed by Grafana.</p>
+</li>
+<li>
+<p>Failures should trigger alerts with enough context to address the issue.</p>
+</li>
+<li>
+<p>The backend should be simple to set up, with clear documentation for integrating with the existing infrastructure.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="persona-2"><a class="anchor" href="#persona-2"></a>Persona (-)</h3>
-
+<div class="sect3">
+<h4 id="ivan-rojo"><a class="anchor" href="#ivan-rojo"></a>Ivan Rojo</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 27 years old</p>
+</li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure the system runs on highly specialized hardware or infrastructure.</p>
+</li>
+<li>
+<p>Deploy and manage the system using proprietary or unconventional monitoring tools.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -366,11 +455,61 @@
 </div>
 <div class="sect2">
 <h3 id="persona-5"><a class="anchor" href="#persona-5"></a>Persona (+)</h3>
-
+<div class="sect3">
+<h4 id="victoria-vera"><a class="anchor" href="#victoria-vera"></a>Victoria Vera</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 31 years old</p>
+</li>
+<li>
+<p>Profession: Backend developer</p>
+</li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementing a custom payment processor module.</p>
+</li>
+<li>
+<p>Integrating the backend with the current system, using Kafka to handle events.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="persona-6"><a class="anchor" href="#persona-6"></a>Persona (-)</h3>
-
+<div class="sect3">
+<h4 id="silvia-arancibia"><a class="anchor" href="#silvia-arancibia"></a>Silvia Arancibia</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 27 years old</p>
+</li>
+<li>
+<p>Profession: Backend developer</p>
+</li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Extending the core of the backend with complex features.</p>
+</li>
+<li>
+<p>Using a custom database solution that might not be compatible with Ash.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -402,13 +541,48 @@
 <li>
 <p>Profession: Native iOS Mobile Developer (iOS, Swift)</p>
 </li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Consuming the backend&#8217;s API through a mobile app to enable real-time tracking of deliveries.</p>
+</li>
+<li>
+<p>Allowing users to browse through the available products through the app.</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="persona-8"><a class="anchor" href="#persona-8"></a>Persona (-)</h3>
-
+<div class="sect3">
+<h4 id="carlos-castillo"><a class="anchor" href="#carlos-castillo"></a>Carlos Castillo</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 34 years old</p>
+</li>
+<li>
+<p>Profession: Multi-platform Mobile Developer (Android, iOS, Flutter)</p>
+</li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Develop an app with extensive offline capabilities, to order a delivery in zones that might not always have an internet connection (through phone calls).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -566,7 +740,35 @@ it so teams from UX can make decisions about usability and features.</p>
 </div>
 <div class="sect2">
 <h3 id="persona-12"><a class="anchor" href="#persona-12"></a>Persona (-)</h3>
-
+<div class="sect3">
+<h4 id="kaylee-smith"><a class="anchor" href="#kaylee-smith"></a>Kaylee Smith</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Age: 20 years old</p>
+</li>
+<li>
+<p>Profession: Sandwich shop service worker</p>
+</li>
+<li>
+<p>Goals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Getting detailed nutritional information and ingredient sourcing for products.</p>
+</li>
+<li>
+<p>Finding hyper-personalized product recommendations.</p>
+</li>
+<li>
+<p>Expecting instant, human-like customer support.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
