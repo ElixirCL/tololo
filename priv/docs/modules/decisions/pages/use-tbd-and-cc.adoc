@@ -9,6 +9,24 @@ In order to standarize contributions and commit messages we will use https://tru
 
 _TBD_ is a source-control branching model, where developers collaborate on code in a single branch called ‘main’, resist any pressure to create other long-lived development branches by employing documented techniques. They therefore avoid merge hell, do not break the build, and live happily ever after.
 
+.Flow
+1. Update to latest main code. `git pull origin main`.
+2. Create a new branch `git checkout -b my-change`.
+3. Add changes `git add *` and commits `git commit -m 'my changes'`.
+4. Send changes to branch `git push origin my-change`
+5. Create a new PR. Follow *Conventional Commits* in the Title.
+6. Request approval from other contributor.
+7. Github action will enable *Squash Commit* if all the automatic tests pass.
+8. Once approved and solved any issue found the PR creator must apply *Squash Commits* using *Conventional Commits* and fill the body with the details.
+9. Close the related issue (if any) and delete the used branch.
+
+[IMPORTANT]
+====
+Is recommended that the original person merges the PR. The approver will only approve the PR, but not merge it.
+Since the original author can detect unexpected changes before merging and after approval (for example a merge conflict)
+that must be resolved.
+====
+
 The _Conventional Commits_ specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with SemVer, by describing the features, fixes, and breaking changes made in commit messages.
 
 The commit message should be structured as follows:
