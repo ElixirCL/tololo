@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Use Ash :: Tololo Docs</title>
-    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/use-ash.html">
-    <link rel="prev" href="use-elixir-phoenix.html">
-    <link rel="next" href="use-nix.html">
+    <title>Use Trunk Based Development and Conventional Commits :: Tololo Docs</title>
+    <link rel="canonical" href="https://elixircl.github.io/tololo/tololo/decisions/use-tbd-and-cc.html">
+    <link rel="prev" href="use-antora-docs.html">
+    <link rel="next" href="../developer/dev_environment.html">
     <meta name="generator" content="Antora 3.1.9">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -70,7 +70,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="use-ash.html">Use Ash</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -79,7 +79,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="use-antora-docs.html">Use Antora Docs</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="use-tbd-and-cc.html">Use Trunk Based Development and Conventional Commits</a>
   </li>
 </ul>
@@ -130,17 +130,17 @@
   <ul>
     <li><a href="../index.html">Tololo Ecommerce</a></li>
     <li>Architecture Decisions</li>
-    <li><a href="use-ash.html">Use Ash</a></li>
+    <li><a href="use-tbd-and-cc.html">Use Trunk Based Development and Conventional Commits</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/use-ash.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///Users/camilowser/Developer/elixircl/tololo/priv/docs/modules/decisions/pages/use-tbd-and-cc.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Use Ash</h1>
+<h1 class="page">Use Trunk Based Development and Conventional Commits</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="ulist">
@@ -149,56 +149,111 @@
 <p>Status: accepted</p>
 </li>
 <li>
-<p>Date: 2025-01-07</p>
+<p>Date: 2025-01-13</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="context-and-problem-statement"><a class="anchor" href="#context-and-problem-statement"></a>Context and Problem Statement</h2>
+<h2 id="context"><a class="anchor" href="#context"></a>Context</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We need a backend framework that simplifies domain modeling while providing built-in support for generating both REST and GraphQL APIs, providing the flexibility needed for web/mobile users. The solution should reduce boilerplate and ensure consistency. Additionally, it should support advanced features like authorization and validation out of the box.</p>
+<p>In order to standarize contributions and commit messages we will use <a href="https://trunkbaseddevelopment.com/">Trunk Based Development</a> and <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a>.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="considered-options"><a class="anchor" href="#considered-options"></a>Considered Options</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://ash-hq.org/">Ash Framework</a>: A declarative, extensible framework for building Elixir applications.</p>
-</li>
-<li>
-<p>Use <a href="https://hexdocs.pm/ecto/Ecto.html">Ecto</a> with <a href="https://phoenixframework.org/">Phoenix</a> directly: Better integration with the current Phoenix ecosystem, since most libraries are built around Ecto. Implementing both REST and GraphQL would greatly increase development time.</p>
-</li>
-<li>
-<p><a href="https://hexdocs.pm/sleeky/api-reference.html">Sleeky</a>: Lightweight alternative to Ash that&#8217;s tightly coupled to Ecto. Not mature enough for use.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="decision-outcome"><a class="anchor" href="#decision-outcome"></a>Decision Outcome</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Chosen option: &#8220;Ash Framework&#8221;, because</p>
+<p><em>TBD</em> is a source-control branching model, where developers collaborate on code in a single branch called ‘main’, resist any pressure to create other long-lived development branches by employing documented techniques. They therefore avoid merge hell, do not break the build, and live happily ever after.</p>
+</div>
+<div class="paragraph">
+<p>The <em>Conventional Commits</em> specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with SemVer, by describing the features, fixes, and breaking changes made in commit messages.</p>
+</div>
+<div class="paragraph">
+<p>The commit message should be structured as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&lt;type&gt;[(optional scope)][optional !]: &lt;description&gt;
+
+[optional body]
+
+[optional footer(s)]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The commit categories will be (based on <a href="https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional">@commitlint/config-conventional</a>):</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Derives API endpoints from modeled resources, reducing development time.</p>
+<p><strong>chore</strong>: Another change that do not fits any other category.</p>
 </li>
 <li>
-<p>Supports both GraphQL and REST.</p>
+<p><strong>refactor</strong>:  Modify or delete existing code.</p>
 </li>
 <li>
-<p>Offers features like authorization and data validation without additional dependencies.</p>
+<p><strong>feat</strong>: Implements a new feature.</p>
+</li>
+<li>
+<p><strong>docs</strong>: Modify or creates documentation.</p>
+</li>
+<li>
+<p><strong>fix</strong>: Fix a bug.</p>
+</li>
+<li>
+<p><strong>test</strong>: Adds or improves tests.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All casing in the category and scope must be lowercase.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All merge commits must reference the pull request number in the squash message.
+Once merged the sender branch will be deleted.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="examples"><a class="anchor" href="#examples"></a>Examples</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">feat: allow provided config object to extend other configs in #232
+
+feat!: send an email to the customer when a product is shipped in #412
+
+feat(api)!: send an email to the customer when a product is shipped in #42
+
+chore!: drop support for Node 6 in #24</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="decision"><a class="anchor" href="#decision"></a>Decision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We will use <em>Trunk Based Development</em>, as a branch strategy and <em>Conventional Commits</em> as a commit message standarization.</p>
 </div>
 </div>
 </div>
@@ -208,21 +263,30 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Ash resources will be used as a source of truth to model the domain</p>
+<p>Conventional commits will only be required inside the <strong>Squash Commit</strong> merge option inside the <em>Pull Request</em>. The developer can add as many commits and any format it needs. But the final <strong>Squash Commit</strong> message must follow <em>Conventional Commits</em> and reference the Pull Request number and a summary of the changes inside its body.</p>
 </li>
 <li>
-<p>Ash simplifies the initial development phase but might introduce challenges when integrating with some libraries.</p>
+<p>Pull Request must have at least 1 approval of another developer before merge them inside main.</p>
 </li>
 <li>
-<p>Contributors will need to learn the Ash DSL.</p>
+<p>Pull Request must always be updated with the latest main version and do not have merge conflicts.</p>
+</li>
+<li>
+<p>Pull Request must pass the test suite before merge to <code>main</code>.</p>
+</li>
+<li>
+<p><code>main</code> branch must always be runnable. Pull Request must not break <code>main</code>.</p>
+</li>
+<li>
+<p>Each commit on <code>main</code> will trigger a new build action that will release a "nightly version" that will update the semver.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="use-elixir-phoenix.html">Use Elixir with Phoenix and PostgreSQL</a></span>
-  <span class="next"><a href="use-nix.html">Use Nix with Devenv for dev environments</a></span>
+  <span class="prev"><a href="use-antora-docs.html">Use Antora Docs</a></span>
+  <span class="next"><a href="../developer/dev_environment.html">🔭 Setting Up a Development Environment</a></span>
 </nav>
 </article>
   </div>
