@@ -79,6 +79,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../decisions/use-antora-docs.html">Use Antora Docs</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../decisions/use-tbd-and-cc.html">Use Trunk Based Development and Conventional Commits</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -177,14 +180,86 @@ monthly payments or additional expenses (outside server and payment gateway cost
 <p>Platforms such as <a href="https://www.getjusto.com/ecommerce">Justo Ecommerce</a> and <a href="https://www.pedidosya.cl/">PedidosYa</a> are available
 for restaurants and take away delivery. These are closed source Software as a Service and Markeplaces that require monthly payments or a percentage of the each sold item.</p>
 </div>
+<div class="paragraph">
+<p>For the API and architectural decisions, we considered LunarPHP and MedusaJS, both open-source headless ecommerce solutions.</p>
 </div>
-<div class="sect2">
-<h3 id="solution"><a class="anchor" href="#solution"></a>Solution</h3>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solution"><a class="anchor" href="#solution"></a>Solution</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The solution will be oriented as a libre/free alternative to <em>Justo Ecommerce</em>. Will focus on the use case "Small Restaurant with Take Away". Other inspirations can be pizza deliveries such as <a href="https://www.meltpizzas.com/">Melt Pizza</a>, <a href="https://www.papajohns.cl/">Papa Johns</a>, and <a href="https://www.underpizza.com/">Underpizza</a>.</p>
 </div>
-<div class="sect3">
-<h4 id="functional-requirements"><a class="anchor" href="#functional-requirements"></a>Functional Requirements</h4>
+<div class="paragraph">
+<p>Our plan is to make an API as simple as <a href="https://docs.lunarphp.io/core/overview.html">LunarPHP&#8217;s</a>, while leveraging the <a href="https://docs.medusajs.com/v1/development/events/">events system of MedusaJS</a> with Kafka, to allow extending the system with an existing one. This event-driven architecture would enable seamless system extensions and integrations with other tools, such as inventory management. Kafka ensures reliable event processing and allows the system to scale as demand grows, while also providing durability for critical data like order status updates or inventory changes.</p>
+</div>
+<div class="paragraph">
+<p>The solution will also allow live tracking of deliveries, by connecting an app to an endpoint exposed by the backend. The endpoint will handle periodic location updates from the delivery app, providing customers access to real-time delivery tracking via a public URL.</p>
+</div>
+<div class="paragraph">
+<p>Live tracking allows customers to monitor their orders in real-time, improving trust and reducing inquiries about delivery status.</p>
+</div>
+<div class="sect2">
+<h3 id="dependencies"><a class="anchor" href="#dependencies"></a>Dependencies</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Frontend:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The solution is purely headless, so a separate frontend must be provided for customers to interact with the backend API.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cloud Hosting Solution:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A cloud hosting platform (e.g., AWS, Google Cloud, DigitalOcean) that supports running a Docker image for deployment.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>PostgreSQL Database:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A PostgreSQL database instance is required for storing the application&#8217;s data (e.g., orders, products, user data).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Kafka (Optional):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A Kafka instance is needed if event-driven functionality is required, allowing for the handling of asynchronous events (e.g., order processing, inventory updates).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Prometheus &amp; Grafana (Optional):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prometheus and Grafana instances are necessary for system monitoring and reporting, enabling performance metrics and real-time analytics dashboards.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="functional-requirements"><a class="anchor" href="#functional-requirements"></a>Functional Requirements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -205,18 +280,280 @@ for restaurants and take away delivery. These are closed source Software as a Se
 <li>
 <p>The business owner can see sales reports and other relevant statistics (Based on Grafana and Prometheus).</p>
 </li>
+<li>
+<p>The solution must integrate with at least 1 chilean payment option (besides direct deposit). (Flow or Mercadopago).</p>
+</li>
+<li>
+<p>The solution must send events relevant to inventory, sales, delivery and order status to Kafka, if configured.</p>
+</li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="non-functional-requirements"><a class="anchor" href="#non-functional-requirements"></a>Non Functional Requirements</h4>
+<div class="sect2">
+<h3 id="non-functional-requirements"><a class="anchor" href="#non-functional-requirements"></a>Non Functional Requirements</h3>
 <div class="ulist">
 <ul>
 <li>
 <p>The system must be similar to Justo in UX and features.</p>
 </li>
+<li>
+<p>The system should include clear installation instructions and require minimal configuration to get started.</p>
+</li>
+<li>
+<p>The system should handle dependencies seamlessly, avoiding manual intervention for typical use cases.</p>
+</li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="diagrams"><a class="anchor" href="#diagrams"></a>Diagrams</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>System Architecture</p>
+</li>
+</ul>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/abcd-flowchart-20ef702b19cba97042bb53ccdd6c723fd963b393.svg" alt="abcd-flowchart">
+</div>
+</div>
+<div class="sect2">
+<h3 id="acceptance-criteria"><a class="anchor" href="#acceptance-criteria"></a>Acceptance Criteria</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Product Browsing</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The customer can access the full list of products through the exposed endpoints.</p>
+</li>
+<li>
+<p>The product data includes relevant details (name, description, price, and customization options).</p>
+</li>
+<li>
+<p>Search functionality returns relevant products based on customer queries.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Product Customization</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The customer can modify product options (e.g., choose pizza toppings, product size, color, etc.).</p>
+</li>
+<li>
+<p>The system reflects changes immediately in the total price.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Shopping Cart</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The customer can add items to the cart through the exposed endpoints.</p>
+</li>
+<li>
+<p>The cart displays updated totals, including taxes and delivery fees.</p>
+</li>
+<li>
+<p>The customer can remove items from the cart or change quantities.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Checkout Process</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The customer can complete the checkout process.</p>
+</li>
+<li>
+<p>The system accepts at least one payment method (e.g., Flow, MercadoPago, etc.).</p>
+</li>
+<li>
+<p>The system confirms payment success/failure, and sends confirmations and status updates as notifications.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Delivery Tracking</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The system provides live tracking of deliveries through a public URL.</p>
+</li>
+<li>
+<p>The customer can view the location of their delivery in real-time (via a map).</p>
+</li>
+<li>
+<p>Location events can be received through the exposed endpoint.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Backoffice</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The business owner can manage product listings and inventory (add, update, delete).</p>
+</li>
+<li>
+<p>The business owner can set product prices and customize available options.</p>
+</li>
+<li>
+<p>The business owner can view sales reports and statistics (via Grafana/Prometheus integration).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Headless Compatibility</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The system must be fully headless, and a frontend can be integrated without requiring code changes to the backend.</p>
+</li>
+<li>
+<p>The solution should support multiple frontend apps (e.g., mobile apps, PWAs).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Event-driven Architecture</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Events should be published and consumed successfully.</p>
+</li>
+<li>
+<p>The Kafka event system should function properly and allow easy extensions or integrations (e.g., for inventory management).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="references"><a class="anchor" href="#references"></a>References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="backoffice-orders-frescofud"><a class="anchor" href="#backoffice-orders-frescofud"></a><a href="https://www.frescofud.com/features/admin-panel">Backoffice Orders (Frescofud)</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/admin_ref.png" alt="admin ref">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="backoffice-inventory-shopify"><a class="anchor" href="#backoffice-inventory-shopify"></a><a href="https://www.shopify.com/">Backoffice Inventory (Shopify)</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/inventory_ref.png" alt="inventory ref">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="checkout-shopify"><a class="anchor" href="#checkout-shopify"></a><a href="https://www.shopify.com/">Checkout (Shopify)</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/checkout_ref.png" alt="checkout ref">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="graphs-shopify"><a class="anchor" href="#graphs-shopify"></a><a href="https://www.shopify.com/">Graphs (Shopify)</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/graph_ref.png" alt="graph ref">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="checkout-workflow-example-used-by-pedidosya"><a class="anchor" href="#checkout-workflow-example-used-by-pedidosya"></a>Checkout Workflow Example (used by PedidosYa)</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User is asked to sign up.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/step_1.png" alt="step 1">
+</div>
+</div>
+</li>
+<li>
+<p>User reviews order and selects options.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/step_2.png" alt="step 2">
+</div>
+</div>
+</li>
+<li>
+<p>User edits option.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/step_3.png" alt="step 3">
+</div>
+</div>
+</li>
+<li>
+<p>User adds note to order (optional).</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/step_4.png" alt="step 4">
+</div>
+</div>
+</li>
+<li>
+<p>User adds a delivery address.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/step_5.png" alt="step 5">
+</div>
+</div>
+</li>
+<li>
+<p>User checks the order overview.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/step_6.png" alt="step 6">
+</div>
+</div>
+</li>
+<li>
+<p>User adds payment method, then confirms the order.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/step_7.png" alt="step 7">
+</div>
+</div>
+<div class="paragraph">
+<p>Email notification received after confirmation:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/workflow_notification.png" alt="workflow notification">
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
