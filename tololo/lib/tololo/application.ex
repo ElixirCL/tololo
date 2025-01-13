@@ -8,6 +8,7 @@ defmodule Tololo.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      Tololo.Prometheus,
       TololoWeb.Telemetry,
       Tololo.Repo,
       {DNSCluster, query: Application.get_env(:tololo, :dns_cluster_query) || :ignore},
