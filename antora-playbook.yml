@@ -31,7 +31,7 @@ ui:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   # https://gitlab.com/antora/antora-ui-default/-/tree/master/src/partials
-  supplemental_files: supplemental-ui/
+  supplemental_files: docs/supplemental-ui/
 
 output:
   dir: _dist
