@@ -1,4 +1,4 @@
-.PHONY: antora.build antora.server dev.shell dev.services mix.deps mix.setup mix.phoenix.server
+.PHONY: dev.shell dev.services mix.deps mix.setup mix.phoenix.server
 
 # Devenv Commands
 dev.shell dsh:

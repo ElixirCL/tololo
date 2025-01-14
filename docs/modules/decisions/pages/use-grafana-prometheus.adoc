@@ -1,0 +1,33 @@
+=== Use Grafana + Prometheus
+
+- Status: accepted
+- Date: 2025-01-07
+
+==== Context and Problem Statement
+
+A monitoring system that stores and visualizes system metrics will be needed to ensure the reliability and performance of the application.
+
+==== Considered Options
+
+- https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/[Grafana + Prometheus]: Grafana provides visualization and Prometheus provides metrics collection.
+- https://hexdocs.pm/telemetry/[Telemetry] library with https://hexdocs.pm/phoenix_live_dashboard/Phoenix.LiveDashboard.html[Phoenix LiveDashboard]: LiveDashboard lacks customizability and Telemetry doesn't persist metrics by itself.
+
+==== Decision Outcome
+
+Chosen option: "`Grafana + Prometheus`", because
+
+- Provides full control over metrics and monitoring infrastructure.
+- Grafana integrates well with Prometheus.
+- Elixir supports Prometheus through libraries such as https://github.com/deadtrickster/prometheus.ex[prometheus.ex].
+
+==== Consequences
+
+- Grafana will be used to build and maintain dashboards.
+- Infrastructure might require additional resources for deploying Prometheus and Grafana instances.
+
+==== Links
+
+- https://hexdocs.pm/telemetry_metrics_prometheus/TelemetryMetricsPrometheus.html
+- https://github.com/deadtrickster/prometheus-plugs
+- https://github.com/deadtrickster/prometheus.ex
+

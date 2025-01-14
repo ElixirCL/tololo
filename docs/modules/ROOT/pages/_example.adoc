@@ -1,0 +1,96 @@
+= Welcome!
+:navtitle: Welcome
+
+Example using _UML_ and _Emoji_.
+
+emoji:bear[5x]
+
+
+[plantuml]
+----
+@startuml
+	Class01 <|-- Class02
+	Class03 *-- Class04
+	Class05 o-- Class06
+	Class07 .. Class08
+	Class09 -- Class10
+@enduml
+----
+
+[source, js]
+----
+// File: app.js
+const User = ({
+    username:'clsource'
+});
+----
+
+[dbml]
+----
+Table users {
+  id integer
+  username varchar
+  role varchar
+  created_at timestamp
+}
+
+Table posts {
+  id integer [primary key]
+  title varchar
+  body text [note: 'Content of the post']
+  user_id integer
+  status post_status
+  created_at timestamp
+}
+
+Enum post_status {
+  draft
+  published
+  private [note: 'visible via URL only']
+}
+
+Ref: posts.user_id > users.id // many-to-one
+----
+
+
+== Antora Demo Site and Playbook Project
+:url-project: https://antora.org
+:url-org: https://gitlab.com/antora
+:url-group: {url-org}/demo
+:url-repo: {url-group}/docs-site
+:url-demo-playbook: {url-repo}/blob/main/antora-playbook.yml
+:url-antora-docs: https://docs.antora.org/antora/latest
+:url-docs-quickstart: {url-antora-docs}/install-and-run-quickstart/
+:url-docs-playbook: {url-antora-docs}/playbook/
+:url-docs-run: {url-antora-docs}/run-antora/
+:url-opendevise: https://opendevise.com
+
+This is the playbook project for the Antora demo site.
+You can view the site produced by the Antora playbook ([.path]_antora-playbook.yml_) stored in this project at https://antora.gitlab.io/demo/docs-site.
+
+You can also use this project and the demo documentation components to generate the demo site on your own computer
+To use the demo materials and generate the demo site locally, follow the steps in the {url-docs-quickstart}[Antora quickstart].
+
+== Antora Playbook
+
+An {url-docs-playbook}[Antora playbook] is responsible for generating a documentation site.
+It contains the instructions a user wants to relay to the Antora site generator.
+These instructions include the content Antora should collect and the UI it should apply to the generated site.
+
+The file [.path]_antora-playbook.yml_ in this repository is the playbook used to produce the demo site.
+It tells Antora where to find the Component A and Component B remote content repositories and default UI.
+
+== Generate the Demo Site
+
+After cloning this playbook project repository to your computer or setting up your own playbook for the demo site (see the {url-docs-quickstart}[Antora quickstart] for instructions) you can generate the demo site by {url-docs-run}[running Antora].
+
+== Copyright and License
+
+Copyright (C) 2017-present by OpenDevise Inc. and the individual contributors to Antora.
+
+Use of this software is granted under the terms of the https://www.mozilla.org/en-US/MPL/2.0/[Mozilla Public License Version 2.0] (MPL-2.0).
+See link:LICENSE[] to find the full license text.
+
+== Authors
+
+Development of Antora is led and sponsored by {url-opendevise}[OpenDevise Inc].

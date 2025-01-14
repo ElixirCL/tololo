@@ -1,7 +1,7 @@
 name: Publish Antora docs to GitHub Pages
 on:
   push:
-    branches: [docs]
+    branches: [main]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 concurrency:
@@ -28,7 +28,7 @@ jobs:
       with:
         node-version: '18'
     - name: Install Antora
-      run: npm i antora
+      run: npm i antora asciidoctor-emoji asciidoctor-kroki @antora/lunr-extension
     - name: Generate Site
       run: npx antora antora-playbook.yml
     - name: Upload Artifacts

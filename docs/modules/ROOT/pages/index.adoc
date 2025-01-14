@@ -1,0 +1,49 @@
+= 🔭 Tololo E-commerce
+
+High in the mountains of the Coquimbo region of Chile lies a peak called
+Cerro Tololo, whose name means "`on the edge of the abyss,`" a
+description given to the mountain by the ancient Diaguita people, in
+reference to its rugged geography on its northeastern side.
+
+- https://en.wikipedia.org/wiki/Cerro_Tololo_Inter-American_Observatory[Wikipedia]
+
+image::https://github.com/user-attachments/assets/e0908d44-0905-4240-b5ab-52e844ad7e6d[By CTIO/NOIRLab/NSF/AURA/R. Sparks - https://noirlab.edu/public/images/iotw2103a/, CC BY 4.0, https://commons.wikimedia.org/w/index.php?curid=99545008]
+
+*Tololo* is a set of _Elixir_ components that bring functionality akin
+to Shopify and other e-commerce platforms to
+https://phoenixframework.org/[Phoenix Framework]. You have complete
+freedom to create your own storefront(s), but we’ve already done the
+hard work for you in the backend.
+
+[CAUTION] 
+====
+Version 1.x is currently in alpha release. We recommend this
+version for new projects, however, it is not feature-complete and
+therefore may not be deemed production-ready.
+====
+
+[IMPORTANT] 
+====
+Tololo is mainly targeted to Chilean’s market needs.
+====
+
+== Features
+
+Tololo E-commerce is mainly inspired by
+https://github.com/lunarphp/lunar[Lunar PHP] and https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api[Shopify Storefront API] and aims to be similar in scope and features.
+
+- *Ecommerce Engine*: Based around https://ash-hq.org/[Ash Framework]
+models, the e-commerce core provides all the functionality you need to
+create an online store.
+
+- *Backoffice*: Manage your catalogue, customers and orders in our
+modern and extendable admin area, built in _Phoenix LiveView_.
+
+- *API*: Power your storefront or mobile app via _Tololo’s_ API.
+
+== Learning
+
+This project is not only a product that can be used in the Real World™,
+but is meant to be used as an example to learn how to make an
+professional _Elixir_ artifact. So we take great care in documentation
+for developers.
