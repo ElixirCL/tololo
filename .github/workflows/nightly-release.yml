@@ -1,9 +1,11 @@
 name: Create Nightly Release
 
 on:
-  push:
-    branches:
-      - main
+  # This can be used to automatically publish nightlies at UTC nighttime
+  schedule:
+    - cron: '0 2 * * *' # run at 2 AM UTC
+  # This can be used to allow manually triggering nightlies from the web interface
+  workflow_dispatch:
 
 jobs:
   nightly-release:
@@ -13,7 +15,26 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Check Latest Commit Date
+        id: check_commit_date
+        run: |
+          # Get the latest commit date in ISO 8601 format
+          LATEST_COMMIT_DATE=$(git log -1 --format=%cI)
+
+          # Convert the latest commit date and the current date to seconds since epoch
+          LATEST_COMMIT_SECONDS=$(date --date="$LATEST_COMMIT_DATE" +%s)
+          CURRENT_DATE_SECONDS=$(date +%s)
+
+          # Calculate the time difference in seconds
+          TIME_DIFF=$((CURRENT_DATE_SECONDS - LATEST_COMMIT_SECONDS))
+
+          # Check if the difference is greater than 24 hours (86400 seconds)
+          if [ $TIME_DIFF -lt 86400 ]; then
+            echo "RECENT_COMMIT=true" >> "$GITHUB_ENV"
+          fi
+      
       - name: Create Nightly Release
+        if: $RECENT_COMMIT == true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
