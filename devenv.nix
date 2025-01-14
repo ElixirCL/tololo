@@ -18,18 +18,9 @@
   # https://devenv.sh/common-patterns/#configure-the-shell-based-on-the-current-machine
   packages = [
     pkgs.gnumake
-    pkgs.antora
-    pkgs.python314
     pkgs.grafana
     pkgs.prometheus
   ];
-
-  # for Antora extensions
-  languages.javascript.enable = true;
-  languages.javascript.yarn = {
-    enable = true;
-    install.enable = true;
-  };
 
   tasks = {
     "mix:deps" = {
