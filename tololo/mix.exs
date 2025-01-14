@@ -71,7 +71,7 @@ defmodule Tololo.MixProject do
       {:opentelemetry_api, "~> 1.4.0"},
       {:opentelemetry_ecto, "~> 1.2.0"},
       {:opentelemetry_phoenix, "~> 2.0.0"},
-      {:opentelemetry_cowboy, "~> 1.0"}
+      {:opentelemetry_bandit, "~> 0.2.0"}
     ]
   end
 

@@ -11,7 +11,7 @@ defmodule Tololo.Application do
       :httpc.set_option(:ipfamily, :inet6fb4)
     end
 
-    :ok = :opentelemetry_cowboy.setup()
+    :ok = OpentelemetryBandit.setup()
     :ok = OpentelemetryPhoenix.setup()
 
     :ok =
