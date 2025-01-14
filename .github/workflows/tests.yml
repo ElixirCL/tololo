@@ -48,4 +48,5 @@ jobs:
             ${{ runner.os }}-mix-
 
       - name: Build the devenv shell and run tests
+        working-directory: ./tololo
         run: devenv test
