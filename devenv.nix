@@ -1,18 +1,10 @@
 { pkgs, lib, inputs, ... }: 
 
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
-in
+# top-level devenv.nix. contains services not essential to running the backend, such as Prometheus and Kafka
 { 
   devcontainer.enable = true;
 
-  languages.elixir = {
-    enable = true;
-    package = pkgs-unstable.beamMinimal26Packages.elixir;
-  };
   enterShell = ''
-    export PATH="$HOME/.mix/escripts:$PATH"
-
     if [ ! -d ".devenv/state/grafana" ]; then
       cp -rL .devenv/profile/share/grafana .devenv/state/grafana
       chmod 777 -R .devenv/state/grafana
@@ -23,24 +15,6 @@ in
     fi
   '';
 
-  tasks = {
-    "mix:deps" = {
-      exec = ''
-        cd tololo
-        mix deps.get
-      '';
-      # runs before entering shell and before testing
-      before = [ "devenv:enterShell" "devenv:enterTest" ];
-    };
-  };
-  
-  enterTest = ''
-    cd tololo
-
-    mix test
-    mix credo
-  '';
-
   # https://devenv.sh/common-patterns/#configure-the-shell-based-on-the-current-machine
   packages = [
     pkgs.gnumake
@@ -48,23 +22,6 @@ in
     pkgs.python314
     pkgs.grafana
     pkgs.prometheus
-  ] ++ 
-  # Linux only
-  lib.optionals pkgs.stdenv.isLinux [
-    # for ExUnit notifier
-    pkgs.libnotify
-
-    # for package - file_system
-    pkgs.inotify-tools
-  ] ++
-  # Darwin only
-  lib.optionals pkgs.stdenv.isDarwin [
-    # for ExUnit notifier
-    pkgs.terminal-notifier
-
-    # for package - file_system
-    pkgs.darwin.apple_sdk.frameworks.CoreFoundation
-    pkgs.darwin.apple_sdk.frameworks.CoreServices
   ];
 
   # for Antora extensions
@@ -74,16 +31,32 @@ in
     install.enable = true;
   };
 
+  tasks = {
+    "mix:deps" = {
+      # overrides the imported task to cd
+      exec = lib.mkForce ''
+        cd tololo
+        mix deps.get
+      '';
+    };
+    "mix:format" = {
+      # overrides the imported task to cd
+      exec = lib.mkForce ''
+        cd tololo
+        mix format --check-formatted
+      '';
+    };
+  };
+
+  enterTest = ''
+    cd tololo
+    mix test
+    mix credo
+  '';
+
   processes = {
     grafana.exec = "grafana server --homepath .devenv/state/grafana";
     prometheus.exec = "prometheus --storage.tsdb.path .devenv/state/prometheus/data";
-  };
-
-  services.postgres = {
-    enable = true;
-    initialScript = ''
-      CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'postgres';
-    '';
   };
 
   services.kafka.enable = true;
