@@ -65,7 +65,13 @@ defmodule Tololo.MixProject do
       {:bandit, "~> 1.5"},
       {:kafka_ex, "~> 0.11"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:prom_ex, "~> 1.11.0"}
+      {:prom_ex, "~> 1.11.0"},
+      {:opentelemetry_exporter, "~> 1.8.0"},
+      {:opentelemetry, "~> 1.5.0"},
+      {:opentelemetry_api, "~> 1.4.0"},
+      {:opentelemetry_ecto, "~> 1.2.0"},
+      {:opentelemetry_phoenix, "~> 2.0.0"},
+      {:opentelemetry_cowboy, "~> 1.0"}
     ]
   end
 

@@ -7,6 +7,18 @@ defmodule Tololo.Application do
 
   @impl true
   def start(_type, _args) do
+    if System.get_env("ECTO_IPV6") do
+      :httpc.set_option(:ipfamily, :inet6fb4)
+    end
+
+    :ok = :opentelemetry_cowboy.setup()
+    :ok = OpentelemetryPhoenix.setup()
+
+    :ok =
+      Tololo.Repo.config()
+      |> Keyword.fetch!(:telemetry_prefix)
+      |> OpentelemetryEcto.setup()
+
     children = [
       Tololo.Prometheus,
       TololoWeb.Telemetry,
