@@ -65,7 +65,7 @@ defmodule Tololo.MixProject do
       {:bandit, "~> 1.5"},
       {:kafka_ex, "~> 0.11"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:prom_ex, "~> 1.11.0"},
+      {:prom_ex, "~> 1.11.0"}
     ]
   end
 

@@ -4,6 +4,6 @@ defmodule Tololo.Kafka.Noop do
   """
 
   @behaviour Tololo.Kafka
-  
+
   def produce(_topic, _partition, _value, _opts \\ []), do: :ok
 end

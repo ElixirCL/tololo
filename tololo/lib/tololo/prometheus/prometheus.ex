@@ -15,7 +15,7 @@ defmodule Tololo.Prometheus do
       Plugins.Beam,
       {Plugins.Phoenix, router: TololoWeb.Router, endpoint: TololoWeb.Endpoint},
       Plugins.Ecto,
-      Plugins.PhoenixLiveView,
+      Plugins.PhoenixLiveView
 
       # Add your own PromEx metrics plugins
       # Tololo.Users.PromExPlugin
@@ -39,7 +39,7 @@ defmodule Tololo.Prometheus do
       {:prom_ex, "beam.json"},
       {:prom_ex, "phoenix.json"},
       {:prom_ex, "ecto.json"},
-      {:prom_ex, "phoenix_live_view.json"},
+      {:prom_ex, "phoenix_live_view.json"}
 
       # Add your dashboard definitions here with the format: {:otp_app, "path_in_priv"}
       # {:tololo, "/grafana_dashboards/user_metrics.json"}

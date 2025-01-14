@@ -11,7 +11,12 @@ defmodule Tololo.Kafka do
   @doc """
   Produces a message to Kafka. Should be implemented by drivers.
   """
-  @callback produce(topic :: String.t(), partition :: non_neg_integer(), message :: String.t(), opts :: term()) ::
+  @callback produce(
+              topic :: String.t(),
+              partition :: non_neg_integer(),
+              message :: String.t(),
+              opts :: term()
+            ) ::
               :ok | {:error, term()}
 
   defp driver, do: Application.get_env(:tololo, :kafka_driver, driver: Tololo.Kafka.Noop)[:driver]
