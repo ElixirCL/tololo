@@ -28,9 +28,12 @@ jobs:
           # Calculate the time difference in seconds
           TIME_DIFF=$((CURRENT_DATE_SECONDS - LATEST_COMMIT_SECONDS))
 
-          # Check if the difference is greater than 24 hours (86400 seconds)
+          # Check if the difference is less than 24 hours (86400 seconds)
+          # This is to avoid releasing nightly code older than 24 hours.
+          # We only release a nightly if there were commits in the last 24 hours.
+          RECENT_COMMIT=false
           if [ $TIME_DIFF -lt 86400 ]; then
-            echo "RECENT_COMMIT=true" >> "$GITHUB_ENV"
+            RECENT_COMMIT=true
           fi
       
       - name: Create Nightly Release
