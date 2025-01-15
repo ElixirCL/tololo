@@ -35,3 +35,6 @@ tololo-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# .gitignore
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
