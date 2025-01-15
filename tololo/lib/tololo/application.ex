@@ -12,7 +12,7 @@ defmodule Tololo.Application do
     end
 
     :ok = OpentelemetryBandit.setup()
-    :ok = OpentelemetryPhoenix.setup()
+    :ok = OpentelemetryPhoenix.setup(adapter: :bandit)
 
     :ok =
       Tololo.Repo.config()

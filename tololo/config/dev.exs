@@ -35,7 +35,6 @@ config :tololo, Tololo.Prometheus,
   disabled: false,
   manual_metrics_start_delay: :no_delay,
   drop_metrics_groups: [],
-  grafana: :enabled,
   metrics_server: :disabled,
   grafana: [
     host: "http://localhost:3000",
