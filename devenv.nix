@@ -84,4 +84,12 @@ in
   };
 
   services.kafka.enable = true;
+
+  services.postgres = {
+    enable = true;
+    initialScript = ''
+      CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'postgres';
+    '';
+  };
+
 }
