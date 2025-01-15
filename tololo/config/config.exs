@@ -13,13 +13,15 @@ config :ash,
   show_keysets_for_all_actions?: false,
   default_page_type: :keyset,
   policies: [no_filter_static_forbidden_reads?: false]
-  # custom_types: [ticket_status: Tololo.Support.Ticket.Types.Status]
+
+# custom_types: [ticket_status: Tololo.Support.Ticket.Types.Status]
 
 config :spark,
   formatter: [
     remove_parens?: true,
     "Ash.Resource": [
       section_order: [
+        :graphql,
         :postgres,
         :resource,
         :code_interface,
@@ -37,13 +39,17 @@ config :spark,
         :identities
       ]
     ],
-    "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
+    "Ash.Domain": [
+      section_order: [:graphql, :resources, :policies, :authorization, :domain, :execution]
+    ]
   ]
 
 config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
-  # ash_domains: [Tololo.Support]
+  ash_domains: [Tololo.Deliveries]
+
+# ash_domains: [Tololo.Support]
 
 # Configures the endpoint
 config :tololo, TololoWeb.Endpoint,
