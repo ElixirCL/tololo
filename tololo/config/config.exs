@@ -12,8 +12,8 @@ config :ash,
   include_embedded_source_by_default?: false,
   show_keysets_for_all_actions?: false,
   default_page_type: :keyset,
-  policies: [no_filter_static_forbidden_reads?: false],
-  custom_types: [ticket_status: Tololo.Support.Ticket.Types.Status]
+  policies: [no_filter_static_forbidden_reads?: false]
+  # custom_types: [ticket_status: Tololo.Support.Ticket.Types.Status]
 
 config :spark,
   formatter: [
@@ -43,7 +43,7 @@ config :spark,
 config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [Tololo.Support]
+  # ash_domains: [Tololo.Support]
 
 # Configures the endpoint
 config :tololo, TololoWeb.Endpoint,
