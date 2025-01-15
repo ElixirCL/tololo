@@ -68,9 +68,9 @@ jobs:
     - name: Install dependencies
       run: mix deps.get
 
-    # Step: Compile the project treating any warnings as errors.
+    # Step: Compile the project 
     # Customize this step if a different behavior is desired.
-    # for stricter compilation use: mix compile --warnings-as-errors
+    # for stricter compilation treating any warnings as errors use: mix compile --warnings-as-errors
     - name: Compiles without warnings
       run: mix compile
 
