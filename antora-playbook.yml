@@ -34,4 +34,4 @@ ui:
   supplemental_files: docs/supplemental-ui/
 
 output:
-  dir: _dist
+  dir: docs/_dist

@@ -1,4 +1,4 @@
-.PHONY: dev.shell dev.services antora.shell antora.deps antora.docs mix.docs mix.docs.publish mix.deps mix.setup mix.phoenix.server
+.PHONY: docs docs.server dev.shell dev.services antora.deps antora.docs mix.docs mix.docs.publish mix.deps mix.setup mix.phoenix.server
 
 # Elixir Env
 ## Devenv Commands
@@ -11,7 +11,6 @@ dev.services services ds:
 ## Mix commands
 mix.docs mdoc:
 	@cd tololo && mix docs
-	@cp -R tololo/doc docs/_dist/api
 
 mix.docs.publish mdp:
 	@cd tololo && mix hex.publish
@@ -30,11 +29,19 @@ mix.setup ms:
 
 # Antora Env
 ## Antora Docs
-antora.shell ashell:
-	@cd docs && make shell
-
 antora.docs adoc:
-	@cd docs && make build
+	@antora antora-playbook.yml
 
 antora.deps adeps:
 	@yarn install
+
+# Docs
+docs d:
+	@rm -rf docs/_dist
+	@make mix.docs
+	@make antora.docs
+	@cp -R tololo/doc docs/_dist/api
+	@touch docs/_dist/.nojekyll
+
+docs.server ds:
+	@npm run serve
