@@ -46,7 +46,8 @@ config :spark,
 
 config :tololo,
   ecto_repos: [Tololo.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ash_domains: [Tololo.Deliveries]
 
 # ash_domains: [Tololo.Support]
 

@@ -2,7 +2,7 @@ defmodule TololoWeb.GraphqlSchema do
   use Absinthe.Schema
 
   use AshGraphql,
-    domains: []
+    domains: [Tololo.Deliveries]
 
   import_types Absinthe.Plug.Types
 
