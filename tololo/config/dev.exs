@@ -99,8 +99,7 @@ config :phoenix_live_view,
 config :kafka_ex,
   brokers: [
     {"localhost", 9092},
-    {"localhost", 9093},
-    {"localhost", 9094}
+    {"localhost", 9093}
   ],
   # the default consumer group for worker processes, must be a binary (string)
   #    NOTE if you are on Kafka < 0.8.2 or if you want to disable the use of
@@ -137,16 +136,16 @@ config :kafka_ex,
   # Interval in milliseconds to wait before reconnect to kafka
   sleep_for_reconnect: 400,
   # This is the flag that enables use of ssl
-  use_ssl: true,
+  use_ssl: false,
   # see SSL OPTION DESCRIPTIONS - CLIENT SIDE at http://erlang.org/doc/man/ssl.html
   # for supported options
-  ssl_options: [
-    # Fix warnings. More at https://github.com/erlang/otp/issues/5352
-    verify: :verify_none,
-    cacertfile: File.cwd!() <> "/ssl/ca-cert",
-    certfile: File.cwd!() <> "/ssl/cert.pem",
-    keyfile: File.cwd!() <> "/ssl/key.pem"
-  ],
+  # ssl_options: [
+  #   # Fix warnings. More at https://github.com/erlang/otp/issues/5352
+  #   verify: :verify_none,
+  #   cacertfile: File.cwd!() <> "/ssl/ca-cert",
+  #   certfile: File.cwd!() <> "/ssl/cert.pem",
+  #   keyfile: File.cwd!() <> "/ssl/key.pem"
+  # ],
   kafka_version: "0.10.1"
 
 # Disable swoosh api client as it is only required for production adapters.
