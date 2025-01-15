@@ -1,0 +1,90 @@
+name: Publish Antora docs to GitHub Pages
+on:
+  push:
+    branches: [main]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Configure Pages
+      uses: actions/configure-pages@v5
+    
+    # Antora Docs
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Install Antora
+      run: npm i antora asciidoctor-emoji asciidoctor-kroki @antora/lunr-extension
+    - name: Generate Antora Site
+      run: npx antora antora-playbook.yml
+
+    # Mix Docs
+    - name: Set up Elixir
+      uses: erlef/setup-beam@v1
+      with:
+        otp-version: '26.2.5.6'  # Define the OTP version [required]
+        elixir-version: '1.18.1' # Define the elixir version [required]
+
+    # Step: Define how to cache deps. Restores existing cache if present.
+    - name: Cache deps
+      id: cache-deps
+      uses: actions/cache@v4
+      env:
+        cache-name: cache-elixir-deps
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-mix-${{ env.cache-name }}-
+
+    # Step: Define how to cache the `_build` directory. After the first run,
+    # this speeds up tests runs a lot. This includes not re-compiling our
+    # project's downloaded deps every run.
+    - name: Cache compiled build
+      id: cache-build
+      uses: actions/cache@v4
+      env:
+        cache-name: cache-compiled-build
+      with:
+        path: _build
+        key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-mix-${{ env.cache-name }}-
+          ${{ runner.os }}-mix-
+
+    # Step: Download project dependencies. If unchanged, uses
+    # the cached version.
+    - name: Install Elixir dependencies
+      run: cd tololo && mix deps.get
+
+    # Step: Build Mix API Docs
+    - name: Build Mix Docs
+      run: cd tololo && mix docs
+    
+    - name: Copy API docs to _dist
+      run: cp -R tololo/doc docs/_dist/api
+
+    # Upload and Deploy
+    - name: Upload Artifacts
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: docs/_dist
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
