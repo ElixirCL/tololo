@@ -1,4 +1,7 @@
 defmodule Tololo.Deliveries.DeliveryStateChanges do
+  @moduledoc """
+  Stores the state changes of a delivery.
+  """
   use Ash.Resource,
     otp_app: :tololo,
     domain: Tololo.Deliveries,

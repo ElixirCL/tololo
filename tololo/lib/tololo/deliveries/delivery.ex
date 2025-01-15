@@ -1,4 +1,9 @@
 defmodule Tololo.Deliveries.Delivery do
+  @moduledoc """
+  Represents a delivery of an order in the Tololo system.
+
+  This module defines the `Delivery` resource, which is responsible for managing the state and information related to deliveries within the application. It includes fields for tracking the delivery's state (e.g., 'pending', 'shipped', 'delivered'), and a private authentication key for secure access to delivery data.
+  """
   use Ash.Resource,
     otp_app: :tololo,
     domain: Tololo.Deliveries,
@@ -45,7 +50,7 @@ defmodule Tololo.Deliveries.Delivery do
       sensitive? true
     end
 
-    attribute :from_name, :string 
+    attribute :from_name, :string
 
     attribute :to_latitude, :float do
       sensitive? true

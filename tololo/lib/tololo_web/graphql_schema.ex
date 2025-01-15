@@ -1,4 +1,7 @@
 defmodule TololoWeb.GraphqlSchema do
+  @moduledoc """
+  Schema for GraphQL endpoints.
+  """
   use Absinthe.Schema
 
   use AshGraphql,
