@@ -30,6 +30,7 @@ jobs:
     steps:
     # Step: Setup Elixir + Erlang image as the base.
     - name: Set up Elixir
+      id: beam
       uses: erlef/setup-beam@v1
       with:
         otp-version:  ${{matrix.otp}}
