@@ -3,11 +3,11 @@
 shell s:
 	@devenv shell
 
-antora.build b:
+antora.build build b:
 	@rm -rf ./_dist
 	@antora ../antora-playbook.yml
 	@touch ./_dist/.nojekyll
 
-antora.server as:
+antora.server server as:
 	@make antora.build
 	@npm run serve
