@@ -12,22 +12,58 @@ permissions:
 
 jobs:
   tests:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./tololo
+
+    name: Test on OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-
+        otp: ['26.2.5.6']     # Define the OTP version [required]
+        elixir: ['1.18.1']    # Define the elixir version [required]
+    
     steps:
     # Step: Setup Elixir + Erlang image as the base.
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
-        otp-version: '26.2.5.6'
-        elixir-version: '1.18.1'
+        otp-version:  ${{matrix.otp}}
+        elixir-version: ${{matrix.elixir}}
 
     # Step: Check out the code.
     - name: Checkout code
       uses: actions/checkout@v4
+    
+    # Cache key based on Erlang/Elixir version and the mix.lock hash
+    - name: Restore PLT cache
+      id: plt_cache
+      uses: actions/cache/restore@v3
+      with:
+        key: |
+          plt-${{ runner.os }}-${{ steps.beam.outputs.otp-version }}-${{ steps.beam.outputs.elixir-version }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+          plt-${{ runner.os }}-${{ steps.beam.outputs.otp-version }}-${{ steps.beam.outputs.elixir-version }}-
+        path: |
+          priv/plts
+
+    # Create PLTs if no cache was found
+    - name: Create PLTs
+      if: steps.plt_cache.outputs.cache-hit != 'true'
+      run: mix dialyzer --plt
+
+    # By default, the GitHub Cache action will only save the cache if all steps in the job succeed,
+    # so we separate the cache restore and save steps in case running dialyzer fails.
+    - name: Save PLT cache
+      id: plt_cache_save
+      uses: actions/cache/save@v3
+      if: steps.plt_cache.outputs.cache-hit != 'true'
+      with:
+        key: |
+          plt-${{ runner.os }}-${{ steps.beam.outputs.otp-version }}-${{ steps.beam.outputs.elixir-version }}-${{ hashFiles('**/mix.lock') }}
+        path: |
+          priv/plts
 
     # Step: Define how to cache deps. Restores existing cache if present.
     - name: Cache deps
@@ -68,3 +104,9 @@ jobs:
     # Step: Run Credo to analyze code.
     - name: Run Credo
       run: mix credo
+
+    - name: Run dialyzer
+      # Two formats are included for ease of debugging and it is lightly recommended to use both, see https://github.com/jeremyjh/dialyxir/issues/530 for reasoning
+      # --format github is helpful to print the warnings in a way that GitHub understands and can place on the /files page of a PR
+      # --format dialyxir allows the raw GitHub actions logs to be useful because they have the full warning printed
+      run: mix dialyzer --format github --format dialyxir

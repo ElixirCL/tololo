@@ -71,6 +71,8 @@ jobs:
     # Step: Compile the project 
     # Customize this step if a different behavior is desired.
     # for stricter compilation treating any warnings as errors use: mix compile --warnings-as-errors
+    # If using a bleeding edge Elixir version, external libs may trigger warnings.
+    # Use a Elixir version that do not trigger those warnings or compile in a loose way.
     - name: Compiles without warnings
       run: mix compile
 
