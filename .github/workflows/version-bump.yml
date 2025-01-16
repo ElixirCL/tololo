@@ -29,17 +29,14 @@ jobs:
 
           # Update the VERSION file
           echo "$NEW_VERSION" > VERSION
-          echo "NEW_VERSION=$(cat NEW_VERSION)" >> "$GITHUB_ENV"
           
           # Update Version in mix.exs
           sed -i 's/$VERSION/$NEW_VERSION/g' tololo/mix.exs
 
-      - name: Commit Updated Version
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add VERSION
           git add tololo/mix.exs
           git commit -m "Bump version to $NEW_VERSION"
-          git push --force
+          git push
 
