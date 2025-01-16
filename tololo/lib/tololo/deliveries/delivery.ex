@@ -19,8 +19,19 @@ defmodule Tololo.Deliveries.Delivery do
     repo Tololo.Repo
   end
 
+  code_interface do
+    define :update_state, args: [:state], action: :update_state
+  end
+
   actions do
-    defaults [:read]
+    defaults [:read, :create, :update, :destroy]
+
+    update :update_state do
+      accept [:state]
+      require_atomic? false
+
+      change Tololo.Deliveries.UpdateHistory
+    end
   end
 
   attributes do

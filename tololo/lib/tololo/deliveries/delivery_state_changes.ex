@@ -1,6 +1,6 @@
 defmodule Tololo.Deliveries.DeliveryStateChanges do
   @moduledoc """
-  Stores the state changes of a delivery.
+  Resource that stores the state changes of a delivery.
   """
   use Ash.Resource,
     otp_app: :tololo,
@@ -17,8 +17,13 @@ defmodule Tololo.Deliveries.DeliveryStateChanges do
     repo Tololo.Repo
   end
 
+  code_interface do
+    define :add_to_state_history, args: [:delivery_id, :old_state, :new_state, :comment], action: :create
+  end
+
   actions do
-    defaults [:read]
+    defaults [:read, :create, :destroy]
+    default_accept [:delivery_id, :old_state, :new_state, :comment]
   end
 
   attributes do
