@@ -1,0 +1,43 @@
+name: Version Bump
+# Bump the current version following Semver MAJOR.MINOR.PATCH
+# Update PATCH number with every commit
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  promote-to-production:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Increment Version
+        id: increment_version
+        run: |
+          VERSION=$(cat VERSION)
+    
+          MAJOR=$(echo "$VERSION" | cut -d. -f1)
+          MINOR=$(echo "$VERSION" | cut -d. -f2)
+          PATCH=$(echo "$VERSION" | cut -d. -f3)
+
+          NEW_PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+
+          # Update the VERSION file
+          echo "$NEW_VERSION" > VERSION
+          echo "NEW_VERSION=$(cat NEW_VERSION)" >> "$GITHUB_ENV"
+          
+          # Update Version in mix.exs
+          sed -i 's/$VERSION/$NEW_VERSION/g' tololo/mix.exs
+
+      - name: Commit Updated Version
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add VERSION
+          git add tololo/mix.exs
+          git commit -m "Increment version to $NEW_VERSION"
+          git push
+

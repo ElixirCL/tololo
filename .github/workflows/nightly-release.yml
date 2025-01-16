@@ -38,7 +38,8 @@ jobs:
           
             # generate a unique tag for nightly release
             TIMESTAMP=$(date +"%Y%m%d%H%M%S")
-            TAG_NAME="nightly-$TIMESTAMP"
+            VERSION=$(cat VERSION)
+            TAG_NAME="nightly-v$VERSION-$TIMESTAMP"
 
             # create a release
             # https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28

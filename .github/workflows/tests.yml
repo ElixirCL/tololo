@@ -95,6 +95,12 @@ jobs:
     # Step: Run Credo to analyze code.
     - name: Run Credo
       run: mix credo
+    
+    # Step: Check that the checked in code has already been formatted.
+    # This step fails if something was found unformatted.
+    # Customize this step as desired.
+    - name: Format
+      run: mix format
 
     # Dialyxir
     # Cache key based on Erlang/Elixir version and the mix.lock hash
