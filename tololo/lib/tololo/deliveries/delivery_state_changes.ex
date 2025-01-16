@@ -18,7 +18,9 @@ defmodule Tololo.Deliveries.DeliveryStateChanges do
   end
 
   code_interface do
-    define :add_to_state_history, args: [:delivery_id, :old_state, :new_state, :comment], action: :create
+    define :add_to_state_history,
+      args: [:delivery_id, :old_state, :new_state, :comment],
+      action: :create
   end
 
   actions do

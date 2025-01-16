@@ -13,6 +13,7 @@ defmodule TololoWeb.ConnCase do
   this option is not recommended for other databases.
   """
   use ExUnit.CaseTemplate
+
   using do
     quote do
       # The default endpoint for testing
@@ -24,6 +25,7 @@ defmodule TololoWeb.ConnCase do
       import TololoWeb.ConnCase
     end
   end
+
   setup tags do
     Tololo.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}

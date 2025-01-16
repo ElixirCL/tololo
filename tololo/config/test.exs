@@ -39,6 +39,7 @@ config :phoenix_live_view,
 
 config :tololo, :kafka_driver, driver: Tololo.Kafka.Noop
 config :tololo, Tololo.Prometheus, disabled: true
+
 config :kafka_ex,
   brokers: [
     {"localhost", 9092},
@@ -90,5 +91,3 @@ config :kafka_ex,
   #   keyfile: File.cwd!() <> "/ssl/key.pem"
   # ],
   kafka_version: "0.10.1"
-
-

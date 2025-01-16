@@ -12,6 +12,7 @@ defmodule Tololo.DataCase do
   this option is not recommended for other databases.
   """
   use ExUnit.CaseTemplate
+
   using do
     quote do
       alias Tololo.Repo
@@ -21,10 +22,12 @@ defmodule Tololo.DataCase do
       import Tololo.DataCase
     end
   end
+
   setup tags do
     Tololo.DataCase.setup_sandbox(tags)
     :ok
   end
+
   @doc """
   Sets up the sandbox based on the test tags.
   """
@@ -32,6 +35,7 @@ defmodule Tololo.DataCase do
     pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Tololo.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
+
   @doc """
   A helper that transforms changeset errors into a map of messages.
       assert {:error, changeset} = Accounts.create_user(%{password: "short"})

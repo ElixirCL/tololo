@@ -91,5 +91,3 @@ config :kafka_ex,
   #   keyfile: File.cwd!() <> "/ssl/key.pem"
   # ],
   kafka_version: "0.10.1"
-
-
