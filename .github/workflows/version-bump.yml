@@ -31,7 +31,7 @@ jobs:
           echo "$NEW_VERSION" > VERSION
           
           # Update Version in mix.exs
-          sed -i 's/$VERSION/$NEW_VERSION/g' tololo/mix.exs
+          sed -i 's/${VERSION}/${NEW_VERSION}/g' tololo/mix.exs
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
