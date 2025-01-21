@@ -21,6 +21,8 @@ config :spark,
     remove_parens?: true,
     "Ash.Resource": [
       section_order: [
+        :authentication,
+        :tokens,
         :graphql,
         :postgres,
         :resource,
@@ -47,7 +49,7 @@ config :spark,
 config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [Tololo.Deliveries]
+  ash_domains: [Tololo.Accounts, Tololo.Deliveries]
 
 # ash_domains: [Tololo.Support]
 

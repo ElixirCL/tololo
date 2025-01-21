@@ -77,7 +77,7 @@ config :tololo, TololoWeb.Endpoint,
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :tololo, dev_routes: true
+config :tololo, dev_routes: true, token_signing_secret: "+1VVhrzkFzEh5GtKKHbhsf/uxlQsUZmS"
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

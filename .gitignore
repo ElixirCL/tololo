@@ -7,6 +7,5 @@ build/
 .devenv/
 .devenv.flake.nix
 .devenv*/
-.envrc
 .direnv/
 iex.ex

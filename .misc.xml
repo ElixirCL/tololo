@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- If you use WebStorm it may be necessary to add the
+.idea/misc.xml file to have autocompletion enabled, a small bug since the
+plugin is originally designed for IntelliJ.
+Note: Ensure that the project-jdk-name is the same as the one shown in the SDK selector
+in Language & Frameworks Settings.
+Example:
+project-jdk-name="Elixir 1.14.4-otp-25"
+-->
+<project version="4">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" project-jdk-name="Elixir 1.18.1-otp-26" project-jdk-type="Elixir SDK" />
+</project>
