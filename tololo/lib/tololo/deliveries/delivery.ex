@@ -14,6 +14,15 @@ defmodule Tololo.Deliveries.Delivery do
   graphql do
     type :delivery
 
+    queries do
+      get :get_delivery, :read
+    end
+
+    mutations do
+      create :init_delivery, :initialize
+      update :update_state, :update_state
+      update :update_location, :update_location
+    end
   end
 
   postgres do
@@ -93,6 +102,10 @@ defmodule Tololo.Deliveries.Delivery do
       require_atomic? false
 
       change Tololo.Deliveries.UpdateHistory
+    end
+
+    update :update_location do
+      accept [:from_latitude, :from_longitude]
     end
   end
 

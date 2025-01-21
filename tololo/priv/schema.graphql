@@ -3,6 +3,20 @@ schema {
   query: RootQueryType
 }
 
+"The result of the :update_location mutation"
+type UpdateLocationResult {
+  "The successful result of the mutation"
+  result: Delivery
+
+  "Any errors generated, if the mutation failed"
+  errors: [MutationError!]!
+}
+
+input UpdateLocationInput {
+  fromLatitude: Float
+  fromLongitude: Float
+}
+
 "The result of the :update_state mutation"
 type UpdateStateResult {
   "The successful result of the mutation"
@@ -93,6 +107,7 @@ type RootQueryType {
 type RootMutationType {
   initDelivery(input: InitDeliveryInput): InitDeliveryResult!
   updateState(id: ID!, input: UpdateStateInput): UpdateStateResult!
+  updateLocation(id: ID!, input: UpdateLocationInput): UpdateLocationResult!
 }
 
 """
