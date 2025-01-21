@@ -34,8 +34,8 @@ defmodule Tololo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:ash_graphql, "~> 1.0"},
-      {:ash_phoenix, "~> 2.0"},
+      {:ash_graphql, "~> 1.5.0"},
+      {:ash_phoenix, "~> 2.1.14"},
       {:ash_postgres, "~> 2.0"},
       {:ash, "~> 3.0"},
       {:igniter, "~> 0.5", only: [:dev, :test]},
@@ -75,7 +75,16 @@ defmodule Tololo.MixProject do
       {:opentelemetry_api, "~> 1.4.0"},
       {:opentelemetry_ecto, "~> 1.2.0"},
       {:opentelemetry_phoenix, "~> 2.0.0"},
-      {:opentelemetry_bandit, "~> 0.2.0"}
+      {:opentelemetry_bandit, "~> 0.2.0"},
+      {:ex_cldr, "~> 2.0"},
+      {:ex_cldr_numbers, "~> 2.33"},
+      {:ex_cldr_currencies, "~> 2.16"},
+      {:ex_cldr_dates_times, "~> 2.20"},
+      {:ex_cldr_calendars, "~> 1.26"},
+      {:ex_cldr_lists, "~> 2.11"},
+      {:ex_cldr_messages, "~> 1.0"},
+      {:ex_cldr_units, "~> 3.17"},
+      {:picosat_elixir, "~> 0.2.0"}
     ]
   end
 

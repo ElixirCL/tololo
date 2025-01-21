@@ -5,5 +5,6 @@ defmodule Tololo.Kafka.Noop do
 
   @behaviour Tololo.Kafka
 
+  @spec produce(String.t(), non_neg_integer(), String.t(), term()) :: :ok | {:error, term()}
   def produce(_topic, _partition, _value, _opts \\ []), do: :ok
 end

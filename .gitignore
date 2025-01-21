@@ -9,3 +9,4 @@ build/
 .devenv*/
 .envrc
 .direnv/
+iex.ex

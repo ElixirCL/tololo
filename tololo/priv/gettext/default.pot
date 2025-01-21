@@ -1,0 +1,58 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new messages manually only if they're dynamic
+## messages that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+#
+msgid ""
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:482
+#, elixir-autogen, icu-format
+msgid "Actions"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:160
+#, elixir-autogen, icu-format
+msgid "Attempting to reconnect"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:151
+#, elixir-autogen, icu-format
+msgid "Error!"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:172
+#, elixir-autogen, icu-format
+msgid "Hang in there while we get back on track"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:167
+#, elixir-autogen, icu-format
+msgid "Something went wrong!"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:150
+#, elixir-autogen, icu-format
+msgid "Success!"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:9
+#, elixir-autogen, icu-format
+msgid "The order is processing"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:155
+#, elixir-autogen, icu-format
+msgid "We can't find the internet"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:76
+#: lib/tololo_web/components/core_components.ex:130
+#, elixir-autogen, icu-format
+msgid "close"
+msgstr ""

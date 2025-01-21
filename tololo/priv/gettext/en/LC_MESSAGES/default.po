@@ -1,0 +1,58 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/tololo_web/components/core_components.ex:482
+#, elixir-autogen, icu-format
+msgid "Actions"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:160
+#, elixir-autogen, icu-format
+msgid "Attempting to reconnect"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:151
+#, elixir-autogen, icu-format
+msgid "Error!"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:172
+#, elixir-autogen, icu-format
+msgid "Hang in there while we get back on track"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:167
+#, elixir-autogen, icu-format
+msgid "Something went wrong!"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:150
+#, elixir-autogen, icu-format
+msgid "Success!"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:9
+#, elixir-autogen, icu-format
+msgid "The order is processing"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:155
+#, elixir-autogen, icu-format
+msgid "We can't find the internet"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:76
+#: lib/tololo_web/components/core_components.ex:130
+#, elixir-autogen, icu-format
+msgid "close"
+msgstr ""
