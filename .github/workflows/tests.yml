@@ -102,6 +102,9 @@ jobs:
     - name: Format
       run: mix format
 
+    - name: Ash codegen check (for migrations, GraphQL schema, etc.)
+      run: mix ash.codegen --check
+
     # Dialyxir
     # Cache key based on Erlang/Elixir version and the mix.lock hash
     # - name: Restore PLT cache

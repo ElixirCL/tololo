@@ -8,10 +8,12 @@ defmodule Tololo.Deliveries.Delivery do
     otp_app: :tololo,
     domain: Tololo.Deliveries,
     extensions: [AshGraphql.Resource],
-    data_layer: AshPostgres.DataLayer
+    data_layer: AshPostgres.DataLayer,
+    authorizers: [Ash.Policy.Authorizer]
 
   graphql do
     type :delivery
+
   end
 
   postgres do
@@ -21,10 +23,70 @@ defmodule Tololo.Deliveries.Delivery do
 
   code_interface do
     define :update_state, args: [:state], action: :update_state
+    define :initialize, action: :initialize
+    define :empty, action: :empty
   end
 
   actions do
-    defaults [:read, :create, :update, :destroy]
+    defaults [:read, :update, :destroy]
+
+    create :create do
+      accept [
+        :delivery_person,
+        :delivery_order,
+        :from_name,
+        :to_name,
+        :from_latitude,
+        :from_longitude,
+        :to_latitude,
+        :to_longitude,
+        :to_address,
+        :to_phone,
+        :to_notes,
+        :state,
+        :private_auth_key,
+        :public_auth_key
+      ]
+    end
+
+    create :initialize do
+      accept [
+        :delivery_person,
+        :delivery_order,
+        :from_name,
+        :to_name,
+        :from_latitude,
+        :from_longitude,
+        :to_latitude,
+        :to_longitude,
+        :to_address,
+        :to_phone,
+        :to_notes
+      ]
+
+      change set_attribute(:state, :Init)
+      change set_attribute(:private_auth_key, Ash.UUIDv7.generate())
+      change set_attribute(:public_auth_key, Ash.UUIDv7.generate())
+    end
+
+    create :empty do
+      accept []
+
+      change set_attribute(:delivery_person, %{})
+      change set_attribute(:delivery_order, %{})
+      change set_attribute(:from_name, "")
+      change set_attribute(:to_name, "")
+      change set_attribute(:from_latitude, 100)
+      change set_attribute(:from_longitude, 100)
+      change set_attribute(:to_latitude, 100)
+      change set_attribute(:to_longitude, 100)
+      change set_attribute(:to_address, "")
+      change set_attribute(:to_phone, "")
+      change set_attribute(:to_notes, "")
+      change set_attribute(:state, :Init)
+      change set_attribute(:private_auth_key, Ash.UUIDv7.generate())
+      change set_attribute(:public_auth_key, Ash.UUIDv7.generate())
+    end
 
     update :update_state do
       accept [:state]
@@ -34,58 +96,96 @@ defmodule Tololo.Deliveries.Delivery do
     end
   end
 
+  policies do
+    # TODO implement policies for:
+    # - business admin
+    # - public auth token
+    # - private auth token
+    policy always() do
+      authorize_if always()
+    end
+  end
+
   attributes do
     uuid_v7_primary_key :id
 
     attribute :state, :string do
       allow_nil? false
+      public? true
     end
 
     attribute :private_auth_key, :uuid_v7 do
       allow_nil? false
       sensitive? true
+      public? true
     end
 
     attribute :public_auth_key, :uuid_v7 do
       allow_nil? false
+      public? true
     end
 
-    attribute :delivery_person, :map
-    attribute :delivery_order, :map
+    attribute :delivery_person, :map do
+      public? true
+    end
+
+    attribute :delivery_order, :map do
+      public? true
+    end
 
     attribute :from_latitude, :float do
       sensitive? true
+      public? true
     end
 
     attribute :from_longitude, :float do
       sensitive? true
+      public? true
     end
 
-    attribute :from_name, :string
+    attribute :from_name, :string do
+      public? true
+    end
 
     attribute :to_latitude, :float do
       sensitive? true
+      public? true
     end
 
     attribute :to_longitude, :float do
       sensitive? true
+      public? true
     end
 
-    attribute :to_name, :string
+    attribute :to_name, :string do
+      public? true
+    end
 
     attribute :to_address, :string do
       sensitive? true
+      public? true
     end
 
     attribute :to_phone, :string do
       sensitive? true
+      public? true
     end
 
-    attribute :to_notes, :string
+    attribute :to_notes, :string do
+      public? true
+    end
 
-    attribute :delivery_started_at, :date
-    attribute :delivery_ended_at, :date
+    attribute :delivery_started_at, :date do
+      public? true
+    end
+    attribute :delivery_ended_at, :date do
+      public? true
+    end
 
     timestamps()
+  end
+
+  relationships do
+    has_many :state_history, Tololo.Deliveries.DeliveryStateChanges
   end
 end
