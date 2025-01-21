@@ -13,16 +13,15 @@ defmodule Tololo.Deliveries.UpdateHistory do
   @spec change(Ash.Changeset.t(), term(), term()) :: nil
   def change(changeset, _opts, _context) do
     %{id: id, state: old_state} = changeset.data
-    {:ok, new_state} = Ash.Changeset.fetch_change(changeset, :state)
 
-    case Transitions.valid?(old_state, new_state) do
-      true ->
-        comment = Transitions.message(old_state, new_state)
-        DeliveryStateChanges.add_to_state_history!(id, old_state, new_state, comment)
+    with {:ok, new_state} <- Ash.Changeset.fetch_change(changeset, :state),
+         true <- Transitions.valid?(old_state, new_state) do
+      comment = Transitions.message(old_state, new_state)
+      DeliveryStateChanges.add_to_state_history!(id, old_state, new_state, comment)
 
-        changeset
-
-      false ->
+      changeset
+    else
+      _ ->
         changeset
         |> Ash.Changeset.add_error(
           field: :state,
