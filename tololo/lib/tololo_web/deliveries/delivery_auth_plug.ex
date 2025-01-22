@@ -6,11 +6,14 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
   import Plug.Conn
   alias AshAuthentication.Plug.Helpers
 
+  @impl true
   def init(opts), do: opts
 
+  @impl true
   def call(conn, _opts) do
-    with [token] <- get_req_header(conn, "authorization"),
-         {:ok, {actor, resource}} <- get_token_data(token) do
+    with false <- Map.has_key?(conn.assigns, :actor),
+         [token] <- get_req_header(conn, "authorization"),
+         {actor, resource} <- get_token_data(token) do
       conn
       |> assign(:resource, resource)
       |> assign(:actor, actor)
@@ -20,14 +23,22 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
     end
   end
 
-  @spec get_token_data(String.t()) :: {:ok, {atom(), Tololo.Deliveries.Delivery.t()}} | :error
+  @spec get_token_data(String.t()) :: {%{access_level: atom()}, Tololo.Deliveries.Delivery.t()}
   def get_token_data(token) do
-    case Tololo.Deliveries.Delivery.get_via_token!(token, authorize?: false) do
-      [resource] -> {:ok, {generate_actor(token, resource), resource}}
-      _ -> :error
+    cond do
+      admin?(token) ->
+        # admin token isn't related to a resource, so it returns nil
+        {generate_actor(:admin), nil}
+
+      [resource] = Tololo.Deliveries.Delivery.get_via_token!(token, authorize?: false) ->
+        {generate_actor(token, resource), resource}
     end
   end
 
+  @spec generate_actor(atom()) :: %{access_level: atom()}
+  defp generate_actor(:admin), do: %{access_level: :admin}
+
+  @spec generate_actor(atom(), Tololo.Deliveries.Delivery.t()) :: %{access_level: atom()}
   defp generate_actor(token, %{public_auth_key: public_key, private_auth_key: private_key}) do
     level =
       cond do
@@ -37,4 +48,7 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
 
     %{access_level: level}
   end
+
+  @spec admin?(String.t()) :: boolean()
+  defp admin?(token), do: token == System.get_env("ADMIN_API_KEY")
 end

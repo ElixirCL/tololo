@@ -92,4 +92,7 @@ in
     '';
   };
 
+
+  env.ADMIN_API_KEY = "test";
+
 }
