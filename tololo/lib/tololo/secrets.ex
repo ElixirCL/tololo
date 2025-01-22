@@ -1,4 +1,7 @@
 defmodule Tololo.Secrets do
+  @moduledoc """
+  Module for handling secrets.
+  """
   use AshAuthentication.Secret
 
   def secret_for([:authentication, :tokens, :signing_secret], Tololo.Accounts.User, _opts) do

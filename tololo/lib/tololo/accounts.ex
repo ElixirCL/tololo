@@ -1,4 +1,7 @@
 defmodule Tololo.Accounts do
+  @moduledoc """
+  Accounts domain for authentication.
+  """
   use Ash.Domain,
     otp_app: :tololo
 

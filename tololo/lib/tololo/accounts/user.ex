@@ -1,4 +1,9 @@
 defmodule Tololo.Accounts.User do
+  @moduledoc """
+  Represents an user in the Tololo system.
+
+  This module defines the `User` resource, which is responsible for managing authentication.
+  """
   use Ash.Resource,
     otp_app: :tololo,
     domain: Tololo.Accounts,
