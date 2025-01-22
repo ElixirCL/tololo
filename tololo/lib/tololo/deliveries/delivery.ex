@@ -38,14 +38,17 @@ defmodule Tololo.Deliveries.Delivery do
 
   field_policies do
     field_policy :private_auth_key do
+      description "public auth key should only be visible to admin"
       authorize_if actor_attribute_equals(:access_level, :admin)
     end
 
     field_policy :public_auth_key do
+      description "private auth key should only be visible to admin"
       authorize_if actor_attribute_equals(:access_level, :admin)
     end
 
     field_policy :* do
+      description "the rest of the fields don't require any special policies"
       authorize_if always()
     end
   end
@@ -139,15 +142,18 @@ defmodule Tololo.Deliveries.Delivery do
 
   policies do
     bypass always() do
+      description "admin has access to every action"
       authorize_if actor_attribute_equals(:access_level, :admin)
     end
 
     policy action_type(:read) do
+      description "read access is limited to users with public and private access"
       authorize_if actor_attribute_equals(:access_level, :public)
       authorize_if actor_attribute_equals(:access_level, :private)
     end
 
     policy action_type(:update) do
+      description "update access is limited to users private access"
       authorize_if actor_attribute_equals(:access_level, :private)
     end
   end

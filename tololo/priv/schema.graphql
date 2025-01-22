@@ -54,39 +54,22 @@ input InitDeliveryInput {
 }
 
 type Delivery {
-  "A unique identifier"
   id: ID!
-
   state: String!
-
-  privateAuthKey: ID!
-
-  publicAuthKey: ID!
-
+  privateAuthKey: ID
+  publicAuthKey: ID
   deliveryPerson: JsonString
-
   deliveryOrder: JsonString
-
   fromLatitude: Float
-
   fromLongitude: Float
-
   fromName: String
-
   toLatitude: Float
-
   toLongitude: Float
-
   toName: String
-
   toAddress: String
-
   toPhone: String
-
   toNotes: String
-
   deliveryStartedAt: Date
-
   deliveryEndedAt: Date
 }
 

@@ -29,10 +29,12 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
   end
 
   defp generate_actor(token, %{public_auth_key: public_key, private_auth_key: private_key}) do
-    level = cond do
-      token == public_key -> :public
-      token == private_key -> :private
-    end
+    level =
+      cond do
+        token == public_key -> :public
+        token == private_key -> :private
+      end
+
     %{access_level: level}
   end
 end
