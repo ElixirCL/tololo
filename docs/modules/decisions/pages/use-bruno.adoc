@@ -1,0 +1,26 @@
+= Use Bruno
+
+- Status: accepted
+- Date: 2025-01-22
+
+== Context and Problem Statement
+
+We need an efficient and collaborative way to manage and share API request collections that serve as examples for our API. These collections need to support both REST and GraphQL endpoints while integrating with version control systems like Git to ensure easy collaboration and maintainability.
+
+== Considered Options
+
+- https://www.postman.com/[Postman]: It's closed-source.
+- https://hoppscotch.io/[Hoppscotch]: An open-source alternative, but it's not as Git-friendy due to the need for manual imports and exports of collections.
+
+== Decision Outcome
+
+Chosen option: "`Bruno`", because
+
+- Bruno provides a straightforward way to define and run API requests without unnecessary complexity.
+- Open-source
+- Supports both GraphQL and REST.
+- Uses local files for storing API collections, enabling integration with Git.
+== Consequences
+
+- The project will use Bruno to maintain API request collections directly within the repository.
+- Contributors can use Bruno to execute and test API requests, streamlining the development and testing process.
