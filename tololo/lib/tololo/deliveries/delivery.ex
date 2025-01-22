@@ -55,6 +55,7 @@ defmodule Tololo.Deliveries.Delivery do
     define :initialize, action: :initialize
     define :empty, action: :empty
     define :get_via_token, args: [:token], action: :get_via_token
+    define :update_location, args: [:from_latitude, :from_longitude], action: :update_location
   end
 
   actions do
@@ -137,12 +138,9 @@ defmodule Tololo.Deliveries.Delivery do
   end
 
   policies do
-    # TODO implement policies for:
-    # - business admin
-
-    # policy always() do
-    #   authorize_if always()
-    # end
+    bypass always() do
+      authorize_if actor_attribute_equals(:access_level, :admin)
+    end
 
     policy action_type(:read) do
       authorize_if actor_attribute_equals(:access_level, :public)

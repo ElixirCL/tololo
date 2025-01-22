@@ -25,24 +25,28 @@ defmodule DeliveryTest do
 
         delivery =
           Deliveries.Delivery
-          |> Ash.Changeset.for_create(:create, %{
-            delivery_person: %{},
-            delivery_order: %{},
-            from_name: "from_name",
-            to_name: "to_name",
-            from_latitude: 100,
-            from_longitude: 100,
-            to_latitude: 100,
-            to_longitude: 100,
-            to_address: "to_address",
-            to_phone: "to_phone",
-            to_notes: "to_notes",
-            private_auth_key: Ash.UUIDv7.generate(),
-            public_auth_key: Ash.UUIDv7.generate(),
-            state: old_state
-          })
+          |> Ash.Changeset.for_create(
+            :create,
+            %{
+              delivery_person: %{},
+              delivery_order: %{},
+              from_name: "from_name",
+              to_name: "to_name",
+              from_latitude: 100,
+              from_longitude: 100,
+              to_latitude: 100,
+              to_longitude: 100,
+              to_address: "to_address",
+              to_phone: "to_phone",
+              to_notes: "to_notes",
+              private_auth_key: Ash.UUIDv7.generate(),
+              public_auth_key: Ash.UUIDv7.generate(),
+              state: old_state
+            },
+            authorize?: false
+          )
           |> Ash.create!()
-          |> Deliveries.Delivery.update_state!(new_state)
+          |> Deliveries.Delivery.update_state!(new_state, authorize?: false)
 
         %{state_history: [%{old_state: os, new_state: ns}]} =
           Ash.load!(delivery, :state_history)
@@ -54,8 +58,55 @@ defmodule DeliveryTest do
 
     test "invalid transition" do
       assert_raise Ash.Error.Invalid, fn ->
-        Deliveries.Delivery.empty!() |> Deliveries.Delivery.update_state!(:Delivery_Done)
+        Deliveries.Delivery.empty!(authorize?: false)
+        |> Deliveries.Delivery.update_state!(:Delivery_Done, authorize?: false)
       end
+    end
+  end
+
+  @unknown_actor %{}
+  @public_actor %{access_level: :public}
+  @private_actor %{access_level: :private}
+  @admin_actor %{access_level: :admin}
+  describe "actor authorization" do
+    test "unauthorized read" do
+      %{id: id} = Tololo.Deliveries.Delivery.empty!(authorize?: false)
+
+      assert_raise Ash.Error.Invalid, fn ->
+        Tololo.Deliveries.Delivery |> Ash.get!(id, actor: @unknown_actor)
+      end
+    end
+
+    test "authorized read" do
+      %{id: id} = Tololo.Deliveries.Delivery.empty!(authorize?: false)
+
+      Tololo.Deliveries.Delivery |> Ash.get!(id, actor: @public_actor)
+      Tololo.Deliveries.Delivery |> Ash.get!(id, actor: @private_actor)
+      Tololo.Deliveries.Delivery |> Ash.get!(id, actor: @admin_actor)
+    end
+
+    test "unauthorized update" do
+      assert_raise Ash.Error.Forbidden, fn ->
+        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @unknown_actor)
+        |> Deliveries.Delivery.update_location!(123, 321, actor: @unknown_actor)
+      end
+
+      assert_raise Ash.Error.Forbidden, fn ->
+        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @public_actor)
+        |> Deliveries.Delivery.update_location!(123, 321, actor: @public_actor)
+      end
+    end
+
+    test "authorized update" do
+      Tololo.Deliveries.Delivery.empty!(authorize?: false)
+      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @private_actor)
+      |> Deliveries.Delivery.update_location!(123, 321, actor: @private_actor)
+
+      Tololo.Deliveries.Delivery.empty!(authorize?: false)
+      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @admin_actor)
+      |> Deliveries.Delivery.update_location!(123, 321, actor: @admin_actor)
     end
   end
 end
