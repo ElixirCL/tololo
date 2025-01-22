@@ -30,7 +30,8 @@ defmodule Tololo.Application do
       # Start a worker by calling: Tololo.Worker.start_link(arg)
       # {Tololo.Worker, arg},
       # Start to serve requests, typically the last entry
-      TololoWeb.Endpoint
+      TololoWeb.Endpoint,
+      {AshAuthentication.Supervisor, [otp_app: :tololo]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

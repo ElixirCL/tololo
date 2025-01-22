@@ -1,4 +1,5 @@
 import Config
+config :tololo, token_signing_secret: "qg2uHtVokJGsJZ0hdFsoOQlYbDOyeEB0"
 config :ash, disable_async?: true
 
 # Configure your database

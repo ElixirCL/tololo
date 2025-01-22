@@ -34,6 +34,8 @@ defmodule Tololo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:ash_authentication, "~> 4.1"},
+      {:ash_authentication_phoenix, "~> 2.0"},
       {:ash_graphql, "~> 1.5.0"},
       {:ash_phoenix, "~> 2.1.14"},
       {:ash_postgres, "~> 2.0"},
