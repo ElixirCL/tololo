@@ -2,8 +2,10 @@ defmodule TololoWeb.Router do
   use TololoWeb, :router
 
   use AshAuthentication.Phoenix.Router
+
   pipeline :graphql do
     # plug :load_from_bearer
+    plug TololoWeb.Deliveries.DeliveryAuthPlug
     plug AshGraphql.Plug
   end
 
@@ -20,7 +22,9 @@ defmodule TololoWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     # plug :load_from_bearer
+    plug TololoWeb.Deliveries.DeliveryAuthPlug
   end
+
   scope "/", TololoWeb do
     pipe_through :browser
 
