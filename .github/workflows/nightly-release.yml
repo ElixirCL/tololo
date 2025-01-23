@@ -60,7 +60,7 @@ jobs:
                 "tag_name": "'$TAG_NAME'",
                 "target_commitish": "main",
                 "name": "Nightly Build '$TAG_NAME'",
-                "body": "$LOGS",
+                "body": "'$LOGS'",
                 "draft": false,
                 "prerelease": true
               }'
