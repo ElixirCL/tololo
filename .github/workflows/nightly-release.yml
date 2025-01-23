@@ -45,8 +45,9 @@ jobs:
             TAG_NAME="nightly-v$VERSION-$TIMESTAMP"
 
             # Get commit history
-            LOGS=$(git log --since="24 hours ago" --oneline)
-            LOGS=$(node -e 'console.log(JSON.stringify("Automated nightly release from main branch.\n" + "$LOGS"))')
+            LOGS="$(git log --since="24 hours ago" --oneline)"
+            LOGS=$(node -e 'const commits = "$LOGS".split("\n");let message = "## Automated nightly release from main branch\n";commits.forEach(commit => {message += "- " + commit + "\n";});console.log(JSON.stringify(message));')
+            echo $LOGS
 
             # create a release
             # https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
@@ -60,7 +61,7 @@ jobs:
                 "tag_name": "'$TAG_NAME'",
                 "target_commitish": "main",
                 "name": "Nightly Build '$TAG_NAME'",
-                "body": "'$LOGS'",
+                "body": '$LOGS',
                 "draft": false,
                 "prerelease": true
               }'
