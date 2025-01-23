@@ -1,6 +1,103 @@
 defmodule TololoWeb.DeliveryTest do
   use TololoWeb.ConnCase, async: true
 
+  @init_delivery_query """
+    mutation ($input: InitDeliveryInput!) {
+      initDelivery(input: $input) {
+        result {
+          id
+          state
+          privateAuthKey
+          publicAuthKey
+          deliveryPerson
+          deliveryOrder
+          fromLatitude
+          fromLongitude
+          fromName
+          toLatitude
+          toLongitude
+          toName
+          toAddress
+          toPhone
+          toNotes
+          deliveryStartedAt
+          deliveryEndedAt
+        }
+        errors {
+          code
+          fields
+          message
+          shortMessage
+          vars
+        }
+      }
+    }
+  """
+
+  @get_delivery_query """
+    query ($id: ID!) {
+      getDelivery(id: $id) {
+        id
+        state
+        privateAuthKey
+        publicAuthKey
+        deliveryPerson
+        deliveryOrder
+        fromLatitude
+        fromLongitude
+        fromName
+        toLatitude
+        toLongitude
+        toName
+        toAddress
+        toPhone
+        toNotes
+        deliveryStartedAt
+        deliveryEndedAt
+      }
+    }
+  """
+
+  @update_location_query """
+    mutation ($id: ID!, $input: UpdateLocationInput!) {
+      updateLocation(id: $id, input: $input) {
+        result {
+          id
+          state
+          fromLatitude
+          fromLongitude
+          toLatitude
+          toLongitude
+        }
+        errors {
+          code
+          fields
+          message
+          shortMessage
+          vars
+        }
+      }
+    }
+  """
+
+  @update_state_query """
+    mutation ($id: ID!, $input: UpdateStateInput!) {
+      updateState(id: $id, input: $input) {
+        result {
+          id
+          state
+        }
+        errors {
+          code
+          fields
+          message
+          shortMessage
+          vars
+        }
+      }
+    }
+  """
+
   describe "GraphQL endpoints" do
     defp set_gql_headers(conn, auth),
       do:
@@ -10,40 +107,6 @@ defmodule TololoWeb.DeliveryTest do
         |> put_req_header("authorization", auth)
 
     test "init delivery", %{conn: conn} do
-      query =
-        """
-        mutation ($input: InitDeliveryInput!) {
-          initDelivery(input: $input) {
-            result {
-              id
-              state
-              privateAuthKey
-              publicAuthKey
-              deliveryPerson
-              deliveryOrder
-              fromLatitude
-              fromLongitude
-              fromName
-              toLatitude
-              toLongitude
-              toName
-              toAddress
-              toPhone
-              toNotes
-              deliveryStartedAt
-              deliveryEndedAt
-            }
-            errors {
-              code
-              fields
-              message
-              shortMessage
-              vars
-            }
-          }
-        }
-        """
-
       variables =
         %{
           input: %{
@@ -66,7 +129,7 @@ defmodule TololoWeb.DeliveryTest do
         |> set_gql_headers(System.get_env("ADMIN_API_KEY"))
         |> post(
           ~p"/gql",
-          %{query: query, variables: variables}
+          %{query: @init_delivery_query, variables: variables}
         )
 
       %{
@@ -89,30 +152,6 @@ defmodule TololoWeb.DeliveryTest do
       %{id: id, public_auth_key: public_auth_key} =
         Tololo.Deliveries.Delivery.empty!(authorize?: false)
 
-      query = """
-          query ($id: ID!) {
-            getDelivery(id: $id) {
-              id
-              state
-              privateAuthKey
-              publicAuthKey
-              deliveryPerson
-              deliveryOrder
-              fromLatitude
-              fromLongitude
-              fromName
-              toLatitude
-              toLongitude
-              toName
-              toAddress
-              toPhone
-              toNotes
-              deliveryStartedAt
-              deliveryEndedAt
-            }
-          }
-      """
-
       variables = %{id: id}
 
       conn =
@@ -120,7 +159,7 @@ defmodule TololoWeb.DeliveryTest do
         |> set_gql_headers(public_auth_key)
         |> post(
           ~p"/gql",
-          %{query: query, variables: variables}
+          %{query: @get_delivery_query, variables: variables}
         )
 
       %{"id" => id, "publicAuthKey" => public_auth_key, "privateAuthKey" => private_auth_key} =
@@ -139,28 +178,6 @@ defmodule TololoWeb.DeliveryTest do
       } =
         Tololo.Deliveries.Delivery.empty!(authorize?: false)
 
-      query = """
-      mutation ($id: ID!, $input: UpdateLocationInput!) {
-        updateLocation(id: $id, input: $input) {
-          result {
-            id
-            state
-            fromLatitude
-            fromLongitude
-            toLatitude
-            toLongitude
-          }
-          errors {
-            code
-            fields
-            message
-            shortMessage
-            vars
-          }
-        }
-      }
-      """
-
       variables = %{id: id, input: %{fromLatitude: 123, fromLongitude: 123}}
 
       conn =
@@ -168,7 +185,7 @@ defmodule TololoWeb.DeliveryTest do
         |> set_gql_headers(private_auth_key)
         |> post(
           ~p"/gql",
-          %{query: query, variables: variables}
+          %{query: @update_location_query, variables: variables}
         )
 
       %{"id" => id, "fromLatitude" => new_lat, "fromLongitude" => new_lon} =
@@ -181,6 +198,32 @@ defmodule TololoWeb.DeliveryTest do
       assert old_lat != new_lat and old_lon != new_lon
     end
 
+    test "update delivery location unauthorized", %{conn: conn} do
+      %{
+        id: id,
+        public_auth_key: public_auth_key,
+      } =
+        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+
+      variables = %{id: id, input: %{fromLatitude: 123, fromLongitude: 123}}
+
+      conn =
+        conn
+        |> set_gql_headers(public_auth_key)
+        |> post(
+          ~p"/gql",
+          %{query: @update_location_query, variables: variables}
+        )
+
+      [%{"message" => error_message}] =
+        json_response(conn, 200)
+        |> Map.get("data")
+        |> Map.get("updateLocation")
+        |> Map.get("errors")
+
+      assert error_message == "forbidden"
+    end
+
     test "update delivery state", %{conn: conn} do
       %{
         id: id,
@@ -189,24 +232,6 @@ defmodule TololoWeb.DeliveryTest do
       } =
         Tololo.Deliveries.Delivery.empty!(authorize?: false)
 
-      query = """
-        mutation ($id: ID!, $input: UpdateStateInput!) {
-          updateState(id: $id, input: $input) {
-            result {
-              id
-              state
-            }
-            errors {
-              code
-              fields
-              message
-              shortMessage
-              vars
-            }
-          }
-        }
-      """
-
       variables = %{id: id, input: %{state: "In_Preparation"}}
 
       conn =
@@ -214,7 +239,7 @@ defmodule TololoWeb.DeliveryTest do
         |> set_gql_headers(private_auth_key)
         |> post(
           ~p"/gql",
-          %{query: query, variables: variables}
+          %{query: @update_state_query, variables: variables}
         )
 
       %{"id" => id, "state" => new_state} =
