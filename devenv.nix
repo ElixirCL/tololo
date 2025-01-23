@@ -18,6 +18,9 @@ in
     pkgs.prometheus
     pkgs.gnumake
     pkgs.antora
+
+    pkgs.zsh
+    pkgs.oh-my-zsh
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     # for ExUnit notifier
     pkgs.libnotify
