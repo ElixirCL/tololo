@@ -1,41 +1,33 @@
 defmodule Tololo.Deliveries.Transitions do
+  @moduledoc """
+  Functions related to delivery state transitions and comments.
+  """
   use Gettext, backend: TololoWeb.Gettext
 
   # Is needed to be a function instead of a module property
   # due to Gettext nature of loading strings at runtime.
   # Otherwise it will load only the default language.
-  @moduledoc """
-  Functions related to delivery state transitions and comments.
-  """
   @spec state_transitions() :: %{required({String.t(), String.t()}) => String.t() | nil}
-  def state_transitions(),
+  # Init state transitions
+  # In_Preparation state transitions
+  # Delivery_Aborted state transitions
+  # In_Delivery state transitions
+  # Delivery_With_Problems state transitions
+  # Delivery_Done state transitions
+  def state_transitions,
     do: %{
-      # Init state transitions
       {"Init", "In_Preparation"} => gettext("The order is processing"),
       {"Init", "Delivery_Aborted"} => gettext("The order cannot be fulfilled or expired"),
-
-      # In_Preparation state transitions
       {"In_Preparation", "In_Delivery"} => gettext("The order is on the way"),
-      {"In_Preparation", "Delivery_Aborted"} =>
-        gettext("The order was canceled during preparation"),
-
-      # Delivery_Aborted state transitions
-      {"Delivery_Aborted", "Stale_Delivery_Aborted"} =>
-        gettext("The order was canceled and is now stale"),
-
-      # In_Delivery state transitions
+      {"In_Preparation", "Delivery_Aborted"} => gettext("The order was canceled during preparation"),
+      {"Delivery_Aborted", "Stale_Delivery_Aborted"} => gettext("The order was canceled and is now stale"),
       {"In_Delivery", "Delivery_With_Problems"} =>
         gettext("The delivery has issues, such as address or details mismatch"),
       {"In_Delivery", "Delivery_Done"} => gettext("The delivery has been completed"),
-      {"In_Delivery", "Stale_Delivery_With_Problems"} =>
-        gettext("The delivery has issues and was not resolved in time"),
-
-      # Delivery_With_Problems state transitions
+      {"In_Delivery", "Stale_Delivery_With_Problems"} => gettext("The delivery has issues and was not resolved in time"),
       {"Delivery_With_Problems", "In_Delivery"} => gettext("Delivery issue resolved"),
       {"Delivery_With_Problems", "Stale_Delivery_With_Problems"} =>
         gettext("The delivery issue was not resolved in time and is now stale"),
-
-      # Delivery_Done state transitions
       {"Delivery_Done", "Stale_Delivery_Done"} => gettext("The completed delivery is now stale")
     }
 
@@ -43,20 +35,17 @@ defmodule Tololo.Deliveries.Transitions do
   Generates a comment for a state transition, based on the old and new state.
   """
   @spec message(atom(), atom()) :: String.t()
-  def message(old_state, new_state),
-    do: Map.get(state_transitions(), {to_string(old_state), to_string(new_state)})
+  def message(old_state, new_state), do: Map.get(state_transitions(), {to_string(old_state), to_string(new_state)})
 
   @doc """
   Returns true if the state is equals to the value.
   """
   @spec equals?(String.t(), atom()) :: boolean()
-  def equals?(state, value),
-    do: state == to_string(value)
+  def equals?(state, value), do: state == to_string(value)
 
   @doc """
   Checks if a state transition is valid.
   """
   @spec valid?(String.t(), String.t()) :: boolean()
-  def valid?(old_state, new_state),
-    do: Map.has_key?(state_transitions(), {to_string(old_state), to_string(new_state)})
+  def valid?(old_state, new_state), do: Map.has_key?(state_transitions(), {to_string(old_state), to_string(new_state)})
 end

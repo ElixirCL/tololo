@@ -11,7 +11,10 @@ defmodule Tololo.MixProject do
       consolidate_protocols: Mix.env() != :dev,
       aliases: aliases(),
       deps: deps(),
-      dialyzer: [ignore_warnings: "dialyzer.ignore-warnings"]
+      dialyzer: [ignore_warnings: "dialyzer.ignore-warnings"],
+      preferred_cli_env: [
+        "test.watch": :test
+      ]
     ]
   end
 
@@ -51,12 +54,7 @@ defmodule Tololo.MixProject do
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:heroicons,
-       github: "tailwindlabs/heroicons",
-       tag: "v2.1.1",
-       sparse: "optimized",
-       app: false,
-       compile: false,
-       depth: 1},
+       github: "tailwindlabs/heroicons", tag: "v2.1.1", sparse: "optimized", app: false, compile: false, depth: 1},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 1.0"},
@@ -84,7 +82,9 @@ defmodule Tololo.MixProject do
       {:ex_cldr_lists, "~> 2.11"},
       {:ex_cldr_messages, "~> 1.0"},
       {:ex_cldr_units, "~> 3.17"},
-      {:picosat_elixir, "~> 0.2.0"}
+      {:picosat_elixir, "~> 0.2.0"},
+      {:styler, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 

@@ -1,44 +1,6 @@
 import Config
+
 config :ash, disable_async?: true
-
-# Configure your database
-#
-# The MIX_TEST_PARTITION environment variable can be used
-# to provide built-in test partitioning in CI environment.
-# Run `mix help test` for more information.
-config :tololo, Tololo.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "tololo_test#{System.get_env("MIX_TEST_PARTITION")}",
-  pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: System.schedulers_online() * 2
-
-# We don't run a server during test. If one is required,
-# you can enable the server option below.
-config :tololo, TololoWeb.Endpoint,
-  http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "qbpNBfHj56JG/dJjuQZmvkAYI084R0kJhx4SKrHodVNMyX5URUsWBAN6rEfVMr1l",
-  server: false
-
-# In test we don't send emails
-config :tololo, Tololo.Mailer, adapter: Swoosh.Adapters.Test
-
-# Disable swoosh api client as it is only required for production adapters
-config :swoosh, :api_client, false
-
-# Print only warnings and errors during test
-config :logger, level: :warning
-
-# Initialize plugs at runtime for faster test compilation
-config :phoenix, :plug_init_mode, :runtime
-
-# Enable helpful, but potentially expensive runtime checks
-config :phoenix_live_view,
-  enable_expensive_runtime_checks: true
-
-config :tololo, :kafka_driver, driver: Tololo.Kafka.Noop
-config :tololo, Tololo.Prometheus, disabled: true
 
 config :kafka_ex,
   brokers: [
@@ -91,3 +53,43 @@ config :kafka_ex,
   #   keyfile: File.cwd!() <> "/ssl/key.pem"
   # ],
   kafka_version: "0.10.1"
+
+# Print only warnings and errors during test
+config :logger, level: :warning
+
+# Initialize plugs at runtime for faster test compilation
+config :phoenix, :plug_init_mode, :runtime
+
+# Enable helpful, but potentially expensive runtime checks
+config :phoenix_live_view,
+  enable_expensive_runtime_checks: true
+
+# Disable swoosh api client as it is only required for production adapters
+config :swoosh, :api_client, false
+
+# Configure your database
+#
+
+# In test we don't send emails
+# The MIX_TEST_PARTITION environment variable can be used
+# to provide built-in test partitioning in CI environment.
+# Run `mix help test` for more information.
+config :tololo, Tololo.Mailer, adapter: Swoosh.Adapters.Test
+config :tololo, Tololo.Prometheus, disabled: true
+
+config :tololo, Tololo.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "tololo_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  # We don't run a server during test. If one is required,
+  # you can enable the server option below.
+  pool_size: System.schedulers_online() * 2
+
+config :tololo, TololoWeb.Endpoint,
+  http: [ip: {127, 0, 0, 1}, port: 4002],
+  secret_key_base: "qbpNBfHj56JG/dJjuQZmvkAYI084R0kJhx4SKrHodVNMyX5URUsWBAN6rEfVMr1l",
+  server: false
+
+config :tololo, :kafka_driver, driver: Tololo.Kafka.Noop

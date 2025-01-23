@@ -15,6 +15,22 @@ config :ash,
   policies: [no_filter_static_forbidden_reads?: false]
 
 # custom_types: [ticket_status: Tololo.Support.Ticket.Types.Status]
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.17.11",
+  tololo: [
+    args: ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+# Configures Elixir's Logger
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:request_id]
+
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
 
 config :spark,
   formatter: [
@@ -30,6 +46,7 @@ config :spark,
         :pub_sub,
         :preparations,
         :changes,
+        # ash_domains: [Tololo.Support]
         :validations,
         :multitenancy,
         :attributes,
@@ -44,43 +61,6 @@ config :spark,
     ]
   ]
 
-config :tololo,
-  ecto_repos: [Tololo.Repo],
-  generators: [timestamp_type: :utc_datetime],
-  ash_domains: [Tololo.Deliveries]
-
-# ash_domains: [Tololo.Support]
-
-# Configures the endpoint
-config :tololo, TololoWeb.Endpoint,
-  url: [host: "localhost"],
-  adapter: Bandit.PhoenixAdapter,
-  render_errors: [
-    formats: [html: TololoWeb.ErrorHTML, json: TololoWeb.ErrorJSON],
-    layout: false
-  ],
-  pubsub_server: Tololo.PubSub,
-  live_view: [signing_salt: "x8OTxxKq"]
-
-# Configures the mailer
-#
-# By default it uses the "Local" adapter which stores the emails
-# locally. You can see the emails in your browser, at "/dev/mailbox".
-#
-# For production it's recommended to configure a different adapter
-# at the `config/runtime.exs`.
-config :tololo, Tololo.Mailer, adapter: Swoosh.Adapters.Local
-
-# Configure esbuild (the version is required)
-config :esbuild,
-  version: "0.17.11",
-  tololo: [
-    args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-  ]
-
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.3",
@@ -93,13 +73,30 @@ config :tailwind,
     cd: Path.expand("../assets", __DIR__)
   ]
 
-# Configures Elixir's Logger
-config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+# Configures the mailer
+#
+# By default it uses the "Local" adapter which stores the emails
+# locally. You can see the emails in your browser, at "/dev/mailbox".
+#
+# For production it's recommended to configure a different adapter
+# at the `config/runtime.exs`.
+config :tololo, Tololo.Mailer, adapter: Swoosh.Adapters.Local
 
-# Use Jason for JSON parsing in Phoenix
-config :phoenix, :json_library, Jason
+# Configures the endpoint
+config :tololo, TololoWeb.Endpoint,
+  url: [host: "localhost"],
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [html: TololoWeb.ErrorHTML, json: TololoWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: Tololo.PubSub,
+  live_view: [signing_salt: "x8OTxxKq"]
+
+config :tololo,
+  ecto_repos: [Tololo.Repo],
+  generators: [timestamp_type: :utc_datetime],
+  ash_domains: [Tololo.Deliveries]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

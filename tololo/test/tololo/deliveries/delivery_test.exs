@@ -1,7 +1,7 @@
 defmodule DeliveryTest do
-  alias Tololo.Deliveries
-
   use Tololo.DataCase, async: true
+
+  alias Tololo.Deliveries
 
   @valid_transitions [
     {:Init, :In_Preparation},
@@ -54,7 +54,7 @@ defmodule DeliveryTest do
 
     test "invalid transition" do
       assert_raise Ash.Error.Invalid, fn ->
-        Deliveries.Delivery.empty!() |> Deliveries.Delivery.update_state!(:Delivery_Done)
+        Deliveries.Delivery.update_state!(Deliveries.Delivery.empty!(), :Delivery_Done)
       end
     end
   end

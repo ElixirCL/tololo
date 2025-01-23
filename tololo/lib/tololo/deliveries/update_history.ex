@@ -3,11 +3,11 @@ defmodule Tololo.Deliveries.UpdateHistory do
   Checks validity of state transition and also adds it to the state history.
   """
 
-  alias Tololo.Deliveries.Transitions
-  alias Tololo.Deliveries.DeliveryStateChanges
-
   use Ash.Resource.Change
   use Gettext, backend: TololoWeb.Gettext
+
+  alias Tololo.Deliveries.DeliveryStateChanges
+  alias Tololo.Deliveries.Transitions
 
   @impl true
   @spec change(Ash.Changeset.t(), term(), term()) :: nil
@@ -22,8 +22,7 @@ defmodule Tololo.Deliveries.UpdateHistory do
       changeset
     else
       _ ->
-        changeset
-        |> Ash.Changeset.add_error(
+        Ash.Changeset.add_error(changeset,
           field: :state,
           message: gettext("Invalid delivery state transition")
         )

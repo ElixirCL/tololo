@@ -2,16 +2,14 @@ defmodule GettextTest do
   @moduledoc """
   Test that Getttext translations are correctly loaded  for English and Spanish.
   """
+  use Tololo.DataCase, async: true
+
   alias Tololo.Deliveries
   alias Tololo.Deliveries.Transitions
 
-  use Tololo.DataCase, async: true
-
   describe "delivery state messages" do
     test "that In_Preparation has correct message" do
-      delivery =
-        Deliveries.Delivery.empty!()
-        |> Deliveries.Delivery.update_state!(:In_Preparation)
+      delivery = Deliveries.Delivery.update_state!(Deliveries.Delivery.empty!(), :In_Preparation)
 
       %{state_history: [%{old_state: old_state, new_state: new_state}]} =
         Ash.load!(delivery, :state_history)

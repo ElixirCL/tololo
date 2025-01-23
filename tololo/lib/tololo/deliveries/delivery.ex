@@ -191,6 +191,7 @@ defmodule Tololo.Deliveries.Delivery do
     attribute :delivery_started_at, :date do
       public? true
     end
+
     attribute :delivery_ended_at, :date do
       public? true
     end
