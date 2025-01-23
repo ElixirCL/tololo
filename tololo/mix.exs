@@ -86,7 +86,8 @@ defmodule Tololo.MixProject do
       {:ex_cldr_lists, "~> 2.11"},
       {:ex_cldr_messages, "~> 1.0"},
       {:ex_cldr_units, "~> 3.17"},
-      {:picosat_elixir, "~> 0.2.0"}
+      {:picosat_elixir, "~> 0.2.0"},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
