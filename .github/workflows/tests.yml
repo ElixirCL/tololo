@@ -91,6 +91,8 @@ jobs:
     # Step: Run project tests.
     - name: Run tests
       run: mix test
+      env:
+        ADMIN_API_KEY: test
 
     # Step: Run Credo to analyze code.
     - name: Run Credo
