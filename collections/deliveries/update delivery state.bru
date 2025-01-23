@@ -10,6 +10,10 @@ post {
   auth: none
 }
 
+headers {
+  Authorization: Bearer 01948a19-987d-7d52-b63e-b2d3e8ac8247
+}
+
 body:graphql {
   mutation ($id: ID!, $input: UpdateStateInput!) {
     updateState(id: $id, input: $input) {
