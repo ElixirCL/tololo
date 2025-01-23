@@ -20,6 +20,29 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          function escape_json_string() {
+            local input=$1
+            for ((i = 0; i < ${#input}; i++)); do
+              local char="${input:i:1}"
+              local escaped="${char}"
+              case "${char}" in
+                $'"' ) escaped="\\\"";;
+                $'\\') escaped="\\\\";;
+                *)
+                  if [[ "${char}" < $'\x20' ]]; then
+                    case "${char}" in
+                      $'\b') escaped="\\b";;
+                      $'\f') escaped="\\f";;
+                      $'\n') escaped="\\n";;
+                      $'\r') escaped="\\r";;
+                      $'\t') escaped="\\t";;
+                      *) escaped=$(printf "\u%04X" "'${char}")
+                    esac
+                  fi;;
+              esac
+              echo -n "${escaped}"
+            done
+          }
           # Get the latest commit date in ISO 8601 format
           LATEST_COMMIT_DATE=$(git log -1 --format=%cI)
 
@@ -43,6 +66,7 @@ jobs:
 
             # Get commit history
             LOGS=$(git log --since="24 hours ago" --oneline)
+            LOGS=escape_json_string "Automated nightly release from main branch.\n${LOGS}"
 
             # create a release
             # https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
@@ -56,7 +80,7 @@ jobs:
                 "tag_name": "'$TAG_NAME'",
                 "target_commitish": "main",
                 "name": "Nightly Build '$TAG_NAME'",
-                "body": "Automated nightly release from main branch.\n'$LOGS'",
+                "body": "'$LOGS'",
                 "draft": false,
                 "prerelease": true
               }'
