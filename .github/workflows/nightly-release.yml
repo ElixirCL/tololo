@@ -33,13 +33,16 @@ jobs:
           # Check if the difference is less than 24 hours (86400 seconds)
           # This is to avoid releasing nightly code older than 24 hours.
           # We only release a nightly if there were commits in the last 24 hours.
-          
+
           if [ $TIME_DIFF -lt 86400 ]; then
-          
+
             # generate a unique tag for nightly release
             TIMESTAMP=$(date +"%Y%m%d%H%M%S")
             VERSION=$(cat VERSION)
             TAG_NAME="nightly-v$VERSION-$TIMESTAMP"
+
+            # Get commit history
+            LOGS=$(git log --since="24 hours ago" --oneline)
 
             # create a release
             # https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
@@ -52,8 +55,8 @@ jobs:
               -d '{
                 "tag_name": "'$TAG_NAME'",
                 "target_commitish": "main",
-                "name": "Nightly Build '$TIMESTAMP'",
-                "body": "Automated nightly release from main branch.",
+                "name": "Nightly Build '$TAG_NAME'",
+                "body": "Automated nightly release from main branch.\n'$LOGS'",
                 "draft": false,
                 "prerelease": true
               }'

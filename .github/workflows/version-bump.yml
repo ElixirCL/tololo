@@ -19,7 +19,7 @@ jobs:
         id: increment_version
         run: |
           VERSION=$(cat VERSION)
-    
+
           MAJOR=$(echo "$VERSION" | cut -d. -f1)
           MINOR=$(echo "$VERSION" | cut -d. -f2)
           PATCH=$(echo "$VERSION" | cut -d. -f3)
@@ -29,7 +29,7 @@ jobs:
 
           # Update the VERSION file
           echo "$NEW_VERSION" > VERSION
-          
+
           # Update Version in mix.exs
           sed -i "0,/$VERSION/{s//$NEW_VERSION/}" tololo/mix.exs
 
@@ -37,6 +37,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add VERSION
           git add tololo/mix.exs
-          git commit -m "Bump version to $NEW_VERSION"
+          git commit -m "chore: Bump version to $NEW_VERSION"
           git push
 
