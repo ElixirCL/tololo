@@ -8,6 +8,6 @@
   ],
   "presets": {
     "requestType": "graphql",
-    "requestUrl": "{{gql_host}:{{gql_port}}/gql"
+    "requestUrl": "{{gql_host}}:{{gql_port}}/gql"
   }
 }
