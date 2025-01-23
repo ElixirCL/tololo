@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "tololo",
+  "name": "Tololo GraphQL",
   "type": "collection",
   "ignore": [
     "node_modules",
@@ -8,6 +8,6 @@
   ],
   "presets": {
     "requestType": "graphql",
-    "requestUrl": "127.0.0.1:4000/gql"
+    "requestUrl": "{{gql_host}}:{{gql_port}}/gql"
   }
 }

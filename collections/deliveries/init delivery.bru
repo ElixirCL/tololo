@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: 127.0.0.1:4000/gql
+  url: {{gql_host}}:{{gql_port}}/gql
   body: graphql
   auth: none
+}
+
+headers {
+  Authorization: Bearer 01948a19-987d-7d52-b63e-b2d3e8ac8247
 }
 
 body:graphql {
