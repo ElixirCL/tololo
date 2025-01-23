@@ -46,7 +46,7 @@ jobs:
 
             # Get commit history
             LOGS="$(git log --since="24 hours ago" --oneline)"
-            LOGS=$(node -e 'const commits = "$LOGS".split("\n");let message = "## Automated nightly release from main branch\n";commits.forEach(commit => {message += "- " + commit + "\n";});console.log(JSON.stringify(message));')
+            LOGS=$(node -e 'const commits = "'$LOGS'".split("\n");let message = "## Automated nightly release from main branch\n";commits.forEach(commit => {message += "- " + commit + "\n";});console.log(JSON.stringify(message));')
             echo $LOGS
 
             # create a release
@@ -61,7 +61,7 @@ jobs:
                 "tag_name": "'$TAG_NAME'",
                 "target_commitish": "main",
                 "name": "Nightly Build '$TAG_NAME'",
-                "body": '$LOGS',
+                "body": "'$LOGS'",
                 "draft": false,
                 "prerelease": true
               }'
