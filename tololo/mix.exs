@@ -11,7 +11,9 @@ defmodule Tololo.MixProject do
       consolidate_protocols: Mix.env() != :dev,
       aliases: aliases(),
       deps: deps(),
-      dialyzer: [ignore_warnings: "dialyzer.ignore-warnings"]
+      preferred_cli_env: [
+        "test.watch": :test
+      ]
     ]
   end
 
@@ -69,7 +71,6 @@ defmodule Tololo.MixProject do
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:prom_ex, "~> 1.11.0"},
       {:ex_doc, "~> 0.36", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       {:opentelemetry_exporter, "~> 1.8.0"},
       {:opentelemetry, "~> 1.5.0"},
       {:opentelemetry_api, "~> 1.4.0"},
@@ -84,7 +85,8 @@ defmodule Tololo.MixProject do
       {:ex_cldr_lists, "~> 2.11"},
       {:ex_cldr_messages, "~> 1.0"},
       {:ex_cldr_units, "~> 3.17"},
-      {:picosat_elixir, "~> 0.2.0"}
+      {:picosat_elixir, "~> 0.2.0"},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
