@@ -23,6 +23,12 @@ defmodule Tololo.Deliveries.Delivery do
       update :update_state, :update_state
       update :update_location, :update_location
     end
+
+    # required for making fields forbidden
+    nullable_fields [
+      :private_auth_key,
+      :public_auth_key
+    ]
   end
 
   postgres do
@@ -30,14 +36,39 @@ defmodule Tololo.Deliveries.Delivery do
     repo Tololo.Repo
   end
 
+  field_policies do
+    field_policy :private_auth_key do
+      description "public auth key should only be visible to admin"
+      authorize_if actor_attribute_equals(:access_level, :admin)
+    end
+
+    field_policy :public_auth_key do
+      description "private auth key should only be visible to admin"
+      authorize_if actor_attribute_equals(:access_level, :admin)
+    end
+
+    field_policy :* do
+      description "the rest of the fields don't require any special policies"
+      authorize_if always()
+    end
+  end
+
   code_interface do
     define :update_state, args: [:state], action: :update_state
     define :initialize, action: :initialize
     define :empty, action: :empty
+    define :get_via_token, args: [:token], action: :get_via_token
+    define :update_location, args: [:from_latitude, :from_longitude], action: :update_location
   end
 
   actions do
     defaults [:read, :update, :destroy]
+
+    read :get_via_token do
+      argument :token, :string
+
+      filter expr(public_auth_key == ^arg(:token) or private_auth_key == ^arg(:token))
+    end
 
     create :create do
       accept [
@@ -110,12 +141,20 @@ defmodule Tololo.Deliveries.Delivery do
   end
 
   policies do
-    # TODO implement policies for:
-    # - business admin
-    # - public auth token
-    # - private auth token
-    policy always() do
-      authorize_if always()
+    bypass always() do
+      description "admin has access to every action"
+      authorize_if actor_attribute_equals(:access_level, :admin)
+    end
+
+    policy action_type(:read) do
+      description "read access is limited to users with public and private access"
+      authorize_if actor_attribute_equals(:access_level, :public)
+      authorize_if actor_attribute_equals(:access_level, :private)
+    end
+
+    policy action_type(:update) do
+      description "update access is limited to users private access"
+      authorize_if actor_attribute_equals(:access_level, :private)
     end
   end
 
@@ -191,6 +230,7 @@ defmodule Tololo.Deliveries.Delivery do
     attribute :delivery_started_at, :date do
       public? true
     end
+
     attribute :delivery_ended_at, :date do
       public? true
     end

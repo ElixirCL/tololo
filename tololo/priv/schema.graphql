@@ -56,8 +56,8 @@ input InitDeliveryInput {
 type Delivery {
   id: ID!
   state: String!
-  privateAuthKey: ID!
-  publicAuthKey: ID!
+  privateAuthKey: ID
+  publicAuthKey: ID
   deliveryPerson: JsonString
   deliveryOrder: JsonString
   fromLatitude: Float

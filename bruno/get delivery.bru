@@ -1,0 +1,46 @@
+meta {
+  name: get delivery
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: 127.0.0.1:4000/gql
+  body: graphql
+  auth: none
+}
+
+headers {
+  Authorization: 01948a19-987d-7d52-b63e-b2d3e8ac8247
+}
+
+body:graphql {
+  query ($id: ID!) {
+    getDelivery(id: $id) {
+      id
+      state
+      privateAuthKey
+      publicAuthKey
+      deliveryPerson
+      deliveryOrder
+      fromLatitude
+      fromLongitude
+      fromName
+      toLatitude
+      toLongitude
+      toName
+      toAddress
+      toPhone
+      toNotes
+      deliveryStartedAt
+      deliveryEndedAt
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "id": "01948a19-c94f-7682-8949-d2ac0f6a9b81"
+  }
+}

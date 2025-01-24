@@ -10,8 +10,8 @@ defmodule GettextTest do
   describe "delivery state messages" do
     test "that In_Preparation has correct message" do
       delivery =
-        Deliveries.Delivery.empty!()
-        |> Deliveries.Delivery.update_state!(:In_Preparation)
+        Deliveries.Delivery.empty!(authorize?: false)
+        |> Deliveries.Delivery.update_state!(:In_Preparation, authorize?: false)
 
       %{state_history: [%{old_state: old_state, new_state: new_state}]} =
         Ash.load!(delivery, :state_history)
