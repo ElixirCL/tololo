@@ -9,12 +9,8 @@ defmodule Tololo.Deliveries.Delivery do
     domain: Tololo.Deliveries,
     extensions: [AshGraphql.Resource, AshAdmin.Resource],
     data_layer: AshPostgres.DataLayer,
-    authorizers: [Ash.Policy.Authorizer]
-
-  admin do
-    create_actions [:initialize]
-    update_actions [:update_state, :update_location]
-  end
+    authorizers: [Ash.Policy.Authorizer],
+    notifiers: [Ash.Notifier.PubSub]
 
   graphql do
     type :delivery
@@ -34,6 +30,11 @@ defmodule Tololo.Deliveries.Delivery do
       :private_auth_key,
       :public_auth_key
     ]
+  end
+
+  admin do
+    create_actions([:initialize])
+    update_actions([:update_state, :update_location])
   end
 
   postgres do
@@ -63,7 +64,10 @@ defmodule Tololo.Deliveries.Delivery do
     define :initialize, action: :initialize
     define :empty, action: :empty
     define :get_via_token, args: [:token], action: :get_via_token
-    define :update_location, args: [:current_latitude, :current_longitude], action: :update_location
+
+    define :update_location,
+      args: [:current_latitude, :current_longitude],
+      action: :update_location
   end
 
   actions do
@@ -165,6 +169,13 @@ defmodule Tololo.Deliveries.Delivery do
       description "update access is limited to users private access"
       authorize_if actor_attribute_equals(:access_level, :private)
     end
+  end
+
+  pub_sub do
+    module TololoWeb.Endpoint
+
+    prefix "delivery"
+    publish :update_location, ["updated", :id]
   end
 
   attributes do
