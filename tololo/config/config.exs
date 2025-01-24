@@ -59,7 +59,8 @@ config :tololo, TololoWeb.Endpoint,
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: TololoWeb.ErrorHTML, json: TololoWeb.ErrorJSON],
-    layout: false
+    root_layout: {TololoWeb.Layouts, "root.html"},
+    layout: {TololoWeb.Layouts, "app.html"}
   ],
   pubsub_server: Tololo.PubSub,
   live_view: [signing_salt: "x8OTxxKq"]

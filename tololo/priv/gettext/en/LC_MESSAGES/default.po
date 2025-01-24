@@ -41,7 +41,7 @@ msgstr ""
 msgid "Success!"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:9
+#: lib/tololo/deliveries/transitions.ex:14
 #, elixir-autogen, icu-format
 msgid "The order is processing"
 msgstr ""
@@ -55,4 +55,69 @@ msgstr ""
 #: lib/tololo_web/components/core_components.ex:130
 #, elixir-autogen, icu-format
 msgid "close"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:34
+#, elixir-autogen, icu-format
+msgid "Delivery issue resolved"
+msgstr ""
+
+#: lib/tololo_web/live/map_live.ex:15
+#, elixir-autogen, icu-format
+msgid "Delivery not found"
+msgstr ""
+
+#: lib/tololo/deliveries/update_history.ex:28
+#, elixir-autogen, icu-format
+msgid "Invalid delivery state transition"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:39
+#, elixir-autogen, icu-format
+msgid "The completed delivery is now stale"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:29
+#, elixir-autogen, icu-format
+msgid "The delivery has been completed"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:31
+#, elixir-autogen, icu-format
+msgid "The delivery has issues and was not resolved in time"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:28
+#, elixir-autogen, icu-format
+msgid "The delivery has issues, such as address or details mismatch"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:36
+#, elixir-autogen, icu-format
+msgid "The delivery issue was not resolved in time and is now stale"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:15
+#, elixir-autogen, icu-format
+msgid "The order cannot be fulfilled or expired"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:18
+#, elixir-autogen, icu-format
+msgid "The order is on the way"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:24
+#, elixir-autogen, icu-format
+msgid "The order was canceled and is now stale"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:20
+#, elixir-autogen, icu-format
+msgid "The order was canceled during preparation"
+msgstr ""
+
+#: lib/tololo_web/live/map_live.ex:20
+#, elixir-autogen, icu-format
+msgid "Token not found"
 msgstr ""
