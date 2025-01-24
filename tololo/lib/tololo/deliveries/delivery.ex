@@ -7,9 +7,14 @@ defmodule Tololo.Deliveries.Delivery do
   use Ash.Resource,
     otp_app: :tololo,
     domain: Tololo.Deliveries,
-    extensions: [AshGraphql.Resource],
+    extensions: [AshGraphql.Resource, AshAdmin.Resource],
     data_layer: AshPostgres.DataLayer,
     authorizers: [Ash.Policy.Authorizer]
+
+  admin do
+    create_actions [:initialize]
+    update_actions [:update_state, :update_location]
+  end
 
   graphql do
     type :delivery

@@ -3,6 +3,9 @@ defmodule TololoWeb.Router do
 
   use AshAuthentication.Phoenix.Router
 
+  import AshAdmin.Router
+  import Plug.BasicAuth
+
   pipeline :graphql do
     # plug :load_from_bearer
     plug TololoWeb.Deliveries.DeliveryAuthPlug
@@ -23,6 +26,10 @@ defmodule TololoWeb.Router do
     plug :accepts, ["json"]
     # plug :load_from_bearer
     plug TololoWeb.Deliveries.DeliveryAuthPlug
+  end
+
+  pipeline :admin do
+    plug :basic_auth, username: "admin", password: System.get_env("ADMIN_API_KEY")
   end
 
   scope "/", TololoWeb do
@@ -59,6 +66,7 @@ defmodule TololoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
     # auth_routes AuthController, Tololo.Accounts.User, path: "/auth"
     # sign_out_route AuthController
 
@@ -75,6 +83,13 @@ defmodule TololoWeb.Router do
     # Remove this if you do not want to use the reset password feature
     # reset_route auth_routes_prefix: "/auth",
     #             overrides: [TololoWeb.AuthOverrides, AshAuthentication.Phoenix.Overrides.Default]
+  end
+
+  scope "/" do
+    pipe_through :browser
+    pipe_through :admin
+
+    ash_admin "/admin"
   end
 
   # Other scopes may use custom stacks.
