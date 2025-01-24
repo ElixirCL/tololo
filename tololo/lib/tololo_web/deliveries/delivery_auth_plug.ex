@@ -12,7 +12,7 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
   @impl true
   def call(conn, _opts) do
     with false <- Map.has_key?(conn.assigns, :actor),
-         [token] <- get_req_header(conn, "authorization"),
+         ["Bearer " <> token] <- get_req_header(conn, "authorization"),
          {actor, resource} <- get_token_data(token) do
       conn
       |> assign(:resource, resource)

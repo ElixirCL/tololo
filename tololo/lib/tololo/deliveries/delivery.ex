@@ -63,7 +63,7 @@ defmodule Tololo.Deliveries.Delivery do
     define :initialize, action: :initialize
     define :empty, action: :empty
     define :get_via_token, args: [:token], action: :get_via_token
-    define :update_location, args: [:from_latitude, :from_longitude], action: :update_location
+    define :update_location, args: [:current_latitude, :current_longitude], action: :update_location
   end
 
   actions do
@@ -83,6 +83,8 @@ defmodule Tololo.Deliveries.Delivery do
         :to_name,
         :from_latitude,
         :from_longitude,
+        :current_latitude,
+        :current_longitude,
         :to_latitude,
         :to_longitude,
         :to_address,
@@ -123,6 +125,8 @@ defmodule Tololo.Deliveries.Delivery do
       change set_attribute(:to_name, "")
       change set_attribute(:from_latitude, 100)
       change set_attribute(:from_longitude, 100)
+      change set_attribute(:current_latitude, 100)
+      change set_attribute(:current_longitude, 100)
       change set_attribute(:to_latitude, 100)
       change set_attribute(:to_longitude, 100)
       change set_attribute(:to_address, "")
@@ -141,7 +145,7 @@ defmodule Tololo.Deliveries.Delivery do
     end
 
     update :update_location do
-      accept [:from_latitude, :from_longitude]
+      accept [:current_latitude, :current_longitude]
     end
   end
 
@@ -196,6 +200,16 @@ defmodule Tololo.Deliveries.Delivery do
     end
 
     attribute :from_longitude, :float do
+      sensitive? true
+      public? true
+    end
+
+    attribute :current_latitude, :float do
+      sensitive? true
+      public? true
+    end
+
+    attribute :current_longitude, :float do
       sensitive? true
       public? true
     end

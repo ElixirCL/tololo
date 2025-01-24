@@ -13,6 +13,8 @@ defmodule TololoWeb.DeliveryTest do
           deliveryOrder
           fromLatitude
           fromLongitude
+          currentLatitude
+          currentLongitude
           fromName
           toLatitude
           toLongitude
@@ -45,6 +47,8 @@ defmodule TololoWeb.DeliveryTest do
         deliveryOrder
         fromLatitude
         fromLongitude
+        currentLatitude
+        currentLongitude
         fromName
         toLatitude
         toLongitude
@@ -66,6 +70,8 @@ defmodule TololoWeb.DeliveryTest do
           state
           fromLatitude
           fromLongitude
+          currentLatitude
+          currentLongitude
           toLatitude
           toLongitude
         }
@@ -104,7 +110,7 @@ defmodule TololoWeb.DeliveryTest do
         conn
         |> put_req_header("accept", "application/graphql-response+json")
         |> put_req_header("content-type", "application/json")
-        |> put_req_header("authorization", auth)
+        |> put_req_header("authorization", "Bearer " <> auth)
 
     test "init delivery", %{conn: conn} do
       variables =
@@ -173,12 +179,12 @@ defmodule TololoWeb.DeliveryTest do
       %{
         id: id,
         private_auth_key: private_auth_key,
-        from_latitude: old_lat,
-        from_longitude: old_lon
+        current_latitude: old_lat,
+        current_longitude: old_lon
       } =
         Tololo.Deliveries.Delivery.empty!(authorize?: false)
 
-      variables = %{id: id, input: %{fromLatitude: 123, fromLongitude: 123}}
+      variables = %{id: id, input: %{currentLatitude: 123, currentLongitude: 123}}
 
       conn =
         conn
@@ -188,7 +194,7 @@ defmodule TololoWeb.DeliveryTest do
           %{query: @update_location_query, variables: variables}
         )
 
-      %{"id" => id, "fromLatitude" => new_lat, "fromLongitude" => new_lon} =
+      %{"id" => id, "currentLatitude" => new_lat, "currentLongitude" => new_lon} =
         json_response(conn, 200)
         |> Map.get("data")
         |> Map.get("updateLocation")
@@ -205,7 +211,7 @@ defmodule TololoWeb.DeliveryTest do
       } =
         Tololo.Deliveries.Delivery.empty!(authorize?: false)
 
-      variables = %{id: id, input: %{fromLatitude: 123, fromLongitude: 123}}
+      variables = %{id: id, input: %{currentLatitude: 123, currentLongitude: 123}}
 
       conn =
         conn
