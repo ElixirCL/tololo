@@ -9,15 +9,15 @@ defmodule Tololo.Repo.Migrations.Deliveries do
 
   def up do
     alter table(:deliveries) do
-      add :current_latitude, :float
-      add :current_longitude, :float
+      modify :public_auth_key, :uuid, default: fragment("uuid_generate_v7()")
+      modify :private_auth_key, :uuid, default: fragment("uuid_generate_v7()")
     end
   end
 
   def down do
     alter table(:deliveries) do
-      remove :current_longitude
-      remove :current_latitude
+      modify :private_auth_key, :uuid, default: nil
+      modify :public_auth_key, :uuid, default: nil
     end
   end
 end

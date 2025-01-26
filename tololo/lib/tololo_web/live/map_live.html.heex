@@ -5,7 +5,17 @@
     {@resource.current_latitude}
   </div>
   <div>
-    lon:
+    lng:
     {@resource.current_longitude}
   </div>
+</section>
+
+ <div id="map" class="h-96 bg-gray-100 rounded-xl border-gray-300 border-2 my-4" phx-hook="LeafletMap" phx-update="ignore"></div>
+
+<section class="my-4">
+  <ul>
+  <%= for change <- @resource.state_history do %>
+    <li>{date_to_string(change.inserted_at)} - {change.comment}</li>
+  <% end %>
+  </ul>
 </section>

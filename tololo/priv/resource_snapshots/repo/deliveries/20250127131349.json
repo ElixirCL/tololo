@@ -12,7 +12,7 @@
     },
     {
       "allow_nil?": false,
-      "default": "nil",
+      "default": "\"Init\"",
       "generated?": false,
       "primary_key?": false,
       "references": null,
@@ -216,7 +216,7 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "41E953029340611753FC3B32736183A634C1693F7415E1D9FE027982E4196B67",
+  "hash": "6BAAA0969FFD6754AA7CE53509B33BDCF48678EE6D129291D6CE7D5367D2A846",
   "identities": [],
   "multitenancy": {
     "attribute": null,

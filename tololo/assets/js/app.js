@@ -22,10 +22,48 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
+let Hooks = {}
+
+Hooks.LeafletMap = {
+  mounted() {
+    let map = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    let currentMarker = L.marker([0, 0], {title: "Current"})
+          .bindTooltip("Current",{permanent: false, direction: 'top',offset:L.point(-14, -5)})
+          .addTo(map)
+
+    let has_init = false
+    this.handleEvent("phx:resource_update", ({ resource }) => {
+      if (has_init == false) {
+        let fromMarker = L.marker(resource.from_pos, {title: resource.from_name})
+          .bindTooltip(resource.from_name, {permanent: false, direction: 'top',offset:L.point(-14, -5)})
+          .addTo(map)
+        let toMarker = L.marker(resource.to_pos, {title: resource.to_name})
+          .bindTooltip(resource.to_name, {permanent: false, direction: 'top',offset:L.point(-14, -5)})
+          .addTo(map)
+
+        map.setView([
+          (resource.from_pos[0] + resource.to_pos[0]) / 2,
+          (resource.from_pos[1] + resource.to_pos[1]) / 2
+        ], 8.5)
+
+        has_init = true
+      }
+
+      currentMarker.setLatLng(resource.current_pos)
+    });
+  }
+}
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
-  params: {_csrf_token: csrfToken}
+  params: {_csrf_token: csrfToken},
+  hooks: Hooks
 })
 
 // Show progress bar on live navigation and form submits

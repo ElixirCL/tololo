@@ -116,8 +116,6 @@ defmodule Tololo.Deliveries.Delivery do
       ]
 
       change set_attribute(:state, :Init)
-      change set_attribute(:private_auth_key, Ash.UUIDv7.generate())
-      change set_attribute(:public_auth_key, Ash.UUIDv7.generate())
     end
 
     create :empty do
@@ -137,8 +135,6 @@ defmodule Tololo.Deliveries.Delivery do
       change set_attribute(:to_phone, "")
       change set_attribute(:to_notes, "")
       change set_attribute(:state, :Init)
-      change set_attribute(:private_auth_key, Ash.UUIDv7.generate())
-      change set_attribute(:public_auth_key, Ash.UUIDv7.generate())
     end
 
     update :update_state do
@@ -190,11 +186,13 @@ defmodule Tololo.Deliveries.Delivery do
       allow_nil? false
       sensitive? true
       public? true
+      default &Ash.UUIDv7.generate/0
     end
 
     attribute :public_auth_key, :uuid_v7 do
       allow_nil? false
       public? true
+      default &Ash.UUIDv7.generate/0
     end
 
     attribute :delivery_person, :map do
