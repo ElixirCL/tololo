@@ -26,24 +26,40 @@ let Hooks = {}
 
 Hooks.LeafletMap = {
   mounted() {
+    const tooltipText = this.el.dataset.tooltip;
+
     let map = L.map('map').setView([51.505, -0.09], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    let currentMarker = L.marker([0, 0], {title: "Current"})
-          .bindTooltip("Current",{permanent: false, direction: 'top',offset:L.point(-14, -5)})
+    // icons
+    const currentIcon = L.icon({
+      iconUrl: "/images/map/motorcycle.svg",
+      iconAnchor:   [24, 24], // point of the icon which will correspond to marker's location
+    });
+    const toIcon = L.icon({
+      iconUrl: "/images/map/home.svg",
+      iconAnchor:   [24, 24],
+    });
+    const fromIcon = L.icon({
+      iconUrl: "/images/map/flatware.svg",
+      iconAnchor:   [24, 24],
+    });
+
+    let currentMarker = L.marker([0, 0], {title: tooltipText, icon: currentIcon})
+          .bindTooltip(tooltipText,{permanent: true, direction: 'top',offset:L.point(0, -16)})
           .addTo(map)
 
     let has_init = false
     this.handleEvent("phx:resource_update", ({ resource }) => {
       if (has_init == false) {
-        let fromMarker = L.marker(resource.from_pos, {title: resource.from_name})
-          .bindTooltip(resource.from_name, {permanent: false, direction: 'top',offset:L.point(-14, -5)})
+        let fromMarker = L.marker(resource.from_pos, {title: resource.from_name, icon: fromIcon})
+          .bindTooltip(resource.from_name, {permanent: false, direction: 'top',offset:L.point(0, -24)})
           .addTo(map)
-        let toMarker = L.marker(resource.to_pos, {title: resource.to_name})
-          .bindTooltip(resource.to_name, {permanent: false, direction: 'top',offset:L.point(-14, -5)})
+        let toMarker = L.marker(resource.to_pos, {title: resource.to_name, icon: toIcon})
+          .bindTooltip(resource.to_name, {permanent: false, direction: 'top',offset:L.point(0, -24)})
           .addTo(map)
 
         map.setView([

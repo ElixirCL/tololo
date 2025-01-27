@@ -34,7 +34,7 @@ defmodule TololoWeb.MapLive do
 
   # Assigns are initialized as nil to avoid errors.
   defp default_assigns(socket),
-    do: socket |> assign(resource: nil, error: nil, head_includes: get_head())
+    do: socket |> assign(resource: nil, error: nil, head_includes: get_head(), map_tooltip: gettext("Current location"))
 
   # Imports Leaflet
   defp get_head(assigns \\ %{}),

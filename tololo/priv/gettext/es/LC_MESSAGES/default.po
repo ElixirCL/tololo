@@ -131,3 +131,13 @@ msgstr ""
 #, elixir-autogen, icu-format
 msgid "the state must be in delivery to update the current location"
 msgstr "el delivery debe estar en camino para poder actualizar su ubicación actual"
+
+#: lib/tololo_web/live/map_live.ex:37
+#, elixir-autogen, icu-format
+msgid "Current location"
+msgstr "Ubicación actual"
+
+#: lib/tololo_web/live/map_live.html.heex:11
+#, elixir-autogen, icu-format
+msgid "Order history"
+msgstr "Historial del pedido"
