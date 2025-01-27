@@ -57,12 +57,12 @@ msgstr ""
 msgid "close"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:34
+#: lib/tololo/deliveries/transitions.ex:38
 #, elixir-autogen, icu-format
 msgid "Delivery issue resolved"
 msgstr ""
 
-#: lib/tololo_web/live/map_live.ex:15
+#: lib/tololo_web/live/map_live.ex:18
 #, elixir-autogen, icu-format
 msgid "Delivery not found"
 msgstr ""
@@ -72,27 +72,27 @@ msgstr ""
 msgid "Invalid delivery state transition"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:39
+#: lib/tololo/deliveries/transitions.ex:43
 #, elixir-autogen, icu-format
 msgid "The completed delivery is now stale"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:29
+#: lib/tololo/deliveries/transitions.ex:33
 #, elixir-autogen, icu-format
 msgid "The delivery has been completed"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:31
+#: lib/tololo/deliveries/transitions.ex:35
 #, elixir-autogen, icu-format
 msgid "The delivery has issues and was not resolved in time"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:28
+#: lib/tololo/deliveries/transitions.ex:32
 #, elixir-autogen, icu-format
 msgid "The delivery has issues, such as address or details mismatch"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:36
+#: lib/tololo/deliveries/transitions.ex:40
 #, elixir-autogen, icu-format
 msgid "The delivery issue was not resolved in time and is now stale"
 msgstr ""
@@ -102,12 +102,7 @@ msgstr ""
 msgid "The order cannot be fulfilled or expired"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:18
-#, elixir-autogen, icu-format
-msgid "The order is on the way"
-msgstr ""
-
-#: lib/tololo/deliveries/transitions.ex:24
+#: lib/tololo/deliveries/transitions.ex:28
 #, elixir-autogen, icu-format
 msgid "The order was canceled and is now stale"
 msgstr ""
@@ -117,7 +112,22 @@ msgstr ""
 msgid "The order was canceled during preparation"
 msgstr ""
 
-#: lib/tololo_web/live/map_live.ex:20
+#: lib/tololo_web/live/map_live.ex:23
 #, elixir-autogen, icu-format
 msgid "Token not found"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:24
+#, elixir-autogen, icu-format
+msgid "The order has been picked up and is on the way"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:18
+#, elixir-autogen, icu-format
+msgid "The order is ready for pickup"
+msgstr ""
+
+#: lib/tololo/deliveries/delivery.ex:149
+#, elixir-autogen, icu-format
+msgid "the state must be in delivery to update the current location"
 msgstr ""

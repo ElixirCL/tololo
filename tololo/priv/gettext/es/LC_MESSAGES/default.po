@@ -57,12 +57,12 @@ msgstr ""
 msgid "close"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:34
+#: lib/tololo/deliveries/transitions.ex:38
 #, elixir-autogen, icu-format
 msgid "Delivery issue resolved"
 msgstr "El problema de entrega se resolvió"
 
-#: lib/tololo_web/live/map_live.ex:15
+#: lib/tololo_web/live/map_live.ex:18
 #, elixir-autogen, icu-format
 msgid "Delivery not found"
 msgstr "El delivery solicitado no se ha encontrado"
@@ -72,27 +72,27 @@ msgstr "El delivery solicitado no se ha encontrado"
 msgid "Invalid delivery state transition"
 msgstr ""
 
-#: lib/tololo/deliveries/transitions.ex:39
+#: lib/tololo/deliveries/transitions.ex:43
 #, elixir-autogen, icu-format
 msgid "The completed delivery is now stale"
 msgstr "La entrega completada ahora está obsoleta"
 
-#: lib/tololo/deliveries/transitions.ex:29
+#: lib/tololo/deliveries/transitions.ex:33
 #, elixir-autogen, icu-format
 msgid "The delivery has been completed"
 msgstr "La entrega ha sido completada"
 
-#: lib/tololo/deliveries/transitions.ex:31
+#: lib/tololo/deliveries/transitions.ex:35
 #, elixir-autogen, icu-format
 msgid "The delivery has issues and was not resolved in time"
 msgstr "La entrega tiene problemas y no se resolvió a tiempo"
 
-#: lib/tololo/deliveries/transitions.ex:28
+#: lib/tololo/deliveries/transitions.ex:32
 #, elixir-autogen, icu-format
 msgid "The delivery has issues, such as address or details mismatch"
 msgstr "La entrega tiene problemas, como dirección incorrecta o datos erróneos"
 
-#: lib/tololo/deliveries/transitions.ex:36
+#: lib/tololo/deliveries/transitions.ex:40
 #, elixir-autogen, icu-format
 msgid "The delivery issue was not resolved in time and is now stale"
 msgstr "El problema de la entrega no se resolvió a tiempo y ahora está obsoleto"
@@ -102,12 +102,7 @@ msgstr "El problema de la entrega no se resolvió a tiempo y ahora está obsolet
 msgid "The order cannot be fulfilled or expired"
 msgstr "La orden no se puede completar o ha expirado"
 
-#: lib/tololo/deliveries/transitions.ex:18
-#, elixir-autogen, icu-format
-msgid "The order is on the way"
-msgstr "La orden está en camino"
-
-#: lib/tololo/deliveries/transitions.ex:24
+#: lib/tololo/deliveries/transitions.ex:28
 #, elixir-autogen, icu-format
 msgid "The order was canceled and is now stale"
 msgstr "La orden fue cancelada y ahora está obsoleta"
@@ -117,8 +112,22 @@ msgstr "La orden fue cancelada y ahora está obsoleta"
 msgid "The order was canceled during preparation"
 msgstr "La orden fue cancelada durante la preparación"
 
-#: lib/tololo_web/live/map_live.ex:20
+#: lib/tololo_web/live/map_live.ex:23
 #, elixir-autogen, icu-format
 msgid "Token not found"
 msgstr "El token de acceso no se ha encontrado. Verifique que el URL sea correcto."
 
+#: lib/tololo/deliveries/transitions.ex:24
+#, elixir-autogen, icu-format
+msgid "The order has been picked up and is on the way"
+msgstr ""
+
+#: lib/tololo/deliveries/transitions.ex:18
+#, elixir-autogen, icu-format
+msgid "The order is ready for pickup"
+msgstr ""
+
+#: lib/tololo/deliveries/delivery.ex:149
+#, elixir-autogen, icu-format
+msgid "the state must be in delivery to update the current location"
+msgstr "el delivery debe estar en camino para poder actualizar su ubicación actual"

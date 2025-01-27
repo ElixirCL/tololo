@@ -12,6 +12,8 @@ defmodule Tololo.Deliveries.Delivery do
     authorizers: [Ash.Policy.Authorizer],
     notifiers: [Ash.Notifier.PubSub]
 
+  use Gettext, backend: TololoWeb.Gettext
+
   graphql do
     type :delivery
 
@@ -114,8 +116,6 @@ defmodule Tololo.Deliveries.Delivery do
         :to_phone,
         :to_notes
       ]
-
-      change set_attribute(:state, :Init)
     end
 
     create :empty do
@@ -134,7 +134,6 @@ defmodule Tololo.Deliveries.Delivery do
       change set_attribute(:to_address, "")
       change set_attribute(:to_phone, "")
       change set_attribute(:to_notes, "")
-      change set_attribute(:state, :Init)
     end
 
     update :update_state do
@@ -146,6 +145,9 @@ defmodule Tololo.Deliveries.Delivery do
 
     update :update_location do
       accept [:current_latitude, :current_longitude]
+      validate attribute_equals(:state, :In_Delivery) do
+        message gettext("the state must be in delivery to update the current location")
+      end
     end
   end
 
@@ -180,6 +182,7 @@ defmodule Tololo.Deliveries.Delivery do
     attribute :state, :string do
       allow_nil? false
       public? true
+      default :Init
     end
 
     attribute :private_auth_key, :uuid_v7 do
