@@ -32,23 +32,6 @@ defmodule TololoWeb.Router do
     plug :basic_auth, username: "admin", password: System.get_env("ADMIN_API_KEY")
   end
 
-  scope "/", TololoWeb do
-    pipe_through :browser
-
-    ash_authentication_live_session :authenticated_routes do
-      # in each liveview, add one of the following at the top of the module:
-      #
-      # If an authenticated user must be present:
-      # on_mount {TololoWeb.LiveUserAuth, :live_user_required}
-      #
-      # If an authenticated user *may* be present:
-      # on_mount {TololoWeb.LiveUserAuth, :live_user_optional}
-      #
-      # If an authenticated user must *not* be present:
-      # on_mount {TololoWeb.LiveUserAuth, :live_no_user}
-    end
-  end
-
   scope "/gql" do
     pipe_through [:graphql]
 
@@ -67,6 +50,8 @@ defmodule TololoWeb.Router do
 
     get "/", PageController, :home
 
+    live "/map", MapLive
+
     # auth_routes AuthController, Tololo.Accounts.User, path: "/auth"
     # sign_out_route AuthController
 
@@ -83,13 +68,26 @@ defmodule TololoWeb.Router do
     # Remove this if you do not want to use the reset password feature
     # reset_route auth_routes_prefix: "/auth",
     #             overrides: [TololoWeb.AuthOverrides, AshAuthentication.Phoenix.Overrides.Default]
+
+    ash_authentication_live_session :authenticated_routes do
+      # in each liveview, add one of the following at the top of the module:
+      #
+      # If an authenticated user must be present:
+      # on_mount {TololoWeb.LiveUserAuth, :live_user_required}
+      #
+      # If an authenticated user *may* be present:
+      # on_mount {TololoWeb.LiveUserAuth, :live_user_optional}
+      #
+      # If an authenticated user must *not* be present:
+      # on_mount {TololoWeb.LiveUserAuth, :live_no_user}
+    end
   end
 
   scope "/" do
     pipe_through :browser
     pipe_through :admin
 
-    ash_admin "/admin"
+    ash_admin("/admin")
   end
 
   # Other scopes may use custom stacks.

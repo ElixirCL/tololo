@@ -13,8 +13,8 @@ type UpdateLocationResult {
 }
 
 input UpdateLocationInput {
-  fromLatitude: Float
-  fromLongitude: Float
+  currentLatitude: Float
+  currentLongitude: Float
 }
 
 "The result of the :update_state mutation"
@@ -62,6 +62,8 @@ type Delivery {
   deliveryOrder: JsonString
   fromLatitude: Float
   fromLongitude: Float
+  currentLatitude: Float
+  currentLongitude: Float
   fromName: String
   toLatitude: Float
   toLongitude: Float

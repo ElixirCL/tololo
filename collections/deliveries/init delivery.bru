@@ -11,7 +11,7 @@ post {
 }
 
 headers {
-  Authorization: Bearer 01948a19-987d-7d52-b63e-b2d3e8ac8247
+  Authorization: Bearer test
 }
 
 body:graphql {
@@ -26,6 +26,8 @@ body:graphql {
         deliveryOrder
         fromLatitude
         fromLongitude
+        currentLatitude
+        currentLongitude
         fromName
         toLatitude
         toLongitude
@@ -51,14 +53,14 @@ body:graphql {
 body:graphql:vars {
   {
     "input": {
-      "delivery_person": "{}",
+      "delivery_person": "{\"name\": \"hola\"}",
       "delivery_order": "{}",
-      "from_name": "from_name",
-      "to_name": "to_name",
-      "from_latitude": 100,
-      "from_longitude": 100,
-      "to_latitude": 100,
-      "to_longitude": 100,
+      "from_name": "Valparaíso",
+      "to_name": "Santiago",
+      "from_latitude": -33.047237,
+      "from_longitude": -71.612686,
+      "to_latitude": -33.448891,
+      "to_longitude": -70.669266,
       "to_address": "to_address",
       "to_phone": "to_phone",
       "to_notes": "to_notes"

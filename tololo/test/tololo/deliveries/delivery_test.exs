@@ -6,8 +6,9 @@ defmodule DeliveryTest do
   @valid_transitions [
     {:Init, :In_Preparation},
     {:Init, :Delivery_Aborted},
-    {:In_Preparation, :In_Delivery},
+    {:In_Preparation, :Ready_To_Pickup},
     {:In_Preparation, :Delivery_Aborted},
+    {:Ready_To_Pickup, :In_Delivery},
     {:Delivery_Aborted, :Stale_Delivery_Aborted},
     {:In_Delivery, :Delivery_With_Problems},
     {:In_Delivery, :Delivery_Done},
@@ -16,7 +17,6 @@ defmodule DeliveryTest do
     {:Delivery_With_Problems, :Stale_Delivery_With_Problems},
     {:Delivery_Done, :Stale_Delivery_Done}
   ]
-
   describe "change delivery state" do
     for {old_state, new_state} <- @valid_transitions do
       test "#{old_state} -> #{new_state}" do
@@ -102,10 +102,14 @@ defmodule DeliveryTest do
     test "authorized update" do
       Tololo.Deliveries.Delivery.empty!(authorize?: false)
       |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:In_Delivery, actor: @private_actor)
       |> Deliveries.Delivery.update_location!(123, 321, actor: @private_actor)
 
       Tololo.Deliveries.Delivery.empty!(authorize?: false)
-      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @admin_actor)
+      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:In_Delivery, actor: @private_actor)
       |> Deliveries.Delivery.update_location!(123, 321, actor: @admin_actor)
     end
   end

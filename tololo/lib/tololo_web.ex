@@ -114,3 +114,7 @@ defmodule TololoWeb do
     apply(__MODULE__, which, [])
   end
 end
+
+defmodule TololoWeb.NotFoundError do
+  defexception [:message, plug_status: 404]
+end

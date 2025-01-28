@@ -15,9 +15,13 @@ defmodule Tololo.Deliveries.Transitions do
       {"Init", "Delivery_Aborted"} => gettext("The order cannot be fulfilled or expired"),
 
       # In_Preparation state transitions
-      {"In_Preparation", "In_Delivery"} => gettext("The order is on the way"),
+      {"In_Preparation", "Ready_To_Pickup"} => gettext("The order is ready for pickup"),
       {"In_Preparation", "Delivery_Aborted"} =>
         gettext("The order was canceled during preparation"),
+
+      # Ready_To_Pickup state transitions
+      {"Ready_To_Pickup", "In_Delivery"} =>
+        gettext("The order has been picked up and is on the way"),
 
       # Delivery_Aborted state transitions
       {"Delivery_Aborted", "Stale_Delivery_Aborted"} =>

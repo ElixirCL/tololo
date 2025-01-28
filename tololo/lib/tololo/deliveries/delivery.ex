@@ -9,7 +9,10 @@ defmodule Tololo.Deliveries.Delivery do
     domain: Tololo.Deliveries,
     extensions: [AshGraphql.Resource, AshAdmin.Resource],
     data_layer: AshPostgres.DataLayer,
-    authorizers: [Ash.Policy.Authorizer]
+    authorizers: [Ash.Policy.Authorizer],
+    notifiers: [Ash.Notifier.PubSub]
+
+  use Gettext, backend: TololoWeb.Gettext
 
   admin do
     create_actions [:initialize]
@@ -34,6 +37,11 @@ defmodule Tololo.Deliveries.Delivery do
       :private_auth_key,
       :public_auth_key
     ]
+  end
+
+  admin do
+    create_actions([:initialize])
+    update_actions([:update_state, :update_location])
   end
 
   postgres do
@@ -63,7 +71,10 @@ defmodule Tololo.Deliveries.Delivery do
     define :initialize, action: :initialize
     define :empty, action: :empty
     define :get_via_token, args: [:token], action: :get_via_token
-    define :update_location, args: [:from_latitude, :from_longitude], action: :update_location
+
+    define :update_location,
+      args: [:current_latitude, :current_longitude],
+      action: :update_location
   end
 
   actions do
@@ -83,6 +94,8 @@ defmodule Tololo.Deliveries.Delivery do
         :to_name,
         :from_latitude,
         :from_longitude,
+        :current_latitude,
+        :current_longitude,
         :to_latitude,
         :to_longitude,
         :to_address,
@@ -108,10 +121,6 @@ defmodule Tololo.Deliveries.Delivery do
         :to_phone,
         :to_notes
       ]
-
-      change set_attribute(:state, :Init)
-      change set_attribute(:private_auth_key, Ash.UUIDv7.generate())
-      change set_attribute(:public_auth_key, Ash.UUIDv7.generate())
     end
 
     create :empty do
@@ -119,18 +128,17 @@ defmodule Tololo.Deliveries.Delivery do
 
       change set_attribute(:delivery_person, %{})
       change set_attribute(:delivery_order, %{})
-      change set_attribute(:from_name, "")
-      change set_attribute(:to_name, "")
+      change set_attribute(:from_name, "from")
+      change set_attribute(:to_name, "to")
       change set_attribute(:from_latitude, 100)
       change set_attribute(:from_longitude, 100)
+      change set_attribute(:current_latitude, 100)
+      change set_attribute(:current_longitude, 100)
       change set_attribute(:to_latitude, 100)
       change set_attribute(:to_longitude, 100)
       change set_attribute(:to_address, "")
       change set_attribute(:to_phone, "")
       change set_attribute(:to_notes, "")
-      change set_attribute(:state, :Init)
-      change set_attribute(:private_auth_key, Ash.UUIDv7.generate())
-      change set_attribute(:public_auth_key, Ash.UUIDv7.generate())
     end
 
     update :update_state do
@@ -141,7 +149,11 @@ defmodule Tololo.Deliveries.Delivery do
     end
 
     update :update_location do
-      accept [:from_latitude, :from_longitude]
+      accept [:current_latitude, :current_longitude]
+
+      validate attribute_equals(:state, :In_Delivery) do
+        message gettext("the state must be in delivery to update the current location")
+      end
     end
   end
 
@@ -163,23 +175,33 @@ defmodule Tololo.Deliveries.Delivery do
     end
   end
 
+  pub_sub do
+    module TololoWeb.Endpoint
+
+    prefix "delivery"
+    publish :update_location, ["updated", :id]
+  end
+
   attributes do
     uuid_v7_primary_key :id
 
     attribute :state, :string do
       allow_nil? false
       public? true
+      default :Init
     end
 
     attribute :private_auth_key, :uuid_v7 do
       allow_nil? false
       sensitive? true
       public? true
+      default &Ash.UUIDv7.generate/0
     end
 
     attribute :public_auth_key, :uuid_v7 do
       allow_nil? false
       public? true
+      default &Ash.UUIDv7.generate/0
     end
 
     attribute :delivery_person, :map do
@@ -196,6 +218,16 @@ defmodule Tololo.Deliveries.Delivery do
     end
 
     attribute :from_longitude, :float do
+      sensitive? true
+      public? true
+    end
+
+    attribute :current_latitude, :float do
+      sensitive? true
+      public? true
+    end
+
+    attribute :current_longitude, :float do
       sensitive? true
       public? true
     end
