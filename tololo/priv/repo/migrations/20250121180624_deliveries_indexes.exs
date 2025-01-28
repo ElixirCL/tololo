@@ -1,4 +1,4 @@
-defmodule Tololo.Repo.Migrations.Deliveries do
+defmodule Tololo.Repo.Migrations.DeliveriesIndexes do
   @moduledoc """
   Create indexes for public and private auth keys.
   """
