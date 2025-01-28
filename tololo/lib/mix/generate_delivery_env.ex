@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Generate.Bruno.Env do
+defmodule Mix.Tasks.Generate.Delivery.Env do
   use Mix.Task
 
   @moduledoc """
@@ -6,7 +6,7 @@ defmodule Mix.Tasks.Generate.Bruno.Env do
 
   ## Usage
 
-      mix generate.bruno.env (optional dir)
+      mix generate.delivery.env (optional dir)
   """
 
   @template """

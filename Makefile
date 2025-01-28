@@ -47,5 +47,5 @@ docs.server ds:
 	@npm run serve
 
 # Bruno
-mix.generate.bruno.env mbe:
-	@cd tololo && mix generate.bruno.env
+mix.generate.bruno.env mde:
+	@cd tololo && mix generate.delivery.env
