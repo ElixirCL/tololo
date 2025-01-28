@@ -11,7 +11,7 @@ post {
 }
 
 headers {
-  Authorization: Bearer 01949958-bfc0-73e1-af0a-2a446f82e9c1
+  Authorization: Bearer {{public_auth_key}}
 }
 
 body:graphql {
@@ -43,6 +43,6 @@ body:graphql {
 
 body:graphql:vars {
   {
-    "id": "01949913-6016-76fa-8655-b5c056bfffcd"
+    "id": "{{id}}"
   }
 }
