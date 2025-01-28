@@ -123,8 +123,8 @@ defmodule Tololo.Deliveries.Delivery do
 
       change set_attribute(:delivery_person, %{})
       change set_attribute(:delivery_order, %{})
-      change set_attribute(:from_name, "")
-      change set_attribute(:to_name, "")
+      change set_attribute(:from_name, "from")
+      change set_attribute(:to_name, "to")
       change set_attribute(:from_latitude, 100)
       change set_attribute(:from_longitude, 100)
       change set_attribute(:current_latitude, 100)
@@ -145,6 +145,7 @@ defmodule Tololo.Deliveries.Delivery do
 
     update :update_location do
       accept [:current_latitude, :current_longitude]
+
       validate attribute_equals(:state, :In_Delivery) do
         message gettext("the state must be in delivery to update the current location")
       end

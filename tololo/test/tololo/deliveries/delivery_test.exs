@@ -102,10 +102,14 @@ defmodule DeliveryTest do
     test "authorized update" do
       Tololo.Deliveries.Delivery.empty!(authorize?: false)
       |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:In_Delivery, actor: @private_actor)
       |> Deliveries.Delivery.update_location!(123, 321, actor: @private_actor)
 
       Tololo.Deliveries.Delivery.empty!(authorize?: false)
-      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @admin_actor)
+      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: @private_actor)
+      |> Deliveries.Delivery.update_state!(:In_Delivery, actor: @private_actor)
       |> Deliveries.Delivery.update_location!(123, 321, actor: @admin_actor)
     end
   end

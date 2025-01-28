@@ -183,6 +183,9 @@ defmodule TololoWeb.DeliveryTest do
         current_longitude: old_lon
       } =
         Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        |> Tololo.Deliveries.Delivery.update_state!(:In_Preparation, authorize?: false)
+        |> Tololo.Deliveries.Delivery.update_state!(:Ready_To_Pickup, authorize?: false)
+        |> Tololo.Deliveries.Delivery.update_state!(:In_Delivery, authorize?: false)
 
       variables = %{id: id, input: %{currentLatitude: 123, currentLongitude: 123}}
 
@@ -207,7 +210,7 @@ defmodule TololoWeb.DeliveryTest do
     test "update delivery location unauthorized", %{conn: conn} do
       %{
         id: id,
-        public_auth_key: public_auth_key,
+        public_auth_key: public_auth_key
       } =
         Tololo.Deliveries.Delivery.empty!(authorize?: false)
 

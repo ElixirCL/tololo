@@ -6,7 +6,7 @@ defmodule Tololo.Deliveries do
 
   admin do
     show?(true)
-    show_resources Tololo.Deliveries.Delivery
+    show_resources(Tololo.Deliveries.Delivery)
   end
 
   resources do
