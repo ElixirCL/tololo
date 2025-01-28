@@ -31,7 +31,8 @@ defmodule Mix.Tasks.Generate.Bruno.Env do
         extra_vars: %{
           id: id,
           public_auth_key: public_auth_key,
-          private_auth_key: private_auth_key
+          private_auth_key: private_auth_key,
+          admin_auth_key: System.get_env("ADMIN_API_KEY")
         }
       )
 
