@@ -14,6 +14,11 @@ defmodule Tololo.Deliveries.Delivery do
 
   use Gettext, backend: TololoWeb.Gettext
 
+  admin do
+    create_actions [:initialize]
+    update_actions [:update_state, :update_location]
+  end
+
   graphql do
     type :delivery
 

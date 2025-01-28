@@ -90,6 +90,13 @@ defmodule TololoWeb.Router do
     ash_admin("/admin")
   end
 
+  scope "/" do
+    pipe_through :browser
+    pipe_through :admin
+
+    ash_admin "/admin"
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", TololoWeb do
   #   pipe_through :api
