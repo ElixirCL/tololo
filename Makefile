@@ -1,9 +1,9 @@
 .PHONY: docs docs.server dev.shell dev.services antora.deps antora.docs mix.docs mix.docs.publish mix.deps mix.setup mix.phoenix.server
 
 # Configure if you want Telegram (Use BotFather)
-TELEGRAM_TOKEN=7674214898:AAHFT_5NVinmuWfbWi1DB1cMNkpIIlCqZvE
+TELEGRAM_TOKEN=<TOKEN>
 # Use ngrok http 4000 (or similar ssh tunnel command)
-TELEGRAM_WEBHOOK=https://a937-2800-150-14a-2188-1549-101c-2dc7-a5c2.ngrok-free.app/updates_hook
+TELEGRAM_WEBHOOK=https://<PUBLIC URL>/updates_hook
 
 # Elixir Env
 ## Devenv Commands
