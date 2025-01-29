@@ -28,6 +28,10 @@ mix.setup ms:
 	@cd tololo && mix ash.setup
 	@cd tololo && mix setup
 
+# Bruno
+mix.gen.delivery mgd:
+	@cd tololo && mix generate.delivery.env
+
 # Antora Env
 ## Antora Docs
 antora.docs adoc:
@@ -46,7 +50,3 @@ docs d:
 
 docs.server ds:
 	@npm run serve
-
-# Bruno
-mix.generate.bruno.env mde:
-	@cd tololo && mix generate.delivery.env
