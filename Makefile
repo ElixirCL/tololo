@@ -24,6 +24,7 @@ mix.deps md:
 mix.setup ms:
 	@cd tololo && mix archive.install hex phx_new
 	@cd tololo && mix archive.install hex igniter_new
+	@make mix.deps
 	@cd tololo && mix ash.setup
 	@cd tololo && mix setup
 
