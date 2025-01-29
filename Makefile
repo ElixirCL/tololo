@@ -5,7 +5,7 @@
 dev.shell shell dsh:
 	@devenv shell
 
-dev.services services ds:
+dev.services services:
 	@devenv up
 
 ## Mix commands
