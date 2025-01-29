@@ -23,7 +23,7 @@ defmodule Tololo.Extensions.TelegramBot.MixProject do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-       {:telegex, "~> 1.8.0", runtime: false},
+       {:telegex, "~> 1.8.0"},
        {:finch, "~> 0.13"},
        {:multipart, "~> 0.4.0"},
        {:remote_ip, "~> 1.2"},

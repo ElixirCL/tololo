@@ -1,11 +1,10 @@
-defmodule TololoWeb.TelegramController do
+defmodule TololoWeb.TelegramBot.Controller do
   use TololoWeb, :controller
 
   alias Tololo.Extensions.TelegramBot.Handler
 
-  def init(opts) do
-    Tololo.Extensions.TelegramBot.init()
-    opts
+  def index(conn, _params) do
+    text(conn, "Hello Telegram")
   end
 
   def update(conn, params) do

@@ -6,8 +6,6 @@ defmodule Tololo.Extensions.TelegramBot.Handler do
     # read some parameters from your env config
     env_config = Application.get_env(:tololo, __MODULE__)
 
-    # IO.inspect env_config
-
     # delete the webhook and set it again
     {:ok, true} = Telegex.delete_webhook()
     # set the webhook (url is required)
@@ -18,7 +16,7 @@ defmodule Tololo.Extensions.TelegramBot.Handler do
 
     # specify port for web server
     # port has a default value of 4000, but it may change with library upgrades
-    %Telegex.Hook.Config{server_port: env_config[:server_port]}
+    #%Telegex.Hook.Config{server_port: env_config[:server_port]}
     # you must return the `Telegex.Hook.Config` struct ↑
   end
 

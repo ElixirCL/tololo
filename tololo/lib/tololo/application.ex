@@ -32,9 +32,10 @@ defmodule Tololo.Application do
       # Start to serve requests, typically the last entry
       TololoWeb.Endpoint,
       {AshAuthentication.Supervisor, [otp_app: :tololo]},
-      # Optional Enable Telegram Bot
-      # Tololo.Extensions.TelegramBot.Handler
     ]
+
+    # Boot Telegram Bot
+    Tololo.Extensions.TelegramBot.Handler.on_boot()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
