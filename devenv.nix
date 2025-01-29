@@ -2,6 +2,12 @@
 
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
+
+  # Generate a random number using a shell command
+  randomSuffix = builtins.readFile (pkgs.runCommand "random-suffix" {} ''
+    printf $((RANDOM % 10000)) > $out
+  '');
+  localtunnel-subdomain = "tololo-" + randomSuffix;
 in
 {
   devcontainer.enable = true;
@@ -19,6 +25,8 @@ in
     pkgs.prometheus
     pkgs.gnumake
     pkgs.antora
+
+    pkgs.nodePackages_latest.localtunnel
 
     pkgs.zsh
     pkgs.oh-my-zsh
@@ -85,6 +93,7 @@ in
   processes = {
     grafana.exec = "grafana server --homepath .devenv/state/grafana";
     prometheus.exec = "prometheus --storage.tsdb.path .devenv/state/prometheus/data";
+    localtunnel.exec = "lt -p 4000 -s ${localtunnel-subdomain}";
   };
 
   services.kafka.enable = true;
@@ -96,7 +105,6 @@ in
     '';
   };
 
-
   env.ADMIN_API_KEY = "test";
-
+  env.TELEGRAM_WEBHOOK = "https://${localtunnel-subdomain}.loca.lt/telegram";
 }
