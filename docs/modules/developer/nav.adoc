@@ -1,2 +1,3 @@
 .Developer Docs
 * xref:dev_environment.adoc[]
+* xref:extensions.adoc[]
