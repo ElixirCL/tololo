@@ -1,9 +1,9 @@
-{ pkgs, lib, inputs, ... }: 
+{ pkgs, lib, inputs, ... }:
 
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in
-{ 
+{
   devcontainer.enable = true;
 
   languages.elixir = {
@@ -13,6 +13,7 @@ in
 
   # https://devenv.sh/common-patterns/#configure-the-shell-based-on-the-current-machine
   packages = [
+    pkgs.git
     pkgs.gnumake
     pkgs.grafana
     pkgs.prometheus
