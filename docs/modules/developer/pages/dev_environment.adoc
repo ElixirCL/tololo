@@ -68,8 +68,48 @@ trusted-users = root camilowser
 sudo launchctl kickstart -k system/org.nixos.nix-daemon
 ----
 
+== Direnv
+
+Install https://direnv.net/docs/installation.html#from-system-packages[Direnv] to automatically load _Devenv_ on entering the directory and load other system settings.
+Check https://devenv.sh/automatic-shell-activation/[Automatic Shell Activation] docs.
+
+.Step 1: Install direnv
+[source, bash]
+----
+$ curl -sfL https://direnv.net/install.sh | bash
+----
+
+.Step 2: Allow direnv
+[source, bash]
+----
+direnv allow
+----
+
+.Step 3: Add to ~/.zshrc
+[source, bash]
+----
+# Add to ohmyzsh plugins
+plugins=(git direnv)
+
+# Add zsh direnv eval
+eval "$(direnv hook zsh)"
+----
+
 == Environment Variables
 
 When using commands like `devenv shell` the `--impure` flag must be used.
 
 - `NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1`: Will allow install unsupported packages. For example `inotify-tools` is not supported in _MacOS_ (darwin). Compilation is not garanteed though.
+
+=== devenv.local.nix
+
+This file is used to load environment variables in _Devenv_. Use it to store
+API keys and other important data. An example file is provided as `devenv.local.nix.example`. Check https://devenv.sh/files-and-variables/#devenvlocalnix[Devlocal docs].
+
+[source, js]
+----
+{pkgs, lib, inputs, ...}
+{
+  env.MY_API_TOKEN="abc1234";
+}
+----
