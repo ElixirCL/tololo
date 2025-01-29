@@ -89,7 +89,13 @@ defmodule Tololo.MixProject do
       {:ex_cldr_units, "~> 3.17"},
       {:picosat_elixir, "~> 0.2.0"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:ash_admin, "~> 0.12.6"}
+      {:ash_admin, "~> 0.12.6"},
+      {:plug, "~> 1.16"},
+      # Optional Enable Telegram Bot
+      {:tololo_extension_telegram_bot, path:
+        Path.join(["extensions", "telegram_bot"])
+        |> Path.expand()
+      }
     ]
   end
 
