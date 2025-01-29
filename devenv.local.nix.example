@@ -1,0 +1,5 @@
+{pkgs, lib, inputs, ...}
+{
+  env.TELEGRAM_BOT_TOKEN="abc1234";
+  env.TELEGRAM_WEBHOOK="https://<url>/updates_hook";
+}
