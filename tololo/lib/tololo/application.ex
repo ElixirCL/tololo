@@ -33,7 +33,7 @@ defmodule Tololo.Application do
       TololoWeb.Endpoint,
       {AshAuthentication.Supervisor, [otp_app: :tololo]},
       # Optional Enable Telegram Bot
-      Tololo.Extensions.TelegramBot.Handler
+      # Tololo.Extensions.TelegramBot.Handler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

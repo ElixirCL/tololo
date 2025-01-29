@@ -6,7 +6,7 @@ defmodule Tololo.Extensions.TelegramBot.Handler do
     # read some parameters from your env config
     env_config = Application.get_env(:tololo, __MODULE__)
 
-    IO.inspect env_config
+    # IO.inspect env_config
 
     # delete the webhook and set it again
     {:ok, true} = Telegex.delete_webhook()

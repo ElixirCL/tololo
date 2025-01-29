@@ -28,6 +28,11 @@ defmodule TololoWeb.Router do
     plug TololoWeb.Deliveries.DeliveryAuthPlug
   end
 
+    pipeline :bot_api do
+    plug :accepts, ["json"]
+    # plug :check_secret_token
+  end
+
   pipeline :admin do
     plug :basic_auth, username: "admin", password: System.get_env("ADMIN_API_KEY")
   end
@@ -51,6 +56,9 @@ defmodule TololoWeb.Router do
     get "/", PageController, :home
 
     live "/map", MapLive
+
+    # forward "/telegram", Telegex.Hook.Server,
+    #   handler_module: Tololo.Extensions.TelegramBot.Handler
 
     # auth_routes AuthController, Tololo.Accounts.User, path: "/auth"
     # sign_out_route AuthController
@@ -88,6 +96,12 @@ defmodule TololoWeb.Router do
     pipe_through :admin
 
     ash_admin("/admin")
+  end
+
+  scope "/" do
+    pipe_through :bot_api
+
+    post "/telegram", TololoWeb.TelegramController, :update
   end
 
   # Other scopes may use custom stacks.

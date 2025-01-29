@@ -2,7 +2,7 @@
 import Config
 
 config :telegex, token: System.get_env("TELEGRAM_TOKEN") || ""
-config :telegex, caller_adapter: {Finch, [receive_timeout: 5 * 1000]}
+config :telegex, caller_adapter: Finch
 config :telegex, hook_adapter: Bandit
 
 # Note: webhook_url must be a full URL, such as https://your.domain.com/updates_hook, where updates_hook path is fixed.
