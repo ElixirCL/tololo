@@ -1,4 +1,6 @@
 defmodule TololoWeb.TelegramBot.Controller do
+  # TODO: Implement proper docs
+  @moduledoc false
 
   require Logger
 

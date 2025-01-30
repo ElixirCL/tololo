@@ -4,6 +4,7 @@
   env.TELEGRAM_BOT_TOKEN="abc1234";
 
   # Use ngrok http 4000 (or similar ssh tunnel command) and pase the url with /telegram at the end
-  # This is automatically used by local tunnels
-  # env.TELEGRAM_WEBHOOK="https://<url>/updates_hook";
+  # This is automatically used by local tunnels in nix, but it is here
+  # If you want to overwrite it
+  # env.TELEGRAM_WEBHOOK="https://<url>/telegram";
 }

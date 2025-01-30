@@ -1,4 +1,8 @@
 defmodule Tololo.Extensions.TelegramBot.Handler do
+  # TODO: Implement proper docs
+  # TODO: Implement telegram bot commands
+  @moduledoc false
+
   require Logger
 
   def on_boot do
