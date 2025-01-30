@@ -11,3 +11,4 @@ build/
 iex.ex
 collections/environments/generated_env.bru
 devenv.local.nix
+.elixir_ls/
