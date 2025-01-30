@@ -1,9 +1,10 @@
 defmodule Tololo.Extensions.TelegramBot.ChainHandler do
   @moduledoc false
-
+  alias Tololo.Extensions.TelegramBot 
   use Telegex.Chain.Handler
 
   pipeline([
-    Tololo.Extensions.TelegramBot.ListDeliveries
+    TelegramBot.Auth,
+    TelegramBot.ListDeliveries
   ])
 end

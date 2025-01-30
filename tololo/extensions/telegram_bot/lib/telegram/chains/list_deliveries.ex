@@ -5,9 +5,6 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
 
   alias Telegex.Type.{ReplyKeyboardMarkup, KeyboardButton}
 
-  # TODO implement auth logic
-  @allowed_users [7746430870]
-
   @impl true
   def match?(%{text: text, chat: %{type: "private"}}, _context) when text != nil do
     String.starts_with?(text, @command)
@@ -18,15 +15,6 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
 
   @impl true
   def handle(%{chat: chat, from: %{id: user_id}} = message, context) do
-    context = case Enum.member?(@allowed_users, user_id) do
-      true -> get_response(context, message) |> IO.inspect(label: "allowed")
-      false -> context |> IO.inspect(label: "not allowed")
-    end
-
-    {:done, context}
-  end
-
-  defp get_response(context, message) do
     markup = %ReplyKeyboardMarkup{
       keyboard: [
         [
@@ -54,7 +42,7 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
       disable_web_page_preview: true
     }
 
-    %{context | payload: send_hello}
+    {:done, %{context | payload: send_hello}}
   end
 end
 
