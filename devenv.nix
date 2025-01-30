@@ -19,7 +19,7 @@ in
 
   # https://devenv.sh/common-patterns/#configure-the-shell-based-on-the-current-machine
   packages = [
-    pkgs.libssh
+    pkgs.openssh
     pkgs.git
     pkgs.gnumake
     pkgs.grafana
