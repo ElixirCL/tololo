@@ -1,8 +1,9 @@
-{pkgs, lib, inputs, ...}
+{ pkgs, lib, inputs, ... }:
 {
   # Configure if you want Telegram (Use BotFather)
   env.TELEGRAM_BOT_TOKEN="abc1234";
 
-  # Use ngrok http 4000 (or similar ssh tunnel command) and pase the url with /updates_hook at the end
-  env.TELEGRAM_WEBHOOK="https://<url>/updates_hook";
+  # Use ngrok http 4000 (or similar ssh tunnel command) and pase the url with /telegram at the end
+  # This is automatically used by local tunnels
+  # env.TELEGRAM_WEBHOOK="https://<url>/updates_hook";
 }
