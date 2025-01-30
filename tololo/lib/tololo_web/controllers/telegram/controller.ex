@@ -13,6 +13,7 @@ defmodule TololoWeb.TelegramBot.Controller do
   end
 
   def update(conn, params) do
+    params = atomize_keys(params)
     Logger.debug(params)
 
     update = Telegex.Helper.typedmap(params, Telegex.Type.Update)
@@ -32,5 +33,25 @@ defmodule TololoWeb.TelegramBot.Controller do
       _ ->
         json(conn, %{})
     end
+  end
+
+  defp atomize_keys(nil), do: nil
+
+  defp atomize_keys(struct = %{__struct__: _}) do
+    struct
+  end
+
+  defp atomize_keys(map = %{}) do
+    map
+    |> Enum.map(fn {k, v} -> {String.to_atom(k), atomize_keys(v)} end)
+    |> Enum.into(%{})
+  end
+
+  defp atomize_keys([head | rest]) do
+    [atomize_keys(head) | atomize_keys(rest)]
+  end
+
+  defp atomize_keys(not_a_map) do
+    not_a_map
   end
 end
