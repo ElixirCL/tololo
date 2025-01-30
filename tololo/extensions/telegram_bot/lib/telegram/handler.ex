@@ -3,6 +3,8 @@ defmodule Tololo.Extensions.TelegramBot.Handler do
   # TODO: Implement telegram bot commands
   @moduledoc false
 
+  alias Tololo.Extensions.TelegramBot
+
   require Logger
 
   def on_boot do
@@ -21,8 +23,7 @@ defmodule Tololo.Extensions.TelegramBot.Handler do
   end
 
   def on_update(update) do
-    Logger.debug(update)
-    :ok
+    TelegramBot.ChainHandler.call(update, %TelegramBot.ChainContext{bot: Telegex.Instance.bot()})
   end
 
   def on_failure(update, e) do
