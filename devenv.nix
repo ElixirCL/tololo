@@ -20,6 +20,7 @@ in
   # https://devenv.sh/common-patterns/#configure-the-shell-based-on-the-current-machine
   packages = [
     pkgs.openssh
+    pkgs.less
     pkgs.git
     pkgs.gnumake
     pkgs.grafana
