@@ -36,17 +36,14 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
   end
 
   @spec generate_actor(atom()) :: %{access_level: atom()}
-  defp generate_actor(:admin), do: %{access_level: :admin}
+  defp generate_actor(:admin), do: Tololo.Deliveries.Actors.admin()
 
   @spec generate_actor(atom(), Tololo.Deliveries.Delivery.t()) :: %{access_level: atom()}
   defp generate_actor(token, %{public_auth_key: public_key, private_auth_key: private_key}) do
-    level =
-      cond do
-        token == public_key -> :public
-        token == private_key -> :private
-      end
-
-    %{access_level: level}
+    cond do
+      token == public_key -> Tololo.Deliveries.Actors.public()
+      token == private_key -> Tololo.Deliveries.Actors.private()
+    end
   end
 
   @spec admin?(String.t()) :: boolean()

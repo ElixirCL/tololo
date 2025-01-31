@@ -24,7 +24,7 @@ defmodule TololoWeb.MapLive do
 
   defp get_delivery_via_token(token) do
     case Tololo.Deliveries.Delivery.get_via_token(token,
-           actor: %{access_level: :public},
+           actor: Tololo.Deliveries.Actors.public(),
            load: :state_history
          ) do
       {:ok, [resource]} -> {:ok, resource}
