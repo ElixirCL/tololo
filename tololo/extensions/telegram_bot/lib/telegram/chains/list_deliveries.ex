@@ -30,13 +30,12 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
 
     send_hello = %{
       method: "sendMessage",
-      chat_id: message.chat.id,
-      text:
-        """
-        *Hello*
+      chat_id: chat.id,
+      text: """
+      *Hello*
 
-        Please select the delivery you wish to pick up
-        """,
+      Please select the delivery you wish to pick up
+      """,
       reply_markup: markup,
       parse_mode: "MarkdownV2",
       disable_web_page_preview: true
@@ -45,4 +44,3 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
     {:done, %{context | payload: send_hello}}
   end
 end
-

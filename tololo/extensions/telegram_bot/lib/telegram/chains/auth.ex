@@ -6,7 +6,7 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
   alias Telegex.Type.{ReplyKeyboardMarkup, KeyboardButton}
 
   # TODO implement auth logic
-  @allowed_users [7746430870]
+  @allowed_users [7_746_430_870]
 
   @impl true
   def handle(%{message: %{from: %{id: user_id}}}, context) do
@@ -20,13 +20,12 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
     send_message = %{
       method: "sendMessage",
       chat_id: user_id,
-      text:
-        """
-        Thanks for using Tololo Bot\\. An Admin will contact you soon\\.
-        """,
+      text: """
+      Thanks for using Tololo Bot. An Admin will contact you soon.
+      """,
       parse_mode: "MarkdownV2"
     }
+
     %{context | payload: send_message}
   end
 end
-

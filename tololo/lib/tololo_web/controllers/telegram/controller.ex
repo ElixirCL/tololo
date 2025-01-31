@@ -37,11 +37,11 @@ defmodule TololoWeb.TelegramBot.Controller do
 
   defp atomize_keys(nil), do: nil
 
-  defp atomize_keys(struct = %{__struct__: _}) do
+  defp atomize_keys(%{__struct__: _} = struct) do
     struct
   end
 
-  defp atomize_keys(map = %{}) do
+  defp atomize_keys(%{} = map) do
     map
     |> Enum.map(fn {k, v} -> {String.to_atom(k), atomize_keys(v)} end)
     |> Enum.into(%{})
