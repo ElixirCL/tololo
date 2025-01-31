@@ -14,11 +14,6 @@ defmodule Tololo.Deliveries.Delivery do
 
   use Gettext, backend: TololoWeb.Gettext
 
-  admin do
-    create_actions [:initialize]
-    update_actions [:update_state, :update_location]
-  end
-
   graphql do
     type :delivery
 
@@ -35,8 +30,14 @@ defmodule Tololo.Deliveries.Delivery do
     # required for making fields forbidden
     nullable_fields [
       :private_auth_key,
-      :public_auth_key
+      :public_auth_key,
+      :display_id
     ]
+  end
+
+  admin do
+    create_actions([:initialize])
+    update_actions([:update_state, :update_location])
   end
 
   admin do
@@ -50,13 +51,18 @@ defmodule Tololo.Deliveries.Delivery do
   end
 
   field_policies do
+    field_policy :display_id do
+      description "display id should only be visible to admin"
+      authorize_if actor_attribute_equals(:access_level, :admin)
+    end
+
     field_policy :private_auth_key do
-      description "public auth key should only be visible to admin"
+      description "private auth key should only be visible to admin"
       authorize_if actor_attribute_equals(:access_level, :admin)
     end
 
     field_policy :public_auth_key do
-      description "private auth key should only be visible to admin"
+      description "public auth key should only be visible to admin"
       authorize_if actor_attribute_equals(:access_level, :admin)
     end
 
@@ -71,6 +77,7 @@ defmodule Tololo.Deliveries.Delivery do
     define :initialize, action: :initialize
     define :empty, action: :empty
     define :get_via_token, args: [:token], action: :get_via_token
+    define :get_via_display_id, args: [:display_id], action: :get_via_display_id
 
     define :update_location,
       args: [:current_latitude, :current_longitude],
@@ -84,6 +91,10 @@ defmodule Tololo.Deliveries.Delivery do
       argument :token, :string
 
       filter expr(public_auth_key == ^arg(:token) or private_auth_key == ^arg(:token))
+    end
+
+    read :get_via_display_id do
+      get_by :display_id
     end
 
     create :create do
@@ -184,6 +195,11 @@ defmodule Tololo.Deliveries.Delivery do
 
   attributes do
     uuid_v7_primary_key :id
+
+    attribute :display_id, :string do
+      default fn -> FriendlyID.generate(3) end
+      public? true
+    end
 
     attribute :state, :string do
       allow_nil? false

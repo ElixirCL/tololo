@@ -55,6 +55,7 @@ input InitDeliveryInput {
 
 type Delivery {
   id: ID!
+  displayId: String
   state: String!
   privateAuthKey: ID
   publicAuthKey: ID
