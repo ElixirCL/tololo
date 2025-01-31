@@ -34,8 +34,10 @@ defmodule Tololo.Application do
       {AshAuthentication.Supervisor, [otp_app: :tololo]},
     ]
 
-    # Boot Telegram Bot
-    Tololo.Extensions.TelegramBot.Handler.on_boot()
+    # Initialize extensions
+    Enum.each(Application.get_env(:tololo, :extensions, []), fn extension_module ->
+      apply(extension_module, :init, []) # calls extension_module.init()
+    end)
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

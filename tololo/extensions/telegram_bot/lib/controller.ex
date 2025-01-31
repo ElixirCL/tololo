@@ -1,16 +1,12 @@
-defmodule TololoWeb.TelegramBot.Controller do
+defmodule Tololo.Extensions.TelegramBot.Controller do
   # TODO: Implement proper docs
   @moduledoc false
 
   require Logger
 
-  use TololoWeb, :controller
+  use Phoenix.Controller
 
   alias Tololo.Extensions.TelegramBot.Handler
-
-  def index(conn, _params) do
-    text(conn, "Hello Telegram")
-  end
 
   def update(conn, params) do
     params = atomize_keys(params)

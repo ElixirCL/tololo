@@ -49,9 +49,17 @@ config :spark,
 config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [Tololo.Accounts, Tololo.Deliveries]
+  extensions: [Tololo.Extensions.TelegramBot]
 
-# ash_domains: [Tololo.Support]
+config :tololo,
+  ash_domains:
+    [
+      Tololo.Accounts,
+      Tololo.Deliveries
+    ] ++ # appends domains from extensions to the list
+      Enum.flat_map(Application.get_env(:tololo, :extensions, []), fn extension_module ->
+        apply(extension_module, :ash_domains, []) # calls extension_module.ash_domains()
+      end)
 
 # Configures the endpoint
 config :tololo, TololoWeb.Endpoint,
