@@ -4,7 +4,7 @@ defmodule Tololo.Extensions.TelegramBot.ChainHandler do
   use Telegex.Chain.Handler
 
   pipeline([
-    # TelegramBot.Auth,
+    TelegramBot.Auth,
     # TelegramBot.ListDeliveries
     TelegramBot.ReceiveLocation,
     TelegramBot.SetToken

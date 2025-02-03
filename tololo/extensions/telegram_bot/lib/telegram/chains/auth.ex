@@ -3,29 +3,62 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
 
   use Telegex.Chain
 
-  alias Telegex.Type.{ReplyKeyboardMarkup, KeyboardButton}
+  @actor TololoCore.Deliveries.Actors.private()
 
-  # TODO implement auth logic
-  @allowed_users [7_746_430_870]
+  # extract the message value from both messages and edited messages
+  @impl true
+  def handle(%{message: message, edited_message: nil}, context), do: handle(message, context)
+  @impl true
+  def handle(%{edited_message: message, message: nil}, context), do: handle(message, context)
 
   @impl true
-  def handle(%{message: %{from: %{id: user_id}}}, context) do
-    case Enum.member?(@allowed_users, user_id) do
-      true -> {:ok, context}
-      false -> {:done, send_unauthorized_message(context, user_id)}
+  def handle(%{from: %{id: user_id}}, context) do
+    string_id = Integer.to_string(user_id)
+    case Ash.get(Tololo.Extensions.TelegramBot.Ash.User, string_id,
+           actor: @actor,
+           load: :deliveries
+         ) do
+      {:ok, %{status: :allowed} = user} ->
+        {:ok, %{context | user_resource: user}}
+
+      {:ok, %{status: :denied}} ->
+        {:done, send_denied_message(context, user_id)}
+
+      {:ok, %{status: :pending}} ->
+        {:done, send_unauthorized_message(context, user_id)}
+
+      {:error, _} ->
+        {:done, context |> init_user(string_id) |> send_unauthorized_message(user_id)}
     end
   end
 
-  defp send_unauthorized_message(context, user_id) do
-    send_message = %{
-      method: "sendMessage",
-      chat_id: user_id,
-      text: """
-      Thanks for using Tololo Bot. An Admin will contact you soon.
-      """,
-      parse_mode: "MarkdownV2"
-    }
+  defp init_user(context, user_id) do
+    Ash.create!(
+      Tololo.Extensions.TelegramBot.Ash.User,
+      %{id: user_id, status: :pending, deliveries_id: []},
+      action: :create
+    )
 
-    %{context | payload: send_message}
+    context
+  end
+
+  defp send_unauthorized_message(context, user_id) do
+    %{
+      context
+      | payload:
+          Tololo.Extensions.TelegramBot.Message.send_message(user_id, """
+          Thanks for using Tololo Bot. An Admin will contact you soon.
+          """)
+    }
+  end
+
+  defp send_denied_message(context, user_id) do
+    %{
+      context
+      | payload:
+          Tololo.Extensions.TelegramBot.Message.send_message(user_id, """
+          You don't have access to this bot.
+          """)
+    }
   end
 end

@@ -1,50 +1,52 @@
 defmodule Tololo.Extensions.TelegramBot.ReceiveLocation do
   @moduledoc false
   alias Tololo.Extensions.TelegramBot
-  alias Tololo.Deliveries
+  alias TololoCore.Deliveries
 
   use Telegex.Chain, :edited_message
 
+  @actor TololoCore.Deliveries.Actors.private()
+
   @impl true
   def match?(%{chat: %{type: "private"}, location: location}, context), do: true
+  @impl true
+  def match?(_, _), do: false
 
   @impl true
   def handle(
         %{from: %{id: user_id}, location: %{latitude: lat, longitude: lng}},
-        context
+        %{user_resource: %{deliveries: deliveries}} = context
       ) do
-    context =
-      with {:ok, token} <- TelegramBot.Store.get_delivery_token(user_id),
-           {:ok, delivery_resource} <-
-             Deliveries.Delivery.get_via_display_id(token, actor: Deliveries.Actors.private()),
-           {:ok, _} <-
-             Deliveries.Delivery.update_location(delivery_resource, lat, lng,
-               actor: Deliveries.Actors.private()
-             ) do
-        IO.inspect("location updated")
-        context
-      else
-        {:error, :not_found} ->
-          %{
-            context
-            | payload:
-                TelegramBot.send_message(
-                  user_id,
-                  "No active delivery found. Please start one by using `/new {token}`."
-                )
-          }
+    cond do
+      deliveries == [] ->
+        {:done,
+         %{
+           context
+           | payload:
+               TelegramBot.Message.send_message(
+                 user_id,
+                 "No active deliveries found. Please start one by using `/new {token}`."
+               )
+         }}
 
-        _ ->
-          %{
-            context
-            | payload:
-                TelegramBot.send_message(
-                  user_id,
-                  "Error trying to update location. Is the delivery still valid?"
-                )
-          }
-      end
+      Enum.all?(deliveries, fn delivery ->
+        Kernel.match?(
+          {:ok, _},
+          Deliveries.Delivery.update_location(delivery, lat, lng, actor: @actor)
+        )
+      end) ->
+        {:ok, context}
 
-    {:done, context}
+      true ->
+        {:done,
+         %{
+           context
+           | payload:
+               TelegramBot.Message.send_message(
+                 user_id,
+                 "Error trying to update location."
+               )
+         }}
+    end
   end
 end

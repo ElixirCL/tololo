@@ -17,7 +17,7 @@ defmodule Tololo.Extensions.TelegramBot.Message do
       |> String.replace("-", "\\-")
       |> String.replace("!", "\\!")
       |> String.replace("_", "\\_")
-      |> String.replace("*", "\\*")
+      # |> String.replace("*", "\\*")
       |> String.replace("[", "\\[")
       |> String.replace("]", "\\]")
       |> String.replace("(", "\\(")

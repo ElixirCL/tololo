@@ -20,7 +20,7 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
         [
           # TODO
           # show deliveries here
-          # Tololo.Deliveries.Delivery.get_ready_to_pickup() |> Enum.map()
+          # TololoCore.Deliveries.Delivery.get_ready_to_pickup() |> Enum.map()
           %KeyboardButton{
             text: "Hello"
           }

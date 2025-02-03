@@ -11,8 +11,6 @@ defmodule Tololo.Extensions.TelegramBot.Handler do
     # read some parameters from your env config
     env_config = Application.get_env(:tololo, __MODULE__)
 
-    TelegramBot.Store.init()
-
     # delete the webhook and set it again
     # set the webhook (url is required)
     try do

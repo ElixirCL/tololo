@@ -6,6 +6,7 @@ defmodule Tololo.Extensions.TelegramBot.ChainContext do
   defcontext([
     {:chat_id, integer},
     {:user_id, integer},
-    {:chat_title, String.t()}
+    {:chat_title, String.t()},
+    {:user_resource, Tololo.Extensions.TelegramBot.Ash.User.t()}
   ])
 end
