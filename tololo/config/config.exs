@@ -52,14 +52,12 @@ config :tololo,
   extensions: [Tololo.Extensions.TelegramBot]
 
 config :tololo,
-  ash_domains:
-    [
-      Tololo.Accounts,
-      Tololo.Deliveries
-    ] ++ # appends domains from extensions to the list
-      Enum.flat_map(Application.get_env(:tololo, :extensions, []), fn extension_module ->
-        apply(extension_module, :ash_domains, []) # calls extension_module.ash_domains()
-      end)
+  # appends domains from extensions to the list
+  ash_domains: [
+    Tololo.Accounts,
+    TololoCore.Deliveries,
+    Tololo.Extensions.TelegramBot.Ash.Users
+  ]
 
 # Configures the endpoint
 config :tololo, TololoWeb.Endpoint,

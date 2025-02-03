@@ -1,6 +1,6 @@
 defmodule TololoWeb.MapLive do
   use TololoWeb, :live_view
-  use Gettext, backend: TololoWeb.Gettext
+  use Gettext, backend: TololoCore.Gettext
 
   import AshPhoenix.LiveView
 
@@ -23,8 +23,8 @@ defmodule TololoWeb.MapLive do
     do: raise(TololoWeb.NotFoundError, gettext("Token not found"))
 
   defp get_delivery_via_token(token) do
-    case Tololo.Deliveries.Delivery.get_via_token(token,
-           actor: Tololo.Deliveries.Actors.public(),
+    case TololoCore.Deliveries.Delivery.get_via_token(token,
+           actor: TololoCore.Deliveries.Actors.public(),
            load: :state_history
          ) do
       {:ok, [resource]} -> {:ok, resource}
@@ -93,5 +93,5 @@ defmodule TololoWeb.MapLive do
     {:noreply, socket |> handle_live(topic, [:resource]) |> push_update_event}
   end
 
-  defp date_to_string(date), do: Tololo.Cldr.Time.to_string(date) |> elem(1)
+  defp date_to_string(date), do: TololoCore.Cldr.Time.to_string(date) |> elem(1)
 end

@@ -150,13 +150,13 @@ defmodule TololoWeb.DeliveryTest do
 
       assert public_auth_key != nil and private_auth_key != nil
 
-      assert Tololo.Deliveries.Delivery
+      assert TololoCore.Deliveries.Delivery
              |> Ash.get!(result_id, authorize?: false)
     end
 
     test "get delivery", %{conn: conn} do
       %{id: id, public_auth_key: public_auth_key} =
-        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
 
       variables = %{id: id}
 
@@ -182,10 +182,10 @@ defmodule TololoWeb.DeliveryTest do
         current_latitude: old_lat,
         current_longitude: old_lon
       } =
-        Tololo.Deliveries.Delivery.empty!(authorize?: false)
-        |> Tololo.Deliveries.Delivery.update_state!(:In_Preparation, authorize?: false)
-        |> Tololo.Deliveries.Delivery.update_state!(:Ready_To_Pickup, authorize?: false)
-        |> Tololo.Deliveries.Delivery.update_state!(:In_Delivery, authorize?: false)
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
+        |> TololoCore.Deliveries.Delivery.update_state!(:In_Preparation, authorize?: false)
+        |> TololoCore.Deliveries.Delivery.update_state!(:Ready_To_Pickup, authorize?: false)
+        |> TololoCore.Deliveries.Delivery.update_state!(:In_Delivery, authorize?: false)
 
       variables = %{id: id, input: %{currentLatitude: 123, currentLongitude: 123}}
 
@@ -212,7 +212,7 @@ defmodule TololoWeb.DeliveryTest do
         id: id,
         public_auth_key: public_auth_key
       } =
-        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
 
       variables = %{id: id, input: %{currentLatitude: 123, currentLongitude: 123}}
 
@@ -239,7 +239,7 @@ defmodule TololoWeb.DeliveryTest do
         private_auth_key: private_auth_key,
         state: old_state
       } =
-        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
 
       variables = %{id: id, input: %{state: "In_Preparation"}}
 

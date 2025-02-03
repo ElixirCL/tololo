@@ -1,5 +1,5 @@
 defmodule DeliveryTest do
-  alias Tololo.Deliveries
+  alias TololoCore.Deliveries
 
   use Tololo.DataCase, async: true
 
@@ -67,45 +67,45 @@ defmodule DeliveryTest do
   @unknown_actor %{}
   describe "actor authorization" do
     test "unauthorized read" do
-      %{id: id} = Tololo.Deliveries.Delivery.empty!(authorize?: false)
+      %{id: id} = TololoCore.Deliveries.Delivery.empty!(authorize?: false)
 
       assert_raise Ash.Error.Invalid, fn ->
-        Tololo.Deliveries.Delivery |> Ash.get!(id, actor: @unknown_actor)
+        TololoCore.Deliveries.Delivery |> Ash.get!(id, actor: @unknown_actor)
       end
     end
 
     test "authorized read" do
-      %{id: id} = Tololo.Deliveries.Delivery.empty!(authorize?: false)
+      %{id: id} = TololoCore.Deliveries.Delivery.empty!(authorize?: false)
 
-      Tololo.Deliveries.Delivery |> Ash.get!(id, actor: Tololo.Deliveries.Actors.public())
-      Tololo.Deliveries.Delivery |> Ash.get!(id, actor: Tololo.Deliveries.Actors.private())
-      Tololo.Deliveries.Delivery |> Ash.get!(id, actor: Tololo.Deliveries.Actors.public())
+      TololoCore.Deliveries.Delivery |> Ash.get!(id, actor: TololoCore.Deliveries.Actors.public())
+      TololoCore.Deliveries.Delivery |> Ash.get!(id, actor: TololoCore.Deliveries.Actors.private())
+      TololoCore.Deliveries.Delivery |> Ash.get!(id, actor: TololoCore.Deliveries.Actors.public())
     end
 
     test "unauthorized update" do
       assert_raise Ash.Error.Forbidden, fn ->
-        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
         |> Deliveries.Delivery.update_state!(:In_Preparation, actor: @unknown_actor)
         |> Deliveries.Delivery.update_location!(123, 321, actor: @unknown_actor)
       end
 
       assert_raise Ash.Error.Forbidden, fn ->
-        Tololo.Deliveries.Delivery.empty!(authorize?: false)
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
         |> Deliveries.Delivery.update_state!(:In_Preparation,
-          actor: Tololo.Deliveries.Actors.public()
+          actor: TololoCore.Deliveries.Actors.public()
         )
-        |> Deliveries.Delivery.update_location!(123, 321, actor: Tololo.Deliveries.Actors.public())
+        |> Deliveries.Delivery.update_location!(123, 321, actor: TololoCore.Deliveries.Actors.public())
       end
     end
 
     test "authorized update" do
-      Tololo.Deliveries.Delivery.empty!(authorize?: false)
+      TololoCore.Deliveries.Delivery.empty!(authorize?: false)
       |> Deliveries.Delivery.update_state!(:In_Preparation, actor: Deliveries.Actors.private())
       |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: Deliveries.Actors.private())
       |> Deliveries.Delivery.update_state!(:In_Delivery, actor: Deliveries.Actors.private())
       |> Deliveries.Delivery.update_location!(123, 321, actor: Deliveries.Actors.private())
 
-      Tololo.Deliveries.Delivery.empty!(authorize?: false)
+      TololoCore.Deliveries.Delivery.empty!(authorize?: false)
       |> Deliveries.Delivery.update_state!(:In_Preparation, actor: Deliveries.Actors.private())
       |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: Deliveries.Actors.private())
       |> Deliveries.Delivery.update_state!(:In_Delivery, actor: Deliveries.Actors.private())

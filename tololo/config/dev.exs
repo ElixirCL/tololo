@@ -150,6 +150,6 @@ config :kafka_ex,
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
 
-config :tololo, TololoWeb.Gettext,
+config :tololo, TololoCore.Gettext,
   default_locale: "es",
   locales: ~w(en es)

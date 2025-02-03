@@ -1,6 +1,6 @@
 defmodule TololoWeb.MapLiveTest do
   use TololoWeb.ConnCase, async: false
-  use Gettext, backend: TololoWeb.Gettext
+  use Gettext, backend: TololoCore.Gettext
 
   import Phoenix.LiveViewTest
 
@@ -10,16 +10,16 @@ defmodule TololoWeb.MapLiveTest do
     test "sending and receiving resource update events", %{conn: conn} do
       %{id: id, public_auth_key: public_auth_key, from_name: from_name, to_name: to_name} =
         delivery_resource =
-        Tololo.Deliveries.Delivery.empty!(authorize?: false)
-        |> Tololo.Deliveries.Delivery.update_state!(:In_Preparation, authorize?: false)
-        |> Tololo.Deliveries.Delivery.update_state!(:Ready_To_Pickup, authorize?: false)
-        |> Tololo.Deliveries.Delivery.update_state!(:In_Delivery, authorize?: false)
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
+        |> TololoCore.Deliveries.Delivery.update_state!(:In_Preparation, authorize?: false)
+        |> TololoCore.Deliveries.Delivery.update_state!(:Ready_To_Pickup, authorize?: false)
+        |> TololoCore.Deliveries.Delivery.update_state!(:In_Delivery, authorize?: false)
 
       conn = get(conn, "/map?token=#{public_auth_key}")
       {:ok, view, html} = live(conn)
 
       {new_lat, new_lng} = {1234.0, 5678.0}
-      Tololo.Deliveries.Delivery.update_location!(delivery_resource, new_lat, new_lng,
+      TololoCore.Deliveries.Delivery.update_location!(delivery_resource, new_lat, new_lng,
         authorize?: false
       )
 

@@ -30,7 +30,12 @@ defmodule Tololo.Extensions.TelegramBot.MixProject do
       {:ash_postgres, "~> 2.0"},
       {:ash, "~> 3.0"},
       {:ash_admin, "~> 0.12.6"},
-      {:phoenix, "~> 1.7.18"}
+      {:phoenix, "~> 1.7.18"},
+      {:tololo_core,
+       path:
+         Path.join(["..", "..", "core"])
+         |> Path.expand()}
+      
     ]
   end
 end

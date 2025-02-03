@@ -47,7 +47,7 @@ defmodule TololoWeb do
         formats: [:html, :json],
         layouts: [html: TololoWeb.Layouts]
 
-      use Gettext, backend: TololoWeb.Gettext
+      use Gettext, backend: TololoCore.Gettext
 
       import Plug.Conn
 
@@ -88,7 +88,7 @@ defmodule TololoWeb do
   defp html_helpers do
     quote do
       # Translation
-      use Gettext, backend: TololoWeb.Gettext
+      use Gettext, backend: TololoCore.Gettext
 
       # HTML escaping functionality
       import Phoenix.HTML

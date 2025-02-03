@@ -1,0 +1,32 @@
+defmodule TololoCore.Deliveries.UpdateHistory do
+  @moduledoc """
+  Checks validity of state transition and also adds it to the state history.
+  """
+
+  alias TololoCore.Deliveries.Transitions
+  alias TololoCore.Deliveries.DeliveryStateChanges
+
+  use Ash.Resource.Change
+  use Gettext, backend: TololoCore.Gettext
+
+  @impl true
+  @spec change(Ash.Changeset.t(), term(), term()) :: nil
+  def change(changeset, _opts, _context) do
+    %{id: id, state: old_state} = changeset.data
+
+    with {:ok, new_state} <- Ash.Changeset.fetch_change(changeset, :state),
+         true <- Transitions.valid?(old_state, new_state) do
+      comment = Transitions.message(old_state, new_state)
+      DeliveryStateChanges.add_to_state_history!(id, old_state, new_state, comment)
+
+      changeset
+    else
+      _ ->
+        changeset
+        |> Ash.Changeset.add_error(
+          field: :state,
+          message: gettext("Invalid delivery state transition")
+        )
+    end
+  end
+end

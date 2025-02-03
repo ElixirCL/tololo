@@ -22,27 +22,4 @@ defmodule Tololo.Extensions.TelegramBot do
 
   @impl true
   def ash_domains(), do: [Tololo.Extensions.TelegramBot.Ash.Users]
-
-  # helper functions
-
-  def send_message(chat_id, text),
-    do: %{
-      method: "sendMessage",
-      chat_id: chat_id,
-      text: escape_text(text),
-      parse_mode: "MarkdownV2"
-    }
-
-  defp escape_text(text),
-    do:
-      text
-      |> String.replace(".", "\\.")
-      |> String.replace("-", "\\-")
-      |> String.replace("!", "\\!")
-      |> String.replace("_", "\\_")
-      |> String.replace("*", "\\*")
-      |> String.replace("[", "\\[")
-      |> String.replace("]", "\\]")
-      |> String.replace("(", "\\(")
-      |> String.replace(")", "\\)")
 end
