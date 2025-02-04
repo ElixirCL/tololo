@@ -3,7 +3,12 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
 
   use Telegex.Chain, {:command, :list}
 
-  alias Telegex.Type.{ReplyKeyboardMarkup, KeyboardButton}
+  @actor TololoCore.Deliveries.Actors.private()
+  @command "/list"
+
+  alias Tololo.Extensions.TelegramBot.Message
+  alias Telegex.Type.{KeyboardButton}
+  alias TololoCore.Deliveries.Delivery
 
   @impl true
   def match?(%{text: text, chat: %{type: "private"}}, _context) when text != nil do
@@ -14,33 +19,29 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
   def match?(_message, _context), do: false
 
   @impl true
-  def handle(%{chat: chat, from: %{id: user_id}} = message, context) do
-    markup = %ReplyKeyboardMarkup{
-      keyboard: [
-        [
-          # TODO
-          # show deliveries here
-          # TololoCore.Deliveries.Delivery.get_ready_to_pickup() |> Enum.map()
-          %KeyboardButton{
-            text: "Hello"
-          }
-        ]
-      ]
-    }
+  def handle(
+        %{chat: chat, from: %{id: user_id}} = message,
+        %{user_resource: user_resource} = context
+      ) do
+    available_deliveries = Delivery.get_ready_to_pickup!(actor: @actor)
+    available_deliveries_buttons =
+      Enum.map(available_deliveries, fn delivery ->
+        %KeyboardButton{
+          text: "/new " <> delivery.display_id
+        }
+      end)
 
-    send_hello = %{
-      method: "sendMessage",
-      chat_id: chat.id,
-      text: """
-      *Hello*
+    message =
+      Message.send_message_with_keyboard(
+        user_id,
+        """
+        *Hello*
 
-      Please select the delivery you wish to pick up
-      """,
-      reply_markup: markup,
-      parse_mode: "MarkdownV2",
-      disable_web_page_preview: true
-    }
+        Please select the delivery you wish to pick up
+        """,
+        available_deliveries_buttons
+      )
 
-    {:done, %{context | payload: send_hello}}
+    {:done, %{context | payload: message}}
   end
 end

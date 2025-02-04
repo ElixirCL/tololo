@@ -52,8 +52,9 @@ defmodule TololoCore.Deliveries.Delivery do
 
   field_policies do
     field_policy :display_id do
-      description "display id should only be visible to admin"
+      description "display id should only be visible to admin and people with private access"
       authorize_if actor_attribute_equals(:access_level, :admin)
+      authorize_if actor_attribute_equals(:access_level, :private)
     end
 
     field_policy :private_auth_key do
@@ -82,6 +83,8 @@ defmodule TololoCore.Deliveries.Delivery do
     define :update_location,
       args: [:current_latitude, :current_longitude],
       action: :update_location
+
+    define :get_ready_to_pickup
   end
 
   actions do
@@ -95,6 +98,10 @@ defmodule TololoCore.Deliveries.Delivery do
 
     read :get_via_display_id do
       get_by :display_id
+    end
+
+    read :get_ready_to_pickup do
+      filter expr(state == "Ready_To_Pickup")
     end
 
     create :create do
