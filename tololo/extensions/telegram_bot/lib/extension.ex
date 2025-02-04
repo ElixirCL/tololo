@@ -1,7 +1,7 @@
 defmodule Tololo.Extensions.TelegramBot do
   @moduledoc false
 
-  @behaviour Tololo.Extension
+  @behaviour TololoCore.Extension
 
   @impl true
   def routes() do
