@@ -31,13 +31,19 @@ defmodule TololoCore.Deliveries.DeliveryStateChanges do
   attributes do
     uuid_v7_primary_key :id
 
-    attribute :old_state, :string
+    attribute :old_state, :string do
+      public? true
+    end
 
     attribute :new_state, :string do
       allow_nil? false
+      public? true
     end
 
-    attribute :comment, :string
+    attribute :comment, :string do
+      public? true
+    end
+
     timestamps()
   end
 

@@ -299,6 +299,8 @@ defmodule TololoCore.Deliveries.Delivery do
   end
 
   relationships do
-    has_many :state_history, TololoCore.Deliveries.DeliveryStateChanges
+    has_many :state_history, TololoCore.Deliveries.DeliveryStateChanges do
+      public? true
+    end
   end
 end
