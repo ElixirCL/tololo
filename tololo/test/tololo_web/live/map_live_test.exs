@@ -1,6 +1,6 @@
 defmodule TololoWeb.MapLiveTest do
   use TololoWeb.ConnCase, async: false
-  use Gettext, backend: TololoCore.Gettext
+  use Gettext, backend: Tololo.Gettext
 
   import Phoenix.LiveViewTest
 

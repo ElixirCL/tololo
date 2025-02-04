@@ -15,7 +15,7 @@ defmodule TololoWeb.CoreComponents do
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
   use Phoenix.Component
-  use Gettext, backend: TololoCore.Gettext
+  use Gettext, backend: Tololo.Gettext
 
   alias Phoenix.LiveView.JS
 
@@ -661,9 +661,9 @@ defmodule TololoWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(TololoCore.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Tololo.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(TololoCore.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Tololo.Gettext, "errors", msg, opts)
     end
   end
 

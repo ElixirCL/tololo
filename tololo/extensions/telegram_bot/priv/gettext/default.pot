@@ -1,0 +1,72 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new messages manually only if they're dynamic
+## messages that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+#
+msgid ""
+msgstr ""
+
+#: lib/telegram/chains/auth.ex:60
+#, elixir-autogen, icu-format
+msgid "You don't have access to this bot.\n"
+msgstr ""
+
+#: lib/telegram/chains/list_deliveries.ex:39
+#, elixir-autogen, icu-format
+msgid "*Hello*\n\nPlease select the delivery you wish to pick up\n"
+msgstr ""
+
+#: lib/telegram/chains/receive_location.ex:48
+#, elixir-autogen, icu-format
+msgid "Error trying to update location."
+msgstr ""
+
+#: lib/telegram/chains/receive_location.ex:29
+#, elixir-autogen, icu-format
+msgid "No active deliveries found. Please start one by using `/new {token}`."
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:54
+#, elixir-autogen, icu-format
+msgid "Please include the provided token with the command:\n\n`/new {token}`\n"
+msgstr ""
+
+#: lib/telegram/chains/auth.ex:50
+#, elixir-autogen, icu-format
+msgid "Thanks for using Tololo Bot. An Admin will contact you soon.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:84
+#, elixir-autogen, icu-format
+msgid "There was a problem. Please check that the token is valid.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:68
+#, elixir-autogen, icu-format
+msgid "delivery_info"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:73
+#, elixir-autogen, icu-format
+msgid "No additional notes"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:72
+#, elixir-autogen, icu-format
+msgid "No address provided"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:71
+#, elixir-autogen, icu-format
+msgid "No phone number provided"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:70
+#, elixir-autogen, icu-format
+msgid "Unknown person"
+msgstr ""

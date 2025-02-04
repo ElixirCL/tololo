@@ -4,8 +4,15 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
   alias TololoCore.Deliveries
   alias Tololo.Extensions.TelegramBot.Ash.User
 
+  use Gettext, backend: Tololo.Extensions.TelegramBot.Gettext
+
   use Telegex.Chain, {:command, :new}
   @command "/new"
+  @no_token_message """
+  Please include the provided token with the command:
+
+  `#{@command} {token}`
+  """
 
   @actor Deliveries.Actors.private()
 
@@ -42,11 +49,10 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
   # if it doesn't include a token, send usage instructions
   def handle(%{from: %{id: user_id}}, context) do
     send_message =
-      TelegramBot.Message.send_message(user_id, """
-      Please include the provided token with the command:
-
-      `#{@command} {token}`
-      """)
+      TelegramBot.Message.send_message(
+        user_id,
+        gettext(@no_token_message)
+      )
 
     {:done, %{context | payload: send_message}}
   end
@@ -57,25 +63,28 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
         user_id
       ) do
     send_message =
-      TelegramBot.Message.send_message(user_id, """
-      *This is the delivery information:*
-
-      - Name: #{name || "Unknown person"}
-      - Phone: #{phone || "No phone number provided"}
-      - Address: #{notes || "No address provided"}
-      - Details: #{notes || "No additional notes"}
-
-      *Great! Please send the live location for at least one hour.*
-      """)
+      TelegramBot.Message.send_message(
+        user_id,
+        gettext(
+          "delivery_info",
+          name: name || gettext("Unknown person"),
+          phone: phone || gettext("No phone number provided"),
+          address: to_address || gettext("No address provided"),
+          details: notes || gettext("No additional notes")
+        )
+      )
 
     %{context | payload: send_message}
   end
 
   def send_error(context, user_id) do
     send_message =
-      TelegramBot.Message.send_message(user_id, """
-      There was a problem. Please check that the token is valid.
-      """)
+      TelegramBot.Message.send_message(
+        user_id,
+        gettext("""
+        There was a problem. Please check that the token is valid.
+        """)
+      )
 
     %{context | payload: send_message}
   end

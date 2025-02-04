@@ -1,6 +1,7 @@
 defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
   @moduledoc false
 
+  use Gettext, backend: Tololo.Extensions.TelegramBot.Gettext
   use Telegex.Chain, {:command, :list}
 
   @actor TololoCore.Deliveries.Actors.private()
@@ -24,6 +25,7 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
         %{user_resource: user_resource} = context
       ) do
     available_deliveries = Delivery.get_ready_to_pickup!(actor: @actor)
+
     available_deliveries_buttons =
       Enum.map(available_deliveries, fn delivery ->
         %KeyboardButton{
@@ -34,11 +36,11 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
     message =
       Message.send_message_with_keyboard(
         user_id,
-        """
+        gettext("""
         *Hello*
 
         Please select the delivery you wish to pick up
-        """,
+        """),
         available_deliveries_buttons
       )
 

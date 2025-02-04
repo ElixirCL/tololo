@@ -3,6 +3,7 @@ defmodule Tololo.Extensions.TelegramBot.ReceiveLocation do
   alias Tololo.Extensions.TelegramBot
   alias TololoCore.Deliveries
 
+  use Gettext, backend: Tololo.Extensions.TelegramBot.Gettext
   use Telegex.Chain, :edited_message
 
   @actor TololoCore.Deliveries.Actors.private()
@@ -25,7 +26,7 @@ defmodule Tololo.Extensions.TelegramBot.ReceiveLocation do
            | payload:
                TelegramBot.Message.send_message(
                  user_id,
-                 "No active deliveries found. Please start one by using `/new {token}`."
+                 gettext("No active deliveries found. Please start one by using `/new {token}`.")
                )
          }}
 
@@ -44,7 +45,7 @@ defmodule Tololo.Extensions.TelegramBot.ReceiveLocation do
            | payload:
                TelegramBot.Message.send_message(
                  user_id,
-                 "Error trying to update location."
+                 gettext("Error trying to update location.")
                )
          }}
     end

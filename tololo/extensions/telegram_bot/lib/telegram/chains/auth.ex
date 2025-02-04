@@ -1,6 +1,7 @@
 defmodule Tololo.Extensions.TelegramBot.Auth do
   @moduledoc false
 
+  use Gettext, backend: Tololo.Extensions.TelegramBot.Gettext
   use Telegex.Chain
 
   @actor TololoCore.Deliveries.Actors.private()
@@ -46,9 +47,9 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
     %{
       context
       | payload:
-          Tololo.Extensions.TelegramBot.Message.send_message(user_id, """
+          Tololo.Extensions.TelegramBot.Message.send_message(user_id, gettext("""
           Thanks for using Tololo Bot. An Admin will contact you soon.
-          """)
+          """))
     }
   end
 
@@ -56,9 +57,9 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
     %{
       context
       | payload:
-          Tololo.Extensions.TelegramBot.Message.send_message(user_id, """
+          Tololo.Extensions.TelegramBot.Message.send_message(user_id, gettext("""
           You don't have access to this bot.
-          """)
+          """))
     }
   end
 end
