@@ -7,7 +7,6 @@ defmodule TololoWeb.Router do
   import Plug.BasicAuth
 
   pipeline :graphql do
-    # plug :load_from_bearer
     plug TololoWeb.Deliveries.DeliveryAuthPlug
     plug AshGraphql.Plug
   end
@@ -24,7 +23,6 @@ defmodule TololoWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    # plug :load_from_bearer
     plug TololoWeb.Deliveries.DeliveryAuthPlug
   end
 
@@ -51,6 +49,13 @@ defmodule TololoWeb.Router do
     get "/", PageController, :home
 
     live "/map", MapLive
+
+    live "/deliveries", DeliveryLive.Index, :index
+    live "/deliveries/new", DeliveryLive.Index, :new
+    live "/deliveries/:id/edit", DeliveryLive.Index, :edit
+
+    live "/deliveries/:id", DeliveryLive.Show, :show
+    live "/deliveries/:id/show/edit", DeliveryLive.Show, :edit
 
     # auth_routes AuthController, Tololo.Accounts.User, path: "/auth"
     # sign_out_route AuthController
@@ -88,12 +93,15 @@ defmodule TololoWeb.Router do
     pipe_through :admin
 
     ash_admin("/admin")
-  end
+    # get "/delivery/new", DeliveryFormController, :new
 
-  # Other scopes may use custom stacks.
-  # scope "/api", TololoWeb do
-  #   pipe_through :api
-  # end
+    live "/deliveries", TololoWeb.DeliveryLive.Index, :index
+    live "/deliveries/new", TololoWeb.DeliveryLive.Index, :new
+    live "/deliveries/:id/edit", TololoWeb.DeliveryLive.Index, :edit
+
+    live "/deliveries/:id", TololoWeb.DeliveryLive.Show, :show
+    live "/deliveries/:id/show/edit", TololoWeb.DeliveryLive.Show, :edit
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:tololo, :dev_routes) do

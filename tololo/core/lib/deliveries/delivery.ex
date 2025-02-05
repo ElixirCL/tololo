@@ -48,6 +48,9 @@ defmodule TololoCore.Deliveries.Delivery do
   postgres do
     table "deliveries"
     repo Tololo.Repo
+    references do
+      reference :state_history, on_delete: :delete
+    end
   end
 
   field_policies do
@@ -126,6 +129,7 @@ defmodule TololoCore.Deliveries.Delivery do
     end
 
     create :initialize do
+      primary? true
       accept [
         :delivery_person,
         :delivery_order,
@@ -160,6 +164,7 @@ defmodule TololoCore.Deliveries.Delivery do
     end
 
     update :update_state do
+      primary? true
       accept [:state]
       require_atomic? false
 
