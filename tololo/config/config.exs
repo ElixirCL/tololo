@@ -49,7 +49,8 @@ config :spark,
 config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
-  extensions: [Tololo.Extensions.TelegramBot]
+  extensions: [Tololo.Extensions.TelegramBot],
+  geocoding_endpoint: "https://nominatim.openstreetmap.org/search"
 
 config :tololo,
   # appends domains from extensions to the list

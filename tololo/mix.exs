@@ -83,6 +83,7 @@ defmodule Tololo.MixProject do
       {:ash_admin, "~> 0.12.6"},
       {:plug, "~> 1.16"},
       {:friendlyid, "~> 0.2.0"},
+      {:req, "~> 0.5.0"},
       # Optional Enable Telegram Bot
       {:tololo_extension_telegram_bot,
        path:

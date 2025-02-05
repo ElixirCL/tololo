@@ -40,6 +40,8 @@ defmodule Tololo.Application do
       apply(extension_module, :init, [])
     end)
 
+    Tololo.GeocodingStore.init()
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Tololo.Supervisor]
