@@ -1,5 +1,6 @@
 defmodule TololoWeb.DeliveryLive.FormComponent do
   use TololoWeb, :live_component
+  alias TololoWeb.DeliveryLive.LocationInputComponent
 
   @actor TololoCore.Deliveries.Actors.admin()
 
@@ -20,15 +21,17 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
         phx-submit="save"
       >
         <%= if @form.source.type == :create do %>
-          <.input field={@form[:from_name]} type="text" label="From name" />
-          <.input field={@form[:to_name]} type="text" label="To name" />
-          <.input field={@form[:from_latitude]} type="number" label="From latitude" step="any" />
-          <.input field={@form[:from_longitude]} type="number" label="From longitude" step="any" />
-          <.input field={@form[:to_latitude]} type="number" label="To latitude" step="any" />
-          <.input field={@form[:to_longitude]} type="number" label="To longitude" step="any" />
-          <.input field={@form[:to_address]} type="text" label="To address" />
-          <.input field={@form[:to_phone]} type="text" label="To phone" />
-          <.input field={@form[:to_notes]} type="text" label="To notes" />
+          <.input field={@form[:to_name]} type="text" label="Name" />
+          <.live_component
+            module={LocationInputComponent}
+            id="to_location"
+            lat_field={@form[:to_latitude]}
+            lng_field={@form[:to_longitude]}
+            address_field={@form[:to_address]}
+            label="Address"
+          />
+          <.input field={@form[:to_phone]} type="text" label="Phone" />
+          <.input field={@form[:to_notes]} type="text" label="Notes" />
         <% end %>
         <%= if @form.source.type == :update do %>
           <.input
@@ -68,7 +71,6 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"delivery" => delivery_params}, socket) do
-    IO.inspect(delivery_params, label: "params")
     {:noreply,
      assign(socket, form: AshPhoenix.Form.validate(socket.assigns.form, delivery_params))}
   end
