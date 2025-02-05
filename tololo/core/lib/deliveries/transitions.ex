@@ -44,6 +44,22 @@ defmodule TololoCore.Deliveries.Transitions do
     }
 
   @doc """
+  Uses gettext to get the translated string for a state.
+  """
+  @spec get_state_string(String.t()) :: String.t()
+  def get_state_string("Init"), do: gettext("Init")
+  def get_state_string("In_Preparation"), do: gettext("In_Preparation")
+  def get_state_string("Delivery_Aborted"), do: gettext("Delivery_Aborted")
+  def get_state_string("Ready_To_Pickup"), do: gettext("Ready_To_Pickup")
+  def get_state_string("In_Delivery"), do: gettext("In_Delivery")
+  def get_state_string("Stale_Delivery_Aborted"), do: gettext("Stale_Delivery_Aborted")
+  def get_state_string("Delivery_With_Problems"), do: gettext("Delivery_With_Problems")
+  def get_state_string("Delivery_Done"), do: gettext("Delivery_Done")
+  def get_state_string("Stale_Delivery_With_Problems"), do: gettext("Stale_Delivery_With_Problems")
+  def get_state_string("Stale_Delivery_Done"), do: gettext("Stale_Delivery_Done")
+  def get_state_string(_), do: gettext("Invalid_State")
+
+  @doc """
   Generates a comment for a state transition, based on the old and new state.
   """
   @spec message(atom(), atom()) :: String.t()
@@ -63,4 +79,22 @@ defmodule TololoCore.Deliveries.Transitions do
   @spec valid?(String.t(), String.t()) :: boolean()
   def valid?(old_state, new_state),
     do: Map.has_key?(state_transitions(), {to_string(old_state), to_string(new_state)})
+
+  @doc """
+  Gets a list of states a current_state can transition to.
+  """
+  @spec get_possible_states(atom()) :: list(String.t())
+  def get_possible_states(current_state) do
+    current_state = to_string(current_state)
+
+    state_transitions()
+    |> Enum.filter(fn state_data -> match?({{^current_state, _}, _}, state_data) end)
+    # extract only the target state
+    |> Enum.map(fn state_data -> state_data |> elem(0) |> elem(1) end)
+    # remove stale states
+    |> Enum.reject(fn state -> String.contains?(state, "Stale") end)
+    |> IO.inspect(label: "before reduce")
+    # add i18n
+    |> Enum.reduce(%{}, fn state, acc -> Map.put(acc, get_state_string(state), state) end)
+  end
 end

@@ -76,7 +76,62 @@ msgstr ""
 msgid "The order is ready for pickup"
 msgstr ""
 
-#: lib/deliveries/delivery.ex:173
+#: lib/deliveries/delivery.ex:178
 #, elixir-autogen, icu-format
 msgid "the state must be in delivery to update the current location"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:52
+#, elixir-autogen, icu-format
+msgid "Delivery_Aborted"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:57
+#, elixir-autogen, icu-format
+msgid "Delivery_Done"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:56
+#, elixir-autogen, icu-format
+msgid "Delivery_With_Problems"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:54
+#, elixir-autogen, icu-format
+msgid "In_Delivery"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:51
+#, elixir-autogen, icu-format
+msgid "In_Preparation"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:50
+#, elixir-autogen, icu-format
+msgid "Init"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:60
+#, elixir-autogen, icu-format
+msgid "Invalid_State"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:53
+#, elixir-autogen, icu-format
+msgid "Ready_To_Pickup"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:55
+#, elixir-autogen, icu-format
+msgid "Stale_Delivery_Aborted"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:59
+#, elixir-autogen, icu-format
+msgid "Stale_Delivery_Done"
+msgstr ""
+
+#: lib/deliveries/transitions.ex:58
+#, elixir-autogen, icu-format
+msgid "Stale_Delivery_With_Problems"
 msgstr ""

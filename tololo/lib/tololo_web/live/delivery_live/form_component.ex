@@ -34,27 +34,13 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
           <.input field={@form[:to_notes]} type="text" label="Notes" />
         <% end %>
         <%= if @form.source.type == :update do %>
-          <.input
-            field={@form[:state]}
-            type="select"
-            label="State"
-            options={[
-              :Init,
-              :In_Preparation,
-              :Delivery_Aborted,
-              :Ready_To_Pickup,
-              :In_Delivery,
-              :Stale_Delivery_Aborted,
-              :Delivery_With_Problems,
-              :Delivery_Done,
-              :Stale_Delivery_With_Problems,
-              :Stale_Delivery_Done
-            ]}
-          />
+          <.input field={@form[:state]} type="select" label="State" options={@possible_states} />
         <% end %>
 
         <:actions>
-          <.button phx-disable-with="Saving...">Save Delivery</.button>
+          <.button phx-disable-with="Saving...">
+            {if @form.source.type == :update, do: "Update delivery", else: "Save delivery"}
+          </.button>
         </:actions>
       </.simple_form>
     </div>
@@ -62,11 +48,23 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
   end
 
   @impl true
+  def mount(socket) do
+    {:ok, socket |> assign(possible_states: nil)}
+  end
+
+  @impl true
   def update(assigns, socket) do
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign_form()
+
+    current_state = socket.assigns.form[:state].value
+    possible_states = TololoCore.Deliveries.Transitions.get_possible_states(current_state)
+
     {:ok,
      socket
-     |> assign(assigns)
-     |> assign_form()}
+     |> assign(possible_states: possible_states)}
   end
 
   @impl true

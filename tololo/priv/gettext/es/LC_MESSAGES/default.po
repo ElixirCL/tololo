@@ -11,7 +11,27 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/tololo_web/components/core_components.ex:482
+#: lib/tololo_web/live/map_live.ex:43
+#, elixir-autogen, icu-format
+msgid "Current location"
+msgstr "Ubicación actual"
+
+#: lib/tololo_web/live/map_live.ex:18
+#, elixir-autogen, icu-format
+msgid "Delivery not found"
+msgstr "El delivery solicitado no se ha encontrado"
+
+#: lib/tololo_web/live/map_live.html.heex:11
+#, elixir-autogen, icu-format
+msgid "Order history"
+msgstr "Historial del pedido"
+
+#: lib/tololo_web/live/map_live.ex:23
+#, elixir-autogen, icu-format
+msgid "Token not found"
+msgstr "El token de acceso no se ha encontrado. Verifique que el URL sea correcto."
+
+#: lib/tololo_web/components/core_components.ex:507
 #, elixir-autogen, icu-format
 msgid "Actions"
 msgstr ""
@@ -51,23 +71,3 @@ msgstr ""
 #, elixir-autogen, icu-format
 msgid "close"
 msgstr "cerrar"
-
-#: lib/tololo_web/live/map_live.ex:18
-#, elixir-autogen, icu-format
-msgid "Delivery not found"
-msgstr "El delivery solicitado no se ha encontrado"
-
-#: lib/tololo_web/live/map_live.ex:23
-#, elixir-autogen, icu-format
-msgid "Token not found"
-msgstr "El token de acceso no se ha encontrado. Verifique que el URL sea correcto."
-
-#: lib/tololo_web/live/map_live.ex:37
-#, elixir-autogen, icu-format
-msgid "Current location"
-msgstr "Ubicación actual"
-
-#: lib/tololo_web/live/map_live.html.heex:11
-#, elixir-autogen, icu-format
-msgid "Order history"
-msgstr "Historial del pedido"

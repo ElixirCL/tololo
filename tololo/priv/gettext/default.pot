@@ -31,7 +31,7 @@ msgstr ""
 msgid "Token not found"
 msgstr ""
 
-#: lib/tololo_web/components/core_components.ex:482
+#: lib/tololo_web/components/core_components.ex:507
 #, elixir-autogen, icu-format
 msgid "Actions"
 msgstr ""

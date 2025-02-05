@@ -11,7 +11,27 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/tololo_web/components/core_components.ex:482
+#: lib/tololo_web/live/map_live.ex:43
+#, elixir-autogen, icu-format
+msgid "Current location"
+msgstr ""
+
+#: lib/tololo_web/live/map_live.ex:18
+#, elixir-autogen, icu-format
+msgid "Delivery not found"
+msgstr ""
+
+#: lib/tololo_web/live/map_live.html.heex:11
+#, elixir-autogen, icu-format
+msgid "Order history"
+msgstr ""
+
+#: lib/tololo_web/live/map_live.ex:23
+#, elixir-autogen, icu-format
+msgid "Token not found"
+msgstr ""
+
+#: lib/tololo_web/components/core_components.ex:507
 #, elixir-autogen, icu-format
 msgid "Actions"
 msgstr ""
@@ -50,24 +70,4 @@ msgstr ""
 #: lib/tololo_web/components/core_components.ex:130
 #, elixir-autogen, icu-format
 msgid "close"
-msgstr ""
-
-#: lib/tololo_web/live/map_live.ex:18
-#, elixir-autogen, icu-format
-msgid "Delivery not found"
-msgstr ""
-
-#: lib/tololo_web/live/map_live.ex:23
-#, elixir-autogen, icu-format
-msgid "Token not found"
-msgstr ""
-
-#: lib/tololo_web/live/map_live.ex:37
-#, elixir-autogen, icu-format
-msgid "Current location"
-msgstr ""
-
-#: lib/tololo_web/live/map_live.html.heex:11
-#, elixir-autogen, icu-format
-msgid "Order history"
 msgstr ""
