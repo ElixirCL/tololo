@@ -17,6 +17,8 @@ defmodule TololoWeb do
   those modules here.
   """
 
+  @extensions Application.compile_env(:tololo, :extensions)
+
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
   def router do
@@ -27,6 +29,9 @@ defmodule TololoWeb do
       import Plug.Conn
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+
+      # inject routes from extension modules
+      unquote(@extensions |> Enum.map(fn extension_module -> extension_module.routes() end))
     end
   end
 
@@ -42,7 +47,7 @@ defmodule TololoWeb do
         formats: [:html, :json],
         layouts: [html: TololoWeb.Layouts]
 
-      use Gettext, backend: TololoWeb.Gettext
+      use Gettext, backend: Tololo.Gettext
 
       import Plug.Conn
 
@@ -83,7 +88,7 @@ defmodule TololoWeb do
   defp html_helpers do
     quote do
       # Translation
-      use Gettext, backend: TololoWeb.Gettext
+      use Gettext, backend: Tololo.Gettext
 
       # HTML escaping functionality
       import Phoenix.HTML

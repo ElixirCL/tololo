@@ -5,7 +5,7 @@ defmodule TololoWeb.GraphqlSchema do
   use Absinthe.Schema
 
   use AshGraphql,
-    domains: [Tololo.Deliveries],
+    domains: [TololoCore.Deliveries],
     generate_sdl_file: "priv/schema.graphql"
 
   import_types Absinthe.Plug.Types

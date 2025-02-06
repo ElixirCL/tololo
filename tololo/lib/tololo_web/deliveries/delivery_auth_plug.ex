@@ -23,30 +23,28 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
     end
   end
 
-  @spec get_token_data(String.t()) :: {%{access_level: atom()}, Tololo.Deliveries.Delivery.t()}
+  @spec get_token_data(String.t()) ::
+          {%{access_level: atom()}, TololoCore.Deliveries.Delivery.t()}
   def get_token_data(token) do
     cond do
       admin?(token) ->
         # admin token isn't related to a resource, so it returns nil
         {generate_actor(:admin), nil}
 
-      [resource] = Tololo.Deliveries.Delivery.get_via_token!(token, authorize?: false) ->
+      [resource] = TololoCore.Deliveries.Delivery.get_via_token!(token, authorize?: false) ->
         {generate_actor(token, resource), resource}
     end
   end
 
   @spec generate_actor(atom()) :: %{access_level: atom()}
-  defp generate_actor(:admin), do: %{access_level: :admin}
+  defp generate_actor(:admin), do: TololoCore.Deliveries.Actors.admin()
 
-  @spec generate_actor(atom(), Tololo.Deliveries.Delivery.t()) :: %{access_level: atom()}
+  @spec generate_actor(atom(), TololoCore.Deliveries.Delivery.t()) :: %{access_level: atom()}
   defp generate_actor(token, %{public_auth_key: public_key, private_auth_key: private_key}) do
-    level =
-      cond do
-        token == public_key -> :public
-        token == private_key -> :private
-      end
-
-    %{access_level: level}
+    cond do
+      token == public_key -> TololoCore.Deliveries.Actors.public()
+      token == private_key -> TololoCore.Deliveries.Actors.private()
+    end
   end
 
   @spec admin?(String.t()) :: boolean()

@@ -1,5 +1,5 @@
-defmodule Tololo.Deliveries.Transitions do
-  use Gettext, backend: TololoWeb.Gettext
+defmodule TololoCore.Deliveries.Transitions do
+  use Gettext, backend: TololoCore.Gettext
 
   # Is needed to be a function instead of a module property
   # due to Gettext nature of loading strings at runtime.

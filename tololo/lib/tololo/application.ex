@@ -34,6 +34,12 @@ defmodule Tololo.Application do
       {AshAuthentication.Supervisor, [otp_app: :tololo]}
     ]
 
+    # Initialize extensions
+    Enum.each(Application.get_env(:tololo, :extensions, []), fn extension_module ->
+      # calls extension_module.init()
+      apply(extension_module, :init, [])
+    end)
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Tololo.Supervisor]

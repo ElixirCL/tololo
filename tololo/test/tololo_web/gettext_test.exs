@@ -2,8 +2,8 @@ defmodule GettextTest do
   @moduledoc """
   Test that Getttext translations are correctly loaded  for English and Spanish.
   """
-  alias Tololo.Deliveries
-  alias Tololo.Deliveries.Transitions
+  alias TololoCore.Deliveries
+  alias TololoCore.Deliveries.Transitions
 
   use Tololo.DataCase, async: true
 

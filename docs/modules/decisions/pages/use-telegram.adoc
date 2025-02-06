@@ -1,0 +1,27 @@
+= Use Telegram bot as a frontend extension
+
+- Status: accepted
+- Date: 2025-01-29
+
+== Context and Problem Statement
+
+We want to include a simple frontend for the backend API. It should allow a delivery person to share their live location.
+
+== Considered Options
+
+- https://core.telegram.org/bots/api[Telegram bot]
+- https://developers.facebook.com/docs/whatsapp/cloud-api/guides/set-up-webhooks[Whatsapp bot]
+
+== Decision Outcome
+
+Chosen option: "`Telegram bot`", because
+
+- Simple API with client libraries available for Elixir.
+- Creating a new bot with it is easy compared to Whatsapp.
+- Has no restrictions for free accounts.
+
+== Consequences
+
+An extension will be developed using https://github.com/telegex/telegex[Telegex], an Elixir library for interacting with the Telegram Bot API. This choice allows for seamless integration with the backend system and simplifies the task of sending and receiving messages, as well as handling location data.
+
+Since Telegram's Bot API makes it easy to request and receive live location data, the delivery person can share their location with minimal effort. It will ensure the delivery person has a straightforward and user-friendly method for sharing their location.

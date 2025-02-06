@@ -1,0 +1,72 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/telegram/chains/auth.ex:60
+#, elixir-autogen, icu-format
+msgid "You don't have access to this bot.\n"
+msgstr "No tienes acceso a este bot.\n"
+
+#: lib/telegram/chains/list_deliveries.ex:39
+#, elixir-autogen, icu-format
+msgid "*Hello*\n\nPlease select the delivery you wish to pick up\n"
+msgstr "*Hola*\n\nPor favor, selecciona el delivery que deseas recoger\n"
+
+#: lib/telegram/chains/receive_location.ex:48
+#, elixir-autogen, icu-format
+msgid "Error trying to update location."
+msgstr "Error al intentar actualizar la ubicación."
+
+#: lib/telegram/chains/receive_location.ex:29
+#, elixir-autogen, icu-format
+msgid "No active deliveries found. Please start one by using `/new {token}`."
+msgstr "No se encontraron entregas activas. Por favor, inicia una usando `/new {token}`."
+
+#: lib/telegram/chains/set_token.ex:54
+#, elixir-autogen, icu-format
+msgid "Please include the provided token with the command:\n\n`/new {token}`\n"
+msgstr "Por favor, incluye el token proporcionado con el comando:\n\n`/new {token}`\n"
+
+#: lib/telegram/chains/auth.ex:50
+#, elixir-autogen, icu-format
+msgid "Thanks for using Tololo Bot. An Admin will contact you soon.\n"
+msgstr "Gracias por usar Tololo Bot. Un administrador se pondrá en contacto contigo pronto.\n"
+
+#: lib/telegram/chains/set_token.ex:84
+#, elixir-autogen, icu-format
+msgid "There was a problem. Please check that the token is valid.\n"
+msgstr "Hubo un problema. Por favor, verifica que el token sea válido.\n"
+
+#: lib/telegram/chains/set_token.ex:68
+#, elixir-autogen, icu-format
+msgid "delivery_info"
+msgstr "*Esta es la información del delivery:*\n- Nombre: {name}\n- Teléfono: {phone}\n- Dirección: {address}\n- Detalles: {details}\n*Bien! Ahora por favor envía tu ubicación por lo menos durante una hora.*"
+
+#: lib/telegram/chains/set_token.ex:73
+#, elixir-autogen, icu-format
+msgid "No additional notes"
+msgstr "No hay notas adicionales"
+
+#: lib/telegram/chains/set_token.ex:72
+#, elixir-autogen, icu-format
+msgid "No address provided"
+msgstr "No se proporcionó dirección"
+
+#: lib/telegram/chains/set_token.ex:71
+#, elixir-autogen, icu-format
+msgid "No phone number provided"
+msgstr "No se proporcionó número de teléfono"
+
+#: lib/telegram/chains/set_token.ex:70
+#, elixir-autogen, icu-format
+msgid "Unknown person"
+msgstr "Persona desconocida"

@@ -1,25 +1,34 @@
-defmodule Tololo.Cldr do
+defmodule TololoCore.CldrConfig do
   @moduledoc """
   Config for CLDR.
   """
-  use Cldr,
-    locales: ["en", "es"],
-    default_locale: "es",
-    providers: [Cldr.Number, Cldr.DateTime, Cldr.Unit, Cldr.List, Cldr.Calendar, Cldr.Message],
-    gettext: TololoWeb.Gettext,
-    message_formats: %{
-      USD: [format: :long]
-    }
+  def common(gettext),
+    do: [
+      locales: ["en", "es"],
+      default_locale: "es",
+      providers: [Cldr.Number, Cldr.DateTime, Cldr.Unit, Cldr.List, Cldr.Calendar, Cldr.Message],
+      gettext: gettext,
+      message_formats: %{
+        USD: [format: :long]
+      }
+    ]
 end
 
-defmodule Tololo.Gettext.Interpolation do
+defmodule TololoCore.Cldr do
+  @moduledoc """
+  Config for CLDR.
+  """
+  use Cldr, TololoCore.CldrConfig.common(TololoCore.Gettext)
+end
+
+defmodule TololoCore.Gettext.Interpolation do
   @moduledoc """
   Define an interpolation module for ICU messages
   """
-  use Cldr.Gettext.Interpolation, cldr_backend: Tololo.Cldr
+  use Cldr.Gettext.Interpolation, cldr_backend: TololoCore.Cldr
 end
 
-defmodule TololoWeb.Gettext do
+defmodule TololoCore.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
@@ -27,7 +36,7 @@ defmodule TololoWeb.Gettext do
   that you can use in your application. To use this Gettext backend module,
   call `use Gettext` and pass it as an option:
 
-      use Gettext, backend: TololoWeb.Gettext
+      use Gettext, backend: TololoCore.Gettext
 
       # Simple translation
       gettext("Here is the string to translate")
@@ -42,5 +51,5 @@ defmodule TololoWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext.Backend, otp_app: :tololo, interpolation: Tololo.Gettext.Interpolation
+  use Gettext.Backend, otp_app: :tololo_core, interpolation: TololoCore.Gettext.Interpolation
 end

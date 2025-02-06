@@ -1,4 +1,4 @@
-defmodule Tololo.Repo.Migrations.Deliveries do
+defmodule Tololo.Repo.Migrations.DeliveriesAuthKeys do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 

@@ -1,5 +1,4 @@
 .PHONY: docs docs.server dev.shell dev.services antora.deps antora.docs mix.docs mix.docs.publish mix.deps mix.setup mix.phoenix.server
-
 # Elixir Env
 ## Devenv Commands
 dev.shell shell dsh:
@@ -24,8 +23,13 @@ mix.deps md:
 mix.setup ms:
 	@cd tololo && mix archive.install hex phx_new
 	@cd tololo && mix archive.install hex igniter_new
+	@make mix.deps
 	@cd tololo && mix ash.setup
 	@cd tololo && mix setup
+
+# Bruno
+mix.gen.delivery mgd:
+	@cd tololo && mix generate.delivery.env
 
 # Antora Env
 ## Antora Docs
@@ -45,7 +49,3 @@ docs d:
 
 docs.server ds:
 	@npm run serve
-
-# Bruno
-mix.generate.bruno.env mde:
-	@cd tololo && mix generate.delivery.env

@@ -1,10 +1,10 @@
-defmodule Tololo.Deliveries.DeliveryStateChanges do
+defmodule TololoCore.Deliveries.DeliveryStateChanges do
   @moduledoc """
   Resource that stores the state changes of a delivery.
   """
   use Ash.Resource,
     otp_app: :tololo,
-    domain: Tololo.Deliveries,
+    domain: TololoCore.Deliveries,
     extensions: [AshGraphql.Resource],
     data_layer: AshPostgres.DataLayer
 
@@ -31,17 +31,23 @@ defmodule Tololo.Deliveries.DeliveryStateChanges do
   attributes do
     uuid_v7_primary_key :id
 
-    attribute :old_state, :string
+    attribute :old_state, :string do
+      public? true
+    end
 
     attribute :new_state, :string do
       allow_nil? false
+      public? true
     end
 
-    attribute :comment, :string
+    attribute :comment, :string do
+      public? true
+    end
+
     timestamps()
   end
 
   relationships do
-    belongs_to :delivery, Tololo.Deliveries.Delivery
+    belongs_to :delivery, TololoCore.Deliveries.Delivery
   end
 end

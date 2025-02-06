@@ -1,0 +1,25 @@
+= 🔭 Extensions
+
+TODO
+
+== Adding an extension
+
+TODO
+
+== Telegram delivery chatbot frontend
+
+A chatbot made for delivery drivers that can update the current location of a specific delivery.
+
+=== Available commands
+
+TODO
+
+=== Configuration
+
+Expects the following environment variables:
+- `TELEGRAM_WEBHOOK`: a full URL, such as https://your.domain.com/telegram. The URL must be suffixed with /telegram, because this is where the webhook route is configured.
+- `TELEGRAM_TOKEN`: an access token for the bot you with to use. You can obtain one https://core.telegram.org/bots/tutorial#obtain-your-bot-token[following these instructions].
+
+If you're using `devenv`, the `TELEGRAM_WEBHOOK` variable should already be configured to be used with `localtunnel`. The `TELEGRAM_TOKEN` variable still needs to be manually added to `devenv.local.nix`.
+
+

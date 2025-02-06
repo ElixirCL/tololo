@@ -65,7 +65,6 @@ defmodule Tololo.MixProject do
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
@@ -79,17 +78,20 @@ defmodule Tololo.MixProject do
       {:opentelemetry_ecto, "~> 1.2.0"},
       {:opentelemetry_phoenix, "~> 2.0.0"},
       {:opentelemetry_bandit, "~> 0.2.0"},
-      {:ex_cldr, "~> 2.0"},
-      {:ex_cldr_numbers, "~> 2.33"},
-      {:ex_cldr_currencies, "~> 2.16"},
-      {:ex_cldr_dates_times, "~> 2.20"},
-      {:ex_cldr_calendars, "~> 1.26"},
-      {:ex_cldr_lists, "~> 2.11"},
-      {:ex_cldr_messages, "~> 1.0"},
-      {:ex_cldr_units, "~> 3.17"},
       {:picosat_elixir, "~> 0.2.0"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:ash_admin, "~> 0.12.6"}
+      {:ash_admin, "~> 0.12.6"},
+      {:plug, "~> 1.16"},
+      {:friendlyid, "~> 0.2.0"},
+      # Optional Enable Telegram Bot
+      {:tololo_extension_telegram_bot,
+       path:
+         Path.join(["extensions", "telegram_bot"])
+         |> Path.expand()},
+      {:tololo_core,
+       path:
+         Path.join(["core"])
+         |> Path.expand()}
     ]
   end
 

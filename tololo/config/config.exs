@@ -49,9 +49,15 @@ config :spark,
 config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [Tololo.Accounts, Tololo.Deliveries]
+  extensions: [Tololo.Extensions.TelegramBot]
 
-# ash_domains: [Tololo.Support]
+config :tololo,
+  # appends domains from extensions to the list
+  ash_domains: [
+    Tololo.Accounts,
+    TololoCore.Deliveries,
+    Tololo.Extensions.TelegramBot.Ash.Users
+  ]
 
 # Configures the endpoint
 config :tololo, TololoWeb.Endpoint,
@@ -107,3 +113,10 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+# Import Telegram Bot Extension
+# Uncomment if needed
+
+import_config ["extensions", "telegram_bot", "config", "#{config_env()}.exs"]
+              |> Path.join()
+              |> Path.expand()

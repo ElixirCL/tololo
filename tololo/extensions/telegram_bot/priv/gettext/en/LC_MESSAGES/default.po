@@ -1,0 +1,72 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/telegram/chains/auth.ex:60
+#, elixir-autogen, icu-format
+msgid "You don't have access to this bot.\n"
+msgstr ""
+
+#: lib/telegram/chains/list_deliveries.ex:39
+#, elixir-autogen, icu-format
+msgid "*Hello*\n\nPlease select the delivery you wish to pick up\n"
+msgstr ""
+
+#: lib/telegram/chains/receive_location.ex:48
+#, elixir-autogen, icu-format
+msgid "Error trying to update location."
+msgstr ""
+
+#: lib/telegram/chains/receive_location.ex:29
+#, elixir-autogen, icu-format
+msgid "No active deliveries found. Please start one by using `/new {token}`."
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:54
+#, elixir-autogen, icu-format
+msgid "Please include the provided token with the command:\n\n`/new {token}`\n"
+msgstr ""
+
+#: lib/telegram/chains/auth.ex:50
+#, elixir-autogen, icu-format
+msgid "Thanks for using Tololo Bot. An Admin will contact you soon.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:84
+#, elixir-autogen, icu-format
+msgid "There was a problem. Please check that the token is valid.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:68
+#, elixir-autogen, icu-format
+msgid "delivery_info"
+msgstr "*This is the delivery information:*\n- Name: {name}\n- Phone: {phone}\n- Address: {address}\n- Details: {details}\n*Great! Now please send the live location for at least one hour.*"
+
+#: lib/telegram/chains/set_token.ex:73
+#, elixir-autogen, icu-format
+msgid "No additional notes"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:72
+#, elixir-autogen, icu-format
+msgid "No address provided"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:71
+#, elixir-autogen, icu-format
+msgid "No phone number provided"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:70
+#, elixir-autogen, icu-format
+msgid "Unknown person"
+msgstr ""

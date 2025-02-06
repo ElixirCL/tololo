@@ -1,4 +1,4 @@
-defmodule Tololo.Deliveries do
+defmodule Tololo.Extensions.TelegramBot.Ash.Users do
   @moduledoc """
   Domain that contains resources related to the delivery system.
   """
@@ -6,11 +6,10 @@ defmodule Tololo.Deliveries do
 
   admin do
     show?(true)
-    show_resources(Tololo.Deliveries.Delivery)
+    show_resources(Tololo.Extensions.TelegramBot.Ash.User)
   end
 
   resources do
-    resource Tololo.Deliveries.Delivery
-    resource Tololo.Deliveries.DeliveryStateChanges
+    resource Tololo.Extensions.TelegramBot.Ash.User
   end
 end
