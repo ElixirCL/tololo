@@ -78,7 +78,10 @@ defmodule DeliveryTest do
       %{id: id} = TololoCore.Deliveries.Delivery.empty!(authorize?: false)
 
       TololoCore.Deliveries.Delivery |> Ash.get!(id, actor: TololoCore.Deliveries.Actors.public())
-      TololoCore.Deliveries.Delivery |> Ash.get!(id, actor: TololoCore.Deliveries.Actors.private())
+
+      TololoCore.Deliveries.Delivery
+      |> Ash.get!(id, actor: TololoCore.Deliveries.Actors.private())
+
       TololoCore.Deliveries.Delivery |> Ash.get!(id, actor: TololoCore.Deliveries.Actors.public())
     end
 
@@ -94,7 +97,9 @@ defmodule DeliveryTest do
         |> Deliveries.Delivery.update_state!(:In_Preparation,
           actor: TololoCore.Deliveries.Actors.public()
         )
-        |> Deliveries.Delivery.update_location!(123, 321, actor: TololoCore.Deliveries.Actors.public())
+        |> Deliveries.Delivery.update_location!(123, 321,
+          actor: TololoCore.Deliveries.Actors.public()
+        )
       end
     end
 

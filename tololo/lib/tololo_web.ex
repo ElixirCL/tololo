@@ -31,7 +31,7 @@ defmodule TololoWeb do
       import Phoenix.LiveView.Router
 
       # inject routes from extension modules
-      unquote @extensions |> Enum.map(fn extension_module -> extension_module.routes() end)
+      unquote(@extensions |> Enum.map(fn extension_module -> extension_module.routes() end))
     end
   end
 

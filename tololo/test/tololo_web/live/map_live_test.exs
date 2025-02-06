@@ -19,6 +19,7 @@ defmodule TololoWeb.MapLiveTest do
       {:ok, view, html} = live(conn)
 
       {new_lat, new_lng} = {1234.0, 5678.0}
+
       TololoCore.Deliveries.Delivery.update_location!(delivery_resource, new_lat, new_lng,
         authorize?: false
       )

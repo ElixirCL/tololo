@@ -15,6 +15,7 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
   @impl true
   def handle(%{from: %{id: user_id}}, context) do
     string_id = Integer.to_string(user_id)
+
     case Ash.get(Tololo.Extensions.TelegramBot.Ash.User, string_id,
            actor: @actor,
            load: :deliveries
@@ -47,9 +48,12 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
     %{
       context
       | payload:
-          Tololo.Extensions.TelegramBot.Message.send_message(user_id, gettext("""
-          Thanks for using Tololo Bot. An Admin will contact you soon.
-          """))
+          Tololo.Extensions.TelegramBot.Message.send_message(
+            user_id,
+            gettext("""
+            Thanks for using Tololo Bot. An Admin will contact you soon.
+            """)
+          )
     }
   end
 
@@ -57,9 +61,12 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
     %{
       context
       | payload:
-          Tololo.Extensions.TelegramBot.Message.send_message(user_id, gettext("""
-          You don't have access to this bot.
-          """))
+          Tololo.Extensions.TelegramBot.Message.send_message(
+            user_id,
+            gettext("""
+            You don't have access to this bot.
+            """)
+          )
     }
   end
 end

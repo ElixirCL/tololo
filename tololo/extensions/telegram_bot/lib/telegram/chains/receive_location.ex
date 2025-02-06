@@ -9,7 +9,7 @@ defmodule Tololo.Extensions.TelegramBot.ReceiveLocation do
   @actor TololoCore.Deliveries.Actors.private()
 
   @impl true
-  def match?(%{chat: %{type: "private"}, location: location}, context), do: true
+  def match?(%{chat: %{type: "private"}, location: _location}, _context), do: true
   @impl true
   def match?(_, _), do: false
 

@@ -11,6 +11,7 @@ defmodule Tololo.Repo.Migrations.DeliveriesDisplayId do
     alter table(:deliveries) do
       add :display_id, :text
     end
+
     create index(:deliveries, [:display_id])
   end
 

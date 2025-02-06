@@ -18,9 +18,9 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
 
   # match command with and without arguments
   @impl true
-  def match?(%{text: @command, chat: %{type: "private"}}, context), do: true
+  def match?(%{text: @command, chat: %{type: "private"}}, _context), do: true
   @impl true
-  def match?(%{text: "#{@command} " <> token, chat: %{type: "private"}}, context), do: true
+  def match?(%{text: "#{@command} " <> _token, chat: %{type: "private"}}, _context), do: true
   @impl true
   def match?(_, _), do: false
 

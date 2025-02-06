@@ -21,8 +21,8 @@ defmodule Tololo.Extensions.TelegramBot.ListDeliveries do
 
   @impl true
   def handle(
-        %{chat: chat, from: %{id: user_id}} = message,
-        %{user_resource: user_resource} = context
+        %{chat: _chat, from: %{id: user_id}},
+        %{user_resource: _user_resource} = context
       ) do
     available_deliveries = Delivery.get_ready_to_pickup!(actor: @actor)
 

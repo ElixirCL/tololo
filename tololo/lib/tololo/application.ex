@@ -31,12 +31,13 @@ defmodule Tololo.Application do
       # {Tololo.Worker, arg},
       # Start to serve requests, typically the last entry
       TololoWeb.Endpoint,
-      {AshAuthentication.Supervisor, [otp_app: :tololo]},
+      {AshAuthentication.Supervisor, [otp_app: :tololo]}
     ]
 
     # Initialize extensions
     Enum.each(Application.get_env(:tololo, :extensions, []), fn extension_module ->
-      apply(extension_module, :init, []) # calls extension_module.init()
+      # calls extension_module.init()
+      apply(extension_module, :init, [])
     end)
 
     # See https://hexdocs.pm/elixir/Supervisor.html

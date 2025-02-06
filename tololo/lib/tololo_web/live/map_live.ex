@@ -23,8 +23,8 @@ defmodule TololoWeb.MapLive do
     do: raise(TololoWeb.NotFoundError, gettext("Token not found"))
 
   defp get_delivery_via_token(token) do
-    case Tololo.Deliveries.Delivery.get_via_token(token,
-           actor: Tololo.Deliveries.Actors.public(),
+    case TololoCore.Deliveries.Delivery.get_via_token(token,
+           actor: TololoCore.Deliveries.Actors.public(),
            load: :state_history
          ) do
       {:ok, [resource]} -> {:ok, resource}

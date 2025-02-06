@@ -23,7 +23,8 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
     end
   end
 
-  @spec get_token_data(String.t()) :: {%{access_level: atom()}, TololoCore.Deliveries.Delivery.t()}
+  @spec get_token_data(String.t()) ::
+          {%{access_level: atom()}, TololoCore.Deliveries.Delivery.t()}
   def get_token_data(token) do
     cond do
       admin?(token) ->

@@ -42,5 +42,7 @@ defmodule Tololo.Extensions.TelegramBot.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext.Backend, otp_app: :tololo_extension_telegram_bot, interpolation: Tololo.Extensions.TelegramBot.Gettext.Interpolation
+  use Gettext.Backend,
+    otp_app: :tololo_extension_telegram_bot,
+    interpolation: Tololo.Extensions.TelegramBot.Gettext.Interpolation
 end

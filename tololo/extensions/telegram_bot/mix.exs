@@ -35,7 +35,6 @@ defmodule Tololo.Extensions.TelegramBot.MixProject do
        path:
          Path.join(["..", "..", "core"])
          |> Path.expand()}
-      
     ]
   end
 end
