@@ -79,6 +79,13 @@ Check https://devenv.sh/automatic-shell-activation/[Automatic Shell Activation] 
 $ curl -sfL https://direnv.net/install.sh | bash
 ----
 
+[NOTE]
+====
+Or use your package manager
+# apt install -y direnv
+====
+
+
 .Step 2: Allow direnv
 [source, bash]
 ----
@@ -108,8 +115,19 @@ API keys and other important data. An example file is provided as `devenv.local.
 
 [source, js]
 ----
-{pkgs, lib, inputs, ...}
+{pkgs, lib, inputs, ...}:
 {
   env.MY_API_TOKEN="abc1234";
+  env.LC_ALL="es_CL.UTF-8";
 }
 ----
+
+== Debian
+
+Debian separates some needed libraries such as ssl. If there are some problems you can install them by using:
+
+[source, bash]
+----
+$ sudo apt install -y erlang-ssl
+----
+
