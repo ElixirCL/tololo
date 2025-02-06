@@ -2,14 +2,7 @@ defmodule Tololo.Extensions.TelegramBot.Cldr do
   @moduledoc """
   Config for CLDR.
   """
-  use Cldr,
-    locales: ["en", "es"],
-    default_locale: "es",
-    providers: [Cldr.Number, Cldr.DateTime, Cldr.Unit, Cldr.List, Cldr.Calendar, Cldr.Message],
-    gettext: Tololo.Extensions.TelegramBot.Gettext,
-    message_formats: %{
-      USD: [format: :long]
-    }
+  use Cldr, TololoCore.CldrConfig.common(Tololo.Extensions.TelegramBot.Gettext)
 end
 
 defmodule Tololo.Extensions.TelegramBot.Gettext.Interpolation do

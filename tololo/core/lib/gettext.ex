@@ -1,15 +1,24 @@
+defmodule TololoCore.CldrConfig do
+  @moduledoc """
+  Config for CLDR.
+  """
+  def common(gettext),
+    do: [
+      locales: ["en", "es"],
+      default_locale: "es",
+      providers: [Cldr.Number, Cldr.DateTime, Cldr.Unit, Cldr.List, Cldr.Calendar, Cldr.Message],
+      gettext: gettext,
+      message_formats: %{
+        USD: [format: :long]
+      }
+    ]
+end
+
 defmodule TololoCore.Cldr do
   @moduledoc """
   Config for CLDR.
   """
-  use Cldr,
-    locales: ["en", "es"],
-    default_locale: "es",
-    providers: [Cldr.Number, Cldr.DateTime, Cldr.Unit, Cldr.List, Cldr.Calendar, Cldr.Message],
-    gettext: TololoCore.Gettext,
-    message_formats: %{
-      USD: [format: :long]
-    }
+  use Cldr, TololoCore.CldrConfig.common(TololoCore.Gettext)
 end
 
 defmodule TololoCore.Gettext.Interpolation do
