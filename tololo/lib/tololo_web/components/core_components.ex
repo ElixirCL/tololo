@@ -372,10 +372,10 @@ defmodule TololoWeb.CoreComponents do
     ~H"""
     <div>
       <.label for={@id}>{@label}</.label>
-      <%= for field_name <- @fields do %>
+      <%= for {field_name, field_label} <- @fields do %>
         <div class="mt-2">
           <.label for={"#{@id}_#{field_name}"}>
-            {Phoenix.Naming.humanize(to_string(field_name))}
+            <span class="text-xs text-gray-600">{field_label}</span>
           </.label>
           <input
             type="text"

@@ -30,6 +30,13 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
             label={gettext("Address")}
           />
           <.input field={@form[:to_phone]} type="text" label={gettext("Phone")} />
+          <.input
+            type="map"
+            name="delivery_order"
+            fields={[{"name", gettext("Name")}]}
+            value={@form[:delivery_order].value}
+            label={gettext("Delivery order details")}
+          />
           <.input field={@form[:to_notes]} type="text" label={gettext("Notes")} />
         <% end %>
         <%= if @form.source.type == :update do %>
