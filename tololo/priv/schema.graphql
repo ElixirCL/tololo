@@ -121,9 +121,6 @@ type InitDeliveryResult {
 input InitDeliveryInput {
   deliveryPerson: JsonString
   deliveryOrder: JsonString
-  fromLatitude: Float
-  fromLongitude: Float
-  fromName: String
   toLatitude: Float
   toLongitude: Float
   toName: String

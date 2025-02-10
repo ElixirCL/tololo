@@ -48,6 +48,10 @@ defmodule TololoCore.Deliveries.Delivery do
   postgres do
     table "deliveries"
     repo Tololo.Repo
+
+    references do
+      reference :state_history, on_delete: :delete
+    end
   end
 
   field_policies do
@@ -126,19 +130,27 @@ defmodule TololoCore.Deliveries.Delivery do
     end
 
     create :initialize do
+      primary? true
+
       accept [
         :delivery_person,
         :delivery_order,
-        :from_name,
         :to_name,
-        :from_latitude,
-        :from_longitude,
         :to_latitude,
         :to_longitude,
         :to_address,
         :to_phone,
         :to_notes
       ]
+
+      change set_attribute(
+               :from_name,
+               Application.compile_env(:tololo, :business_name, "A business")
+             )
+
+      {lat, lng} = Application.compile_env(:tololo, :from_location, {0, 0})
+      change set_attribute(:from_latitude, lat)
+      change set_attribute(:from_longitude, lng)
     end
 
     create :empty do
@@ -160,6 +172,7 @@ defmodule TololoCore.Deliveries.Delivery do
     end
 
     update :update_state do
+      primary? true
       accept [:state]
       require_atomic? false
 

@@ -276,10 +276,12 @@ defmodule TololoWeb.CoreComponents do
   attr :type, :string,
     default: "text",
     values: ~w(checkbox color date datetime-local email file month number password
-               range search select tel text textarea time url week)
+               range search select tel text textarea time url week map)
 
   attr :field, Phoenix.HTML.FormField,
     doc: "a form field struct retrieved from the form, for example: @form[:email]"
+
+  attr :fields, :list, default: []
 
   attr :errors, :list, default: []
   attr :checked, :boolean, doc: "the checked flag for checkbox inputs"
@@ -366,6 +368,29 @@ defmodule TololoWeb.CoreComponents do
     """
   end
 
+  def input(%{type: "map"} = assigns) do
+    ~H"""
+    <div>
+      <.label for={@id}>{@label}</.label>
+      <%= for {field_name, field_label} <- @fields do %>
+        <div class="mt-2">
+          <.label for={"#{@id}_#{field_name}"}>
+            <span class="text-xs text-gray-600">{field_label}</span>
+          </.label>
+          <input
+            type="text"
+            id={"#{@id}_#{field_name}"}
+            name={"#{@name}[#{field_name}]"}
+            value={@value[field_name] || ""}
+            class="block w-full rounded-lg border-zinc-300 text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6"
+          />
+        </div>
+      <% end %>
+      <.error :for={msg <- @errors}>{msg}</.error>
+    </div>
+    """
+  end
+
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def input(assigns) do
     ~H"""
@@ -378,7 +403,8 @@ defmodule TololoWeb.CoreComponents do
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
           "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
+          @errors == [] &&
+            "border-zinc-300 focus:border-zinc-400 read-only:border-zinc-100 read-only:bg-zinc-50",
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}
         {@rest}
@@ -473,7 +499,7 @@ defmodule TololoWeb.CoreComponents do
       end
 
     ~H"""
-    <div class="overflow-y-auto px-4 sm:overflow-visible sm:px-0">
+    <div class="overflow-y-hidden px-4 sm:overflow-x-scroll sm:px-0 md:-mx-24 lg:-mx-64">
       <table class="w-[40rem] mt-11 sm:w-full">
         <thead class="text-sm text-left leading-6 text-zinc-500">
           <tr>
