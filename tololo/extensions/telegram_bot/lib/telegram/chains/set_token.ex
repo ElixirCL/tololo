@@ -22,7 +22,7 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
   @impl true
   def match?(%{text: "#{@command} " <> _token, chat: %{type: "private"}}, _context), do: true
   @impl true
-  def match?(_, _), do: false
+  def match?(_message, _context), do: false
 
   @impl true
   def handle(%{from: %{id: user_id}, text: "#{@command} " <> token}, context) do
