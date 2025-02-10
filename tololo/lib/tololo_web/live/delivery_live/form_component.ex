@@ -10,7 +10,6 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
     <div>
       <.header>
         {@title}
-        <:subtitle>Use this form to manage delivery records in your database.</:subtitle>
       </.header>
 
       <.simple_form
@@ -21,25 +20,32 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
         phx-submit="save"
       >
         <%= if @form.source.type == :create do %>
-          <.input field={@form[:to_name]} type="text" label="Name" />
+          <.input field={@form[:to_name]} type="text" label={gettext("Name")} />
           <.live_component
             module={LocationInputComponent}
             id="to_location"
             lat_field={@form[:to_latitude]}
             lng_field={@form[:to_longitude]}
             address_field={@form[:to_address]}
-            label="Address"
+            label={gettext("Address")}
           />
-          <.input field={@form[:to_phone]} type="text" label="Phone" />
-          <.input field={@form[:to_notes]} type="text" label="Notes" />
+          <.input field={@form[:to_phone]} type="text" label={gettext("Phone")} />
+          <.input field={@form[:to_notes]} type="text" label={gettext("Notes")} />
         <% end %>
         <%= if @form.source.type == :update do %>
-          <.input field={@form[:state]} type="select" label="State" options={@possible_states} />
+          <.input
+            field={@form[:state]}
+            type="select"
+            label={gettext("State")}
+            options={@possible_states}
+          />
         <% end %>
 
         <:actions>
-          <.button phx-disable-with="Saving...">
-            {if @form.source.type == :update, do: "Update delivery", else: "Save delivery"}
+          <.button phx-disable-with={gettext("Saving...")}>
+            {if @form.source.type == :update,
+              do: gettext("Update delivery"),
+              else: gettext("Save delivery")}
           </.button>
         </:actions>
       </.simple_form>

@@ -31,43 +31,228 @@ msgstr "Historial del pedido"
 msgid "Token not found"
 msgstr "El token de acceso no se ha encontrado. Verifique que el URL sea correcto."
 
-#: lib/tololo_web/components/core_components.ex:507
+#: lib/tololo_web/components/core_components.ex:508
 #, elixir-autogen, icu-format
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: lib/tololo_web/components/core_components.ex:160
 #, elixir-autogen, icu-format
 msgid "Attempting to reconnect"
-msgstr ""
+msgstr "Intentando reconectar"
 
 #: lib/tololo_web/components/core_components.ex:151
 #, elixir-autogen, icu-format
 msgid "Error!"
-msgstr ""
+msgstr "Error!"
 
 #: lib/tololo_web/components/core_components.ex:172
 #, elixir-autogen, icu-format
 msgid "Hang in there while we get back on track"
-msgstr ""
+msgstr "Espera un momento"
 
 #: lib/tololo_web/components/core_components.ex:167
 #, elixir-autogen, icu-format
 msgid "Something went wrong!"
-msgstr ""
+msgstr "Hubo un problema!"
 
 #: lib/tololo_web/components/core_components.ex:150
 #, elixir-autogen, icu-format
 msgid "Success!"
-msgstr ""
+msgstr "Éxito!"
 
 #: lib/tololo_web/components/core_components.ex:155
 #, elixir-autogen, icu-format
 msgid "We can't find the internet"
-msgstr ""
+msgstr "Hay problemas de conexión a internet"
 
 #: lib/tololo_web/components/core_components.ex:76
 #: lib/tololo_web/components/core_components.ex:130
 #, elixir-autogen, icu-format
 msgid "close"
 msgstr "cerrar"
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:30
+#, elixir-autogen, icu-format
+msgid "Address"
+msgstr "Dirección"
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:23
+#, elixir-autogen, icu-format
+msgid "Name"
+msgstr "Nombre"
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:33
+#, elixir-autogen, icu-format
+msgid "Notes"
+msgstr "Notas"
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:32
+#, elixir-autogen, icu-format
+msgid "Phone"
+msgstr "Teléfono"
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:46
+#, elixir-autogen, icu-format
+msgid "Save delivery"
+msgstr "Guardar delivery"
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:45
+#, elixir-autogen, icu-format
+msgid "Saving..."
+msgstr "Guardando..."
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:39
+#: lib/tololo_web/live/delivery_live/index.ex:25
+#: lib/tololo_web/live/delivery_live/show.ex:23
+#, elixir-autogen, icu-format
+msgid "State"
+msgstr "Estado"
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:46
+#, elixir-autogen, icu-format
+msgid "Update delivery"
+msgstr "Actualizar delivery"
+
+#: lib/tololo_web/live/delivery_live/index.ex:44
+#, elixir-autogen, icu-format
+msgid "Are you sure?"
+msgstr "¿Estás seguro?"
+
+#: lib/tololo_web/live/delivery_live/show.ex:60
+#, elixir-autogen, icu-format
+msgid "Back to deliveries"
+msgstr "Volver a deliveries"
+
+#: lib/tololo_web/live/delivery_live/show.ex:37
+#, elixir-autogen, icu-format, fuzzy
+msgid "Current latitude"
+msgstr "Ubicación actual"
+
+#: lib/tololo_web/live/delivery_live/show.ex:39
+#, elixir-autogen, icu-format, fuzzy
+msgid "Current longitude"
+msgstr "Ubicación actual"
+
+#: lib/tololo_web/live/delivery_live/show.ex:57
+#, elixir-autogen, icu-format, fuzzy
+msgid "Delivery ended at"
+msgstr "Fecha de término del delivery"
+
+#: lib/tololo_web/live/delivery_live/show.ex:31
+#, elixir-autogen, icu-format
+msgid "Delivery order"
+msgstr "Orden del delivery"
+
+#: lib/tololo_web/live/delivery_live/show.ex:29
+#, elixir-autogen, icu-format
+msgid "Delivery person"
+msgstr "Repartidor"
+
+#: lib/tololo_web/live/delivery_live/index.ex:31
+#: lib/tololo_web/live/delivery_live/show.ex:55
+#, elixir-autogen, icu-format
+msgid "Delivery started at"
+msgstr "Fecha de comienzo del delivery"
+
+#: lib/tololo_web/live/delivery_live/index.ex:23
+#: lib/tololo_web/live/delivery_live/show.ex:21
+#, elixir-autogen, icu-format
+msgid "Display"
+msgstr "ID público"
+
+#: lib/tololo_web/live/delivery_live/index.ex:38
+#, elixir-autogen, icu-format
+msgid "Edit"
+msgstr "Editar"
+
+#: lib/tololo_web/live/delivery_live/index.ex:81
+#: lib/tololo_web/live/delivery_live/show.ex:13
+#: lib/tololo_web/live/delivery_live/show.ex:94
+#, elixir-autogen, icu-format
+msgid "Edit Delivery"
+msgstr "Editar Delivery"
+
+#: lib/tololo_web/live/delivery_live/show.ex:33
+#, elixir-autogen, icu-format
+msgid "From latitude"
+msgstr "Latitud de origen"
+
+#: lib/tololo_web/live/delivery_live/show.ex:35
+#, elixir-autogen, icu-format
+msgid "From longitude"
+msgstr "Longitud de origen"
+
+#: lib/tololo_web/live/delivery_live/show.ex:41
+#, elixir-autogen, icu-format
+msgid "From name"
+msgstr "Nombre de origen"
+
+#: lib/tololo_web/live/delivery_live/index.ex:10
+#: lib/tololo_web/live/delivery_live/index.ex:93
+#, elixir-autogen, icu-format
+msgid "Listing Deliveries"
+msgstr "Lista de Deliveries"
+
+#: lib/tololo_web/live/delivery_live/index.ex:13
+#: lib/tololo_web/live/delivery_live/index.ex:87
+#, elixir-autogen, icu-format, fuzzy
+msgid "New Delivery"
+msgstr "Crear delivery"
+
+#: lib/tololo_web/live/delivery_live/show.ex:25
+#, elixir-autogen, icu-format
+msgid "Private auth key"
+msgstr "Llave privada"
+
+#: lib/tololo_web/live/delivery_live/show.ex:27
+#, elixir-autogen, icu-format
+msgid "Public auth key"
+msgstr "Llave pública"
+
+#: lib/tololo_web/live/delivery_live/index.ex:35
+#, elixir-autogen, icu-format
+msgid "Show"
+msgstr "Mostrar"
+
+#: lib/tololo_web/live/delivery_live/show.ex:93
+#, elixir-autogen, icu-format
+msgid "Show Delivery"
+msgstr "Mostrar Delivery"
+
+#: lib/tololo_web/live/delivery_live/index.ex:29
+#: lib/tololo_web/live/delivery_live/show.ex:49
+#, elixir-autogen, icu-format, fuzzy
+msgid "To address"
+msgstr "Dirección"
+
+#: lib/tololo_web/live/delivery_live/show.ex:43
+#, elixir-autogen, icu-format
+msgid "To latitude"
+msgstr "Latitud destino"
+
+#: lib/tololo_web/live/delivery_live/show.ex:45
+#, elixir-autogen, icu-format
+msgid "To longitude"
+msgstr "Longitud destino"
+
+#: lib/tololo_web/live/delivery_live/index.ex:27
+#: lib/tololo_web/live/delivery_live/show.ex:47
+#, elixir-autogen, icu-format
+msgid "To name"
+msgstr "Nombre destino"
+
+#: lib/tololo_web/live/delivery_live/show.ex:53
+#, elixir-autogen, icu-format
+msgid "To notes"
+msgstr "Notas"
+
+#: lib/tololo_web/live/delivery_live/show.ex:51
+#, elixir-autogen, icu-format
+msgid "To phone"
+msgstr "Teléfono destino"
+
+#: lib/tololo_web/live/delivery_live/index.ex:46
+#, elixir-autogen, icu-format
+msgid "Delete"
+msgstr "Eliminar"

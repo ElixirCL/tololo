@@ -7,10 +7,10 @@ defmodule TololoWeb.DeliveryLive.Index do
   def render(assigns) do
     ~H"""
     <.header>
-      Listing Deliveries
+      {gettext("Listing Deliveries")}
       <:actions>
         <.link patch={~p"/deliveries/new"}>
-          <.button>New Delivery</.button>
+          <.button>{gettext("New Delivery")}</.button>
         </.link>
       </:actions>
     </.header>
@@ -20,30 +20,34 @@ defmodule TololoWeb.DeliveryLive.Index do
       rows={@streams.deliveries}
       row_click={fn {_id, delivery} -> JS.navigate(~p"/deliveries/#{delivery}") end}
     >
-      <:col :let={{_id, delivery}} label="Display">{delivery.display_id}</:col>
+      <:col :let={{_id, delivery}} label={gettext("Display")}>{delivery.display_id}</:col>
 
-      <:col :let={{_id, delivery}} label="State">{delivery.state}</:col>
+      <:col :let={{_id, delivery}} label={gettext("State")}>
+        {TololoCore.Deliveries.Transitions.get_state_string(delivery.state)}
+      </:col>
 
-      <:col :let={{_id, delivery}} label="To name">{delivery.to_name}</:col>
+      <:col :let={{_id, delivery}} label={gettext("To name")}>{delivery.to_name}</:col>
 
-      <:col :let={{_id, delivery}} label="To address">{delivery.to_address}</:col>
+      <:col :let={{_id, delivery}} label={gettext("To address")}>{delivery.to_address}</:col>
 
-      <:col :let={{_id, delivery}} label="Delivery started at">{delivery.delivery_started_at}</:col>
+      <:col :let={{_id, delivery}} label={gettext("Delivery started at")}>
+        {delivery.delivery_started_at}
+      </:col>
 
       <:action :let={{_id, delivery}}>
         <div class="sr-only">
-          <.link navigate={~p"/deliveries/#{delivery}"}>Show</.link>
+          <.link navigate={~p"/deliveries/#{delivery}"}>{gettext("Show")}</.link>
         </div>
 
-        <.link patch={~p"/deliveries/#{delivery}/edit"}>Edit</.link>
+        <.link patch={~p"/deliveries/#{delivery}/edit"}>{gettext("Edit")}</.link>
       </:action>
 
       <:action :let={{id, delivery}}>
         <.link
           phx-click={JS.push("delete", value: %{id: delivery.id}) |> hide("##{id}")}
-          data-confirm="Are you sure?"
+          data-confirm={gettext("Are you sure?")}
         >
-          Delete
+          {gettext("Delete")}
         </.link>
       </:action>
     </.table>
@@ -78,19 +82,19 @@ defmodule TololoWeb.DeliveryLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
-    |> assign(:page_title, "Edit Delivery")
+    |> assign(:page_title, gettext("Edit Delivery"))
     |> assign(:delivery, Ash.get!(TololoCore.Deliveries.Delivery, id, actor: @actor))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New Delivery")
+    |> assign(:page_title, gettext("New Delivery"))
     |> assign(:delivery, nil)
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Deliveries")
+    |> assign(:page_title, gettext("Listing Deliveries"))
     |> assign(:delivery, nil)
   end
 
