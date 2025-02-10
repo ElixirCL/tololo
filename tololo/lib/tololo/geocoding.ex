@@ -1,4 +1,7 @@
 defmodule Tololo.Geocoding do
+  @moduledoc """
+  Module for geocoding. It uses the Nominatim API as a fallback. It can be changed through config.
+  """
   def query(query_string) do
     case Tololo.GeocodingStore.get_cached(query_string) do
       {:ok, result} -> result
@@ -27,6 +30,9 @@ defmodule Tololo.Geocoding do
 end
 
 defmodule Tololo.GeocodingStore do
+  @moduledoc """
+  ETS cache for the Tololo.Geocoding module. Should be migrated to Postgres in the future.
+  """
   @table_name :geocoding_cache
 
   def init do
