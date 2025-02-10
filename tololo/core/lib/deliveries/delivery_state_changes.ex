@@ -15,6 +15,7 @@ defmodule TololoCore.Deliveries.DeliveryStateChanges do
   postgres do
     table "delivery_state_changes"
     repo Tololo.Repo
+
     references do
       reference :delivery, on_delete: :delete
     end

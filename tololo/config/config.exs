@@ -54,8 +54,6 @@ config :tololo,
   business_name: "Sushi",
   from_location: {41.46814876341381, -87.05996366274948}
 
-  
-
 config :tololo,
   # appends domains from extensions to the list
   ash_domains: [

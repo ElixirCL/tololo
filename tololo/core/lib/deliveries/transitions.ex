@@ -55,7 +55,10 @@ defmodule TololoCore.Deliveries.Transitions do
   def get_state_string("Stale_Delivery_Aborted"), do: gettext("Stale_Delivery_Aborted")
   def get_state_string("Delivery_With_Problems"), do: gettext("Delivery_With_Problems")
   def get_state_string("Delivery_Done"), do: gettext("Delivery_Done")
-  def get_state_string("Stale_Delivery_With_Problems"), do: gettext("Stale_Delivery_With_Problems")
+
+  def get_state_string("Stale_Delivery_With_Problems"),
+    do: gettext("Stale_Delivery_With_Problems")
+
   def get_state_string("Stale_Delivery_Done"), do: gettext("Stale_Delivery_Done")
   def get_state_string(_), do: gettext("Invalid_State")
 
