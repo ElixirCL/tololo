@@ -50,7 +50,11 @@ config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
   extensions: [Tololo.Extensions.TelegramBot],
-  geocoding_endpoint: "https://nominatim.openstreetmap.org/search"
+  geocoding_endpoint: "https://nominatim.openstreetmap.org/search",
+  business_name: "Sushi",
+  from_location: {41.46814876341381, -87.05996366274948}
+
+  
 
 config :tololo,
   # appends domains from extensions to the list

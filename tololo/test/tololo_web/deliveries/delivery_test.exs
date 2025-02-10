@@ -118,10 +118,7 @@ defmodule TololoWeb.DeliveryTest do
           input: %{
             delivery_person: "{}",
             delivery_order: "{}",
-            from_name: "from_name",
             to_name: "to_name",
-            from_latitude: 100,
-            from_longitude: 100,
             to_latitude: 100,
             to_longitude: 100,
             to_address: "to_address",
