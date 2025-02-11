@@ -1,0 +1,33 @@
+= 🔭 Test plan
+
+== Initialize a new delivery
+
+- Go to the following URL to open the create delivery form page:
+http://example.com/deliveries/new (The domain should be changed to the one where Tololo is hosted in)
+- Fill the details of the delivery through the form.
+
+== Change the state from `Init` to `Ready to pickup`
+
+- Click on the "Edit delivery" button.
+- Change state to "In preparation", then save.
+- Click on the "Edit delivery" button again.
+- Change state to "Ready to pickup", then save.
+
+== Authenticate Telegram user
+
+- The delivery person should send a message to the Tololo Telegram bot. The content of the message can be anything.
+- An access request will be sent to Tololo, then an admin will have to approve the user through the admin dashboard. The admin dashboard is in the following page: http://example.com/admin 
+The default user is `admin`, and the default password is `test`.
+- In the dashboard, click the `Users` dropdown menu at the top of the page, then select `User`. Then, select `Read` to see a list of the users that the bot has interacted with.
+- Find the user you wish to approve, then click on the pencil button. In the following page, change the `status` field from `pending` to `allowed`.
+- Click the `Save` button.
+
+== Pick delivery up through Telegram bot
+
+- Get the delivery public token. It will be shown in the delivery details page, after initializing the new delivery.
+- Send the following command to the Telegram bot: `/new {public token}`.
+- Share live location with bot.
+
+== Mark delivery as done after delivering
+
+- Send the `/done` command, then select the option with the previous public token.
