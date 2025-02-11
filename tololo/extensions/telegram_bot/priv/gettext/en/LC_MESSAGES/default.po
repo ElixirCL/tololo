@@ -11,7 +11,7 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/telegram/chains/auth.ex:60
+#: lib/telegram/chains/auth.ex:66
 #, elixir-autogen, icu-format
 msgid "You don't have access to this bot.\n"
 msgstr ""
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Please include the provided token with the command:\n\n`/new {token}`\n"
 msgstr ""
 
-#: lib/telegram/chains/auth.ex:50
+#: lib/telegram/chains/auth.ex:53
 #, elixir-autogen, icu-format
 msgid "Thanks for using Tololo Bot. An Admin will contact you soon.\n"
 msgstr ""
@@ -69,4 +69,24 @@ msgstr ""
 #: lib/telegram/chains/set_token.ex:70
 #, elixir-autogen, icu-format
 msgid "Unknown person"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:81
+#, elixir-autogen, icu-format, fuzzy
+msgid "*Hello*\n\nPlease select the delivery you wish to mark as done\n"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:45
+#, elixir-autogen, icu-format
+msgid "Delivery successfully marked as done.\n"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:36
+#, elixir-autogen, icu-format
+msgid "Delivery wasn't found.\n"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:50
+#, elixir-autogen, icu-format
+msgid "There was a problem marking delivery as done\n"
 msgstr ""

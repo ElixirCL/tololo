@@ -96,7 +96,6 @@ defmodule TololoCore.Deliveries.Transitions do
     |> Enum.map(fn state_data -> state_data |> elem(0) |> elem(1) end)
     # remove stale states
     |> Enum.reject(fn state -> String.contains?(state, "Stale") end)
-    |> IO.inspect(label: "before reduce")
     # add i18n
     |> Enum.reduce(%{}, fn state, acc -> Map.put(acc, get_state_string(state), state) end)
   end
