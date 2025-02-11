@@ -1,3 +1,4 @@
 .Developer Docs
 * xref:dev_environment.adoc[]
 * xref:extensions.adoc[]
+* xref:test_plan.adoc[]
