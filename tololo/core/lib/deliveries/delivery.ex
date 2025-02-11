@@ -216,6 +216,7 @@ defmodule TololoCore.Deliveries.Delivery do
 
     prefix "delivery"
     publish :update_location, ["updated", :id]
+    publish :update_state, ["updated", :id]
   end
 
   attributes do
