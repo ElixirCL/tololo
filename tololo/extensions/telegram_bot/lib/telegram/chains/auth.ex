@@ -11,6 +11,9 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
   def handle(%{message: message, edited_message: nil}, context), do: handle(message, context)
   @impl true
   def handle(%{edited_message: message, message: nil}, context), do: handle(message, context)
+  @impl true
+  def handle(%{from: %{is_bot: true, id: user_id}}, context),
+    do: {:done, send_denied_message(context, user_id)}
 
   @impl true
   def handle(%{from: %{id: user_id}}, context) do
