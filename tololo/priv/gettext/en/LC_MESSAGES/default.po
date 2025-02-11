@@ -81,13 +81,12 @@ msgstr ""
 #: lib/tololo_web/live/delivery_live/form_component.ex:23
 #: lib/tololo_web/live/delivery_live/form_component.ex:36
 #: lib/tololo_web/live/delivery_live/form_component.ex:147
-#: lib/tololo_web/live/delivery_live/form_component.ex:160
 #, elixir-autogen, icu-format
 msgid "Name"
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:40
-#: lib/tololo_web/live/delivery_live/form_component.ex:164
+#: lib/tololo_web/live/delivery_live/form_component.ex:165
 #, elixir-autogen, icu-format
 msgid "Notes"
 msgstr ""
@@ -99,19 +98,19 @@ msgid "Phone"
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:55
-#: lib/tololo_web/live/delivery_live/form_component.ex:179
+#: lib/tololo_web/live/delivery_live/form_component.ex:180
 #, elixir-autogen, icu-format
 msgid "Save delivery"
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:52
-#: lib/tololo_web/live/delivery_live/form_component.ex:176
+#: lib/tololo_web/live/delivery_live/form_component.ex:177
 #, elixir-autogen, icu-format
 msgid "Saving..."
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:46
-#: lib/tololo_web/live/delivery_live/form_component.ex:170
+#: lib/tololo_web/live/delivery_live/form_component.ex:171
 #: lib/tololo_web/live/delivery_live/index.ex:25
 #: lib/tololo_web/live/delivery_live/show.ex:23
 #, elixir-autogen, icu-format
@@ -119,7 +118,7 @@ msgid "State"
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:54
-#: lib/tololo_web/live/delivery_live/form_component.ex:178
+#: lib/tololo_web/live/delivery_live/form_component.ex:179
 #, elixir-autogen, icu-format
 msgid "Update delivery"
 msgstr ""
@@ -267,7 +266,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:162
+#: lib/tololo_web/live/delivery_live/form_component.ex:163
 #, elixir-autogen, icu-format
 msgid "Order details"
 msgstr ""
@@ -280,4 +279,9 @@ msgstr ""
 #: lib/tololo_web/live/delivery_live/location_input_component.ex:21
 #, elixir-autogen, icu-format
 msgid "Found address will show up here"
+msgstr ""
+
+#: lib/tololo_web/live/delivery_live/form_component.ex:161
+#, elixir-autogen, icu-format
+msgid "Description"
 msgstr ""

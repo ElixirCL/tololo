@@ -4,6 +4,8 @@ defmodule Tololo.Extensions.TelegramBot.Done do
   use Gettext, backend: Tololo.Extensions.TelegramBot.Gettext
   use Telegex.Chain, {:command, :done}
 
+  require Logger
+
   @command "/done"
 
   alias Tololo.Extensions.TelegramBot.Message

@@ -31,7 +31,7 @@ msgstr ""
 msgid "No active deliveries found. Please start one by using `/new {token}`."
 msgstr ""
 
-#: lib/telegram/chains/set_token.ex:54
+#: lib/telegram/chains/set_token.ex:55
 #, elixir-autogen, icu-format
 msgid "Please include the provided token with the command:\n\n`/new {token}`\n"
 msgstr ""
@@ -41,52 +41,57 @@ msgstr ""
 msgid "Thanks for using Tololo Bot. An Admin will contact you soon.\n"
 msgstr ""
 
-#: lib/telegram/chains/set_token.ex:84
+#: lib/telegram/chains/set_token.ex:85
 #, elixir-autogen, icu-format
 msgid "There was a problem. Please check that the token is valid.\n"
 msgstr ""
 
-#: lib/telegram/chains/set_token.ex:68
+#: lib/telegram/chains/set_token.ex:69
 #, elixir-autogen, icu-format
 msgid "delivery_info"
 msgstr "*This is the delivery information:*\n- Name: {name}\n- Phone: {phone}\n- Address: {address}\n- Details: {details}\n*Great! Now please send the live location for at least one hour.*"
 
-#: lib/telegram/chains/set_token.ex:73
+#: lib/telegram/chains/set_token.ex:74
 #, elixir-autogen, icu-format
 msgid "No additional notes"
 msgstr ""
 
-#: lib/telegram/chains/set_token.ex:72
+#: lib/telegram/chains/set_token.ex:73
 #, elixir-autogen, icu-format
 msgid "No address provided"
 msgstr ""
 
-#: lib/telegram/chains/set_token.ex:71
+#: lib/telegram/chains/set_token.ex:72
 #, elixir-autogen, icu-format
 msgid "No phone number provided"
 msgstr ""
 
-#: lib/telegram/chains/set_token.ex:70
+#: lib/telegram/chains/set_token.ex:71
 #, elixir-autogen, icu-format
 msgid "Unknown person"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:81
+#: lib/telegram/chains/done.ex:82
 #, elixir-autogen, icu-format, fuzzy
 msgid "*Hello*\n\nPlease select the delivery you wish to mark as done\n"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:45
+#: lib/telegram/chains/done.ex:46
 #, elixir-autogen, icu-format
 msgid "Delivery successfully marked as done.\n"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:36
+#: lib/telegram/chains/done.ex:35
 #, elixir-autogen, icu-format
 msgid "Delivery wasn't found.\n"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:50
+#: lib/telegram/chains/done.ex:51
 #, elixir-autogen, icu-format
 msgid "There was a problem marking delivery as done\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:102
+#, elixir-autogen, icu-format
+msgid "Delivery Person"
 msgstr ""
