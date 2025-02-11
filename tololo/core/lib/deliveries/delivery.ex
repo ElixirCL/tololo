@@ -89,6 +89,7 @@ defmodule TololoCore.Deliveries.Delivery do
       action: :update_location
 
     define :get_ready_to_pickup
+    define :update_delivery_person
   end
 
   actions do
@@ -177,6 +178,10 @@ defmodule TololoCore.Deliveries.Delivery do
       require_atomic? false
 
       change TololoCore.Deliveries.UpdateHistory
+    end
+
+    update :update_delivery_person do
+      accept [:delivery_person]
     end
 
     update :update_location do

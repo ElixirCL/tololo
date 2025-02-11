@@ -25,7 +25,7 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
   def match?(_message, _context), do: false
 
   @impl true
-  def handle(%{from: %{id: user_id}, text: "#{@command} " <> token}, context) do
+  def handle(%{from: %{id: user_id} = from, text: "#{@command} " <> token}, context) do
     case Deliveries.Delivery.get_via_display_id(token, actor: @actor) do
       {:ok, %{state: state} = delivery_resource}
       when state == "Ready_To_Pickup" or state == "In_Delivery" ->
@@ -36,6 +36,7 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
           else
             delivery_resource
           end
+          |> update_delivery_person(from)
 
         context.user_resource |> User.add_deliveries!([delivery_resource.id], actor: @actor)
 
@@ -88,4 +89,23 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
 
     %{context | payload: send_message}
   end
+
+  defp update_delivery_person(delivery_resource, from),
+    do:
+      delivery_resource
+      |> Deliveries.Delivery.update_delivery_person!(
+        %{
+          delivery_person: %{
+            type: "telegram",
+            data: %{
+              name: from.first_name <> " " <> (from.last_name || ""),
+              user_id: from.id,
+              user_handle: from.username,
+              image: nil,
+              phone: nil
+            }
+          }
+        },
+        actor: @actor
+      )
 end
