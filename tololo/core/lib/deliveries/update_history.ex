@@ -17,9 +17,16 @@ defmodule TololoCore.Deliveries.UpdateHistory do
     with {:ok, new_state} <- Ash.Changeset.fetch_change(changeset, :state),
          true <- Transitions.valid?(old_state, new_state) do
       comment = Transitions.message(old_state, new_state)
-      DeliveryStateChanges.add_to_state_history!(id, old_state, new_state, comment)
 
       changeset
+      |> Ash.Changeset.after_transaction(fn
+        _changeset, {:ok, result} ->
+          DeliveryStateChanges.add_to_state_history!(id, old_state, new_state, comment)
+          {:ok, result}
+
+        _changeset, error ->
+          error
+      end)
     else
       _ ->
         changeset
