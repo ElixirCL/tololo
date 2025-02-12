@@ -19,6 +19,8 @@ defmodule Tololo.Application do
       |> Keyword.fetch!(:telemetry_prefix)
       |> OpentelemetryEcto.setup()
 
+    extensions = Application.get_env(:tololo, :extensions, [])
+
     children = [
       Tololo.Prometheus,
       TololoWeb.Telemetry,
@@ -32,13 +34,7 @@ defmodule Tololo.Application do
       # Start to serve requests, typically the last entry
       TololoWeb.Endpoint,
       {AshAuthentication.Supervisor, [otp_app: :tololo]}
-    ]
-
-    # Initialize extensions
-    Enum.each(Application.get_env(:tololo, :extensions, []), fn extension_module ->
-      # calls extension_module.init()
-      apply(extension_module, :init, [])
-    end)
+    ] ++ extensions
 
     Tololo.GeocodingStore.init()
 
