@@ -39,5 +39,5 @@ image::live_location.png[]
 
 == Mark delivery as done after delivering
 
-- Send the `/done` command, then select the option with the previous display id.
+- Send the `/done` command, then select the option with the previous display id. (Command will fail if the delivery person isn't within 50 meters of the delivery location.)
 image::done_command.png[]
