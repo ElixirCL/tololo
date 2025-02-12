@@ -17,7 +17,7 @@ image::edit_delivery.png[]
 - Click on the "Edit" button again.
 - Change state to "Ready to pickup", then save.
 
-== Authenticate Telegram user
+== Authenticate Telegram user (delivery person)
 
 - The delivery person should send a message to the Tololo Telegram bot. The content of the message can be anything.
 - An access request will be sent to Tololo, then an admin will have to approve the user through the admin dashboard. The admin dashboard is in the following page: http://example.com/admin 
@@ -41,3 +41,16 @@ image::live_location.png[]
 
 - Send the `/done` command, then select the option with the previous display id. (Command will fail if the delivery person isn't within 50 meters of the delivery location.)
 image::done_command.png[]
+
+== Cases
+- /done with one active delivery.
+- /done with multiple active deliveries.
+
+== Edge cases
+- /done before delivery is in "in delivery" state.
+- /done before delivery is within the minimum range.
+
+
+== Already tested
+- Happy path from accepting a delivery to marking it as done through the Telegram bot
+- Marked as done before delivery is within the minimum range.
