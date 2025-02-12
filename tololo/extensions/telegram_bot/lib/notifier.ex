@@ -72,5 +72,5 @@ defmodule Tololo.Extensions.TelegramBot.Notifier do
   end
 
   @impl true
-  def handle_info(message, state), do: {:noreply, state}
+  def handle_info(_message, state), do: {:noreply, state}
 end

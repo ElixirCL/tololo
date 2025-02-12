@@ -41,7 +41,9 @@ defmodule TololoWeb.AuthController do
 
     conn
     |> put_flash(:error, message)
-    |> redirect(to: ~p"/sign-in")
+
+    # change when sign-in is created
+    # |> redirect(to: ~p"/sign-in")
   end
 
   def sign_out(conn, _params) do

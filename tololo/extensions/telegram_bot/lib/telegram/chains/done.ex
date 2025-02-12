@@ -22,9 +22,6 @@ defmodule Tololo.Extensions.TelegramBot.Done do
   def match?(_, _), do: false
 
   @impl true
-  def match?(_message, _context), do: false
-
-  @impl true
   def handle(
         %{from: %{id: user_id}, text: "#{@command} " <> token},
         %{user_resource: %{deliveries: deliveries}} = context
@@ -42,7 +39,7 @@ defmodule Tololo.Extensions.TelegramBot.Done do
 
           %{state: new_state} =
             delivery
-            |> TololoCore.Deliveries.Delivery.done_with_distance_check!(nil, actor: @actor)
+            |> Delivery.done_with_distance_check!(nil, actor: @actor)
 
           if new_state == "Delivery_Done" do
             gettext("""
