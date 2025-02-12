@@ -71,25 +71,20 @@ msgstr "No se proporcionó número de teléfono"
 msgid "Unknown person"
 msgstr "Persona desconocida"
 
-#: lib/telegram/chains/done.ex:90
+#: lib/telegram/chains/done.ex:111
 #, elixir-autogen, icu-format, fuzzy
 msgid "*Hello*\n\nPlease select the delivery you wish to mark as done\n"
 msgstr "*Hola*\n\nPor favor, selecciona el delivery que deseas marcar como terminado\n"
 
-#: lib/telegram/chains/done.ex:49
+#: lib/telegram/chains/done.ex:32
 #, elixir-autogen, icu-format
 msgid "Delivery successfully marked as done.\n"
 msgstr "El delivery fue marcado como terminado exitosamente"
 
-#: lib/telegram/chains/done.ex:36
+#: lib/telegram/chains/done.ex:67
 #, elixir-autogen, icu-format
 msgid "Delivery wasn't found.\n"
 msgstr "Delivery no encontrado.\n"
-
-#: lib/telegram/chains/done.ex:59
-#, elixir-autogen, icu-format
-msgid "There was a problem marking delivery as done\n"
-msgstr "Hubo un problema marcando el delivery como terminado.\n"
 
 #: lib/telegram/chains/set_token.ex:102
 #, elixir-autogen, icu-format
@@ -106,7 +101,12 @@ msgstr "El problema con el delivery {display_id} fue resuelto.\n\nPuedes continu
 msgid "There's a problem with the delivery {display_id}. Please contact the business."
 msgstr "Hay un problema con el delivery {display_id}. Por favor contacta al negocio."
 
-#: lib/telegram/chains/done.ex:53
+#: lib/telegram/chains/done.ex:36
 #, elixir-autogen, icu-format
 msgid "Error marking as done. You're not within the minimum range to mark delivery as done.\n"
 msgstr "Error marcando como terminado. No estás en el rango mínimo para marcar delivery como terminado.\n"
+
+#: lib/telegram/chains/done.ex:51
+#, elixir-autogen, icu-format
+msgid "You don't have any active deliveries to mark as done.\n"
+msgstr "No hay deliveries activos para marcar como terminado.\n"
