@@ -71,22 +71,22 @@ msgstr "No se proporcionó número de teléfono"
 msgid "Unknown person"
 msgstr "Persona desconocida"
 
-#: lib/telegram/chains/done.ex:84
+#: lib/telegram/chains/done.ex:90
 #, elixir-autogen, icu-format, fuzzy
 msgid "*Hello*\n\nPlease select the delivery you wish to mark as done\n"
-msgstr "*Hola*\n\nPor favor, selecciona el delivery que deseas recoger\n"
+msgstr "*Hola*\n\nPor favor, selecciona el delivery que deseas marcar como terminado\n"
 
-#: lib/telegram/chains/done.ex:48
+#: lib/telegram/chains/done.ex:49
 #, elixir-autogen, icu-format
 msgid "Delivery successfully marked as done.\n"
 msgstr "El delivery fue marcado como terminado exitosamente"
 
-#: lib/telegram/chains/done.ex:37
+#: lib/telegram/chains/done.ex:36
 #, elixir-autogen, icu-format
 msgid "Delivery wasn't found.\n"
 msgstr "Delivery no encontrado.\n"
 
-#: lib/telegram/chains/done.ex:53
+#: lib/telegram/chains/done.ex:59
 #, elixir-autogen, icu-format
 msgid "There was a problem marking delivery as done\n"
 msgstr "Hubo un problema marcando el delivery como terminado.\n"
@@ -96,7 +96,7 @@ msgstr "Hubo un problema marcando el delivery como terminado.\n"
 msgid "Delivery Person"
 msgstr "Repartidor"
 
-#: lib/notifier.ex:62
+#: lib/notifier.ex:61
 #, elixir-autogen, icu-format
 msgid "The problem with delivery {display_id} was solved.\n\nYou can continue sharing the live location for it. If it's already being shared, no further action is needed.\n"
 msgstr "El problema con el delivery {display_id} fue resuelto.\n\nPuedes continuar compartiendo la ubicación. Si ya se está compartiendo, no es necesario hacer nada."
@@ -105,3 +105,8 @@ msgstr "El problema con el delivery {display_id} fue resuelto.\n\nPuedes continu
 #, elixir-autogen, icu-format
 msgid "There's a problem with the delivery {display_id}. Please contact the business."
 msgstr "Hay un problema con el delivery {display_id}. Por favor contacta al negocio."
+
+#: lib/telegram/chains/done.ex:53
+#, elixir-autogen, icu-format
+msgid "Error marking as done. You're not within the minimum range to mark delivery as done.\n"
+msgstr "Error marcando como terminado. No estás en el rango mínimo para marcar delivery como terminado.\n"

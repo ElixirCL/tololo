@@ -14,6 +14,9 @@ defmodule TololoCore.Deliveries.Delivery do
 
   use Gettext, backend: TololoCore.Gettext
 
+  alias TololoCore.Location
+  @min_done_distance 50
+
   graphql do
     type :delivery
 
@@ -90,6 +93,7 @@ defmodule TololoCore.Deliveries.Delivery do
 
     define :get_ready_to_pickup
     define :update_delivery_person
+    define :done_with_distance_check
   end
 
   actions do
@@ -191,6 +195,54 @@ defmodule TololoCore.Deliveries.Delivery do
         message gettext("the state must be in delivery to update the current location")
       end
     end
+
+    update :done_with_distance_check do
+      require_atomic? false
+
+      change fn %{
+                  data: %{
+                    current_latitude: current_lat,
+                    current_longitude: current_lng,
+                    to_latitude: to_lat,
+                    to_longitude: to_lng,
+                    state: old_state,
+                    id: id
+                  }
+                } =
+                  changeset,
+                _context ->
+        changeset =
+          with true <- current_lat != nil and current_lng != nil,
+               distance <- Location.distance({current_lat, current_lng}, {to_lat, to_lng}),
+               true <- distance <= @min_done_distance do
+            changeset
+            |> Ash.Changeset.force_change_attribute(:state, "Delivery_Done")
+          else
+            _ ->
+              changeset
+              |> Ash.Changeset.force_change_attribute(:state, "Delivery_With_Problems")
+          end
+
+        changeset
+        |> Ash.Changeset.after_transaction(fn
+          _changeset, {:ok, result} ->
+            {:ok, new_state} = Ash.Changeset.fetch_change(changeset, :state)
+            comment = TololoCore.Deliveries.Transitions.message(old_state, new_state)
+
+            TololoCore.Deliveries.DeliveryStateChanges.add_to_state_history!(
+              id,
+              old_state,
+              new_state,
+              comment
+            )
+
+            {:ok, result}
+
+          _changeset, error ->
+            error
+        end)
+      end
+    end
   end
 
   policies do
@@ -216,7 +268,12 @@ defmodule TololoCore.Deliveries.Delivery do
 
     prefix "delivery"
     publish :update_location, ["updated", :id]
+
     publish :update_state, ["updated", :id]
+    publish :update_state, ["updated"]
+
+    publish :done_with_distance_check, ["updated", :id]
+    publish :done_with_distance_check, ["updated"]
   end
 
   attributes do

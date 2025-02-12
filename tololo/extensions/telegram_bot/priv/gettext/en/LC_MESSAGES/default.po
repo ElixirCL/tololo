@@ -71,22 +71,22 @@ msgstr ""
 msgid "Unknown person"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:84
+#: lib/telegram/chains/done.ex:90
 #, elixir-autogen, icu-format, fuzzy
 msgid "*Hello*\n\nPlease select the delivery you wish to mark as done\n"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:48
+#: lib/telegram/chains/done.ex:49
 #, elixir-autogen, icu-format
 msgid "Delivery successfully marked as done.\n"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:37
+#: lib/telegram/chains/done.ex:36
 #, elixir-autogen, icu-format
 msgid "Delivery wasn't found.\n"
 msgstr ""
 
-#: lib/telegram/chains/done.ex:53
+#: lib/telegram/chains/done.ex:59
 #, elixir-autogen, icu-format
 msgid "There was a problem marking delivery as done\n"
 msgstr ""
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Delivery Person"
 msgstr ""
 
-#: lib/notifier.ex:62
+#: lib/notifier.ex:61
 #, elixir-autogen, icu-format
 msgid "The problem with delivery {display_id} was solved.\n\nYou can continue sharing the live location for it. If it's already being shared, no further action is needed.\n"
 msgstr ""
@@ -104,4 +104,9 @@ msgstr ""
 #: lib/notifier.ex:35
 #, elixir-autogen, icu-format
 msgid "There's a problem with the delivery {display_id}. Please contact the business."
+msgstr ""
+
+#: lib/telegram/chains/done.ex:53
+#, elixir-autogen, icu-format
+msgid "Error marking as done. You're not within the minimum range to mark delivery as done.\n"
 msgstr ""

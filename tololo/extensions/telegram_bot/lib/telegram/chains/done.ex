@@ -29,7 +29,6 @@ defmodule Tololo.Extensions.TelegramBot.Done do
         %{from: %{id: user_id}, text: "#{@command} " <> token},
         %{user_resource: %{deliveries: deliveries}} = context
       ) do
-
     message_string =
       case deliveries
            |> Enum.find(:not_found, fn delivery -> delivery.display_id == token end) do
@@ -39,20 +38,20 @@ defmodule Tololo.Extensions.TelegramBot.Done do
           """)
 
         delivery ->
-          try do
+          Logger.info("Marking #{token} delivery as done")
+
+          %{state: new_state} =
             delivery
-            |> TololoCore.Deliveries.Delivery.update_state!(:Delivery_Done, actor: @actor)
+            |> TololoCore.Deliveries.Delivery.done_with_distance_check!(nil, actor: @actor)
 
-            Logger.info("Marking #{token} delivery as done")
-
+          if new_state == "Delivery_Done" do
             gettext("""
             Delivery successfully marked as done.
             """)
-          rescue
-            _ ->
-              gettext("""
-              There was a problem marking delivery as done
-              """)
+          else
+            gettext("""
+            Error marking as done. You're not within the minimum range to mark delivery as done.
+            """)
           end
       end
 

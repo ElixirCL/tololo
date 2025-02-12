@@ -48,7 +48,7 @@ defmodule Tololo.Extensions.TelegramBot.Notifier do
             data: %{
               state: "In_Delivery",
               delivery_person: %{"type" => "telegram", "data" => user_data},
-              display_id: display_id,
+              display_id: display_id
             },
             # check that the previous state was Delivery_With_Problems
             changeset: %{data: %{state: "Delivery_With_Problems"}}
@@ -72,6 +72,5 @@ defmodule Tololo.Extensions.TelegramBot.Notifier do
   end
 
   @impl true
-  def handle_info(_message, state),
-    do: {:noreply, state}
+  def handle_info(message, state), do: {:noreply, state}
 end
