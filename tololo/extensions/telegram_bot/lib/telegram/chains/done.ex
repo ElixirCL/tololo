@@ -34,7 +34,7 @@ defmodule Tololo.Extensions.TelegramBot.Done do
       """)
     else
       gettext("""
-      Error marking as done. You're not within the minimum range to mark delivery as done.
+      Delivery marked with problems. An admin will review it first.
       """)
     end
   end

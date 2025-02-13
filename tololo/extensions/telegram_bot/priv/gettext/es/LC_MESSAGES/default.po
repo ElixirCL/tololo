@@ -16,7 +16,7 @@ msgstr ""
 msgid "You don't have access to this bot.\n"
 msgstr "No tienes acceso a este bot.\n"
 
-#: lib/telegram/chains/list_deliveries.ex:39
+#: lib/telegram/chains/set_token.ex:63
 #, elixir-autogen, icu-format
 msgid "*Hello*\n\nPlease select the delivery you wish to pick up\n"
 msgstr "*Hola*\n\nPor favor, selecciona el delivery que deseas recoger\n"
@@ -31,42 +31,37 @@ msgstr "Error al intentar actualizar la ubicación."
 msgid "No active deliveries found. Please start one by using `/new {token}`."
 msgstr "No se encontraron entregas activas. Por favor, inicia una usando `/new {token}`."
 
-#: lib/telegram/chains/set_token.ex:55
-#, elixir-autogen, icu-format
-msgid "Please include the provided token with the command:\n\n`/new {token}`\n"
-msgstr "Por favor, incluye el token proporcionado con el comando:\n\n`/new {token}`\n"
-
 #: lib/telegram/chains/auth.ex:56
 #, elixir-autogen, icu-format
 msgid "Thanks for using Tololo Bot. An Admin will contact you soon.\n"
 msgstr "Gracias por usar Tololo Bot. Un administrador se pondrá en contacto contigo pronto.\n"
 
-#: lib/telegram/chains/set_token.ex:85
+#: lib/telegram/chains/set_token.ex:98
 #, elixir-autogen, icu-format
 msgid "There was a problem. Please check that the token is valid.\n"
 msgstr "Hubo un problema. Por favor, verifica que el token sea válido.\n"
 
-#: lib/telegram/chains/set_token.ex:69
+#: lib/telegram/chains/set_token.ex:82
 #, elixir-autogen, icu-format
 msgid "delivery_info"
 msgstr "*Esta es la información del delivery:*\n- Nombre: {name}\n- Teléfono: {phone}\n- Dirección: {address}\n- Detalles: {details}\n*Bien! Ahora por favor envía tu ubicación por lo menos durante una hora.*"
 
-#: lib/telegram/chains/set_token.ex:74
+#: lib/telegram/chains/set_token.ex:87
 #, elixir-autogen, icu-format
 msgid "No additional notes"
 msgstr "No hay notas adicionales"
 
-#: lib/telegram/chains/set_token.ex:73
+#: lib/telegram/chains/set_token.ex:86
 #, elixir-autogen, icu-format
 msgid "No address provided"
 msgstr "No se proporcionó dirección"
 
-#: lib/telegram/chains/set_token.ex:72
+#: lib/telegram/chains/set_token.ex:85
 #, elixir-autogen, icu-format
 msgid "No phone number provided"
 msgstr "No se proporcionó número de teléfono"
 
-#: lib/telegram/chains/set_token.ex:71
+#: lib/telegram/chains/set_token.ex:84
 #, elixir-autogen, icu-format
 msgid "Unknown person"
 msgstr "Persona desconocida"
@@ -86,7 +81,7 @@ msgstr "El delivery fue marcado como terminado exitosamente"
 msgid "Delivery wasn't found.\n"
 msgstr "Delivery no encontrado.\n"
 
-#: lib/telegram/chains/set_token.ex:102
+#: lib/telegram/chains/set_token.ex:115
 #, elixir-autogen, icu-format
 msgid "Delivery Person"
 msgstr "Repartidor"
@@ -101,12 +96,12 @@ msgstr "El problema con el delivery {display_id} fue resuelto.\n\nPuedes continu
 msgid "There's a problem with the delivery {display_id}. Please contact the business."
 msgstr "Hay un problema con el delivery {display_id}. Por favor contacta al negocio."
 
-#: lib/telegram/chains/done.ex:36
-#, elixir-autogen, icu-format
-msgid "Error marking as done. You're not within the minimum range to mark delivery as done.\n"
-msgstr "Error marcando como terminado. No estás en el rango mínimo para marcar delivery como terminado.\n"
-
 #: lib/telegram/chains/done.ex:51
 #, elixir-autogen, icu-format
 msgid "You don't have any active deliveries to mark as done.\n"
 msgstr "No hay deliveries activos para marcar como terminado.\n"
+
+#: lib/telegram/chains/done.ex:36
+#, elixir-autogen, icu-format
+msgid "Delivery marked with problems. An admin will review it first.\n"
+msgstr "Delivery marcado con problemas. Un administrador lo revisará primero.\n"
