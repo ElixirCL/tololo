@@ -117,4 +117,56 @@ defmodule DeliveryTest do
       |> Deliveries.Delivery.update_location!(123, 321, actor: Deliveries.Actors.private())
     end
   end
+
+  test "done within minimum range" do
+    %{state: state} =
+      Deliveries.Delivery.initialize!(
+        %{
+          delivery_person: %{},
+          delivery_order: %{},
+          to_name: "to_name",
+          to_latitude: -33.447001713606156,
+          to_longitude: -70.65619123826207,
+          to_address: "to_address",
+          to_phone: "to_phone",
+          to_notes: "to_notes"
+        },
+        actor: Deliveries.Actors.admin()
+      )
+      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: Deliveries.Actors.private())
+      |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: Deliveries.Actors.private())
+      |> Deliveries.Delivery.update_state!(:In_Delivery, actor: Deliveries.Actors.private())
+      |> Deliveries.Delivery.update_location!(-33.4469826799717, -70.65589076656822,
+        actor: Deliveries.Actors.private()
+      )
+      |> Deliveries.Delivery.done_with_distance_check!(actor: Deliveries.Actors.private())
+
+    assert state == "Delivery_Done"
+  end
+
+  test "done outside minimum range" do
+    %{state: state} =
+      Deliveries.Delivery.initialize!(
+        %{
+          delivery_person: %{},
+          delivery_order: %{},
+          to_name: "to_name",
+          to_latitude: -33.447001713606156,
+          to_longitude: -70.65619123826207,
+          to_address: "to_address",
+          to_phone: "to_phone",
+          to_notes: "to_notes"
+        },
+        actor: Deliveries.Actors.admin()
+      )
+      |> Deliveries.Delivery.update_state!(:In_Preparation, actor: Deliveries.Actors.private())
+      |> Deliveries.Delivery.update_state!(:Ready_To_Pickup, actor: Deliveries.Actors.private())
+      |> Deliveries.Delivery.update_state!(:In_Delivery, actor: Deliveries.Actors.private())
+      |> Deliveries.Delivery.update_location!(-32.4469826799717, -70.65589076656822,
+        actor: Deliveries.Actors.private()
+      )
+      |> Deliveries.Delivery.done_with_distance_check!(actor: Deliveries.Actors.private())
+
+    assert state == "Delivery_With_Problems"
+  end
 end
