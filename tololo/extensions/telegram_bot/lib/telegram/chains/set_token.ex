@@ -3,16 +3,12 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
   alias Tololo.Extensions.TelegramBot
   alias TololoCore.Deliveries
   alias Tololo.Extensions.TelegramBot.Ash.User
+  alias Telegex.Type.{KeyboardButton}
 
   use Gettext, backend: Tololo.Extensions.TelegramBot.Gettext
 
   use Telegex.Chain, {:command, :new}
   @command "/new"
-  @no_token_message """
-  Please include the provided token with the command:
-
-  `#{@command} {token}`
-  """
 
   @actor Deliveries.Actors.private()
 
@@ -47,15 +43,32 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
     end
   end
 
-  # if it doesn't include a token, send usage instructions
-  def handle(%{from: %{id: user_id}}, context) do
-    send_message =
-      TelegramBot.Message.send_message(
+  # if it doesn't include a token, show list
+  def handle(
+        %{chat: _chat, from: %{id: user_id}},
+        %{user_resource: _user_resource} = context
+      ) do
+    available_deliveries = Deliveries.Delivery.get_ready_to_pickup!(actor: @actor)
+
+    available_deliveries_buttons =
+      Enum.map(available_deliveries, fn delivery ->
+        %KeyboardButton{
+          text: "/new " <> delivery.display_id
+        }
+      end)
+
+    message =
+      TelegramBot.Message.send_message_with_keyboard(
         user_id,
-        gettext(@no_token_message)
+        gettext("""
+        *Hello*
+
+        Please select the delivery you wish to pick up
+        """),
+        available_deliveries_buttons
       )
 
-    {:done, %{context | payload: send_message}}
+    {:done, %{context | payload: message}}
   end
 
   def send_confirmation(

@@ -5,7 +5,6 @@ defmodule Tololo.Extensions.TelegramBot.ChainHandler do
 
   pipeline([
     TelegramBot.Auth,
-    TelegramBot.ListDeliveries,
     TelegramBot.ReceiveLocation,
     TelegramBot.SetToken,
     Tololo.Extensions.TelegramBot.Done
