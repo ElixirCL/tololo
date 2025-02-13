@@ -75,7 +75,9 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
       |> assign_form()
 
     current_state = socket.assigns.form[:state].value
-    possible_states = TololoCore.Deliveries.Transitions.get_possible_states(current_state)
+
+    possible_states =
+      TololoCore.Deliveries.Transitions.get_possible_states(current_state) |> Enum.reverse()
 
     {:ok,
      socket
