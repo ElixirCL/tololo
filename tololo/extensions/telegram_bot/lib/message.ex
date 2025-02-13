@@ -21,7 +21,7 @@ defmodule Tololo.Extensions.TelegramBot.Message do
         disable_web_page_preview: true
       })
 
-  defp escape_text(text),
+  def escape_text(text),
     do:
       text
       |> String.replace(".", "\\.")

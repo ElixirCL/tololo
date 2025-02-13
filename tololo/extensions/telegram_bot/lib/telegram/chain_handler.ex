@@ -7,6 +7,7 @@ defmodule Tololo.Extensions.TelegramBot.ChainHandler do
     TelegramBot.Auth,
     TelegramBot.ReceiveLocation,
     TelegramBot.SetToken,
+    TelegramBot.SetTokenCallback,
     Tololo.Extensions.TelegramBot.Done
   ])
 end
