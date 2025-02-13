@@ -92,6 +92,8 @@ defmodule TololoCore.Deliveries.Delivery do
       action: :update_location
 
     define :get_ready_to_pickup
+    define :get_pending_stale
+
     define :update_delivery_person
     define :done_with_distance_check
   end
@@ -111,6 +113,15 @@ defmodule TololoCore.Deliveries.Delivery do
 
     read :get_ready_to_pickup do
       filter expr(state == "Ready_To_Pickup")
+    end
+
+    read :get_pending_stale do
+      filter expr(state != "Stale_Delivery_Aborted")
+      filter expr(state != "Stale_Delivery_With_Problems")
+      filter expr(state != "Stale_Delivery_Done")
+
+      days = Application.compile_env(:tololo, :days_for_stale, 2)
+      filter expr(inserted_at < ago(^days, :day))
     end
 
     create :create do

@@ -23,6 +23,9 @@ defmodule TololoCore.Deliveries.Transitions do
       {"Ready_To_Pickup", "In_Delivery"} =>
         gettext("The order has been picked up and is on the way"),
 
+      {"Ready_To_Pickup", "Delivery_Aborted"} =>
+        gettext("The order was canceled before pick up."),
+
       # Delivery_Aborted state transitions
       {"Delivery_Aborted", "Stale_Delivery_Aborted"} =>
         gettext("The order was canceled and is now stale"),
