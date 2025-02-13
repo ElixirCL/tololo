@@ -30,10 +30,12 @@ defmodule TololoWeb.DeliveryLive.FormComponent do
             label={gettext("Address")}
           />
           <.input field={@form[:to_phone]} type="text" label={gettext("Phone")} />
+          <input hidden name="delivery[delivery_order][type]" value="text" />
           <.input
             type="map"
-            name="delivery_order"
-            fields={[{"name", gettext("Name")}]}
+            name="delivery[delivery_order]"
+            id="delivery_order"
+            fields={[{"data", gettext("Name")}]}
             value={@form[:delivery_order].value}
             label={gettext("Delivery order details")}
           />

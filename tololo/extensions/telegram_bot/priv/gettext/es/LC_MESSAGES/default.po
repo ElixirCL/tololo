@@ -44,7 +44,7 @@ msgstr "Hubo un problema. Por favor, verifica que el token sea válido.\n"
 #: lib/telegram/chains/set_token.ex:82
 #, elixir-autogen, icu-format
 msgid "delivery_info"
-msgstr "*Esta es la información del delivery:*\n- Nombre: {name}\n- Teléfono: {phone}\n- Dirección: {address}\n- Detalles: {details}\n*Bien! Ahora por favor envía tu ubicación por lo menos durante una hora.*"
+msgstr "*Esta es la información del delivery:*\n- Nombre: {name}\n- Teléfono: {phone}\n- Dirección: {address}\n- Notas: {notes}\n*Bien! Ahora por favor envía tu ubicación por lo menos durante una hora.*"
 
 #: lib/telegram/chains/set_token.ex:87
 #, elixir-autogen, icu-format

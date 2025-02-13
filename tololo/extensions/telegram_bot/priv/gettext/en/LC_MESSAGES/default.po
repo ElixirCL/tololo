@@ -44,7 +44,7 @@ msgstr ""
 #: lib/telegram/chains/set_token.ex:82
 #, elixir-autogen, icu-format
 msgid "delivery_info"
-msgstr "*This is the delivery information:*\n- Name: {name}\n- Phone: {phone}\n- Address: {address}\n- Details: {details}\n*Great! Now please send the live location for at least one hour.*"
+msgstr "*This is the delivery information:*\n- Name: {name}\n- Phone: {phone}\n- Address: {address}\n- Notes: {notes}\n*Great! Now please send the live location for at least one hour.*"
 
 #: lib/telegram/chains/set_token.ex:87
 #, elixir-autogen, icu-format

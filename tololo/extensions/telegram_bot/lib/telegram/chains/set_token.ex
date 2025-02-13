@@ -84,7 +84,7 @@ defmodule Tololo.Extensions.TelegramBot.SetToken do
           name: name || gettext("Unknown person"),
           phone: phone || gettext("No phone number provided"),
           address: to_address || gettext("No address provided"),
-          details: notes || gettext("No additional notes")
+          notes: notes || gettext("No additional notes")
         )
       )
 
