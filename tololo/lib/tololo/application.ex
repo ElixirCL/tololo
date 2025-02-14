@@ -19,26 +19,24 @@ defmodule Tololo.Application do
       |> Keyword.fetch!(:telemetry_prefix)
       |> OpentelemetryEcto.setup()
 
-    children = [
-      Tololo.Prometheus,
-      TololoWeb.Telemetry,
-      Tololo.Repo,
-      {DNSCluster, query: Application.get_env(:tololo, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: Tololo.PubSub},
-      # Start the Finch HTTP client for sending emails
-      {Finch, name: Tololo.Finch},
-      # Start a worker by calling: Tololo.Worker.start_link(arg)
-      # {Tololo.Worker, arg},
-      # Start to serve requests, typically the last entry
-      TololoWeb.Endpoint,
-      {AshAuthentication.Supervisor, [otp_app: :tololo]}
-    ]
+    extensions = Application.get_env(:tololo, :extensions, [])
 
-    # Initialize extensions
-    Enum.each(Application.get_env(:tololo, :extensions, []), fn extension_module ->
-      # calls extension_module.init()
-      apply(extension_module, :init, [])
-    end)
+    children =
+      [
+        Tololo.Prometheus,
+        TololoWeb.Telemetry,
+        Tololo.Repo,
+        {DNSCluster, query: Application.get_env(:tololo, :dns_cluster_query) || :ignore},
+        {Phoenix.PubSub, name: Tololo.PubSub},
+        # Start the Finch HTTP client for sending emails
+        {Finch, name: Tololo.Finch},
+        # Start a worker by calling: Tololo.Worker.start_link(arg)
+        # {Tololo.Worker, arg},
+        # Start to serve requests, typically the last entry
+        TololoWeb.Endpoint,
+        {AshAuthentication.Supervisor, [otp_app: :tololo]},
+        TololoCore.Deliveries.StaleCleaner
+      ] ++ extensions
 
     Tololo.GeocodingStore.init()
 

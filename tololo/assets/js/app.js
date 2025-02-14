@@ -50,7 +50,6 @@ Hooks.LeafletMap = {
 
     let currentMarker = L.marker([0, 0], {title: tooltipText, icon: currentIcon})
           .bindTooltip(tooltipText,{permanent: true, direction: 'top',offset:L.point(0, -16)})
-          .addTo(map)
 
     let has_init = false
     this.handleEvent("phx:resource_update", ({ resource }) => {
@@ -62,6 +61,7 @@ Hooks.LeafletMap = {
           .bindTooltip(resource.to_name, {permanent: false, direction: 'top',offset:L.point(0, -24)})
           .addTo(map)
 
+
         map.setView([
           (resource.from_pos[0] + resource.to_pos[0]) / 2,
           (resource.from_pos[1] + resource.to_pos[1]) / 2
@@ -70,7 +70,10 @@ Hooks.LeafletMap = {
         has_init = true
       }
 
-      currentMarker.setLatLng(resource.current_pos)
+      if (resource.current_pos[0]) {
+        currentMarker.setLatLng(resource.current_pos)
+        map.addLayer(currentMarker)
+      }
     });
   }
 }

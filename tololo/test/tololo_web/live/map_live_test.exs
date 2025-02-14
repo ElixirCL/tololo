@@ -8,7 +8,7 @@ defmodule TololoWeb.MapLiveTest do
 
   describe "map" do
     test "sending and receiving resource update events", %{conn: conn} do
-      %{id: id, public_auth_key: public_auth_key, from_name: from_name, to_name: to_name} =
+      %{id: id, public_auth_key: public_auth_key, from_name: _from_name, to_name: _to_name} =
         delivery_resource =
         TololoCore.Deliveries.Delivery.empty!(authorize?: false)
         |> TololoCore.Deliveries.Delivery.update_state!(:In_Preparation, authorize?: false)
@@ -16,16 +16,18 @@ defmodule TololoWeb.MapLiveTest do
         |> TololoCore.Deliveries.Delivery.update_state!(:In_Delivery, authorize?: false)
 
       conn = get(conn, "/map?token=#{public_auth_key}")
-      {:ok, view, html} = live(conn)
+      {:ok, view, _html} = live(conn)
 
       {new_lat, new_lng} = {1234.0, 5678.0}
+
+      topic = "delivery:updated:#{id}"
+      Phoenix.PubSub.subscribe(Tololo.PubSub, topic)
 
       TololoCore.Deliveries.Delivery.update_location!(delivery_resource, new_lat, new_lng,
         authorize?: false
       )
 
-      updated_event = "delivery:updated:#{id}"
-      assert_received(updated_event)
+      assert_received(%{topic: ^topic})
 
       assert_push_event(view, "phx:resource_update", %{
         resource: %{

@@ -6,11 +6,17 @@ defmodule Tololo.Extensions.TelegramBot.Auth do
 
   @actor TololoCore.Deliveries.Actors.private()
 
-  # extract the message value from both messages and edited messages
+  # extract the message value
+  @impl true
+  def handle(%{callback_query: message, message: nil, edited_message: nil}, context),
+    do: handle(message, context)
+
   @impl true
   def handle(%{message: message, edited_message: nil}, context), do: handle(message, context)
   @impl true
   def handle(%{edited_message: message, message: nil}, context), do: handle(message, context)
+  @impl true
+  def handle(%{callback_query: message}, context), do: handle(message, context)
   @impl true
   def handle(%{from: %{is_bot: true, id: user_id}}, context),
     do: {:done, send_denied_message(context, user_id)}

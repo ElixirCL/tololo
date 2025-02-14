@@ -50,9 +50,12 @@ config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
   extensions: [Tololo.Extensions.TelegramBot],
+  pubsub: Tololo.PubSub,
   geocoding_endpoint: "https://nominatim.openstreetmap.org/search",
   business_name: "Sushi",
-  from_location: {41.46814876341381, -87.05996366274948}
+  from_location: {-33.04534, -71.4447094},
+  # set to 0 to disable stale cleaner
+  days_for_stale: 2
 
 config :tololo,
   # appends domains from extensions to the list

@@ -21,39 +21,55 @@ defmodule Tololo.Extensions.TelegramBot.Done do
   @impl true
   def match?(_, _), do: false
 
+  defp mark_delivery_done(delivery) do
+    Logger.info("Marking #{delivery.display_id} delivery as done")
+
+    %{state: new_state} =
+      delivery
+      |> Delivery.done_with_distance_check!(nil, actor: @actor)
+
+    if new_state == "Delivery_Done" do
+      gettext("""
+      Delivery successfully marked as done.
+      """)
+    else
+      gettext("""
+      Delivery marked with problems. An admin will review it first.
+      """)
+    end
+  end
+
+  # matches when there's no active deliveries
   @impl true
-  def match?(_message, _context), do: false
+  def handle(
+        %{from: %{id: user_id}, text: _text},
+        %{user_resource: %{deliveries: []}} = context
+      ) do
+    message =
+      Message.send_message(
+        user_id,
+        gettext("""
+        You don't have any active deliveries to mark as done.
+        """)
+      )
+
+    {:done, %{context | payload: message}}
+  end
 
   @impl true
   def handle(
         %{from: %{id: user_id}, text: "#{@command} " <> token},
         %{user_resource: %{deliveries: deliveries}} = context
       ) do
-
     message_string =
-      case deliveries
-           |> Enum.find(:not_found, fn delivery -> delivery.display_id == token end) do
-        :not_found ->
+      case Enum.find(deliveries, fn delivery -> delivery.display_id == token end) do
+        nil ->
           gettext("""
           Delivery wasn't found.
           """)
 
         delivery ->
-          try do
-            delivery
-            |> TololoCore.Deliveries.Delivery.update_state!(:Delivery_Done, actor: @actor)
-
-            Logger.info("Marking #{token} delivery as done")
-
-            gettext("""
-            Delivery successfully marked as done.
-            """)
-          rescue
-            _ ->
-              gettext("""
-              There was a problem marking delivery as done
-              """)
-          end
+          mark_delivery_done(delivery)
       end
 
     message =
@@ -65,7 +81,18 @@ defmodule Tololo.Extensions.TelegramBot.Done do
     {:done, %{context | payload: message}}
   end
 
-  # matches when there's no token in the command
+  # matches when there's no token in the command and one delivery
+  @impl true
+  def handle(
+        %{from: %{id: user_id}, text: _text},
+        %{user_resource: %{deliveries: [current_delivery]}} = context
+      ) do
+    message = Message.send_message(user_id, mark_delivery_done(current_delivery))
+
+    {:done, %{context | payload: message}}
+  end
+
+  # matches when there's no token in the command and multiple deliveries
   @impl true
   def handle(
         %{from: %{id: user_id}, text: _text},

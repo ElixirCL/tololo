@@ -19,12 +19,18 @@ defmodule Tololo.Extensions.TelegramBot.Ash.User do
 
   code_interface do
     define :add_deliveries, args: [:deliveries]
+    define :get_available_users
   end
 
   actions do
     defaults [:read, :destroy, :create, :update]
 
     default_accept [:id, :status, :deliveries_id]
+
+    read :get_available_users do
+      filter expr(status == :allowed)
+    end
+
 
     update :add_deliveries do
       require_atomic? false
