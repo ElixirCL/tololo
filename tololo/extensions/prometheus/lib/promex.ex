@@ -38,9 +38,7 @@ defmodule Tololo.Extensions.Prometheus.PromEx do
       {:prom_ex, "ecto.json"},
       {:prom_ex, "phoenix_live_view.json"},
 
-      # Add your dashboard definitions here with the format: {:otp_app, "path_in_priv"}
-      # {:tololo, "/grafana_dashboards/user_metrics.json"}
-      # TODO: add dashboards for custom Tololo metrics
+      {:tololo_extension_prometheus, "/dashboards/deliveries.json"}
     ]
   end
 end
