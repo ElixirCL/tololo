@@ -8,6 +8,23 @@ let
     printf $((RANDOM % 10000)) > $out
   '');
   localtunnel-subdomain = "tololo-" + randomSuffix;
+  grafana-provisioning = pkgs.runCommand "grafana-provisioning" {
+     buildInputs = [ pkgs.jq ];
+   } ''
+     mkdir -p $out/datasources
+     cat > $out/datasources/prometheus.yml <<EOF
+     apiVersion: 1
+     datasources:
+       - name: "Prometheus Tololo"
+         type: prometheus
+         uid: "prometheus-tololo"
+         access: proxy
+         url: http://localhost:9090
+         isDefault: true
+         jsonData:
+           timeInterval: "15s"
+     EOF
+   '';
 in
 {
   devcontainer.enable = true;
@@ -63,6 +80,11 @@ in
       cp -rL .devenv/profile/share/grafana .devenv/state/grafana
       chmod 777 -R .devenv/state/grafana
     fi
+
+    mkdir -p .devenv/state/grafana/conf/provisioning
+    cp -rL ${grafana-provisioning}/datasources .devenv/state/grafana/conf/provisioning/
+    chmod 777 -R .devenv/state/grafana/conf/provisioning/
+    
 
     if [ ! -d ".devenv/state/prometheus" ]; then
       mkdir .devenv/state/prometheus
