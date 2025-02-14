@@ -31,7 +31,7 @@ config :tololo, TololoWeb.Endpoint,
 
 config :tololo, :kafka_driver, driver: Tololo.Kafka.Driver
 
-config :tololo, Tololo.Prometheus,
+config :tololo, Tololo.Extensions.Prometheus.PromEx,
   disabled: false,
   manual_metrics_start_delay: :no_delay,
   drop_metrics_groups: [],
