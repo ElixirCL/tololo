@@ -131,6 +131,8 @@ defmodule Tololo.Extensions.TelegramBot.Done do
       |> Delivery.done_with_distance_check!(nil, actor: @actor)
 
     if new_state == "Delivery_Done" do
+      :telemetry.execute([:ash, :users, :delivery, :done], %{count: 1})
+
       gettext("""
       Delivery successfully marked as done.
       """)

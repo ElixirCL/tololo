@@ -247,6 +247,12 @@ defmodule TololoCore.Deliveries.Delivery do
               comment
             )
 
+            :telemetry.execute([:ash, :deliveries, :update, :state], %{count: 1}, %{
+              action: :done_with_distance_check,
+              old_state: old_state,
+              new_state: new_state
+            })
+
             {:ok, result}
 
           _changeset, error ->

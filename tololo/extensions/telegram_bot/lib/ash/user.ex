@@ -23,12 +23,32 @@ defmodule Tololo.Extensions.TelegramBot.Ash.User do
   end
 
   actions do
-    defaults [:read, :destroy, :create, :update]
+    defaults [:read, :destroy, :create]
 
     default_accept [:id, :status, :deliveries_id]
 
     read :get_available_users do
       filter expr(status == :allowed)
+    end
+
+    update :update do
+      primary? true
+      require_atomic? false
+
+      change fn changeset, _context ->
+        Ash.Changeset.after_transaction(changeset, fn
+          _changeset, {:ok, %{status: :allowed} = result} ->
+            :telemetry.execute([:ash, :users, :approve], %{count: 1})
+
+            {:ok, result}
+
+          _changeset, {:ok, result} ->
+            {:ok, result}
+
+          _changeset, error ->
+            error
+        end)
+      end
     end
 
     update :add_deliveries do
@@ -46,6 +66,18 @@ defmodule Tololo.Extensions.TelegramBot.Ash.User do
           :deliveries_id,
           data.deliveries_id ++ arguments.deliveries
         )
+      end
+
+      change fn changeset, _context ->
+        Ash.Changeset.after_transaction(changeset, fn
+          _changeset, {:ok, result} ->
+            :telemetry.execute([:ash, :users, :delivery, :assigned], %{count: 1})
+
+            {:ok, result}
+
+          _changeset, error ->
+            error
+        end)
       end
     end
   end
