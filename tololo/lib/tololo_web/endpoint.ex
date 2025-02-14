@@ -40,7 +40,7 @@ defmodule TololoWeb.Endpoint do
 
   plug Plug.RequestId
 
-  plug PromEx.Plug, prom_ex_module: Tololo.Prometheus
+  use TololoCore.Extension, :endpoint
 
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
