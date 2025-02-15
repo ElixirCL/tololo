@@ -1,25 +1,39 @@
 = 🔭 Extensions
 
-TODO
+Tololo is based with extensibility in mind. This means it supports optional extensions
+that can be enabled or disabled. For example a Telegram Bot extension that will
+make available a Telegram chatbot, or optional Prometheus and Grafana metrics.
+
+An extension is a traditional _Elixir_ project with its own `mix.exs` file and dependencies
+that is imported in the main `mix.exs` file.
 
 == Adding an extension
 
-TODO
+To add an extension simply add it to the main `mix.exs` in the deps.
 
-== Telegram delivery chatbot frontend
+[source, elixir]
+----
+{:tololo_extension_telegram_bot,
+       path:
+         Path.join(["extensions", "telegram_bot"])
+         |> Path.expand()},
+----
 
-A chatbot made for delivery drivers that can update the current location of a specific delivery.
+== Architecture
 
-=== Available commands
+The project is structured using the following components
 
-TODO
+- Core: Code that is required for extensions and is shared across them. The application cannot function with out code inside core.
+- Extensions: Code that can be optional to be used in Main.
+- Main: This is the Phoenix Application that must import Core and optional Extensions.
 
-=== Configuration
+image::extensions.png[]
 
-Expects the following environment variables:
-- `TELEGRAM_WEBHOOK`: a full URL, such as https://your.domain.com/telegram. The URL must be suffixed with /telegram, because this is where the webhook route is configured.
-- `TELEGRAM_TOKEN`: an access token for the bot you with to use. You can obtain one https://core.telegram.org/bots/tutorial#obtain-your-bot-token[following these instructions].
+== Extensions Capabilities
 
-If you're using `devenv`, the `TELEGRAM_WEBHOOK` variable should already be configured to be used with `localtunnel`. The `TELEGRAM_TOKEN` variable still needs to be manually added to `devenv.local.nix`.
+An extension can have the following capabilities:
 
-
+- Can add new routes.
+- Can add new controllers.
+- Can add new views and liveviews.
+- Can have own gettext translationss

@@ -1,0 +1,50 @@
+= Telegram Extension
+
+This extension enables using https://telegram.org[Telegram Messenger] for Deliveries.
+
+This chatbot will communicate with the delivery person and update the map coordinates in real time
+for a specific delivery.
+
+== Installation
+
+Add the following code to the deps in `mix.exs`
+
+[source, elixir]
+----
+{:tololo_extension_telegram_bot,
+       path:
+         Path.join(["extensions", "telegram_bot"])
+         |> Path.expand()},
+----
+
+== Available commands
+
+- `/start`: If the delivery person is not registered with the store, the store admin will authorize the delivery person in order to accept new delivery orders.
+
+- `/list`: The bot will list all the available deliveries with state `Ready to Pickup` or `In Delivery`.
+
+- `/list active`:  The bot will list all the available deliveries with state `In Delivery`.
+
+- `/list queue`:  The bot will list all the available deliveries with state `Ready to Pickup`.
+
+- `/new <id>`: The delivery person accepts a delivery order and must share the location in realtime. Only will be accepted if the delivery person is within 50 meters range of the delivery starting location. The delivery must be in state `Ready to Pickup` and not be assigned to another delivery person.
+
+- `/done`: The bot will list all the `In Delivery` orders that are within the location range, assigned to the telegram user that can be ready to be `Done`.
+
+- `/done <id>`: The delivery is marked `Done`.
+
+- `/done <id> <message>`: The delivery is marked `Done` with a special comment.
+
+
+== Configuration
+
+Expects the following environment variables:
+
+- `TELEGRAM_WEBHOOK`: a full URL, such as https://example.com/telegram. The URL must be suffixed with /telegram, because this is where the webhook route is configured.
+
+- `TELEGRAM_TOKEN`: an access token for the bot you with to use. You can obtain one https://core.telegram.org/bots/tutorial#obtain-your-bot-token[following these instructions].
+
+If you're using `devenv`, the `TELEGRAM_WEBHOOK` variable should already be configured to be used with `localtunnel`. The `TELEGRAM_TOKEN` variable still needs to be manually added to `devenv.local.nix`.
+
+
+
