@@ -1,4 +1,4 @@
-= 🔭 Test plan
+= Test plan
 
 == Initialize a new delivery
 

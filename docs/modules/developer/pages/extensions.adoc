@@ -1,4 +1,4 @@
-= 🔭 Extensions
+= Extensions
 
 Tololo is based with extensibility in mind. This means it supports optional extensions
 that can be enabled or disabled. For example a Telegram Bot extension that will
@@ -36,4 +36,6 @@ An extension can have the following capabilities:
 - Can add new routes.
 - Can add new controllers.
 - Can add new views and liveviews.
-- Can have own gettext translationss
+- Can have own gettext translations.
+
+

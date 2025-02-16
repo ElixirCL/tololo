@@ -31,7 +31,6 @@ defmodule Tololo.Extensions.TelegramBot.Ash.User do
       filter expr(status == :allowed)
     end
 
-
     update :add_deliveries do
       require_atomic? false
 

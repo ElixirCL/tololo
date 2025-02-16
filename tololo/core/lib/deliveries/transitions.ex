@@ -22,7 +22,6 @@ defmodule TololoCore.Deliveries.Transitions do
       # Ready_To_Pickup state transitions
       {"Ready_To_Pickup", "In_Delivery"} =>
         gettext("The order has been picked up and is on the way"),
-
       {"Ready_To_Pickup", "Delivery_Aborted"} =>
         gettext("The order was canceled before pick up."),
 
