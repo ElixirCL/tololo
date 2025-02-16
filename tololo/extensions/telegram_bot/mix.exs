@@ -34,7 +34,8 @@ defmodule Tololo.Extensions.TelegramBot.MixProject do
       {:tololo_core,
        path:
          Path.join(["..", "..", "core"])
-         |> Path.expand()}
+         |> Path.expand()},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 end

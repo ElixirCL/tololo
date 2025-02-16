@@ -1,4 +1,4 @@
-= 🔭 Setting Up a Development Environment
+= Setting Up a Development Environment
 
 We recommend using __Devenv__ to manage system dependencies and services. After cloning the repository, the `devenv.nix` file at the root of the project creates a reproducible development environment.
 

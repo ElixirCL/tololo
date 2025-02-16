@@ -90,7 +90,6 @@ defmodule Tololo.Extensions.TelegramBot.Notifier do
         },
         state
       ) do
-
     Tololo.Extensions.TelegramBot.Ash.User.get_available_users!()
     |> Enum.each(fn %{id: user_id} ->
       Telegex.send_message(
