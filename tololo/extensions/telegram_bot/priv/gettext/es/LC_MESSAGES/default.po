@@ -28,8 +28,8 @@ msgstr "Error al intentar actualizar la ubicación."
 
 #: lib/telegram/chains/receive_location.ex:29
 #, elixir-autogen, icu-format
-msgid "No active deliveries found. Please start one by using `/new {token}`."
-msgstr "No se encontraron entregas activas. Por favor, inicia una usando `/new {token}`."
+msgid "No active deliveries found. Please start one by using `/new {token}` or stop sharing location."
+msgstr "No se encontraron entregas activas. Por favor, inicia una usando `/new {token}` o deja de compartir ubicación."
 
 #: lib/telegram/chains/auth.ex:62
 #, elixir-autogen, icu-format

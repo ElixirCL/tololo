@@ -15,7 +15,7 @@ defmodule TololoCore.Deliveries.Delivery do
   use Gettext, backend: TololoCore.Gettext
 
   alias TololoCore.Location
-  @min_done_distance 50
+  @min_done_distance Application.compile_env(:tololo, :min_done_distance_meters)
 
   graphql do
     type :delivery
