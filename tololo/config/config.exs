@@ -62,7 +62,6 @@ config :tololo,
 config :tololo,
   # appends domains from extensions to the list
   ash_domains: [
-    Tololo.Accounts,
     TololoCore.Deliveries,
     Tololo.Extensions.TelegramBot.Ash.Users
   ]
