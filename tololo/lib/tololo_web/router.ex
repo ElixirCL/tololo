@@ -50,13 +50,6 @@ defmodule TololoWeb.Router do
 
     live "/map", MapLive
 
-    live "/deliveries", DeliveryLive.Index, :index
-    live "/deliveries/new", DeliveryLive.Index, :new
-    live "/deliveries/:id/edit", DeliveryLive.Index, :edit
-
-    live "/deliveries/:id", DeliveryLive.Show, :show
-    live "/deliveries/:id/show/edit", DeliveryLive.Show, :edit
-
     # auth_routes AuthController, Tololo.Accounts.User, path: "/auth"
     # sign_out_route AuthController
 
