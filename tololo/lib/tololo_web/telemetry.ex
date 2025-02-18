@@ -73,6 +73,9 @@ defmodule TololoWeb.Telemetry do
         description:
           "The time the connection spent waiting before being checked out for the query"
       ),
+      counter("ash.deliveries.update.state.count",
+        tags: [:action, :old_state, :new_state]
+      ),
 
       # VM Metrics
       summary("vm.memory.total", unit: {:byte, :kilobyte}),

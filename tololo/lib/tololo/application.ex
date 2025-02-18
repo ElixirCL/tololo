@@ -23,7 +23,7 @@ defmodule Tololo.Application do
 
     children =
       [
-        Tololo.Prometheus,
+        # Tololo.Prometheus,
         TololoWeb.Telemetry,
         Tololo.Repo,
         {DNSCluster, query: Application.get_env(:tololo, :dns_cluster_query) || :ignore},

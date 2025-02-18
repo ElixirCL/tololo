@@ -70,7 +70,6 @@ defmodule Tololo.MixProject do
       {:bandit, "~> 1.5"},
       {:kafka_ex, "~> 0.11"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:prom_ex, "~> 1.11.0"},
       {:ex_doc, "~> 0.36", only: [:dev, :test], runtime: false},
       {:opentelemetry_exporter, "~> 1.8.0"},
       {:opentelemetry, "~> 1.5.0"},
@@ -88,6 +87,10 @@ defmodule Tololo.MixProject do
       {:tololo_extension_telegram_bot,
        path:
          Path.join(["extensions", "telegram_bot"])
+         |> Path.expand()},
+      {:tololo_extension_prometheus,
+       path:
+         Path.join(["extensions", "prometheus"])
          |> Path.expand()},
       {:tololo_core,
        path:

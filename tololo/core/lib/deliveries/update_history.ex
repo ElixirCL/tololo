@@ -22,6 +22,13 @@ defmodule TololoCore.Deliveries.UpdateHistory do
       |> Ash.Changeset.after_transaction(fn
         _changeset, {:ok, result} ->
           DeliveryStateChanges.add_to_state_history!(id, old_state, new_state, comment)
+
+          :telemetry.execute([:ash, :deliveries, :update, :state], %{count: 1}, %{
+            action: :update_state,
+            old_state: old_state,
+            new_state: new_state
+          })
+
           {:ok, result}
 
         _changeset, error ->

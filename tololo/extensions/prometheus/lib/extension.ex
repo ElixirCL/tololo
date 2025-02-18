@@ -1,8 +1,7 @@
-defmodule Tololo.Extensions.TelegramBot do
+defmodule Tololo.Extensions.Prometheus do
   @moduledoc false
-  alias Tololo.Extensions.TelegramBot
-
   use Supervisor
+  @behaviour TololoCore.Extension
 
   @impl true
   def child_spec(init_arg) do
@@ -20,37 +19,26 @@ defmodule Tololo.Extensions.TelegramBot do
 
   @impl true
   def init(_) do
-    TelegramBot.Handler.on_boot()
-
     children = [
-      {TelegramBot.Notifier, nil}
+      Tololo.Extensions.Prometheus.PromEx
     ]
 
     Supervisor.init(children, strategy: :one_for_all)
   end
 
-  @behaviour TololoCore.Extension
-
   @impl true
   def routes() do
     quote do
-      pipeline :telegram_bot_api do
-        plug :accepts, ["json"]
-      end
-
-      scope "/", Tololo.Extensions.TelegramBot do
-        pipe_through :telegram_bot_api
-        post "/telegram", Controller, :update
-      end
     end
   end
 
   @impl true
   def endpoint() do
     quote do
+      plug PromEx.Plug, prom_ex_module: Tololo.Extensions.Prometheus.PromEx
     end
   end
 
   @impl true
-  def ash_domains(), do: [Tololo.Extensions.TelegramBot.Ash.Users]
+  def ash_domains(), do: []
 end

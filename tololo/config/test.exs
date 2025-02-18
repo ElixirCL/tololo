@@ -39,7 +39,6 @@ config :phoenix_live_view,
   enable_expensive_runtime_checks: true
 
 config :tololo, :kafka_driver, driver: Tololo.Kafka.Noop
-config :tololo, Tololo.Prometheus, disabled: true
 
 config :kafka_ex,
   brokers: [

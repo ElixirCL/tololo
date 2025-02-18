@@ -17,8 +17,6 @@ defmodule TololoWeb do
   those modules here.
   """
 
-  @extensions Application.compile_env(:tololo, :extensions)
-
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
   def router do
@@ -31,7 +29,7 @@ defmodule TololoWeb do
       import Phoenix.LiveView.Router
 
       # inject routes from extension modules
-      unquote(@extensions |> Enum.map(fn extension_module -> extension_module.routes() end))
+      use TololoCore.Extension, :routes
     end
   end
 
