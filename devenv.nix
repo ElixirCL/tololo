@@ -46,6 +46,7 @@ in
     pkgs.antora
 
     pkgs.nodePackages_latest.localtunnel
+    pkgs.flyctl
 
     pkgs.zsh
     pkgs.oh-my-zsh
