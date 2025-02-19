@@ -73,7 +73,8 @@ if config_env() == :prod do
     geocoding_token: System.get_env("GEOCODING_TOKEN"),
     token_signing_secret:
       System.get_env("TOKEN_SIGNING_SECRET") ||
-        raise("Missing environment variable `TOKEN_SIGNING_SECRET`!")
+        raise("Missing environment variable `TOKEN_SIGNING_SECRET`!"),
+    req_impl: Req
 
   # ## SSL Support
   #

@@ -7,6 +7,18 @@ defmodule TololoWeb.MapLiveTest do
   defp get_element_string(string), do: ~s(.leaflet-marker-icon[title="#{string}"])
 
   describe "map" do
+    test "raises error for missing token", %{conn: conn} do
+      assert_raise TololoWeb.NotFoundError, gettext("Token not found"), fn ->
+        live_isolated(conn, TololoWeb.MapLive)
+      end
+    end
+
+    test "raises error for invalid token", %{conn: conn} do
+      assert_raise TololoWeb.NotFoundError, gettext("Delivery not found"), fn ->
+        get(conn, "/map?token=invalid_token")
+      end
+    end
+
     test "sending and receiving resource update events", %{conn: conn} do
       %{id: id, public_auth_key: public_auth_key, from_name: _from_name, to_name: _to_name} =
         delivery_resource =
