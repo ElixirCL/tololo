@@ -30,9 +30,9 @@ if config_env() == :prod do
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
-  config :opentelemetry_exporter,
-    otlp_protocol: :http_protobuf,
-    otlp_endpoint: System.fetch_env!("OTLP_ENDPOINT")
+  # config :opentelemetry_exporter,
+  #   otlp_protocol: :http_protobuf,
+  #   otlp_endpoint: System.fetch_env!("OTLP_ENDPOINT")
 
   config :tololo, Tololo.Repo,
     # ssl: true,
