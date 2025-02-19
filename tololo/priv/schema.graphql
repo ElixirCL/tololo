@@ -121,10 +121,10 @@ type InitDeliveryResult {
 input InitDeliveryInput {
   deliveryPerson: JsonString
   deliveryOrder: JsonString
-  toLatitude: Float
-  toLongitude: Float
+  toLatitude: Float!
+  toLongitude: Float!
   toName: String
-  toAddress: String
+  toAddress: String!
   toPhone: String
   toNotes: String
 }
@@ -142,10 +142,10 @@ type Delivery {
   currentLatitude: Float
   currentLongitude: Float
   fromName: String
-  toLatitude: Float
-  toLongitude: Float
+  toLatitude: Float!
+  toLongitude: Float!
   toName: String
-  toAddress: String
+  toAddress: String!
   toPhone: String
   toNotes: String
   deliveryStartedAt: Date
@@ -206,7 +206,7 @@ type RootQueryType {
 }
 
 type RootMutationType {
-  initDelivery(input: InitDeliveryInput): InitDeliveryResult!
+  initDelivery(input: InitDeliveryInput!): InitDeliveryResult!
   updateState(id: ID!, input: UpdateStateInput): UpdateStateResult!
   updateLocation(id: ID!, input: UpdateLocationInput): UpdateLocationResult!
 }

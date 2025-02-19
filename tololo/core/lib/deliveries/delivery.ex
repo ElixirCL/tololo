@@ -182,7 +182,7 @@ defmodule TololoCore.Deliveries.Delivery do
       change set_attribute(:current_longitude, 100)
       change set_attribute(:to_latitude, 100)
       change set_attribute(:to_longitude, 100)
-      change set_attribute(:to_address, "")
+      change set_attribute(:to_address, "address")
       change set_attribute(:to_phone, "")
       change set_attribute(:to_notes, "")
     end
@@ -353,11 +353,13 @@ defmodule TololoCore.Deliveries.Delivery do
     end
 
     attribute :to_latitude, :float do
+      allow_nil? false
       sensitive? true
       public? true
     end
 
     attribute :to_longitude, :float do
+      allow_nil? false
       sensitive? true
       public? true
     end
@@ -367,6 +369,7 @@ defmodule TololoCore.Deliveries.Delivery do
     end
 
     attribute :to_address, :string do
+      allow_nil? false
       sensitive? true
       public? true
     end
