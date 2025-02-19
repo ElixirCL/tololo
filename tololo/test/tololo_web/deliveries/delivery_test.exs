@@ -257,5 +257,25 @@ defmodule TololoWeb.DeliveryTest do
       assert id != nil
       assert new_state != nil and new_state != old_state
     end
+
+    test "request without headers", %{conn: conn} do
+      %{
+        id: id,
+        private_auth_key: private_auth_key,
+        state: old_state
+      } =
+        TololoCore.Deliveries.Delivery.empty!(authorize?: false)
+
+      variables = %{id: id, input: %{state: "In_Preparation"}}
+
+      conn =
+        conn
+        |> post(
+          ~p"/gql",
+          %{query: @update_state_query, variables: variables}
+        )
+
+      assert response(conn, 200) =~ "not_found"
+    end
   end
 end

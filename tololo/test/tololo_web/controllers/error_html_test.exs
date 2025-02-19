@@ -8,6 +8,12 @@ defmodule TololoWeb.ErrorHTMLTest do
     assert render_to_string(TololoWeb.ErrorHTML, "404", "html", []) == "Not Found"
   end
 
+  test "renders custom error pages" do
+    assert render_to_string(TololoWeb.ErrorHTML, "404", "html",
+             reason: %TololoWeb.NotFoundError{message: "error message"}
+           ) == "error message"
+  end
+
   test "renders 500.html" do
     assert render_to_string(TololoWeb.ErrorHTML, "500", "html", []) == "Internal Server Error"
   end
