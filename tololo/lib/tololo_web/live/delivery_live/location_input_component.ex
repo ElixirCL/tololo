@@ -23,7 +23,6 @@ defmodule TololoWeb.DeliveryLive.LocationInputComponent do
       />
       <input hidden type="text" name={@lat_field.name} id={@lat_field.id} value={@lat_field.value} />
       <input hidden type="text" name={@lng_field.name} id={@lng_field.id} value={@lng_field.value} />
-      <.error :for={msg <- @lat_field.errors ++ @lng_field.errors}>{msg}</.error>
     </div>
     """
   end
