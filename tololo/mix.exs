@@ -68,7 +68,6 @@ defmodule Tololo.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      # {:kafka_ex, "~> 0.11"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.36", only: [:dev, :test], runtime: false},
       {:opentelemetry_exporter, "~> 1.8.0"},
@@ -91,6 +90,10 @@ defmodule Tololo.MixProject do
       {:tololo_extension_prometheus,
        path:
          Path.join(["extensions", "prometheus"])
+         |> Path.expand()},
+      {:tololo_extension_kafka,
+       path:
+         Path.join(["extensions", "kafka"])
          |> Path.expand()},
       {:tololo_core,
        path:
