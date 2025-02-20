@@ -29,7 +29,8 @@ config :tololo, TololoWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:tololo, ~w(--watch)]}
   ]
 
-config :tololo, :kafka_driver, driver: Tololo.Kafka.Driver
+config :tololo,
+  extensions: read_config(:tololo)[:extensions] ++ [Tololo.Extensions.Kafka]
 
 config :tololo, Tololo.Extensions.Prometheus.PromEx,
   disabled: false,

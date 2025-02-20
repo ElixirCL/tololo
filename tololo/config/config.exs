@@ -49,7 +49,10 @@ config :spark,
 config :tololo,
   ecto_repos: [Tololo.Repo],
   generators: [timestamp_type: :utc_datetime],
-  extensions: [Tololo.Extensions.TelegramBot, Tololo.Extensions.Prometheus],
+  extensions: [
+    Tololo.Extensions.TelegramBot,
+    Tololo.Extensions.Prometheus,
+  ],
   pubsub: Tololo.PubSub,
   geocoding_endpoint: "https://nominatim.openstreetmap.org/search",
   business_name: "Sushi",
@@ -57,7 +60,6 @@ config :tololo,
   # set to 0 to disable stale cleaner
   days_for_stale: 2,
   min_done_distance_meters: 50
-
 
 config :tololo,
   # appends domains from extensions to the list
