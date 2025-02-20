@@ -10,7 +10,7 @@ defmodule TololoCore.Deliveries.Delivery do
     extensions: [AshGraphql.Resource, AshAdmin.Resource],
     data_layer: AshPostgres.DataLayer,
     authorizers: [Ash.Policy.Authorizer],
-    notifiers: [Ash.Notifier.PubSub]
+    notifiers: [Ash.Notifier.PubSub, TololoCore.Kafka.AshNotifier]
 
   use Gettext, backend: TololoCore.Gettext
 
