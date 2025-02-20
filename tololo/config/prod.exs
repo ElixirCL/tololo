@@ -16,8 +16,6 @@ config :swoosh, local: false
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :tololo, :kafka_driver, driver: Tololo.Kafka.Noop
-
 config :kafka_ex,
   brokers: [
     {"localhost", 9092},

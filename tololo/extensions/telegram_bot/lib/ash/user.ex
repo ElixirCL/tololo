@@ -7,7 +7,8 @@ defmodule Tololo.Extensions.TelegramBot.Ash.User do
     otp_app: :tololo,
     domain: Tololo.Extensions.TelegramBot.Ash.Users,
     extensions: [AshAdmin.Resource],
-    data_layer: AshPostgres.DataLayer
+    data_layer: AshPostgres.DataLayer,
+    notifiers: [Tololo.Extensions.TelegramBot.Kafka.AshNotifier]
 
   admin do
   end
@@ -106,5 +107,18 @@ defmodule Tololo.Extensions.TelegramBot.Ash.User do
     end
 
     timestamps()
+  end
+end
+
+defimpl Jason.Encoder, for: TololoCore.Deliveries.Delivery do
+  def encode(value, opts) do
+    Jason.Encode.map(
+      Map.take(value, [
+        :id,
+        :status,
+        :deliveries_id
+      ]),
+      opts
+    )
   end
 end

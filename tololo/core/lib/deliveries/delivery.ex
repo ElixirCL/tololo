@@ -10,7 +10,7 @@ defmodule TololoCore.Deliveries.Delivery do
     extensions: [AshGraphql.Resource, AshAdmin.Resource],
     data_layer: AshPostgres.DataLayer,
     authorizers: [Ash.Policy.Authorizer],
-    notifiers: [Ash.Notifier.PubSub]
+    notifiers: [Ash.Notifier.PubSub, TololoCore.Kafka.AshNotifier]
 
   use Gettext, backend: TololoCore.Gettext
 
@@ -398,5 +398,31 @@ defmodule TololoCore.Deliveries.Delivery do
     has_many :state_history, TololoCore.Deliveries.DeliveryStateChanges do
       public? true
     end
+  end
+end
+
+defimpl Jason.Encoder, for: TololoCore.Deliveries.Delivery do
+  def encode(value, opts) do
+    Jason.Encode.map(
+      Map.take(value, [
+        :id,
+        :display_id,
+        :delivery_person,
+        :delivery_order,
+        :from_name,
+        :to_name,
+        :from_latitude,
+        :from_longitude,
+        :current_latitude,
+        :current_longitude,
+        :to_latitude,
+        :to_longitude,
+        :to_address,
+        :to_phone,
+        :to_notes,
+        :state
+      ]),
+      opts
+    )
   end
 end
