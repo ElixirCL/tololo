@@ -3,6 +3,7 @@ defmodule TololoCore.Kafka do
   A kafka interface to send messages.
   """
 
+  # env put by Kafka extension
   defp driver, do: Application.get_env(:tololo, :kafka_driver, TololoCore.Kafka.Noop)
 
   @doc """
