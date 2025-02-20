@@ -400,3 +400,29 @@ defmodule TololoCore.Deliveries.Delivery do
     end
   end
 end
+
+defimpl Jason.Encoder, for: TololoCore.Deliveries.Delivery do
+  def encode(value, opts) do
+    Jason.Encode.map(
+      Map.take(value, [
+        :id,
+        :display_id,
+        :delivery_person,
+        :delivery_order,
+        :from_name,
+        :to_name,
+        :from_latitude,
+        :from_longitude,
+        :current_latitude,
+        :current_longitude,
+        :to_latitude,
+        :to_longitude,
+        :to_address,
+        :to_phone,
+        :to_notes,
+        :state
+      ]),
+      opts
+    )
+  end
+end
