@@ -76,6 +76,7 @@ defmodule Tololo.MixProject do
       {:opentelemetry_ecto, "~> 1.2.0"},
       {:opentelemetry_phoenix, "~> 2.0.0"},
       {:opentelemetry_bandit, "~> 0.2.0"},
+      {:opentelemetry_ash, "~> 0.1.0"},
       {:picosat_elixir, "~> 0.2.0"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:ash_admin, "~> 0.12.6"},

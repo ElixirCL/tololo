@@ -16,6 +16,11 @@ config :ash,
 
 # custom_types: [ticket_status: Tololo.Support.Ticket.Types.Status]
 
+config :ash, :tracer, [OpentelemetryAsh]
+
+config :opentelemetry_ash,
+  trace_types: [:custom, :action, :flow]
+
 config :spark,
   formatter: [
     remove_parens?: true,
@@ -51,7 +56,7 @@ config :tololo,
   generators: [timestamp_type: :utc_datetime],
   extensions: [
     Tololo.Extensions.TelegramBot,
-    Tololo.Extensions.Prometheus,
+    Tololo.Extensions.Prometheus
   ],
   pubsub: Tololo.PubSub,
   geocoding_endpoint: "https://nominatim.openstreetmap.org/search",
