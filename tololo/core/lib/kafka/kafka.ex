@@ -10,6 +10,8 @@ defmodule TololoCore.Kafka do
   Produces a message to Kafka. Should be implemented by drivers.
   """
 
+  @callback produce(String.t(), String.t() | map(), term()) :: :ok | {:error, term()}
+
   @spec produce(String.t(), String.t() | map(), term()) :: :ok | {:error, term()}
   def produce(topic, message, opts \\ [])
 

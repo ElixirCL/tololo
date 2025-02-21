@@ -110,7 +110,7 @@ defmodule Tololo.Extensions.TelegramBot.Ash.User do
   end
 end
 
-defimpl Jason.Encoder, for: TololoCore.Deliveries.Delivery do
+defimpl Jason.Encoder, for: Tololo.Extensions.TelegramBot.Ash.User do
   def encode(value, opts) do
     Jason.Encode.map(
       Map.take(value, [

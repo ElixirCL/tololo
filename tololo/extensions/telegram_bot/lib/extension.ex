@@ -1,6 +1,7 @@
 defmodule Tololo.Extensions.TelegramBot do
   @moduledoc false
   alias Tololo.Extensions.TelegramBot
+  use TololoCore.Extension
 
   use Supervisor
 
@@ -29,8 +30,6 @@ defmodule Tololo.Extensions.TelegramBot do
     Supervisor.init(children, strategy: :one_for_all)
   end
 
-  @behaviour TololoCore.Extension
-
   @impl true
   def routes() do
     quote do
@@ -42,12 +41,6 @@ defmodule Tololo.Extensions.TelegramBot do
         pipe_through :telegram_bot_api
         post "/telegram", Controller, :update
       end
-    end
-  end
-
-  @impl true
-  def endpoint() do
-    quote do
     end
   end
 
