@@ -1,7 +1,7 @@
 defmodule Tololo.Extensions.Kafka do
   @moduledoc false
   use Supervisor
-  @behaviour TololoCore.Extension
+  use TololoCore.Extension
 
   @impl true
   def child_spec(init_arg) do
@@ -27,19 +27,4 @@ defmodule Tololo.Extensions.Kafka do
 
     Supervisor.init(children, strategy: :one_for_all)
   end
-
-  @impl true
-  def routes() do
-    quote do
-    end
-  end
-
-  @impl true
-  def endpoint() do
-    quote do
-    end
-  end
-
-  @impl true
-  def ash_domains(), do: []
 end

@@ -1,7 +1,7 @@
 defmodule Tololo.Extensions.Prometheus do
   @moduledoc false
   use Supervisor
-  @behaviour TololoCore.Extension
+  use TololoCore.Extension
 
   @impl true
   def child_spec(init_arg) do
@@ -27,18 +27,9 @@ defmodule Tololo.Extensions.Prometheus do
   end
 
   @impl true
-  def routes() do
-    quote do
-    end
-  end
-
-  @impl true
   def endpoint() do
     quote do
       plug PromEx.Plug, prom_ex_module: Tololo.Extensions.Prometheus.PromEx
     end
   end
-
-  @impl true
-  def ash_domains(), do: []
 end
