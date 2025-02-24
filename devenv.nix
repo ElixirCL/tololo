@@ -47,6 +47,7 @@ in
     pkgs.prometheus
     pkgs.tempo
     pkgs.grafana-loki
+    pkgs.vector
 
     pkgs.nodePackages_latest.localtunnel
     pkgs.flyctl
