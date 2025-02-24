@@ -1,6 +1,7 @@
 defmodule TololoWeb.AuthController do
   use TololoWeb, :controller
   use AshAuthentication.Phoenix.Controller
+  use Gettext, backend: Tololo.Gettext
 
   def success(conn, activity, user, _token) do
     return_to = get_session(conn, :return_to) || ~p"/"

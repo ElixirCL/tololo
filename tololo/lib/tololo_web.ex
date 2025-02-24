@@ -121,3 +121,7 @@ end
 defmodule TololoWeb.NotFoundError do
   defexception [:message, plug_status: 404]
 end
+
+defmodule TololoWeb.ForbiddenError do
+  defexception [:message, plug_status: 403]
+end

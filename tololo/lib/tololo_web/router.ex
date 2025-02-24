@@ -77,9 +77,7 @@ defmodule TololoWeb.Router do
     auth_routes AuthController, Tololo.Accounts.User, path: "/auth"
     sign_out_route AuthController
 
-    # Remove these if you'd like to use your own authentication views
-    sign_in_route register_path: "/register",
-                  reset_path: "/reset",
+    sign_in_route reset_path: "/reset",
                   auth_routes_prefix: "/auth",
                   on_mount: [{TololoWeb.LiveUserAuth, :live_no_user}],
                   overrides: [
@@ -87,9 +85,15 @@ defmodule TololoWeb.Router do
                     AshAuthentication.Phoenix.Overrides.Default
                   ]
 
-    # Remove this if you do not want to use the reset password feature
-    reset_route auth_routes_prefix: "/auth",
-                overrides: [TololoWeb.AuthOverrides, AshAuthentication.Phoenix.Overrides.Default]
+    ash_authentication_live_session :authentication_required,
+      on_mount: {TololoWeb.LiveUserAuth, :live_user_admin_required} do
+      live "/deliveries", DeliveryLive.Index, :index
+      live "/deliveries/new", DeliveryLive.Index, :new
+      live "/deliveries/:id/edit", DeliveryLive.Index, :edit
+
+      live "/deliveries/:id", DeliveryLive.Show, :show
+      live "/deliveries/:id/show/edit", DeliveryLive.Show, :edit
+    end
   end
 
   scope "/" do
@@ -97,13 +101,6 @@ defmodule TololoWeb.Router do
     pipe_through :admin
 
     ash_admin("/admin")
-
-    live "/deliveries", TololoWeb.DeliveryLive.Index, :index
-    live "/deliveries/new", TololoWeb.DeliveryLive.Index, :new
-    live "/deliveries/:id/edit", TololoWeb.DeliveryLive.Index, :edit
-
-    live "/deliveries/:id", TololoWeb.DeliveryLive.Show, :show
-    live "/deliveries/:id/show/edit", TololoWeb.DeliveryLive.Show, :edit
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

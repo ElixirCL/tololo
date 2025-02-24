@@ -28,12 +28,4 @@ defmodule Tololo.Accounts.User.Senders.SendMagicLinkEmail do
     |> html_body(body(token: token, email: email))
     |> Mailer.deliver!()
   end
-
-  defp body(params) do
-    """
-    Hello, #{params[:email]}! Click this link to sign in:
-
-    #{url(~p"/auth/user/magic_link/?token=#{params[:token]}")}
-    """
-  end
 end

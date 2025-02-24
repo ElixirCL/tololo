@@ -268,32 +268,37 @@ msgstr "Orden del delivery"
 msgid "Found address will show up here"
 msgstr "La dirección encontrada va a aparecer aqui"
 
-#: lib/tololo_web/controllers/auth_controller.ex:39
+#: lib/tololo_web/controllers/auth_controller.ex:40
 #, elixir-autogen, icu-format
 msgid "Incorrect email or password"
 msgstr "Email o contraseña incorrecta"
 
-#: lib/tololo_web/controllers/auth_controller.ex:12
+#: lib/tololo_web/controllers/auth_controller.ex:13
 #, elixir-autogen, icu-format
 msgid "You are now signed in"
 msgstr "Sesión iniciada"
 
-#: lib/tololo_web/controllers/auth_controller.ex:52
+#: lib/tololo_web/controllers/auth_controller.ex:53
 #, elixir-autogen, icu-format
 msgid "You are now signed out"
 msgstr "Sesión cerrada"
 
-#: lib/tololo_web/controllers/auth_controller.ex:33
+#: lib/tololo_web/controllers/auth_controller.ex:34
 #, elixir-autogen, icu-format
 msgid "You have already signed in another way, but have not confirmed your account.\nYou can confirm your account using the link we sent to you, or by resetting your password.\n"
 msgstr "Ya has iniciado sesión de otra manera, pero no has confirmado tu cuenta.\nPuedes confirmarla usando el enlace que te enviamos o restableciendo tu contraseña.\n"
 
-#: lib/tololo_web/controllers/auth_controller.ex:10
+#: lib/tololo_web/controllers/auth_controller.ex:11
 #, elixir-autogen, icu-format
 msgid "Your email address has now been confirmed"
 msgstr "Tu dirección de email ha sido confirmada"
 
-#: lib/tololo_web/controllers/auth_controller.ex:11
+#: lib/tololo_web/controllers/auth_controller.ex:12
 #, elixir-autogen, icu-format
 msgid "Your password has successfully been reset"
 msgstr "Tu contraseña se ha reestablecido"
+
+#: lib/tololo_web/live_user_auth.ex:26
+#, elixir-autogen, icu-format
+msgid "You don't have access to this page"
+msgstr "No tienes acceso a esta página"

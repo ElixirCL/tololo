@@ -268,32 +268,37 @@ msgstr ""
 msgid "Found address will show up here"
 msgstr ""
 
-#: lib/tololo_web/controllers/auth_controller.ex:39
+#: lib/tololo_web/controllers/auth_controller.ex:40
 #, elixir-autogen, icu-format
 msgid "Incorrect email or password"
 msgstr ""
 
-#: lib/tololo_web/controllers/auth_controller.ex:12
+#: lib/tololo_web/controllers/auth_controller.ex:13
 #, elixir-autogen, icu-format
 msgid "You are now signed in"
 msgstr ""
 
-#: lib/tololo_web/controllers/auth_controller.ex:52
+#: lib/tololo_web/controllers/auth_controller.ex:53
 #, elixir-autogen, icu-format
 msgid "You are now signed out"
 msgstr ""
 
-#: lib/tololo_web/controllers/auth_controller.ex:33
+#: lib/tololo_web/controllers/auth_controller.ex:34
 #, elixir-autogen, icu-format
 msgid "You have already signed in another way, but have not confirmed your account.\nYou can confirm your account using the link we sent to you, or by resetting your password.\n"
 msgstr ""
 
-#: lib/tololo_web/controllers/auth_controller.ex:10
+#: lib/tololo_web/controllers/auth_controller.ex:11
 #, elixir-autogen, icu-format
 msgid "Your email address has now been confirmed"
 msgstr ""
 
-#: lib/tololo_web/controllers/auth_controller.ex:11
+#: lib/tololo_web/controllers/auth_controller.ex:12
 #, elixir-autogen, icu-format
 msgid "Your password has successfully been reset"
+msgstr ""
+
+#: lib/tololo_web/live_user_auth.ex:26
+#, elixir-autogen, icu-format
+msgid "You don't have access to this page"
 msgstr ""

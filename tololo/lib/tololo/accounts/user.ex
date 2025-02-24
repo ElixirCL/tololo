@@ -30,7 +30,8 @@ defmodule Tololo.Accounts.User do
   end
 
   actions do
-    defaults [:read]
+    defaults [:read, :update]
+    default_accept [:email, :admin?]
 
     read :get_by_subject do
       description "Get a user by the subject claim in a JWT"
@@ -94,6 +95,11 @@ defmodule Tololo.Accounts.User do
 
     attribute :email, :ci_string do
       allow_nil? false
+      public? true
+    end
+
+    attribute :admin?, :boolean do
+      default false
       public? true
     end
   end

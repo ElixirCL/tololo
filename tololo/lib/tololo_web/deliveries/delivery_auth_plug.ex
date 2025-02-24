@@ -10,9 +10,9 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
   def init(opts), do: opts
 
   @impl true
-  def call(%{assigns: %{user: user}} = conn, _opts) when user != nil do
+  def call(%{assigns: %{current_user: %{admin?: true}}} = conn, _opts) do
     conn
-    |> assign(:actor, TololoCore.Deliveries.Actors.admin())
+    |> assign(:actor, generate_actor(:admin))
     |> Helpers.set_actor(:actor)
   end
 
