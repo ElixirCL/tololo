@@ -22,7 +22,7 @@ defmodule TololoWeb.PageControllerTest do
   test "GET /admin", %{conn: conn} do
     conn =
       conn
-      |>auth_conn()
+      |> auth_conn()
       |> get(~p"/admin")
 
     assert response(conn, 200)

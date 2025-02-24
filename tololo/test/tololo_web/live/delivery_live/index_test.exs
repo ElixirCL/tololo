@@ -36,6 +36,7 @@ defmodule TololoWeb.DeliveryLive.IndexTest do
            |> element("#deliveries-#{delivery.id} a", "Delete")
            |> render_click()
 
-    assert {:error, _} = Ash.get(Delivery, delivery.id, actor: TololoCore.Deliveries.Actors.admin())
+    assert {:error, _} =
+             Ash.get(Delivery, delivery.id, actor: TololoCore.Deliveries.Actors.admin())
   end
 end

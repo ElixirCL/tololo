@@ -30,7 +30,8 @@ config :tololo, TololoWeb.Endpoint,
   ]
 
 config :tololo,
-  extensions: read_config(:tololo)[:extensions] ++ [Tololo.Extensions.Kafka]
+  extensions: read_config(:tololo)[:extensions] ++ [Tololo.Extensions.Kafka],
+  token_signing_secret: "U635EKPRXu35QYRpGZEZVN93UasSAl3t"
 
 config :tololo, Tololo.Extensions.Prometheus.PromEx,
   disabled: false,

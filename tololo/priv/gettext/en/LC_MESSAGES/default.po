@@ -73,52 +73,44 @@ msgid "close"
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:30
-#: lib/tololo_web/live/delivery_live/form_component.ex:154
 #, elixir-autogen, icu-format
 msgid "Address"
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:23
-#: lib/tololo_web/live/delivery_live/form_component.ex:36
-#: lib/tololo_web/live/delivery_live/form_component.ex:147
+#: lib/tololo_web/live/delivery_live/form_component.ex:38
 #, elixir-autogen, icu-format
 msgid "Name"
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:40
-#: lib/tololo_web/live/delivery_live/form_component.ex:165
+#: lib/tololo_web/live/delivery_live/form_component.ex:42
 #, elixir-autogen, icu-format
 msgid "Notes"
 msgstr ""
 
 #: lib/tololo_web/live/delivery_live/form_component.ex:32
-#: lib/tololo_web/live/delivery_live/form_component.ex:156
 #, elixir-autogen, icu-format
 msgid "Phone"
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:55
-#: lib/tololo_web/live/delivery_live/form_component.ex:180
+#: lib/tololo_web/live/delivery_live/form_component.ex:57
 #, elixir-autogen, icu-format
 msgid "Save delivery"
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:52
-#: lib/tololo_web/live/delivery_live/form_component.ex:177
+#: lib/tololo_web/live/delivery_live/form_component.ex:54
 #, elixir-autogen, icu-format
 msgid "Saving..."
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:46
-#: lib/tololo_web/live/delivery_live/form_component.ex:171
+#: lib/tololo_web/live/delivery_live/form_component.ex:48
 #: lib/tololo_web/live/delivery_live/index.ex:25
 #: lib/tololo_web/live/delivery_live/show.ex:23
 #, elixir-autogen, icu-format
 msgid "State"
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:54
-#: lib/tololo_web/live/delivery_live/form_component.ex:179
+#: lib/tololo_web/live/delivery_live/form_component.ex:56
 #, elixir-autogen, icu-format
 msgid "Update delivery"
 msgstr ""
@@ -266,12 +258,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:163
-#, elixir-autogen, icu-format
-msgid "Order details"
-msgstr ""
-
-#: lib/tololo_web/live/delivery_live/form_component.ex:38
+#: lib/tololo_web/live/delivery_live/form_component.ex:40
 #, elixir-autogen, icu-format, fuzzy
 msgid "Delivery order details"
 msgstr ""
@@ -281,7 +268,32 @@ msgstr ""
 msgid "Found address will show up here"
 msgstr ""
 
-#: lib/tololo_web/live/delivery_live/form_component.ex:161
+#: lib/tololo_web/controllers/auth_controller.ex:39
 #, elixir-autogen, icu-format
-msgid "Description"
+msgid "Incorrect email or password"
+msgstr ""
+
+#: lib/tololo_web/controllers/auth_controller.ex:12
+#, elixir-autogen, icu-format
+msgid "You are now signed in"
+msgstr ""
+
+#: lib/tololo_web/controllers/auth_controller.ex:52
+#, elixir-autogen, icu-format
+msgid "You are now signed out"
+msgstr ""
+
+#: lib/tololo_web/controllers/auth_controller.ex:33
+#, elixir-autogen, icu-format
+msgid "You have already signed in another way, but have not confirmed your account.\nYou can confirm your account using the link we sent to you, or by resetting your password.\n"
+msgstr ""
+
+#: lib/tololo_web/controllers/auth_controller.ex:10
+#, elixir-autogen, icu-format
+msgid "Your email address has now been confirmed"
+msgstr ""
+
+#: lib/tololo_web/controllers/auth_controller.ex:11
+#, elixir-autogen, icu-format
+msgid "Your password has successfully been reset"
 msgstr ""

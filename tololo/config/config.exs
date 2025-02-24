@@ -64,13 +64,11 @@ config :tololo,
   from_location: {-33.04534, -71.4447094},
   # set to 0 to disable stale cleaner
   days_for_stale: 2,
-  min_done_distance_meters: 50
-
-config :tololo,
-  # appends domains from extensions to the list
+  min_done_distance_meters: 50,
   ash_domains: [
     TololoCore.Deliveries,
-    Tololo.Extensions.TelegramBot.Ash.Users
+    Tololo.Extensions.TelegramBot.Ash.Users,
+    Tololo.Accounts
   ]
 
 # Configures the endpoint
