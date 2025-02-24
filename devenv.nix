@@ -40,10 +40,14 @@ in
     pkgs.less
     pkgs.git
     pkgs.gnumake
-    pkgs.grafana
-    pkgs.prometheus
     pkgs.gnumake
     pkgs.antora
+
+    pkgs.grafana
+    pkgs.prometheus
+    pkgs.tempo
+    pkgs.grafana-loki
+    pkgs.vector
 
     pkgs.nodePackages_latest.localtunnel
     pkgs.flyctl
@@ -90,6 +94,19 @@ in
     if [ ! -d ".devenv/state/prometheus" ]; then
       mkdir .devenv/state/prometheus
     fi
+
+    if [ ! -d ".devenv/state/tempo" ]; then
+      mkdir .devenv/state/tempo
+      mkdir .devenv/state/tempo/local
+      mkdir .devenv/state/tempo/wal
+    fi
+
+    if [ ! -d ".devenv/state/loki" ]; then
+      mkdir .devenv/state/loki
+      mkdir .devenv/state/loki/chunks
+    fi
+
+    
   '';
 
   enterTest = ''
@@ -119,6 +136,8 @@ in
     grafana.exec = "grafana server --homepath .devenv/state/grafana";
     prometheus.exec = "prometheus --storage.tsdb.path .devenv/state/prometheus/data";
     localtunnel.exec = "lt -p 4000 -s ${localtunnel-subdomain}";
+    tempo.exec = "tempo -config.file tempo_config.yml";
+    loki.exec = "loki -config.file loki_config.yml";
   };
 
   services.kafka.enable = true;

@@ -18,7 +18,7 @@ mix.docs.publish mdp:
 	@cd tololo && mix hex.publish
 
 mix.phoenix.server mix.server mps:
-	@cd tololo && iex -S mix phx.server
+	@cd tololo && iex -S mix phx.server | vector --config ../vector.yaml
 
 mix.credo:
 	@cd tololo && mix credo
