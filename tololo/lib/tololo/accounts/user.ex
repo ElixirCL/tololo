@@ -1,4 +1,8 @@
 defmodule Tololo.Accounts.User do
+  @moduledoc """
+  User resource for authentication and authorization.
+  """
+
   use Ash.Resource,
     otp_app: :tololo,
     domain: Tololo.Accounts,

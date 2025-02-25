@@ -14,7 +14,6 @@ defmodule TololoWeb.LiveUserAuth do
         %{assigns: %{current_user: %{admin?: true}}} = socket
       ) do
     {:cont, socket}
-    # {:cont, assign(socket, :current_user, nil)}
   end
 
   def on_mount(

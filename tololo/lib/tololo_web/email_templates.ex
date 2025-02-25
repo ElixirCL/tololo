@@ -1,4 +1,7 @@
 defmodule TololoWeb.EmailTemplates do
+  @moduledoc """
+  HTML templates for emails.
+  """
   use TololoWeb, :html
 
   def send_magic_link(assigns) do

@@ -1,5 +1,6 @@
 defmodule TololoWeb.AuthOverrides do
   use AshAuthentication.Phoenix.Overrides
+  @moduledoc false
 
   # configure your UI overrides here
 

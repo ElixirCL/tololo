@@ -1,4 +1,7 @@
 defmodule Tololo.Accounts.Token do
+  @moduledoc """
+  Temporary token for user accounts.
+  """
   use Ash.Resource,
     otp_app: :tololo,
     domain: Tololo.Accounts,
