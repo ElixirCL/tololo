@@ -1,4 +1,4 @@
-=== Use Grafana + Prometheus
+=== Use Observability and Telemetry
 
 - Status: accepted
 - Date: 2025-01-07
@@ -14,16 +14,22 @@ A monitoring system that stores and visualizes system metrics will be needed to 
 
 ==== Decision Outcome
 
-Chosen option: "`Grafana + Prometheus`", because
+The following technologies will be used.
 
-- Provides full control over metrics and monitoring infrastructure.
-- Grafana integrates well with Prometheus.
-- Elixir supports Prometheus through libraries such as https://github.com/deadtrickster/prometheus.ex[prometheus.ex].
+- https://prometheus.io/[Prometheus] for event timeseries
+- https://grafana.com/[Grafana] for dashboard and alerts.
+- https://opentelemetry.io/[Open Telemetry] for service resource monitoring.
+- https://grafana.com/oss/tempo/[Tempo] for tracing backend.
+- https://grafana.com/oss/loki/[Loki] for log aggregation.
+- https://vector.dev/[Vector.dev] for log distribution.
+- https://kafka.apache.org/[Kafka] for event pipelines.
 
 ==== Consequences
 
 - Grafana will be used to build and maintain dashboards.
 - Infrastructure might require additional resources for deploying Prometheus and Grafana instances.
+- Grafana, Prometheus, Tempo and Kafka will be optional extensions.
+- Loki, Vector and Open Telemetry will be part of the core.
 
 ==== Links
 

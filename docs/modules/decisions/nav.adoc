@@ -7,3 +7,4 @@
 * xref:use-tbd-and-cc.adoc[]
 * xref:use-bruno.adoc[]
 * xref:use-telegram.adoc[]
+* xref:use-grafana-prometheus.adoc[]
