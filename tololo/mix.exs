@@ -4,7 +4,7 @@ defmodule Tololo.MixProject do
   def project do
     [
       app: :tololo,
-      version: "1.0.29",
+      version: "1.0.30",
       elixir: "~> 1.18",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
