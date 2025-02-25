@@ -1,19 +1,19 @@
-=== Use golden signals
+= Use golden signals
 
 - Status: accepted
 - Date: 2025-01-09
 
-==== Context and Problem Statement
+== Context and Problem Statement
 
 To ensure the reliability and performance of the application, we need a monitoring strategy that provides actionable insights into system health and user experience. A structured approach to identifying and addressing performance bottlenecks or failures is essential.
 
 Golden signals (latency, traffic, errors, and saturation) are widely recognized as the key indicators for monitoring distributed systems and identifying potential issues before they impact users.
 
-==== Considered Options
+== Considered Options
 
 - https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals[Golden Signals] (latency, traffic, errors, saturation)
 
-==== Decision Outcome
+== Decision Outcome
 
 Chosen option: "`Golden Signals`", because
 
@@ -26,7 +26,7 @@ Chosen option: "`Golden Signals`", because
 - They allow for proactive identification of issues and facilitate targeted alerting and troubleshooting.
 
 
-==== Consequences
+== Consequences
 
 Monitoring will focus on the following four signals:
 
