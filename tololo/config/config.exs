@@ -69,7 +69,9 @@ config :tololo,
     TololoCore.Deliveries,
     Tololo.Extensions.TelegramBot.Ash.Users,
     Tololo.Accounts
-  ]
+  ],
+  from_email: {"noreply", "noreply@example.com"},
+  magic_link_subject: "Your login link"
 
 # Configures the endpoint
 config :tololo, TololoWeb.Endpoint,

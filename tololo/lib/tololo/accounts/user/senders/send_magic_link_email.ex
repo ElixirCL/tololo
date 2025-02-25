@@ -2,6 +2,8 @@ defmodule Tololo.Accounts.User.Senders.SendMagicLinkEmail do
   @moduledoc """
   Sends a magic link email
   """
+  @sender_email Application.compile_env(:tololo, :from_email)
+  @subject Application.compile_env(:tololo, :magic_link_subject)
 
   use AshAuthentication.Sender
   use TololoWeb, :verified_routes
@@ -21,11 +23,10 @@ defmodule Tololo.Accounts.User.Senders.SendMagicLinkEmail do
       end
 
     new()
-    # TODO: replace with your email
-    |> from({"noreply", "noreply@example.com"})
+    |> from(@sender_email)
     |> to(to_string(email))
-    |> subject("Your login link")
-    |> html_body(body(token: token, email: email))
+    |> subject(@subject)
+    |> html_body(TololoWeb.EmailTemplates.send_magic_link(%{token: token, email: email}))
     |> Mailer.deliver!()
   end
 end
