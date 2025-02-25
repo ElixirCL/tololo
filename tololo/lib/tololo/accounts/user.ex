@@ -30,7 +30,7 @@ defmodule Tololo.Accounts.User do
   end
 
   actions do
-    defaults [:read, :update]
+    defaults [:read, :update, :create]
     default_accept [:email, :admin?]
 
     read :get_by_subject do

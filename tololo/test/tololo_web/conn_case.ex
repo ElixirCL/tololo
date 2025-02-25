@@ -13,6 +13,7 @@ defmodule TololoWeb.ConnCase do
   this option is not recommended for other databases.
   """
   use ExUnit.CaseTemplate
+  import Plug.Conn
 
   using do
     quote do
@@ -28,6 +29,19 @@ defmodule TololoWeb.ConnCase do
 
   setup tags do
     Tololo.DataCase.setup_sandbox(tags)
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {:ok, conn: Phoenix.ConnTest.build_conn() |> Plug.Test.init_test_session(%{})}
+  end
+
+  def admin_session(conn) do
+    user =
+      Ash.create!(Tololo.Accounts.User, %{email: "test@email.com", admin?: true},
+        authorize?: false
+      )
+
+    conn
+    |> fetch_session
+    |> put_session("user", AshAuthentication.user_to_subject(user))
+    |> put_session("tenant", nil)
+    |> put_session("context", nil)
   end
 end
