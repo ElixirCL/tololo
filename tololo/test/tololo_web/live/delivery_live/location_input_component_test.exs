@@ -3,7 +3,7 @@ defmodule TololoWeb.DeliveryLive.LocationInputComponentTest do
   import Phoenix.LiveViewTest
   import Tololo.RequestStub
 
-  setup do
+  setup %{conn: conn} do
     start_supervised(Tololo.RequestStub)
 
     table_name = :geocoding_cache
@@ -14,19 +14,12 @@ defmodule TololoWeb.DeliveryLive.LocationInputComponentTest do
       :ets.delete_all_objects(table_name)
     end
 
-    :ok
+    {:ok, conn: conn |> TololoWeb.ConnCase.admin_session()}
   end
 
-  def auth_conn(conn),
-    do:
-      conn
-      |> Plug.Conn.put_req_header(
-        "authorization",
-        "Basic " <> Base.encode64("admin:#{System.get_env("ADMIN_API_KEY")}")
-      )
+  # |> assign(:current_user, %{admin?: true})
 
   test "renders location input component", %{conn: conn} do
-    conn = conn |> auth_conn
     {:ok, view, _html} = live(conn, ~p"/deliveries/new")
 
     assert render(view) =~ "Address"
@@ -34,7 +27,6 @@ defmodule TololoWeb.DeliveryLive.LocationInputComponentTest do
   end
 
   test "handles location input updates", %{conn: conn} do
-    conn = conn |> auth_conn
     {:ok, view, _html} = live(conn, ~p"/deliveries/new")
 
     set_response("https://nominatim.openstreetmap.org/search", %{
@@ -52,7 +44,6 @@ defmodule TololoWeb.DeliveryLive.LocationInputComponentTest do
   end
 
   test "clears fields when input is empty", %{conn: conn} do
-    conn = conn |> auth_conn
     {:ok, view, _html} = live(conn, ~p"/deliveries/new")
 
     html =
@@ -65,7 +56,6 @@ defmodule TololoWeb.DeliveryLive.LocationInputComponentTest do
   end
 
   test "handles multiple geocoding results", %{conn: conn} do
-    conn = conn |> auth_conn
     {:ok, view, _html} = live(conn, ~p"/deliveries/new")
 
     set_response("https://nominatim.openstreetmap.org/search", %{

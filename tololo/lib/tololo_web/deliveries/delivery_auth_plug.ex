@@ -10,6 +10,13 @@ defmodule TololoWeb.Deliveries.DeliveryAuthPlug do
   def init(opts), do: opts
 
   @impl true
+  def call(%{assigns: %{current_user: %{admin?: true}}} = conn, _opts) do
+    conn
+    |> assign(:actor, generate_actor(:admin))
+    |> Helpers.set_actor(:actor)
+  end
+
+  @impl true
   def call(conn, _opts) do
     with false <- Map.has_key?(conn.assigns, :actor),
          ["Bearer " <> token] <- get_req_header(conn, "authorization"),

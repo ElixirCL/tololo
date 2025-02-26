@@ -4,8 +4,10 @@ defmodule TololoWeb.DeliveryLive.ShowTest do
 
   alias TololoCore.Deliveries.Delivery
 
-  setup do
-    {:ok, delivery: Delivery.empty!(actor: TololoCore.Deliveries.Actors.admin())}
+  setup %{conn: conn} do
+    {:ok,
+     delivery: Delivery.empty!(actor: TololoCore.Deliveries.Actors.admin()),
+     conn: conn |> TololoWeb.ConnCase.admin_session()}
   end
 
   def auth_conn(conn),

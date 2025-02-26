@@ -23,7 +23,9 @@ defmodule Tololo.Geocoding do
     params = [q: query_string, format: "json"] ++ if token, do: [token: token], else: []
 
     # return only first result
-    [result | _tail] = Application.get_env(:tololo, :req_impl, Req).get!(endpoint, params: params).body
+    [result | _tail] =
+      Application.get_env(:tololo, :req_impl, Req).get!(endpoint, params: params).body
+
     Tololo.GeocodingStore.save_in_cache(query_string, result)
     result
   end

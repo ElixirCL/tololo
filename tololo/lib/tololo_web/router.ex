@@ -3,10 +3,15 @@ defmodule TololoWeb.Router do
 
   use AshAuthentication.Phoenix.Router
 
+  import AshAuthentication.Plug.Helpers
+  use AshAuthentication.Phoenix.Router
+
   import AshAdmin.Router
   import Plug.BasicAuth
 
   pipeline :graphql do
+    plug :load_from_bearer
+    plug :set_actor, :user
     plug TololoWeb.Deliveries.DeliveryAuthPlug
     plug AshGraphql.Plug
   end
@@ -19,15 +24,35 @@ defmodule TololoWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :load_from_session
+    plug :load_from_session
   end
 
   pipeline :api do
     plug :accepts, ["json"]
     plug TololoWeb.Deliveries.DeliveryAuthPlug
+    plug :load_from_bearer
+    plug :set_actor, :user
   end
 
   pipeline :admin do
     plug :basic_auth, username: "admin", password: System.get_env("ADMIN_API_KEY")
+  end
+
+  scope "/", TololoWeb do
+    pipe_through :browser
+
+    ash_authentication_live_session :authenticated_routes do
+      # in each liveview, add one of the following at the top of the module:
+      #
+      # If an authenticated user must be present:
+      # on_mount {TololoWeb.LiveUserAuth, :live_user_required}
+      #
+      # If an authenticated user *may* be present:
+      # on_mount {TololoWeb.LiveUserAuth, :live_user_optional}
+      #
+      # If an authenticated user must *not* be present:
+      # on_mount {TololoWeb.LiveUserAuth, :live_no_user}
+    end
   end
 
   scope "/gql" do
@@ -49,6 +74,26 @@ defmodule TololoWeb.Router do
     get "/", PageController, :home
 
     live "/map", MapLive
+    auth_routes AuthController, Tololo.Accounts.User, path: "/auth"
+    sign_out_route AuthController
+
+    sign_in_route reset_path: "/reset",
+                  auth_routes_prefix: "/auth",
+                  on_mount: [{TololoWeb.LiveUserAuth, :live_no_user}],
+                  overrides: [
+                    TololoWeb.AuthOverrides,
+                    AshAuthentication.Phoenix.Overrides.Default
+                  ]
+
+    ash_authentication_live_session :authentication_required,
+      on_mount: {TololoWeb.LiveUserAuth, :live_user_admin_required} do
+      live "/deliveries", DeliveryLive.Index, :index
+      live "/deliveries/new", DeliveryLive.Index, :new
+      live "/deliveries/:id/edit", DeliveryLive.Index, :edit
+
+      live "/deliveries/:id", DeliveryLive.Show, :show
+      live "/deliveries/:id/show/edit", DeliveryLive.Show, :edit
+    end
   end
 
   scope "/" do
@@ -56,13 +101,6 @@ defmodule TololoWeb.Router do
     pipe_through :admin
 
     ash_admin("/admin")
-
-    live "/deliveries", TololoWeb.DeliveryLive.Index, :index
-    live "/deliveries/new", TololoWeb.DeliveryLive.Index, :new
-    live "/deliveries/:id/edit", TololoWeb.DeliveryLive.Index, :edit
-
-    live "/deliveries/:id", TololoWeb.DeliveryLive.Show, :show
-    live "/deliveries/:id/show/edit", TololoWeb.DeliveryLive.Show, :edit
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

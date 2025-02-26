@@ -18,13 +18,9 @@ defmodule TololoWeb.DeliveryLive.FormComponentTest do
   }
   @update_attrs %{state: "In_Preparation"}
 
-  def auth_conn(conn),
-    do:
-      conn
-      |> Plug.Conn.put_req_header(
-        "authorization",
-        "Basic " <> Base.encode64("admin:#{System.get_env("ADMIN_API_KEY")}")
-      )
+  setup %{conn: conn} do
+    {:ok, conn: conn |> TololoWeb.ConnCase.admin_session()}
+  end
 
   describe "Form Component" do
     setup do
@@ -32,7 +28,6 @@ defmodule TololoWeb.DeliveryLive.FormComponentTest do
     end
 
     test "renders form", %{conn: conn} do
-      conn = conn |> auth_conn
       {:ok, view, _html} = live(conn, ~p"/deliveries/new")
 
       assert render(view) =~ "New Delivery"
@@ -41,7 +36,6 @@ defmodule TololoWeb.DeliveryLive.FormComponentTest do
     end
 
     test "validates form inputs", %{conn: conn} do
-      conn = conn |> auth_conn
       {:ok, view, _html} = live(conn, ~p"/deliveries/new")
 
       view
@@ -52,7 +46,6 @@ defmodule TololoWeb.DeliveryLive.FormComponentTest do
     end
 
     test "handles valid create submission", %{conn: conn} do
-      conn = conn |> auth_conn
       {:ok, view, _html} = live(conn, ~p"/deliveries/new")
 
       assert view
@@ -61,7 +54,6 @@ defmodule TololoWeb.DeliveryLive.FormComponentTest do
     end
 
     test "handles valid edit submission", %{conn: conn, delivery: delivery} do
-      conn = conn |> auth_conn
       {:ok, view, _html} = live(conn, ~p"/deliveries/#{delivery.id}/edit")
 
       assert view
