@@ -72,8 +72,9 @@ config :tololo,
   ash_domains: [
     TololoCore.Deliveries,
     TololoCore.Products,
-    Tololo.Extensions.TelegramBot.Ash.Users,
-    Tololo.Accounts
+    TololoCore.Carts,
+    Tololo.Accounts,
+    Tololo.Extensions.TelegramBot.Ash.Users
   ],
   from_email: {"noreply", "noreply@example.com"},
   magic_link_subject: "Your login link"

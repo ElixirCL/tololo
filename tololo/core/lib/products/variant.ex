@@ -115,6 +115,8 @@ defmodule TololoCore.Products.Variant do
 
     belongs_to :product, TololoCore.Products.Product, public?: true
 
+    has_many :cart_lines, TololoCore.Carts.CartLine, public?: true
+
     # the option values this variant represents
     many_to_many :option_values, TololoCore.Products.OptionValue do
       through TololoCore.Products.VariantOption
