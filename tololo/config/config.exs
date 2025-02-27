@@ -67,6 +67,7 @@ config :tololo,
   min_done_distance_meters: 50,
   ash_domains: [
     TololoCore.Deliveries,
+    TololoCore.Products,
     Tololo.Extensions.TelegramBot.Ash.Users,
     Tololo.Accounts
   ],
