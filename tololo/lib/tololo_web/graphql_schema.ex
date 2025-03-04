@@ -23,6 +23,16 @@ defmodule TololoWeb.GraphqlSchema do
     end
   end
 
+  object :money do
+    field(:amount, non_null(:decimal))
+    field(:currency, non_null(:string))
+  end
+
+  input_object :money_input do
+    field(:amount, non_null(:decimal))
+    field(:currency, non_null(:string))
+  end
+
   mutation do
     # Custom Absinthe mutations can be placed here
   end

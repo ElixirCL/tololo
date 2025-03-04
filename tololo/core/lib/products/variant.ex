@@ -46,10 +46,26 @@ defmodule TololoCore.Products.Variant do
 
   code_interface do
     define :create
+    define :update_price, args: [:money]
   end
 
   actions do
     defaults [:read, :destroy, create: :*, update: :*]
+
+    update :update_price do
+      require_atomic? false
+      argument :money, :money, allow_nil?: false
+
+      change fn %{arguments: %{money: money}} = changeset, _context ->
+        changeset
+        |> Changeset.manage_relationship(:prices, [%{money: money}],
+          on_no_match: {:create, :create_for_variant},
+          on_match: :ignore
+        )
+      end
+
+      change load(:prices)
+    end
   end
 
   policies do
@@ -95,9 +111,9 @@ defmodule TololoCore.Products.Variant do
   end
 
   relationships do
-    belongs_to :product, TololoCore.Products.Product do
-      public? true
-    end
+    has_many :prices, TololoCore.Products.Price, public?: true
+
+    belongs_to :product, TololoCore.Products.Product, public?: true
 
     # the option values this variant represents
     many_to_many :option_values, TololoCore.Products.OptionValue do

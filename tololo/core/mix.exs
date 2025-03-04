@@ -7,6 +7,7 @@ defmodule TololoCore.MixProject do
       version: "0.1.0",
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
+      consolidate_protocols: Mix.env() != :dev,
       deps: deps()
     ]
   end
@@ -21,6 +22,8 @@ defmodule TololoCore.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ash_money, "~> 0.1"},
+      {:igniter, "~> 0.5", only: [:dev, :test]},
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:ash_authentication, "~> 4.1"},

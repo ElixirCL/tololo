@@ -25,6 +25,8 @@ defmodule TololoCore.Products do
     resource TololoCore.Products.Option
     resource TololoCore.Products.OptionValue
 
+    resource TololoCore.Products.Price
+
     resource TololoCore.Products.Type
   end
 end

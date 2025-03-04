@@ -83,6 +83,9 @@ defmodule Tololo.MixProject do
       {:plug, "~> 1.16"},
       {:friendlyid, "~> 0.2.0"},
       {:req, "~> 0.5.0"},
+      {:ex_money_sql, "~> 1.11.0"},
+      {:ash_money, "~> 0.1.15 "},
+      # {:ash_double_entry, "~> 1.0.12"},
       # Optional Enable Telegram Bot
       {:tololo_extension_telegram_bot,
        path:

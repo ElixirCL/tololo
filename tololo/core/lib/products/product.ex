@@ -51,6 +51,7 @@ defmodule TololoCore.Products.Product do
     define :add_to_collection, args: [:collection_id]
     define :generate_variants
     define :create
+    define :update_price, args: [:money]
   end
 
   actions do
@@ -115,6 +116,21 @@ defmodule TololoCore.Products.Product do
         |> Changeset.manage_relationship(:collections, [%{id: collection_id}], type: :append)
       end
     end
+
+    update :update_price do
+      require_atomic? false
+      argument :money, :money, allow_nil?: false
+
+      change fn %{arguments: %{money: money}} = changeset, _context ->
+        changeset
+        |> Changeset.manage_relationship(:prices, [%{money: money}],
+          on_no_match: {:create, :create_for_product},
+          on_match: :ignore
+        )
+      end
+
+      change load(:prices)
+    end
   end
 
   policies do
@@ -150,6 +166,8 @@ defmodule TololoCore.Products.Product do
     belongs_to :type, TololoCore.Products.Type do
       public? true
     end
+
+    has_many :prices, TololoCore.Products.Price, public?: true
 
     many_to_many :collections, TololoCore.Products.Collection do
       through TololoCore.Products.CollectionProduct
