@@ -46,7 +46,7 @@ defmodule TololoCore.Carts.CartLine do
   attributes do
     uuid_v7_primary_key :id
 
-    attribute :quantity, :integer, public?: true, allow_nil?: false, constraints: [min: 0]
+    attribute :quantity, :integer, public?: true, allow_nil?: false, constraints: [min: 1]
     attribute :notes, :string, public?: true
 
     timestamps()
@@ -58,7 +58,7 @@ defmodule TololoCore.Carts.CartLine do
   end
 
   calculations do
-    calculate :subtotal,
+    calculate :subtotal_before_discount,
               :money,
               expr(
                 first(variant.prices,
@@ -70,6 +70,10 @@ defmodule TololoCore.Carts.CartLine do
                 ) *
                   quantity
               )
+
+    calculate :subtotal,
+              :money,
+              TololoCore.Carts.DiscountsCalculation
   end
 
   identities do

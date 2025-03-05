@@ -13,7 +13,8 @@ defmodule TololoCore.Products.Product.VariantGenerator do
             name: name,
             description: description,
             sku: sku,
-            prices: prices
+            prices: prices,
+            discount_rules: discount_rules
           }
         } = changeset,
         _opts,
@@ -38,7 +39,8 @@ defmodule TololoCore.Products.Product.VariantGenerator do
           option_value_ids: combination |> Enum.map(& &1.id),
           name: name,
           description: description,
-          sku: sku
+          sku: sku,
+          discount_rules: discount_rules
         },
         authorize?: false
       )

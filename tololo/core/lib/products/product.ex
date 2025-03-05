@@ -159,6 +159,11 @@ defmodule TololoCore.Products.Product do
       default :disabled
     end
 
+    attribute :discount_rules, {:array, TololoCore.Products.DiscountRule} do
+      public? true
+      default []
+    end
+
     timestamps()
   end
 

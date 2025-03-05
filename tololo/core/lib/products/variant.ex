@@ -103,6 +103,11 @@ defmodule TololoCore.Products.Variant do
 
     attribute :attributes, {:array, TololoCore.Products.Attribute}, public?: true
 
+    attribute :discount_rules, {:array, TololoCore.Products.DiscountRule} do
+      public? true
+      default []
+    end
+
     attribute :option_value_ids, {:array, :string},
       public?: true,
       description: "needed for identity"
