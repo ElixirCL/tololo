@@ -7,12 +7,16 @@
 # General application configuration
 import Config
 
+config :ex_cldr, default_backend: Tololo.Cldr
+
 config :ash,
   allow_forbidden_field_for_relationships_by_default?: true,
   include_embedded_source_by_default?: false,
   show_keysets_for_all_actions?: false,
   default_page_type: :keyset,
-  policies: [no_filter_static_forbidden_reads?: false]
+  policies: [no_filter_static_forbidden_reads?: false],
+  known_types: [AshMoney.Types.Money],
+  custom_types: [money: AshMoney.Types.Money]
 
 # custom_types: [ticket_status: Tololo.Support.Ticket.Types.Status]
 
@@ -67,8 +71,10 @@ config :tololo,
   min_done_distance_meters: 50,
   ash_domains: [
     TololoCore.Deliveries,
-    Tololo.Extensions.TelegramBot.Ash.Users,
-    Tololo.Accounts
+    TololoCore.Products,
+    TololoCore.Carts,
+    Tololo.Accounts,
+    Tololo.Extensions.TelegramBot.Ash.Users
   ],
   from_email: {"noreply", "noreply@example.com"},
   magic_link_subject: "Your login link"
