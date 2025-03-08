@@ -15,6 +15,6 @@
   inputs: [
     "*.{heex,ex,exs}",
     "{config,lib,test,extensions,core}/**/*.{heex,ex,exs}",
-    "priv/*/seeds.exs"
+    "priv/*/*.exs"
   ]
 ]

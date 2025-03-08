@@ -9,6 +9,11 @@ defmodule TololoCore.Products.ProductOption do
   postgres do
     table "product_option"
     repo Tololo.Repo
+
+    references do
+      reference :product, on_delete: :delete
+      reference :option, on_delete: :delete
+    end
   end
 
   actions do

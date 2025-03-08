@@ -13,6 +13,13 @@ defmodule Tololo.Release do
     end
   end
 
+  def load_example_store do
+    load_app()
+
+    Path.join([:code.priv_dir(@app), "/repo"], "example_seeds.exs")
+    |> Code.require_file()
+  end
+
   def rollback(repo, version) do
     load_app()
     {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))

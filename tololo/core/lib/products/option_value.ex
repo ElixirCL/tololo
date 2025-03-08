@@ -17,6 +17,11 @@ defmodule TololoCore.Products.OptionValue do
   postgres do
     table "option_values"
     repo Tololo.Repo
+
+    references do
+      reference :variant, on_delete: :delete
+      reference :option, on_delete: :delete
+    end
   end
 
   field_policies do
