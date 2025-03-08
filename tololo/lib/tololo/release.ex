@@ -20,6 +20,21 @@ defmodule Tololo.Release do
     |> Code.require_file()
   end
 
+  def reset do
+    load_app()
+
+    for repo <- repos() do
+      {:ok, _, _} =
+        Ecto.Migrator.with_repo(repo, fn repo ->
+          Ecto.Adapters.SQL.query!(repo, "DROP SCHEMA public CASCADE")
+          Ecto.Adapters.SQL.query!(repo, "CREATE SCHEMA public")
+        end)
+    end
+
+    migrate()
+    load_example_store()
+  end
+
   def rollback(repo, version) do
     load_app()
     {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))
