@@ -51,6 +51,7 @@ COPY lib lib
 COPY assets assets
 
 WORKDIR /app/core
+RUN mix deps.get
 RUN mix compile
 
 WORKDIR /app
