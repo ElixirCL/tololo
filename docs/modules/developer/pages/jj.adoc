@@ -1,0 +1,4 @@
+= Using Jujutsu
+
+We recommend using https://github.com/jj-vcs/jj[_Jujutsu_] tool for working with Git repositories. Is totally optional
+but can make developer life easier by managing branches and merge flows.

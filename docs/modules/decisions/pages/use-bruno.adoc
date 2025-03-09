@@ -20,6 +20,7 @@ Chosen option: "`Bruno`", because
 - Open-source
 - Supports both GraphQL and REST.
 - Uses local files for storing API collections, enabling integration with Git.
+
 == Consequences
 
 - The project will use Bruno to maintain API request collections directly within the repository.
