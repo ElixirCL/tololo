@@ -32,10 +32,12 @@ JJ is git-compatible, so from the perspective of other tools, there’s no notic
 
 To start using JJ with this project, install JJ by following the https://jj-vcs.github.io/jj/latest/install-and-setup/[installation instructions]. Then use JJ commands to interact with the repository. For example:
 
-- jj new: Create a new change.
+- `jj new`: Create a new change.
 
-- jj split: Split the changes in a change
+- `jj split`: Split the changes in a change
 
-- jj log: View the project’s history.
+- `jj log`: View the project’s history.
 
-- jj rebase: Reorder or edit changes.
+- `jj rebase`: Reorder or edit changes.
+
+On first usage you may need to run `jj git init --colocate` to initialize a new Jujutsu working environment.
