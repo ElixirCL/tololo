@@ -131,3 +131,42 @@ Debian separates some needed libraries such as ssl. If there are some problems y
 $ sudo apt install -y erlang-ssl
 ----
 
+= Using JJ
+
+We recommend using JJ as your Version Control System (VCS) for this project. JJ is git-compatible, so from the perspective of other tools, there’s no noticeable difference between using JJ or Git. However, JJ introduces a more intuitive and streamlined workflow.
+
+== Why Use JJ?
+
+
+- Git Compatibility: JJ seamlessly integrates with Git, allowing you to use both tools interchangeably.
+
+- Simplified Model: JJ replaces Git’s commit-based model with `changes`, which is how a commit evolves over time, making it easier to manage and reason about changes.
+
+- Easier History Rewriting: JJ simplifies operations like rebase, amend, and reordering changes, making it more straightforward to rewrite history when needed, and leading to a cleaner history.
+
+== Learning Resources
+
+- https://jj-vcs.github.io/jj/latest/tutorial/[JJ Tutorial]: Get started with JJ using the official tutorial
+
+- https://jj-vcs.github.io/jj/latest/git-comparison/[Git Comparison]: Understand the key differences between Git and JJ with the Git comparison guide
+
+== Key Features
+
+- Changes: Changes in JJ are tracked as changes instead of commits. This simplifies the history and makes it easier to manage.
+
+- Branchless Workflow: JJ encourages a more linear workflow by minimizing the need for branches, which can reduce complexity.
+
+- Automatic changes: Every operation in JJ creates a new change, ensuring a clear and consistent history.
+
+
+== Getting Started
+
+To start using JJ with this project, install JJ by following the https://jj-vcs.github.io/jj/latest/install-and-setup/[installation instructions]. Then use JJ commands to interact with the repository. For example:
+
+- jj new: Create a new change.
+
+- jj split: Split the changes in a change
+
+- jj log: View the project’s history.
+
+- jj rebase: Reorder or edit changes.

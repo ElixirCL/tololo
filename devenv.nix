@@ -52,6 +52,7 @@ in
     pkgs.nodePackages_latest.localtunnel
     pkgs.flyctl
 
+    pkgs-unstable.jujutsu
     pkgs.zsh
     pkgs.oh-my-zsh
   ] ++ lib.optionals pkgs.stdenv.isLinux [
