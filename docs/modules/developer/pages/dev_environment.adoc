@@ -58,14 +58,21 @@ $ sudo vim /etc/nix/nix.conf
 
 [source, text]
 ----
-trusted-users = root camilowser
+trusted-users = root <your-user>
 ----
 
 - 3. Reboot nix service
 
+.macOS
 [source, bash]
 ----
 sudo launchctl kickstart -k system/org.nixos.nix-daemon
+----
+
+.Linux
+[source, bash]
+----
+sudo systemctl restart nix-daemon.service
 ----
 
 == Direnv
