@@ -31,7 +31,28 @@ Enum.each(product_names, fn product_name ->
     product ->
       Repo.delete!(product)
   end
+
 end)
+
+old_brand = TololoCore.Brands.Brand |> Ash.read_one!
+if old_brand, do: Repo.delete!(old_brand)
+
+old_branch = TololoCore.Brands.Branch |> Ash.read_one!
+if old_branch, do: Repo.delete!(old_branch)
+
+brand = TololoCore.Brands.Brand.create!(%{name: "Sushi"}, authorize?: false)
+
+branch =
+  TololoCore.Brands.Branch.create!(
+    %{
+      name: "Sushi Quilpué",
+      latitude: -33.04534,
+      longitude: -71.4447094,
+      brand_id: brand.id,
+      address: "Quilpué"
+    },
+    authorize?: false
+  )
 
 set_prices = fn variants, values_combination, price ->
   values_combination =
