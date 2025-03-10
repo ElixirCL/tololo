@@ -3,12 +3,12 @@ defmodule TololoCore.Brands.Brand do
   Define the data fields for storing store brand information.
   """
 
-  use Ash.Resource, 
+  use Ash.Resource,
     otp_app: :tololo,
     domain: TololoCore.Brands,
     extensions: [AshGraphql.Resource, AshAdmin.Resource],
     data_layer: AshPostgres.DataLayer,
-    authorizers:  [Ash.Policy.Authorizer],
+    authorizers: [Ash.Policy.Authorizer],
     notifiers: [TololoCore.Kafka.AshNotifier]
 
   use Gettext, backend: TololoCore.Gettext
@@ -16,6 +16,7 @@ defmodule TololoCore.Brands.Brand do
 
   graphql do
     type :brand
+
     queries do
       get :get_brand, :read
     end
@@ -88,5 +89,4 @@ defmodule TololoCore.Brands.Brand do
       public? true
     end
   end
-  
 end

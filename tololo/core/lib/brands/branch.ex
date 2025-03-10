@@ -3,12 +3,12 @@ defmodule TololoCore.Brands.Branch do
   Define the data fields for storing store branch information.
   """
 
-  use Ash.Resource, 
+  use Ash.Resource,
     otp_app: :tololo,
     domain: TololoCore.Brands,
     extensions: [AshGraphql.Resource, AshAdmin.Resource],
     data_layer: AshPostgres.DataLayer,
-    authorizers:  [Ash.Policy.Authorizer],
+    authorizers: [Ash.Policy.Authorizer],
     notifiers: [TololoCore.Kafka.AshNotifier]
 
   use Gettext, backend: TololoCore.Gettext
@@ -16,6 +16,7 @@ defmodule TololoCore.Brands.Branch do
 
   graphql do
     type :branch
+
     queries do
       get :get_branch, :read
     end
@@ -45,6 +46,7 @@ defmodule TololoCore.Brands.Branch do
   code_interface do
     define :create
     define :update
+    define :read, get?: true
   end
 
   actions do
@@ -66,21 +68,27 @@ defmodule TololoCore.Brands.Branch do
   attributes do
     uuid_v7_primary_key :id
 
+    attribute :name, :string do
+      allow_nil? false
+      sensitive? false
+      public? true
+    end
+
     attribute :address, :string do
       allow_nil? false
       sensitive? false
       public? true
     end
-    
+
     attribute :latitude, :float do
       allow_nil? false
-      sensitive? true
+      sensitive? false
       public? true
     end
 
     attribute :longitude, :float do
       allow_nil? false
-      sensitive? true
+      sensitive? false
       public? true
     end
 
@@ -92,5 +100,4 @@ defmodule TololoCore.Brands.Branch do
       public? true
     end
   end
-  
 end
