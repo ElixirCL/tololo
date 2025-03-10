@@ -11,7 +11,7 @@ defmodule TololoCore.Brands.Branch do
     authorizers:  [Ash.Policy.Authorizer],
     notifiers: [TololoCore.Kafka.AshNotifier]
 
-  use Gettext. backend: TololoCore.Gettext
+  use Gettext, backend: TololoCore.Gettext
   alias Ash.Changeset
 
   graphql do

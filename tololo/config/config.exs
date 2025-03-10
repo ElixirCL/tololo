@@ -73,6 +73,7 @@ config :tololo,
     TololoCore.Deliveries,
     TololoCore.Products,
     TololoCore.Carts,
+    TololoCore.Brands,
     Tololo.Accounts,
     Tololo.Extensions.TelegramBot.Ash.Users
   ],

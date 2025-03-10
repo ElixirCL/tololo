@@ -10,8 +10,7 @@ defmodule TololoCore.Brands do
 
   admin do
     show?(true)
-    show_resources(TololoCore.Brands.Brand)
-    show_resources(TololoCore.Brands.Branch)
+    show_resources([TololoCore.Brands.Brand, TololoCore.Brands.Branch])
   end
 
   resources do
