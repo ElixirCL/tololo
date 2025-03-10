@@ -159,14 +159,17 @@ defmodule TololoCore.Deliveries.Delivery do
         :to_notes
       ]
 
-      change set_attribute(
-               :from_name,
-               Application.compile_env(:tololo, :business_name, "A business")
-             )
+      change fn changeset, _context ->
+        {lat, lng} = Application.get_env(:tololo, :from_location, {0, 0})
+        name = Application.get_env(:tololo, :business_name, "A business")
 
-      {lat, lng} = Application.compile_env(:tololo, :from_location, {0, 0})
-      change set_attribute(:from_latitude, lat)
-      change set_attribute(:from_longitude, lng)
+        changeset
+        |> Ash.Changeset.change_attributes(%{
+          from_name: name,
+          from_latitude: lat,
+          from_longitude: lng
+        })
+      end
     end
 
     create :empty do

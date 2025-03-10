@@ -31,7 +31,8 @@ defmodule Tololo.Application do
         {Finch, name: Tololo.Finch},
         TololoWeb.Endpoint,
         {AshAuthentication.Supervisor, [otp_app: :tololo]},
-        TololoCore.Deliveries.StaleCleaner
+        TololoCore.Deliveries.StaleCleaner,
+        {Task, fn -> load_config() end}
       ] ++ extensions
 
     Tololo.GeocodingStore.init()
@@ -48,5 +49,16 @@ defmodule Tololo.Application do
   def config_change(changed, _new, removed) do
     TololoWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  def load_config do
+    %{latitude: lat, longitude: lng, name: name} =
+      case TololoCore.Brands.Branch.read() do
+        {:ok, branch_config} -> branch_config
+        _ -> %{latitude: 0, longitude: 0, name: "A business"}
+      end
+
+    Application.put_env(:tololo, :from_location, {lat, lng})
+    Application.put_env(:tololo, :business_name, name)
   end
 end
