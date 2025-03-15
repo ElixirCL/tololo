@@ -12,6 +12,16 @@ defmodule TololoCore.Carts.Cart do
 
   graphql do
     type :cart
+
+    queries do
+      get :get_cart, :read
+    end
+
+    mutations do
+      create :create_cart, :create
+      update :cart_add_variant, :add_variant
+      action :cart_checkout_delivery, :checkout_delivery
+    end
   end
 
   postgres do
@@ -28,32 +38,44 @@ defmodule TololoCore.Carts.Cart do
 
   code_interface do
     define :create
-    define :add_variant, args: [:variant, {:optional, :quantity}, {:optional, :notes}]
-    define :checkout_delivery, args: [:cart, :delivery_input]
+    define :add_variant, args: [:variant_id, {:optional, :quantity}, {:optional, :notes}]
+    define :checkout_delivery, args: [:cart_id, :delivery_input]
   end
 
   actions do
-    defaults [:read, :destroy, create: :*, update: :*]
+    defaults [:read, :destroy, create: :currency, update: :*]
 
     action :checkout_delivery, :term do
-      argument :cart, :term, allow_nil?: false
+      argument :cart_id, :uuid, allow_nil?: false
       argument :delivery_input, :map, allow_nil?: false
 
-      run fn %{arguments: %{cart: cart, delivery_input: delivery_input}}, _ ->
-        TololoCore.Deliveries.Delivery.initialize(
-          %{delivery_input | delivery_order: cart_to_map(cart)},
+      run fn %{arguments: %{cart_id: cart_id, delivery_input: delivery_input}}, _ ->
+        cart =
+          Ash.get!(TololoCore.Carts.Cart, cart_id, load: [cart_lines: [:variant]])
+
+        %{public_auth_key: public_auth_key} = TololoCore.Deliveries.Delivery.initialize!(
+          Map.merge(delivery_input, %{delivery_order: cart_to_map(cart)}),
           authorize?: false
         )
+
+        {:ok, public_auth_key}
       end
     end
 
     update :add_variant do
       require_atomic? false
-      argument :variant, :struct, allow_nil?: false
+      argument :variant_id, :uuid, allow_nil?: false
       argument :quantity, :integer, default: 1
-      argument :notes, :string, default: nil
+      argument :notes, :string, default: ""
 
-      validate fn %{data: %{currency: currency}, arguments: %{variant: %{prices: prices}}} =
+      change fn %{arguments: %{variant_id: variant_id}} = changeset, _context ->
+        variant = Ash.get!(TololoCore.Products.Variant, variant_id, load: [:prices])
+
+        changeset
+        |> Ash.Changeset.put_context(:variant, variant)
+      end
+
+      validate fn %{data: %{currency: currency}, context: %{variant: %{prices: prices}}} =
                     changeset,
                   _context ->
         prices = Ash.load!(prices, :currency, lazy?: true, reuse_values?: true)
@@ -65,7 +87,10 @@ defmodule TololoCore.Carts.Cart do
         end
       end
 
-      change fn %{arguments: %{variant: variant, quantity: quantity, notes: notes}} = changeset,
+      change fn %{
+                  arguments: %{quantity: quantity, notes: notes},
+                  context: %{variant: variant}
+                } = changeset,
                 _context ->
         changeset
         |> Ash.Changeset.manage_relationship(
