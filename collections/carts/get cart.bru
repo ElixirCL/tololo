@@ -1,0 +1,46 @@
+meta {
+  name: get cart
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query GetCart($id: ID!) {
+    getCart(id: $id) {
+      id
+      status
+      currency
+      cartLines {
+        id
+        quantity
+        notes
+        variant {
+          id
+          name
+          sku
+          prices {
+            id
+            money {
+              amount
+              currency
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "id": "01959a22-b124-749b-b57e-6e48c6ccf8bd"
+  }
+  
+}

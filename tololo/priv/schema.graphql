@@ -294,6 +294,39 @@ type CartLine {
   cart: Cart!
 }
 
+input CartCheckoutDeliveryInput {
+  cartId: ID!
+  deliveryInput: JsonString!
+}
+
+"The result of the :cart_add_variant mutation"
+type CartAddVariantResult {
+  "The successful result of the mutation"
+  result: Cart
+
+  "Any errors generated, if the mutation failed"
+  errors: [MutationError!]!
+}
+
+input CartAddVariantInput {
+  variantId: ID!
+  quantity: Int
+  notes: String
+}
+
+"The result of the :create_cart mutation"
+type CreateCartResult {
+  "The successful result of the mutation"
+  result: Cart
+
+  "Any errors generated, if the mutation failed"
+  errors: [MutationError!]!
+}
+
+input CreateCartInput {
+  currency: String
+}
+
 input CartFilterCurrency {
   isNil: Boolean
   eq: String
@@ -1153,6 +1186,11 @@ type RootQueryType {
     id: ID!
   ): Branch
 
+  getCart(
+    "The id of the record"
+    id: ID!
+  ): Cart
+
   getDelivery(
     "The id of the record"
     id: ID!
@@ -1170,6 +1208,9 @@ input MoneyInput {
 }
 
 type RootMutationType {
+  createCart(input: CreateCartInput): CreateCartResult!
+  cartAddVariant(id: ID!, input: CartAddVariantInput!): CartAddVariantResult!
+  cartCheckoutDelivery(input: CartCheckoutDeliveryInput): String!
   initDelivery(input: InitDeliveryInput!): InitDeliveryResult!
   updateState(id: ID!, input: UpdateStateInput): UpdateStateResult!
   updateLocation(id: ID!, input: UpdateLocationInput): UpdateLocationResult!
