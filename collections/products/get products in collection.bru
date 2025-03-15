@@ -1,0 +1,36 @@
+meta {
+  name: get products in collection
+  type: graphql
+  seq: 4
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query GetProductsInCollection($collectionId: ID!) {
+    getAvailableProducts(filter: { collections: { id: { eq: $collectionId } } }) {
+      id
+      name
+      description
+      sku
+      state
+      collections {
+        id
+        name
+        description
+      }
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "collectionId": "01959a22-b197-7d63-9a63-8990e0bd55c8"
+  }
+  
+}

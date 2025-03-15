@@ -1,0 +1,48 @@
+meta {
+  name: get available products
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query GetAvailableProducts($filter: ProductFilterInput, $sort: [ProductSortInput!]) {
+    getAvailableProducts(filter: $filter, sort: $sort) {
+      id
+      name
+      description
+      sku
+      state
+      prices {
+        id
+        money {
+          amount
+          currency
+        }
+      }
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "filter": {
+      "name": {
+        "like": "Gyozas al Vapor"
+      }
+    },
+    "sort": [
+      {
+        "field": "NAME",
+        "order": "ASC"
+      }
+    ]
+  }
+  
+}

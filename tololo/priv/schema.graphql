@@ -3,6 +3,15 @@ schema {
   query: RootQueryType
 }
 
+type Attributes {
+  id: ID!
+  method: String!
+  methodData: JsonString
+  discount: Decimal
+  enabled: Boolean
+  conditions: [JsonString!]
+}
+
 enum DeliveryStateChangesSortField {
   ID
   OLD_STATE
@@ -192,6 +201,908 @@ type MutationError {
   fields: [String!]
 }
 
+enum CartLineSortField {
+  ID
+  QUANTITY
+  NOTES
+  VARIANT_ID
+  CART_ID
+}
+
+input CartLineFilterCartId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input CartLineFilterVariantId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input CartLineFilterNotes {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input CartLineFilterQuantity {
+  isNil: Boolean
+  eq: Int
+  notEq: Int
+  in: [Int!]
+  lessThan: Int
+  greaterThan: Int
+  lessThanOrEqual: Int
+  greaterThanOrEqual: Int
+}
+
+input CartLineFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input CartLineFilterInput {
+  and: [CartLineFilterInput!]
+  or: [CartLineFilterInput!]
+  not: [CartLineFilterInput!]
+  id: CartLineFilterId
+  quantity: CartLineFilterQuantity
+  notes: CartLineFilterNotes
+  variantId: CartLineFilterVariantId
+  cartId: CartLineFilterCartId
+  variant: VariantFilterInput
+  cart: CartFilterInput
+}
+
+input CartLineSortInput {
+  order: SortOrder
+  field: CartLineSortField!
+}
+
+type CartLine {
+  id: ID!
+  quantity: Int!
+  notes: String
+  variantId: ID!
+  cartId: ID!
+  variant: Variant!
+  cart: Cart!
+}
+
+input CartFilterCurrency {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input CartFilterStatus {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+}
+
+input CartFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input CartFilterInput {
+  and: [CartFilterInput!]
+  or: [CartFilterInput!]
+  not: [CartFilterInput!]
+  id: CartFilterId
+  status: CartFilterStatus
+  currency: CartFilterCurrency
+  cartLines: CartLineFilterInput
+}
+
+type Cart {
+  id: ID!
+  status: String
+  currency: String
+  cartLines(
+    "How to sort the records in the response"
+    sort: [CartLineSortInput]
+
+    "A filter to limit the results"
+    filter: CartLineFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [CartLine!]!
+}
+
+type Branch {
+  id: ID!
+  name: String!
+  address: String!
+  latitude: Float!
+  longitude: Float!
+  brandId: ID
+  brand: Brand
+}
+
+type Brand {
+  id: ID!
+  name: String!
+  branch: Branch
+}
+
+input TypeFilterDescription {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input TypeFilterName {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input TypeFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input TypeFilterInput {
+  and: [TypeFilterInput!]
+  or: [TypeFilterInput!]
+  not: [TypeFilterInput!]
+  id: TypeFilterId
+  name: TypeFilterName
+  description: TypeFilterDescription
+}
+
+type Type {
+  id: ID!
+  name: String!
+  description: String
+  attributes: [Attributes!]
+}
+
+enum PriceSortField {
+  ID
+  MONEY
+  PRODUCT_ID
+  VARIANT_ID
+}
+
+input PriceFilterVariantId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input PriceFilterProductId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input PriceFilterMoney {
+  isNil: Boolean
+  eq: MoneyInput
+  notEq: MoneyInput
+  in: [MoneyInput!]
+  lessThan: MoneyInput
+  greaterThan: MoneyInput
+  lessThanOrEqual: MoneyInput
+  greaterThanOrEqual: MoneyInput
+}
+
+input PriceFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input PriceFilterInput {
+  and: [PriceFilterInput!]
+  or: [PriceFilterInput!]
+  not: [PriceFilterInput!]
+  id: PriceFilterId
+  money: PriceFilterMoney
+  productId: PriceFilterProductId
+  variantId: PriceFilterVariantId
+  product: ProductFilterInput
+  variant: VariantFilterInput
+}
+
+input PriceSortInput {
+  order: SortOrder
+  field: PriceSortField!
+}
+
+type Price {
+  id: ID!
+  money: Money!
+  productId: ID
+  variantId: ID
+  product: Product
+  variant: Variant
+}
+
+enum OptionValueSortField {
+  ID
+  VALUE
+  OPTION_ID
+  VARIANT_ID
+}
+
+input OptionValueFilterVariantId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input OptionValueFilterOptionId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input OptionValueFilterValue {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input OptionValueFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input OptionValueFilterInput {
+  and: [OptionValueFilterInput!]
+  or: [OptionValueFilterInput!]
+  not: [OptionValueFilterInput!]
+  id: OptionValueFilterId
+  value: OptionValueFilterValue
+  optionId: OptionValueFilterOptionId
+  variantId: OptionValueFilterVariantId
+  option: ProductOptionFilterInput
+  variant: VariantFilterInput
+}
+
+input OptionValueSortInput {
+  order: SortOrder
+  field: OptionValueSortField!
+}
+
+type OptionValue {
+  id: ID!
+  value: String!
+  optionId: ID
+  variantId: ID
+  option: ProductOption
+  variant: Variant
+}
+
+enum ProductOptionSortField {
+  ID
+  NAME
+  DESCRIPTION
+  PRODUCT_ID
+}
+
+input ProductOptionFilterProductId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input ProductOptionFilterDescription {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input ProductOptionFilterName {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input ProductOptionFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input ProductOptionFilterInput {
+  and: [ProductOptionFilterInput!]
+  or: [ProductOptionFilterInput!]
+  not: [ProductOptionFilterInput!]
+  id: ProductOptionFilterId
+  name: ProductOptionFilterName
+  description: ProductOptionFilterDescription
+  productId: ProductOptionFilterProductId
+  product: ProductFilterInput
+  optionValues: OptionValueFilterInput
+  products: ProductFilterInput
+}
+
+input ProductOptionSortInput {
+  order: SortOrder
+  field: ProductOptionSortField!
+}
+
+type ProductOption {
+  id: ID!
+  name: String!
+  description: String
+  productId: ID
+  product: Product
+  optionValues(
+    "How to sort the records in the response"
+    sort: [OptionValueSortInput]
+
+    "A filter to limit the results"
+    filter: OptionValueFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [OptionValue!]!
+  products(
+    "How to sort the records in the response"
+    sort: [ProductSortInput]
+
+    "A filter to limit the results"
+    filter: ProductFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [Product!]!
+}
+
+enum CollectionSortField {
+  ID
+  NAME
+  DESCRIPTION
+  IMAGE
+  IS_BRAND
+}
+
+input CollectionFilterIsBrand {
+  isNil: Boolean
+  eq: Boolean
+  notEq: Boolean
+  in: [Boolean!]
+  lessThan: Boolean
+  greaterThan: Boolean
+  lessThanOrEqual: Boolean
+  greaterThanOrEqual: Boolean
+}
+
+input CollectionFilterImage {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input CollectionFilterDescription {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input CollectionFilterName {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input CollectionFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input CollectionFilterInput {
+  and: [CollectionFilterInput!]
+  or: [CollectionFilterInput!]
+  not: [CollectionFilterInput!]
+  id: CollectionFilterId
+  name: CollectionFilterName
+  description: CollectionFilterDescription
+  image: CollectionFilterImage
+  isBrand: CollectionFilterIsBrand
+}
+
+input CollectionSortInput {
+  order: SortOrder
+  field: CollectionSortField!
+}
+
+type Collection {
+  id: ID!
+  name: String!
+  description: String
+  image: String
+  isBrand: Boolean!
+}
+
+enum VariantSortField {
+  ID
+  NAME
+  DESCRIPTION
+  SKU
+  PRODUCT_ID
+}
+
+input VariantFilterProductId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input VariantFilterSku {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input VariantFilterDescription {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input VariantFilterName {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input VariantFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input VariantFilterInput {
+  and: [VariantFilterInput!]
+  or: [VariantFilterInput!]
+  not: [VariantFilterInput!]
+  id: VariantFilterId
+  name: VariantFilterName
+  description: VariantFilterDescription
+  sku: VariantFilterSku
+  productId: VariantFilterProductId
+  prices: PriceFilterInput
+  product: ProductFilterInput
+  cartLines: CartLineFilterInput
+  optionValues: OptionValueFilterInput
+}
+
+input VariantSortInput {
+  order: SortOrder
+  field: VariantSortField!
+}
+
+type Variant {
+  id: ID!
+
+  name: String!
+
+  description: String
+
+  sku: String!
+
+  images: [String!]
+
+  attributes: [Attributes!]
+
+  discountRules: [Attributes!]
+
+  "needed for identity"
+  optionValueIds: [String!]
+
+  productId: ID
+
+  prices(
+    "How to sort the records in the response"
+    sort: [PriceSortInput]
+
+    "A filter to limit the results"
+    filter: PriceFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [Price!]!
+
+  product: Product
+
+  cartLines(
+    "How to sort the records in the response"
+    sort: [CartLineSortInput]
+
+    "A filter to limit the results"
+    filter: CartLineFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [CartLine!]!
+
+  optionValues(
+    "How to sort the records in the response"
+    sort: [OptionValueSortInput]
+
+    "A filter to limit the results"
+    filter: OptionValueFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [OptionValue!]!
+}
+
+enum ProductSortField {
+  ID
+  NAME
+  DESCRIPTION
+  SKU
+  STATE
+  TYPE_ID
+}
+
+input ProductFilterTypeId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input ProductFilterState {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+}
+
+input ProductFilterSku {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input ProductFilterDescription {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input ProductFilterName {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input ProductFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input ProductFilterInput {
+  and: [ProductFilterInput!]
+  or: [ProductFilterInput!]
+  not: [ProductFilterInput!]
+  id: ProductFilterId
+  name: ProductFilterName
+  description: ProductFilterDescription
+  sku: ProductFilterSku
+  state: ProductFilterState
+  typeId: ProductFilterTypeId
+  type: TypeFilterInput
+  prices: PriceFilterInput
+  collections: CollectionFilterInput
+  variants: VariantFilterInput
+  options: ProductOptionFilterInput
+}
+
+input ProductSortInput {
+  order: SortOrder
+  field: ProductSortField!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  description: String!
+  sku: String!
+  state: String!
+  discountRules: [Attributes!]
+  typeId: ID
+  type: Type
+  prices(
+    "How to sort the records in the response"
+    sort: [PriceSortInput]
+
+    "A filter to limit the results"
+    filter: PriceFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [Price!]!
+  collections(
+    "How to sort the records in the response"
+    sort: [CollectionSortInput]
+
+    "A filter to limit the results"
+    filter: CollectionFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [Collection!]!
+  variants(
+    "How to sort the records in the response"
+    sort: [VariantSortInput]
+
+    "A filter to limit the results"
+    filter: VariantFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [Variant!]!
+  options(
+    "How to sort the records in the response"
+    sort: [ProductOptionSortInput]
+
+    "A filter to limit the results"
+    filter: ProductOptionFilterInput
+
+    "The number of records to return."
+    limit: Int
+
+    "The number of records to skip."
+    offset: Int
+  ): [ProductOption!]!
+}
+
 type RootQueryType {
   """
   Hello! This is a sample query to verify that AshGraphql has been set up correctly.
@@ -199,10 +1110,63 @@ type RootQueryType {
   """
   sayHello: String
 
+  getProduct(
+    "The id of the record"
+    id: ID!
+  ): Product
+
+  getAvailableProducts(
+    "How to sort the records in the response"
+    sort: [ProductSortInput]
+
+    "A filter to limit the results"
+    filter: ProductFilterInput
+  ): [Product!]!
+
+  searchAvailableProducts(
+    "How to sort the records in the response"
+    sort: [ProductSortInput]
+
+    "A filter to limit the results"
+    filter: ProductFilterInput
+
+    searchString: String
+  ): [Product!]!
+
+  getVariant(
+    "The id of the record"
+    id: ID!
+  ): Variant
+
+  getCollection(
+    "The id of the record"
+    id: ID!
+  ): Collection
+
+  getBrand(
+    "The id of the record"
+    id: ID!
+  ): Brand
+
+  getBranch(
+    "The id of the record"
+    id: ID!
+  ): Branch
+
   getDelivery(
     "The id of the record"
     id: ID!
   ): Delivery
+}
+
+type Money {
+  amount: Decimal!
+  currency: String!
+}
+
+input MoneyInput {
+  amount: Decimal!
+  currency: String!
 }
 
 type RootMutationType {
@@ -230,3 +1194,10 @@ The `Date` scalar type represents a date. The Date appears in a JSON
 response as an ISO8601 formatted string, without a time component.
 """
 scalar Date
+
+"""
+The `Decimal` scalar type represents signed double-precision fractional
+values parsed by the `Decimal` library. The Decimal appears in a JSON
+response as a string to preserve precision.
+"""
+scalar Decimal

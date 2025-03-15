@@ -1,0 +1,51 @@
+meta {
+  name: get product
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query GetProduct($id: ID!) {
+    getProduct(id: $id) {
+      id
+      name
+      description
+      sku
+      state
+      variants {
+        id
+        name
+        sku
+        prices {
+          id
+          money {
+            amount
+            currency
+          }
+        }
+      }
+      options {
+        id
+        name
+        description
+        optionValues {
+          id
+          value
+        }
+      }
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "id": "019581b4-ff11-7551-823e-22e17158f32b"
+  }
+}

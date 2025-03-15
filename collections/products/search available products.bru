@@ -1,0 +1,64 @@
+meta {
+  name: search available products
+  type: graphql
+  seq: 3
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query SearchAvailableProducts($searchString: String, $sort: [ProductSortInput!]) {
+    searchAvailableProducts(searchString: $searchString, sort: $sort) {
+      id
+      name
+      description
+      sku
+      state
+      prices {
+        id
+        money {
+          amount
+          currency
+        }
+      }
+      variants {
+        id
+        name
+        sku
+        prices {
+          id
+          money {
+            amount
+            currency
+          }
+        }
+      }
+      options {
+        id
+        name
+        description
+        optionValues {
+          id
+          value
+        }
+      }
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "searchString": "Arrollados",
+    "sort": [
+      {
+        "field": "SKU",
+        "order": "ASC"
+      }
+    ]
+  }
+}
