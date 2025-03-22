@@ -1,0 +1,20 @@
+meta {
+  name: get brand
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query GetBrand {
+    getBrand {
+      name
+    }
+  }
+  
+}

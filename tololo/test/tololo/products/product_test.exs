@@ -13,7 +13,7 @@ defmodule ProductTest do
             state: :enabled,
             sku: "TEST_SKU",
             discount_rules: [
-              %{discount: 50000, method: :fixed}
+              %{discount: 50_000, method: :fixed}
             ]
           },
           authorize?: false
@@ -23,7 +23,7 @@ defmodule ProductTest do
       assert [%{method: :fixed}] = product.discount_rules
 
       product = Product.update_price!(product, %{amount: 20, currency: :USD}, authorize?: false)
-      product = Product.update_price!(product, %{amount: 20000, currency: :CLP}, authorize?: false)
+      product = Product.update_price!(product, %{amount: 20_000, currency: :CLP}, authorize?: false)
 
       assert Enum.count(product.prices) == 2
     end

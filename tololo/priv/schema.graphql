@@ -391,6 +391,89 @@ type Cart {
   ): [CartLine!]!
 }
 
+input BranchFilterBrandId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input BranchFilterLongitude {
+  isNil: Boolean
+  eq: Float
+  notEq: Float
+  in: [Float!]
+  lessThan: Float
+  greaterThan: Float
+  lessThanOrEqual: Float
+  greaterThanOrEqual: Float
+}
+
+input BranchFilterLatitude {
+  isNil: Boolean
+  eq: Float
+  notEq: Float
+  in: [Float!]
+  lessThan: Float
+  greaterThan: Float
+  lessThanOrEqual: Float
+  greaterThanOrEqual: Float
+}
+
+input BranchFilterAddress {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input BranchFilterName {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input BranchFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input BranchFilterInput {
+  and: [BranchFilterInput!]
+  or: [BranchFilterInput!]
+  not: [BranchFilterInput!]
+  id: BranchFilterId
+  name: BranchFilterName
+  address: BranchFilterAddress
+  latitude: BranchFilterLatitude
+  longitude: BranchFilterLongitude
+  brandId: BranchFilterBrandId
+  brand: BrandFilterInput
+}
+
 type Branch {
   id: ID!
   name: String!
@@ -399,6 +482,39 @@ type Branch {
   longitude: Float!
   brandId: ID
   brand: Brand
+}
+
+input BrandFilterName {
+  isNil: Boolean
+  eq: String
+  notEq: String
+  in: [String!]
+  lessThan: String
+  greaterThan: String
+  lessThanOrEqual: String
+  greaterThanOrEqual: String
+  like: String
+  ilike: String
+}
+
+input BrandFilterId {
+  isNil: Boolean
+  eq: ID
+  notEq: ID
+  in: [ID!]
+  lessThan: ID
+  greaterThan: ID
+  lessThanOrEqual: ID
+  greaterThanOrEqual: ID
+}
+
+input BrandFilterInput {
+  and: [BrandFilterInput!]
+  or: [BrandFilterInput!]
+  not: [BrandFilterInput!]
+  id: BrandFilterId
+  name: BrandFilterName
+  branch: BranchFilterInput
 }
 
 type Brand {
@@ -1177,13 +1293,13 @@ type RootQueryType {
   ): Collection
 
   getBrand(
-    "The id of the record"
-    id: ID!
+    "A filter to limit the results"
+    filter: BrandFilterInput
   ): Brand
 
   getBranch(
-    "The id of the record"
-    id: ID!
+    "A filter to limit the results"
+    filter: BranchFilterInput
   ): Branch
 
   getCart(
