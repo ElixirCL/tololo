@@ -18,7 +18,7 @@ defmodule TololoCore.Brands.Brand do
     type :brand
 
     queries do
-      get :get_brand, :read
+      read_one :get_brand, :read
     end
 
     mutations do

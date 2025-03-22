@@ -18,7 +18,7 @@ defmodule TololoCore.Brands.Branch do
     type :branch
 
     queries do
-      get :get_branch, :read
+      read_one :get_branch, :read
     end
 
     mutations do
