@@ -28,7 +28,7 @@ defmodule TololoCore.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:ash_authentication, "~> 4.1"},
       {:ash_authentication_phoenix, "~> 2.0"},
-      {:ash_graphql, "~> 1.5.0"},
+      {:ash_graphql, "~> 1.7.3"},
       {:ash_phoenix, "~> 2.1.14"},
       {:ash_postgres, "~> 2.0"},
       {:ash, "~> 3.0"},

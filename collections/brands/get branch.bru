@@ -1,0 +1,23 @@
+meta {
+  name: get branch
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query GetBranch {
+    getBranch {
+      name
+      address
+      latitude
+      longitude
+    }
+  }
+  
+}

@@ -1,0 +1,25 @@
+meta {
+  name: checkout cart
+  type: graphql
+  seq: 4
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  mutation CartCheckoutDelivery($cartId: ID!, $deliveryInput: JsonString!) {
+    cartCheckoutDelivery(input: { cartId: $cartId, deliveryInput: $deliveryInput })
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "cartId": "01959b14-4377-7992-b534-a0f423985773",
+    "deliveryInput": "{\"delivery_person\": {}, \"delivery_order\": {}, \"to_name\": \"to_name\", \"to_latitude\": -33.447001713606156, \"to_longitude\": -70.65619123826207, \"to_address\": \"to_address\", \"to_phone\": \"to_phone\", \"to_notes\": \"to_notes\"}"
+  }
+}

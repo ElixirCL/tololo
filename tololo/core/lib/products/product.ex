@@ -20,6 +20,8 @@ defmodule TololoCore.Products.Product do
 
     queries do
       get :get_product, :read
+      list :get_available_products, :get_enabled
+      list :search_available_products, :search_enabled
     end
 
     mutations do
@@ -59,6 +61,11 @@ defmodule TololoCore.Products.Product do
 
     read :get_enabled do
       filter expr(state == :enabled)
+    end
+
+    read :search_enabled do
+      argument :search_string, :string
+      filter expr(contains(name, ^arg(:search_string)))
     end
 
     update :generate_variants do

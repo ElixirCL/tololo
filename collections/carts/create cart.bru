@@ -1,0 +1,35 @@
+meta {
+  name: create cart
+  type: graphql
+  seq: 3
+}
+
+post {
+  url: {{gql_host}}:{{gql_port}}/gql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  mutation CreateCart($currency: String) {
+    createCart(input: { currency: $currency }) {
+      result {
+        id
+        status
+        currency
+      }
+      errors {
+        message
+        code
+      }
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "currency": "CLP"
+  }
+  
+}
