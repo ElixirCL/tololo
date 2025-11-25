@@ -11,7 +11,7 @@ Add the following code to the deps in `mix.exs`
 
 [source, elixir]
 ----
-{:tololo_extension_telegram_bot,
+{:eatsbot_extension_telegram_bot,
        path:
          Path.join(["extensions", "telegram_bot"])
          |> Path.expand()},

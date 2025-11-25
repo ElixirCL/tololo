@@ -5,7 +5,7 @@
 
 == Context
 
-We need to record the architectural decisions made on _Tololo Ecommerce_.
+We need to record the architectural decisions made on _Eatsbot Ecommerce_.
 
 == Decision
 

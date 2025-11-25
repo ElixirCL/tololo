@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "Tololo GraphQL",
+  "name": "Eatsbot GraphQL",
   "type": "collection",
   "ignore": [
     "node_modules",

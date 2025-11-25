@@ -13,7 +13,7 @@ While a (Positive) Persona is the fictional representation of your ideal user, a
 
 The technical administrator role has the following responsabilities:
 
-- Install _Tololo_ and administrate the servers.
+- Install _Eatsbot_ and administrate the servers.
 - Monitor systems and ensure they are operational (Golden Signals).
 - Ensure good security practices.
 - Allocate resources for servers and databases.
@@ -122,9 +122,9 @@ The business administrator role has the following responsabilities:
 
 The backend developer role has the following responsabilities:
 
-- Extend Tololo API.
+- Extend Eatsbot API.
 - Implement custom business logic.
-- Integrate Tololo with payment systems.
+- Integrate Eatsbot with payment systems.
 
 === Persona (+)
 
@@ -154,7 +154,7 @@ The backend developer role has the following responsabilities:
 
 The mobile developer role has the following responsabilities:
 
-- Use Tololo API.
+- Use Eatsbot API.
 - Implement native frontend in iOS and Android systems.
 
 === Persona (+)
@@ -184,7 +184,7 @@ The mobile developer role has the following responsabilities:
 
 The web frontend developer role has the following responsabilities:
 
-- Use Tololo API.
+- Use Eatsbot API.
 - Implement frontend in Web systems (Chrome, Firefox, Safari, Edge).
 
 === Persona (+)

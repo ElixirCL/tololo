@@ -9,36 +9,36 @@ dev.services services:
 
 ## Mix commands
 mix.docs mdoc:
-	@cd tololo && mix docs
+	@cd eatsbot && mix docs
 	@rm -rf docs/_dist/api
 	@mkdir -p docs/_dist/
-	@cp -R tololo/doc docs/_dist/api
+	@cp -R eatsbot/doc docs/_dist/api
 
 mix.docs.publish mdp:
-	@cd tololo && mix hex.publish
+	@cd eatsbot && mix hex.publish
 
 mix.phoenix.server mix.server mps:
-	@cd tololo && iex -S mix phx.server | vector --config ../vector.yaml
+	@cd eatsbot && iex -S mix phx.server | vector --config ../vector.yaml
 
 mix.credo:
-	@cd tololo && mix credo
+	@cd eatsbot && mix credo
 
 mix.format:
-	@cd tololo && mix format
+	@cd eatsbot && mix format
 
 mix.deps md:
-	@cd tololo && mix deps.get
+	@cd eatsbot && mix deps.get
 
 mix.setup ms:
-	@cd tololo && mix archive.install hex phx_new
-	@cd tololo && mix archive.install hex igniter_new
+	@cd eatsbot && mix archive.install hex phx_new
+	@cd eatsbot && mix archive.install hex igniter_new
 	@make mix.deps
-	@cd tololo && mix ash.setup
-	@cd tololo && mix setup
+	@cd eatsbot && mix ash.setup
+	@cd eatsbot && mix setup
 
 # Bruno
 mix.gen.delivery mgd:
-	@cd tololo && mix generate.delivery.env
+	@cd eatsbot && mix generate.delivery.env
 
 # Antora Env
 ## Antora Docs

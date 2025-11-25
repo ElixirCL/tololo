@@ -3,7 +3,7 @@
 == Initialize a new delivery
 
 - Go to the following URL to open the create delivery form page:
-http://example.com/deliveries/new (The domain should be changed to the one where Tololo is hosted in)
+http://example.com/deliveries/new (The domain should be changed to the one where Eatsbot is hosted in)
 
 image::delivery_form.png[]
 
@@ -21,8 +21,8 @@ image::edit_delivery.png[]
 
 == Authenticate Telegram user (delivery person)
 
-- The delivery person should send a message to the Tololo Telegram bot. The content of the message can be anything.
-- An access request will be sent to Tololo, then an admin will have to approve the user through the admin dashboard. The admin dashboard is in the following page: http://example.com/admin 
+- The delivery person should send a message to the Eatsbot Telegram bot. The content of the message can be anything.
+- An access request will be sent to Eatsbot, then an admin will have to approve the user through the admin dashboard. The admin dashboard is in the following page: http://example.com/admin
 The default user is `admin`, and the default password is `test`.
 - In the dashboard, click the `Users` dropdown menu at the top of the page, then select `User`. Then, select `Read` to see a list of the users that the bot has interacted with.
 

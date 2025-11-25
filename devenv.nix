@@ -7,7 +7,7 @@ let
   randomSuffix = builtins.readFile (pkgs.runCommand "random-suffix" {} ''
     printf $((RANDOM % 10000)) > $out
   '');
-  localtunnel-subdomain = "tololo-" + randomSuffix;
+  localtunnel-subdomain = "eatsbot-" + randomSuffix;
   grafana-provisioning = pkgs.runCommand "grafana-provisioning" {
      buildInputs = [ pkgs.jq ];
    } ''
@@ -15,9 +15,9 @@ let
      cat > $out/datasources/prometheus.yml <<EOF
      apiVersion: 1
      datasources:
-       - name: "Prometheus Tololo"
+       - name: "Prometheus Eatsbot"
          type: prometheus
-         uid: "prometheus-tololo"
+         uid: "prometheus-eatsbot"
          access: proxy
          url: http://localhost:9090
          isDefault: true
@@ -111,7 +111,7 @@ in
   '';
 
   enterTest = ''
-    cd tololo
+    cd eatsbot
     mix test
     mix credo
   '';
@@ -120,14 +120,14 @@ in
     "mix:deps" = {
       # overrides the imported task to cd
       exec = ''
-        cd tololo
+        cd eatsbot
         mix deps.get
       '';
     };
     "mix:format" = {
       # overrides the imported task to cd
       exec = ''
-        cd tololo
+        cd eatsbot
         mix format --check-formatted
       '';
     };

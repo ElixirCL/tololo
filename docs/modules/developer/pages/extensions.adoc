@@ -1,6 +1,6 @@
 = Extensions
 
-Tololo is based with extensibility in mind. This means it supports optional extensions
+Eatsbot is based with extensibility in mind. This means it supports optional extensions
 that can be enabled or disabled. For example a Telegram Bot extension that will
 make available a Telegram chatbot, or optional Prometheus and Grafana metrics.
 
@@ -13,7 +13,7 @@ To add an extension simply add it to the main `mix.exs` in the deps.
 
 [source, elixir]
 ----
-{:tololo_extension_telegram_bot,
+{:eatsbot_extension_telegram_bot,
        path:
          Path.join(["extensions", "telegram_bot"])
          |> Path.expand()},

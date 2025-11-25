@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl ssh console -C "/app/bin/tololo eval Tololo.Release.reset"
-        working-directory: ./tololo
+      - run: flyctl ssh console -C "/app/bin/eatsbot eval Eatsbot.Release.reset"
+        working-directory: ./eatsbot
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_SSH }}
 

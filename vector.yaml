@@ -16,5 +16,5 @@ sinks:
     inputs:
       - "in"
     labels:
-      source: "tololo"
+      source: "eatsbot"
     endpoint: http://localhost:3100

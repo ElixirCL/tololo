@@ -1,6 +1,6 @@
-name: tololo
+name: eatsbot
 version: ~
-title: Tololo Ecommerce
+title: Eatsbot Ecommerce
 nav:
   - modules/ROOT/nav.adoc
   - modules/decisions/nav.adoc

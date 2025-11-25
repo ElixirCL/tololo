@@ -48,7 +48,7 @@ jobs:
       env:
         cache-name: cache-elixir-deps
       with:
-        path: tololo/deps
+        path: eatsbot/deps
         key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
         restore-keys: |
           ${{ runner.os }}-mix-${{ env.cache-name }}-
@@ -62,7 +62,7 @@ jobs:
       env:
         cache-name: cache-compiled-build
       with:
-        path: tololo/_build
+        path: eatsbot/_build
         key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
         restore-keys: |
           ${{ runner.os }}-mix-${{ env.cache-name }}-
@@ -71,14 +71,14 @@ jobs:
     # Step: Download project dependencies. If unchanged, uses
     # the cached version.
     - name: Install Elixir dependencies
-      run: cd tololo && mix deps.get
+      run: cd eatsbot && mix deps.get
 
     # Step: Build Mix API Docs
     - name: Build Mix Docs
-      run: cd tololo && mix docs
+      run: cd eatsbot && mix docs
     
     - name: Copy API docs to _dist
-      run: cp -R tololo/doc docs/_dist/api
+      run: cp -R eatsbot/doc docs/_dist/api
 
     # Upload and Deploy
     - name: Upload Artifacts

@@ -1,0 +1,304 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/eatsbot_web/live/map_live.ex:43
+#, elixir-autogen, icu-format
+msgid "Current location"
+msgstr "Ubicación actual"
+
+#: lib/eatsbot_web/live/map_live.ex:18
+#, elixir-autogen, icu-format
+msgid "Delivery not found"
+msgstr "El delivery solicitado no se ha encontrado"
+
+#: lib/eatsbot_web/live/map_live.html.heex:11
+#, elixir-autogen, icu-format
+msgid "Order history"
+msgstr "Historial del pedido"
+
+#: lib/eatsbot_web/live/map_live.ex:23
+#, elixir-autogen, icu-format
+msgid "Token not found"
+msgstr "El token de acceso no se ha encontrado. Verifique que el URL sea correcto."
+
+#: lib/eatsbot_web/components/core_components.ex:508
+#, elixir-autogen, icu-format
+msgid "Actions"
+msgstr "Acciones"
+
+#: lib/eatsbot_web/components/core_components.ex:160
+#, elixir-autogen, icu-format
+msgid "Attempting to reconnect"
+msgstr "Intentando reconectar"
+
+#: lib/eatsbot_web/components/core_components.ex:151
+#, elixir-autogen, icu-format
+msgid "Error!"
+msgstr "Error!"
+
+#: lib/eatsbot_web/components/core_components.ex:172
+#, elixir-autogen, icu-format
+msgid "Hang in there while we get back on track"
+msgstr "Espera un momento"
+
+#: lib/eatsbot_web/components/core_components.ex:167
+#, elixir-autogen, icu-format
+msgid "Something went wrong!"
+msgstr "Hubo un problema!"
+
+#: lib/eatsbot_web/components/core_components.ex:150
+#, elixir-autogen, icu-format
+msgid "Success!"
+msgstr "Éxito!"
+
+#: lib/eatsbot_web/components/core_components.ex:155
+#, elixir-autogen, icu-format
+msgid "We can't find the internet"
+msgstr "Hay problemas de conexión a internet"
+
+#: lib/eatsbot_web/components/core_components.ex:76
+#: lib/eatsbot_web/components/core_components.ex:130
+#, elixir-autogen, icu-format
+msgid "close"
+msgstr "cerrar"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:30
+#, elixir-autogen, icu-format
+msgid "Address"
+msgstr "Dirección"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:23
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:38
+#, elixir-autogen, icu-format
+msgid "Name"
+msgstr "Nombre"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:42
+#, elixir-autogen, icu-format
+msgid "Notes"
+msgstr "Notas"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:32
+#, elixir-autogen, icu-format
+msgid "Phone"
+msgstr "Teléfono"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:57
+#, elixir-autogen, icu-format
+msgid "Save delivery"
+msgstr "Guardar delivery"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:54
+#, elixir-autogen, icu-format
+msgid "Saving..."
+msgstr "Guardando..."
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:48
+#: lib/eatsbot_web/live/delivery_live/index.ex:25
+#: lib/eatsbot_web/live/delivery_live/show.ex:23
+#, elixir-autogen, icu-format
+msgid "State"
+msgstr "Estado"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:56
+#, elixir-autogen, icu-format
+msgid "Update delivery"
+msgstr "Actualizar delivery"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:48
+#, elixir-autogen, icu-format
+msgid "Are you sure?"
+msgstr "¿Estás seguro?"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:62
+#, elixir-autogen, icu-format
+msgid "Back to deliveries"
+msgstr "Volver a deliveries"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:39
+#, elixir-autogen, icu-format, fuzzy
+msgid "Current latitude"
+msgstr "Ubicación actual"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:41
+#, elixir-autogen, icu-format, fuzzy
+msgid "Current longitude"
+msgstr "Ubicación actual"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:59
+#, elixir-autogen, icu-format, fuzzy
+msgid "Delivery ended at"
+msgstr "Fecha de término del delivery"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:33
+#, elixir-autogen, icu-format
+msgid "Delivery order"
+msgstr "Orden del delivery"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:31
+#, elixir-autogen, icu-format
+msgid "Delivery person"
+msgstr "Repartidor"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:33
+#: lib/eatsbot_web/live/delivery_live/show.ex:57
+#, elixir-autogen, icu-format
+msgid "Delivery started at"
+msgstr "Fecha de comienzo del delivery"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:23
+#: lib/eatsbot_web/live/delivery_live/show.ex:21
+#, elixir-autogen, icu-format
+msgid "Display"
+msgstr "ID público"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:42
+#, elixir-autogen, icu-format
+msgid "Edit"
+msgstr "Editar"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:85
+#: lib/eatsbot_web/live/delivery_live/show.ex:13
+#: lib/eatsbot_web/live/delivery_live/show.ex:96
+#, elixir-autogen, icu-format
+msgid "Edit Delivery"
+msgstr "Editar Delivery"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:35
+#, elixir-autogen, icu-format
+msgid "From latitude"
+msgstr "Latitud de origen"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:37
+#, elixir-autogen, icu-format
+msgid "From longitude"
+msgstr "Longitud de origen"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:43
+#, elixir-autogen, icu-format
+msgid "From name"
+msgstr "Nombre de origen"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:10
+#: lib/eatsbot_web/live/delivery_live/index.ex:97
+#, elixir-autogen, icu-format
+msgid "Listing Deliveries"
+msgstr "Lista de Deliveries"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:13
+#: lib/eatsbot_web/live/delivery_live/index.ex:91
+#, elixir-autogen, icu-format, fuzzy
+msgid "New Delivery"
+msgstr "Crear delivery"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:27
+#, elixir-autogen, icu-format
+msgid "Private auth key"
+msgstr "Llave privada"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:29
+#, elixir-autogen, icu-format
+msgid "Public auth key"
+msgstr "Llave pública"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:39
+#, elixir-autogen, icu-format
+msgid "Show"
+msgstr "Mostrar"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:95
+#, elixir-autogen, icu-format
+msgid "Show Delivery"
+msgstr "Mostrar Delivery"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:31
+#: lib/eatsbot_web/live/delivery_live/show.ex:51
+#, elixir-autogen, icu-format, fuzzy
+msgid "To address"
+msgstr "Dirección"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:45
+#, elixir-autogen, icu-format
+msgid "To latitude"
+msgstr "Latitud destino"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:47
+#, elixir-autogen, icu-format
+msgid "To longitude"
+msgstr "Longitud destino"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:29
+#: lib/eatsbot_web/live/delivery_live/show.ex:49
+#, elixir-autogen, icu-format
+msgid "To name"
+msgstr "Nombre destino"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:55
+#, elixir-autogen, icu-format
+msgid "To notes"
+msgstr "Notas"
+
+#: lib/eatsbot_web/live/delivery_live/show.ex:53
+#, elixir-autogen, icu-format
+msgid "To phone"
+msgstr "Teléfono destino"
+
+#: lib/eatsbot_web/live/delivery_live/index.ex:50
+#, elixir-autogen, icu-format
+msgid "Delete"
+msgstr "Eliminar"
+
+#: lib/eatsbot_web/live/delivery_live/form_component.ex:40
+#, elixir-autogen, icu-format, fuzzy
+msgid "Delivery order details"
+msgstr "Orden del delivery"
+
+#: lib/eatsbot_web/live/delivery_live/location_input_component.ex:21
+#, elixir-autogen, icu-format
+msgid "Found address will show up here"
+msgstr "La dirección encontrada va a aparecer aqui"
+
+#: lib/eatsbot_web/controllers/auth_controller.ex:40
+#, elixir-autogen, icu-format
+msgid "Incorrect email or password"
+msgstr "Email o contraseña incorrecta"
+
+#: lib/eatsbot_web/controllers/auth_controller.ex:13
+#, elixir-autogen, icu-format
+msgid "You are now signed in"
+msgstr "Sesión iniciada"
+
+#: lib/eatsbot_web/controllers/auth_controller.ex:53
+#, elixir-autogen, icu-format
+msgid "You are now signed out"
+msgstr "Sesión cerrada"
+
+#: lib/eatsbot_web/controllers/auth_controller.ex:34
+#, elixir-autogen, icu-format
+msgid "You have already signed in another way, but have not confirmed your account.\nYou can confirm your account using the link we sent to you, or by resetting your password.\n"
+msgstr "Ya has iniciado sesión de otra manera, pero no has confirmado tu cuenta.\nPuedes confirmarla usando el enlace que te enviamos o restableciendo tu contraseña.\n"
+
+#: lib/eatsbot_web/controllers/auth_controller.ex:11
+#, elixir-autogen, icu-format
+msgid "Your email address has now been confirmed"
+msgstr "Tu dirección de email ha sido confirmada"
+
+#: lib/eatsbot_web/controllers/auth_controller.ex:12
+#, elixir-autogen, icu-format
+msgid "Your password has successfully been reset"
+msgstr "Tu contraseña se ha reestablecido"
+
+#: lib/eatsbot_web/live_user_auth.ex:26
+#, elixir-autogen, icu-format
+msgid "You don't have access to this page"
+msgstr "No tienes acceso a esta página"

@@ -1,7 +1,7 @@
 site:
-  title: Tololo Docs
-  url: https://elixircl.github.io/tololo
-  start_page: "tololo::index.adoc"
+  title: Eatsbot Docs
+  url: https://elixircl.github.io/eatsbot
+  start_page: "eatsbot::index.adoc"
 
 content:
   sources:

@@ -1,0 +1,123 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new messages manually only if they're dynamic
+## messages that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+#
+msgid ""
+msgstr ""
+
+#: lib/telegram/chains/auth.ex:75
+#, elixir-autogen, icu-format
+msgid "You don't have access to this bot.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:73
+#, elixir-autogen, icu-format
+msgid "*Hello*\n\nPlease select the delivery you wish to pick up\n"
+msgstr ""
+
+#: lib/telegram/chains/receive_location.ex:48
+#, elixir-autogen, icu-format
+msgid "Error trying to update location."
+msgstr ""
+
+#: lib/telegram/chains/receive_location.ex:29
+#, elixir-autogen, icu-format
+msgid "No active deliveries found. Please start one by using `/new {token}` or stop sharing location."
+msgstr ""
+
+#: lib/telegram/chains/auth.ex:62
+#, elixir-autogen, icu-format
+msgid "Thanks for using Eatsbot Bot. An Admin will contact you soon.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:91
+#, elixir-autogen, icu-format
+msgid "delivery_info"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:96
+#, elixir-autogen, icu-format
+msgid "No additional notes"
+msgstr ""
+
+#: lib/notifier.ex:106
+#: lib/telegram/chains/set_token.ex:95
+#, elixir-autogen, icu-format
+msgid "No address provided"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:94
+#, elixir-autogen, icu-format
+msgid "No phone number provided"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:93
+#, elixir-autogen, icu-format
+msgid "Unknown person"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:111
+#, elixir-autogen, icu-format
+msgid "*Hello*\n\nPlease select the delivery you wish to mark as done\n"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:32
+#, elixir-autogen, icu-format
+msgid "Delivery successfully marked as done.\n"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:67
+#, elixir-autogen, icu-format
+msgid "Delivery wasn't found.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:134
+#, elixir-autogen, icu-format
+msgid "Delivery Person"
+msgstr ""
+
+#: lib/notifier.ex:65
+#, elixir-autogen, icu-format
+msgid "The problem with delivery {display_id} was solved.\n\nYou can continue sharing the live location for it. If it's already being shared, no further action is needed.\n"
+msgstr ""
+
+#: lib/notifier.ex:39
+#, elixir-autogen, icu-format
+msgid "There's a problem with the delivery {display_id}. Please contact the business."
+msgstr ""
+
+#: lib/telegram/chains/done.ex:51
+#, elixir-autogen, icu-format
+msgid "You don't have any active deliveries to mark as done.\n"
+msgstr ""
+
+#: lib/telegram/chains/done.ex:36
+#, elixir-autogen, icu-format
+msgid "Delivery marked with problems. An admin will review it first.\n"
+msgstr ""
+
+#: lib/telegram/chains/set_token.ex:117
+#, elixir-autogen, icu-format
+msgid "There was a problem. Please check that the delivery is still valid.\n"
+msgstr ""
+
+#: lib/notifier.ex:98
+#, elixir-autogen, icu-format
+msgid "A new delivery (*{display_id}*) is ready to be picked up.\n\nDetails: *{details}*\nAddress: *{address}*.\n"
+msgstr ""
+
+#: lib/notifier.ex:107
+#, elixir-autogen, icu-format
+msgid "No details provided"
+msgstr ""
+
+#: lib/notifier.ex:112
+#, elixir-autogen, icu-format
+msgid "Pick up"
+msgstr ""

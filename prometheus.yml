@@ -19,7 +19,7 @@ rule_files:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  - job_name: 'tololo'
+  - job_name: 'eatsbot'
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.

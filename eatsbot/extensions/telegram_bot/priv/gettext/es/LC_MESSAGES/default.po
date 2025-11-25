@@ -1,0 +1,123 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/telegram/chains/auth.ex:75
+#, elixir-autogen, icu-format
+msgid "You don't have access to this bot.\n"
+msgstr "No tienes acceso a este bot.\n"
+
+#: lib/telegram/chains/set_token.ex:73
+#, elixir-autogen, icu-format
+msgid "*Hello*\n\nPlease select the delivery you wish to pick up\n"
+msgstr "*Hola*\n\nPor favor, selecciona el delivery que deseas recoger\n"
+
+#: lib/telegram/chains/receive_location.ex:48
+#, elixir-autogen, icu-format
+msgid "Error trying to update location."
+msgstr "Error al intentar actualizar la ubicación."
+
+#: lib/telegram/chains/receive_location.ex:29
+#, elixir-autogen, icu-format
+msgid "No active deliveries found. Please start one by using `/new {token}` or stop sharing location."
+msgstr "No se encontraron entregas activas. Por favor, inicia una usando `/new {token}` o deja de compartir ubicación."
+
+#: lib/telegram/chains/auth.ex:62
+#, elixir-autogen, icu-format
+msgid "Thanks for using Eatsbot Bot. An Admin will contact you soon.\n"
+msgstr "Gracias por usar Eatsbot Bot. Un administrador se pondrá en contacto contigo pronto.\n"
+
+#: lib/telegram/chains/set_token.ex:91
+#, elixir-autogen, icu-format
+msgid "delivery_info"
+msgstr "*Esta es la información del delivery:*\n- Nombre: {name}\n- Teléfono: {phone}\n- Dirección: {address}\n- Notas: {notes}\n*Bien! Ahora por favor envía tu ubicación por lo menos durante una hora.*"
+
+#: lib/telegram/chains/set_token.ex:96
+#, elixir-autogen, icu-format
+msgid "No additional notes"
+msgstr "No hay notas adicionales"
+
+#: lib/notifier.ex:106
+#: lib/telegram/chains/set_token.ex:95
+#, elixir-autogen, icu-format
+msgid "No address provided"
+msgstr "No se proporcionó dirección"
+
+#: lib/telegram/chains/set_token.ex:94
+#, elixir-autogen, icu-format
+msgid "No phone number provided"
+msgstr "No se proporcionó número de teléfono"
+
+#: lib/telegram/chains/set_token.ex:93
+#, elixir-autogen, icu-format
+msgid "Unknown person"
+msgstr "Persona desconocida"
+
+#: lib/telegram/chains/done.ex:111
+#, elixir-autogen, icu-format, fuzzy
+msgid "*Hello*\n\nPlease select the delivery you wish to mark as done\n"
+msgstr "*Hola*\n\nPor favor, selecciona el delivery que deseas marcar como terminado\n"
+
+#: lib/telegram/chains/done.ex:32
+#, elixir-autogen, icu-format
+msgid "Delivery successfully marked as done.\n"
+msgstr "El delivery fue marcado como terminado exitosamente"
+
+#: lib/telegram/chains/done.ex:67
+#, elixir-autogen, icu-format
+msgid "Delivery wasn't found.\n"
+msgstr "Delivery no encontrado.\n"
+
+#: lib/telegram/chains/set_token.ex:134
+#, elixir-autogen, icu-format
+msgid "Delivery Person"
+msgstr "Repartidor"
+
+#: lib/notifier.ex:65
+#, elixir-autogen, icu-format
+msgid "The problem with delivery {display_id} was solved.\n\nYou can continue sharing the live location for it. If it's already being shared, no further action is needed.\n"
+msgstr "El problema con el delivery {display_id} fue resuelto.\n\nPuedes continuar compartiendo la ubicación. Si ya se está compartiendo, no es necesario hacer nada."
+
+#: lib/notifier.ex:39
+#, elixir-autogen, icu-format
+msgid "There's a problem with the delivery {display_id}. Please contact the business."
+msgstr "Hay un problema con el delivery {display_id}. Por favor contacta al negocio."
+
+#: lib/telegram/chains/done.ex:51
+#, elixir-autogen, icu-format
+msgid "You don't have any active deliveries to mark as done.\n"
+msgstr "No hay deliveries activos para marcar como terminado.\n"
+
+#: lib/telegram/chains/done.ex:36
+#, elixir-autogen, icu-format
+msgid "Delivery marked with problems. An admin will review it first.\n"
+msgstr "Delivery marcado con problemas. Un administrador lo revisará primero.\n"
+
+#: lib/telegram/chains/set_token.ex:117
+#, elixir-autogen, icu-format, fuzzy
+msgid "There was a problem. Please check that the delivery is still valid.\n"
+msgstr "Hubo un problema. Por favor, verifica que el delivery siga siendo válido.\n"
+
+#: lib/notifier.ex:98
+#, elixir-autogen, icu-format, fuzzy
+msgid "A new delivery (*{display_id}*) is ready to be picked up.\n\nDetails: *{details}*\nAddress: *{address}*.\n"
+msgstr "Un delivery nuevo (*{display_id}*) está listo para ser recogido.\n\nDetalles: *{details}*\nDirección: *{address}*.\n"
+
+#: lib/notifier.ex:107
+#, elixir-autogen, icu-format, fuzzy
+msgid "No details provided"
+msgstr "No se proporcionaron detalles"
+
+#: lib/notifier.ex:112
+#, elixir-autogen, icu-format
+msgid "Pick up"
+msgstr "Recoger"
